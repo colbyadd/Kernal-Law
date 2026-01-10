@@ -1,65 +1,70 @@
-import Image from "next/image";
+import { CinematicHero } from "./components/CinematicHero";
+import Link from 'next/link';
 
 export default function Home() {
+  const practices = [
+    { title: "Personal Injury", desc: "Justice for victims of negligence, accidents, and oil field injuries." },
+    { title: "DUI & Traffic", desc: "Protecting your license and your record." },
+    { title: "Drug Charges", desc: "Challenging search and seizure violations." },
+    { title: "Violent Crimes", desc: "Defense against assault, battery, and manslaughter." },
+  ];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="min-h-screen bg-iron-950">
+      <CinematicHero />
+
+      {/* Intro Section - Stark & Direct */}
+      <section className="py-24 md:py-32 border-b border-silver-500/10">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl">
+            <h2 className="font-serif text-3xl md:text-5xl text-white mb-8 border-l border-accent-gold pl-6">
+              "If I don't stand up for my clients and protect their constitutional rights, then everyone loses."
+            </h2>
+            <div className="grid md:grid-cols-2 gap-12 text-silver-400 leading-relaxed">
+              <p>
+                Many lawyers avoid criminal law. They feel it is beneath them. I believe that every defendant deserves the full protection of the United States and Oklahoma Constitutions.
+              </p>
+              <p>
+                For nearly 26 years, I have fought in the trenches of the Oklahoma justice system. From complex felonies to DUI defense, my sole focus is securing the best possible outcome for you.
+              </p>
+            </div>
+            <div className="mt-12">
+              <Link href="/attorney" className="text-white border-b border-white pb-1 hover:text-silver-400 hover:border-silver-400 transition-colors uppercase tracking-widest text-sm">
+                Read Full Bio
+              </Link>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Practice Areas - Minimalist Grid */}
+      <section className="py-24 bg-iron-900">
+        <div className="container mx-auto px-6">
+          <div className="flex justify-between items-end mb-16">
+            <h3 className="font-serif text-4xl text-white">Practice Areas</h3>
+            <Link href="/practice" className="hidden md:block text-silver-500 hover:text-white transition-colors text-sm uppercase tracking-widest">
+              View All
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-silver-500/20 border border-silver-500/20">
+            {[
+              { title: "Personal Injury", desc: "Justice for victims of negligence, accidents, and oil field injuries.", href: "/practice/personal-injury" },
+              { title: "DUI & Traffic", desc: "Protecting your license and your record.", href: "/practice/criminal-defense" },
+              { title: "Drug Charges", desc: "Challenging search and seizure violations.", href: "/practice/criminal-defense" },
+              { title: "Violent Crimes", desc: "Defense against assault, battery, and manslaughter.", href: "/practice/criminal-defense" },
+            ].map((p, i) => (
+              <Link key={i} href={p.href} className="bg-iron-900 p-8 hover:bg-iron-800 transition-colors group block">
+                <h4 className="font-serif text-xl text-white mb-4 group-hover:text-silver-100">{p.title}</h4>
+                <p className="text-silver-500 text-sm leading-relaxed mb-6">{p.desc}</p>
+                <div className="inline-flex items-center text-accent-gold text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all">
+                  Learn More &rarr;
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+    </main>
   );
 }

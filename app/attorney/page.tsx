@@ -4,7 +4,7 @@ import Link from "next/link"
 
 export const metadata = {
     title: "Todd Kernal | Attorney Profile | Kernal Law",
-    description: "Todd Kernal has served as a criminal defense lawyer for 25+ years. A graduate of OCU Law, he defends constitutional rights across Oklahoma.",
+    description: "Todd Kernal has served as a criminal defense lawyer for 25+ years. A graduate of the University of Oklahoma College of Law, he defends constitutional rights across Oklahoma.",
 }
 
 export default function AttorneyPage() {
@@ -48,7 +48,7 @@ export default function AttorneyPage() {
                                 </li>
                                 <li className="flex items-center gap-3">
                                     <span className="w-1.5 h-1.5 bg-accent-gold rounded-full"></span>
-                                    J.D., Oklahoma City University
+                                    J.D., University of Oklahoma College of Law
                                 </li>
                             </ul>
                         </div>
@@ -67,7 +67,7 @@ export default function AttorneyPage() {
                         </p>
 
                         <blockquote className="border-l-2 border-accent-gold pl-8 my-12 italic text-xl text-white/90">
-                            "Many lawyers do not like to practice criminal law because they feel it is beneath them. I believe that all defendants deserve the full protection of the United States and Oklahoma Constitutions."
+                            "When the government brings its full power against an individual, the only equalizer is a vigorous defense. I don't just represent a client; I defend the Constitutional rights that belong to us all."
                         </blockquote>
 
                         <h3 className="text-2xl font-serif text-white pt-8">Steadfast Protection</h3>

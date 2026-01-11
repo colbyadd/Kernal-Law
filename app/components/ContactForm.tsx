@@ -13,12 +13,18 @@ export function ContactForm() {
 
         const form = e.currentTarget
         const formData = new FormData(form)
+        const params = new URLSearchParams()
+
+        // Explicitly convert FormData to URLSearchParams
+        for (const [key, value] of formData.entries()) {
+            params.append(key, value as string)
+        }
 
         try {
             const response = await fetch('/', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams(formData as any).toString(),
+                body: params.toString(),
             })
 
             if (response.ok) {

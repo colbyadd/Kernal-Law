@@ -60,7 +60,7 @@ export function CinematicNav() {
                 </button>
 
                 {/* Mobile Overlay */}
-                <div className={`fixed inset-0 bg-iron-950 flex flex-col justify-center items-center gap-8 transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] md:hidden ${mobileMenuOpen ? 'translate-y-0 opacity-100 visible' : '-translate-y-full opacity-0 invisible'}`}>
+                <div className={`fixed top-0 left-0 w-full h-[100dvh] z-40 bg-iron-950 flex flex-col justify-center items-center gap-8 transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] md:hidden ${mobileMenuOpen ? 'translate-y-0 opacity-100 visible' : '-translate-y-full opacity-0 invisible'}`}>
                     {navLinks.map((link) => (
                         <Link
                             key={link.href}

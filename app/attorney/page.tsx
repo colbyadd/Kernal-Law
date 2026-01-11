@@ -44,7 +44,7 @@ export default function AttorneyPage() {
                                 </li>
                                 <li className="flex items-center gap-3">
                                     <span className="w-1.5 h-1.5 bg-accent-gold rounded-full"></span>
-                                    Super Lawyers Recognition
+                                    25+ Years of Trial Experience
                                 </li>
                                 <li className="flex items-center gap-3">
                                     <span className="w-1.5 h-1.5 bg-accent-gold rounded-full"></span>

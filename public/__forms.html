@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netlify Forms</title>
+</head>
+
+<body>
+    <!-- 
+      This file is used by Netlify's build bots to detect form definitions 
+      when using the Next.js Runtime v5 (which sometimes misses dynamic React forms).
+      The form name and fields must match exactly what is used in the React component.
+    -->
+    <form name="contact" netlify netlify-honeypot="bot-field" action="/success" hidden>
+        <input type="text" name="name" />
+        <input type="tel" name="phone" />
+        <input type="email" name="email" />
+        <textarea name="message"></textarea>
+        <!-- Honeypot -->
+        <input name="bot-field" />
+        <input type="hidden" name="form-name" value="contact" />
+    </form>
+</body>
+
+</html>

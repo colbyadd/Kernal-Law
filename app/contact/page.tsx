@@ -1,15 +1,13 @@
+'use client'
+
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { PageHero } from "../components/PageHero"
 
 export const metadata = {
     title: "Contact Kernal Law | Oklahoma City Criminal Defense",
     description: "Free consultation with Todd Kernal. Located at 1332 SW 89th Street, Oklahoma City, OK 73159. Call 405.364.0601.",
 }
-
-'use client'
-
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
-import { PageHero } from "../components/PageHero"
 
 export default function ContactPage() {
     const router = useRouter()

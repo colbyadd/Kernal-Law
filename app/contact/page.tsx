@@ -5,7 +5,41 @@ export const metadata = {
     description: "Free consultation with Todd Kernal. Located at 1332 SW 89th Street, Oklahoma City, OK 73159. Call 405.364.0601.",
 }
 
+'use client'
+
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { PageHero } from "../components/PageHero"
+
 export default function ContactPage() {
+    const router = useRouter()
+    const [status, setStatus] = useState<'idle' | 'submitting' | 'error'>('idle')
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        setStatus('submitting')
+
+        const form = e.currentTarget
+        const formData = new FormData(form)
+
+        try {
+            const response = await fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData as any).toString(),
+            })
+
+            if (response.ok) {
+                router.push('/success')
+            } else {
+                throw new Error('Form submission failed')
+            }
+        } catch (error) {
+            console.error(error)
+            setStatus('error')
+        }
+    }
+
     return (
         <main className="bg-iron-950 min-h-screen">
             <PageHero
@@ -60,7 +94,7 @@ export default function ContactPage() {
                             name="contact"
                             method="POST"
                             data-netlify="true"
-                            action="/success"
+                            onSubmit={handleSubmit}
                             className="space-y-6"
                         >
                             <input type="hidden" name="form-name" value="contact" />
@@ -115,10 +149,15 @@ export default function ContactPage() {
 
                             <button
                                 type="submit"
-                                className="w-full bg-white text-iron-950 py-4 font-bold uppercase tracking-widest hover:bg-silver-100 transition-colors"
+                                disabled={status === 'submitting'}
+                                className="w-full bg-white text-iron-950 py-4 font-bold uppercase tracking-widest hover:bg-silver-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                             >
-                                Send Message
+                                {status === 'submitting' ? 'Sending...' : 'Send Message'}
                             </button>
+
+                            {status === 'error' && (
+                                <p className="text-red-500 text-sm text-center">Sorry, there was a problem sending your message. Please call us directly.</p>
+                            )}
 
                             <p className="text-xs text-silver-500 text-center pt-4">
                                 All communications are confidential.

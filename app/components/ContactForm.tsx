@@ -43,9 +43,7 @@ export function ContactForm() {
                 className="space-y-6"
             >
                 <input type="hidden" name="form-name" value="contact" />
-                <p className="hidden">
-                    <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
-                </p>
+                <input type="hidden" name="subject" value="New Case Evaluation Request - Kernal Law" />
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>

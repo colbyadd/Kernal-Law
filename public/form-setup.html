@@ -13,13 +13,12 @@
       when using the Next.js Runtime v5 (which sometimes misses dynamic React forms).
       The form name and fields must match exactly what is used in the React component.
     -->
-    <form name="contact" netlify netlify-honeypot="bot-field" action="/success" hidden method="POST">
+    <form name="contact" netlify action="/success" hidden method="POST">
         <input type="text" name="name" />
         <input type="tel" name="phone" />
         <input type="email" name="email" />
         <textarea name="message"></textarea>
-        <!-- Honeypot -->
-        <input name="bot-field" />
+        <input type="hidden" name="subject" value="New Case Evaluation Request" />
         <input type="hidden" name="form-name" value="contact" />
     </form>
 </body>

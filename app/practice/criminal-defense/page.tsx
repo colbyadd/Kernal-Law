@@ -75,10 +75,10 @@ export default function CriminalDefensePage() {
                     ))}
                 </div>
 
-                <div className="mt-24 bg-silver-100 text-iron-950 p-12 text-center">
-                    <h3 className="font-serif text-3xl mb-4">Your future fights start today.</h3>
-                    <p className="mb-8 max-w-2xl mx-auto font-light">Do not speak to investigators. Do not make a statement. Call our office immediately.</p>
-                    <Link href="/contact" className="inline-block px-12 py-4 bg-iron-950 text-white font-bold uppercase tracking-widest hover:bg-iron-800 transition-colors">
+                <div className="mt-24 bg-silver-500/10 border border-silver-500/20 p-12 text-center">
+                    <h3 className="font-serif text-3xl text-white mb-4">Your future fights start today.</h3>
+                    <p className="text-silver-400 mb-8 max-w-2xl mx-auto font-light">Do not speak to investigators. Do not make a statement. Call our office immediately.</p>
+                    <Link href="/contact" className="inline-block px-12 py-4 bg-white text-iron-950 font-bold uppercase tracking-widest hover:bg-silver-100 transition-colors">
                         Start Your Defense
                     </Link>
                 </div>

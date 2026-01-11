@@ -5,6 +5,7 @@ import { CinematicNav } from "./components/CinematicNav";
 import { ContactFab } from "./components/ContactFab";
 import { Footer } from "./components/Footer";
 import { JsonLd } from "./components/JsonLd";
+import { BreadcrumbSchema } from "./components/BreadcrumbSchema";
 
 
 const playfair = Playfair_Display({
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     default: "Kernal & Associates | Oklahoma Criminal Defense & Personal Injury",
     template: "%s | Kernal & Associates"
   },
-  description: "When your freedom is on the line. Todd Kernal is a 26-year veteran criminal defense attorney in Oklahoma City. Serious defense for serious charges.",
+  description: "When your freedom is on the line. Todd Kernal is a 25+ year veteran criminal defense attorney in Oklahoma City. Serious defense for serious charges.",
   keywords: ["Criminal Defense Attorney Oklahoma City", "DUI Lawyer OKC", "Personal Injury Attorney Oklahoma", "Todd Kernal", "Kernal Law"],
   authors: [{ name: "Todd Kernal" }],
   creator: "Kernal & Associates",
@@ -43,7 +44,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Kernal & Associates | Oklahoma Criminal Defense",
-    description: "Unrelenting advocacy for criminal defense and personal injury cases in Oklahoma. 26 years of experience.",
+    description: "Uncompromising defense for criminal charges and personal injury cases in Oklahoma. 25+ years of experience.",
     url: baseUrl,
     siteName: "Kernal & Associates",
     locale: "en_US",
@@ -88,7 +89,9 @@ export default function RootLayout({
         {children}
         <Footer />
         <ContactFab />
+        <ContactFab />
         <JsonLd />
+        <BreadcrumbSchema />
       </body>
     </html>
   );

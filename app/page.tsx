@@ -22,10 +22,10 @@ export default function Home() {
             </h2>
             <div className="grid md:grid-cols-2 gap-12 text-silver-400 leading-relaxed">
               <p>
-                Many lawyers avoid criminal law. They feel it is beneath them. I believe that every defendant deserves the full protection of the United States and Oklahoma Constitutions.
+                Whether you are facing criminal charges or recovering from a serious injury, you deserve an attorney who will fight for you. I believe that every client deserves the full protection of the law and a relentless advocate in their corner.
               </p>
               <p>
-                For nearly 26 years, I have fought in the trenches of the Oklahoma justice system. From complex felonies to DUI defense, my sole focus is securing the best possible outcome for you.
+                For 25+ years, I have fought in the trenches of the Oklahoma justice system. From complex felonies to catastrophic injury claims, my sole focus is securing the best possible outcome for you and your family.
               </p>
             </div>
             <div className="mt-12">

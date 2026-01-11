@@ -4,7 +4,7 @@ import Link from "next/link"
 
 export const metadata = {
     title: "Todd Kernal | Attorney Profile | Kernal Law",
-    description: "Todd Kernal has served as a criminal defense lawyer for nearly 26 years. A graduate of OCU Law, he defends constitutional rights across Oklahoma.",
+    description: "Todd Kernal has served as a criminal defense lawyer for 25+ years. A graduate of OCU Law, he defends constitutional rights across Oklahoma.",
 }
 
 export default function AttorneyPage() {
@@ -12,7 +12,7 @@ export default function AttorneyPage() {
         <main className="bg-iron-950 min-h-screen">
             <PageHero
                 title="Todd Kernal"
-                subtitle="Criminal Defense & Personal Injury | 26 Years of Experience"
+                subtitle="Criminal Defense & Personal Injury | 25+ Years of Experience"
                 variant="bio"
             />
 
@@ -58,7 +58,7 @@ export default function AttorneyPage() {
                     <div className="lg:col-span-8 space-y-8 text-lg text-silver-400 font-light leading-relaxed">
 
                         <p className="first-letter:text-5xl first-letter:font-serif first-letter:text-white first-letter:float-left first-letter:mr-3 first-letter:mt-[-4px]">
-                            Todd Kernal has worked as a criminal defense lawyer for nearly 26 years. He has extensive experience helping his clients navigate through the complex civil and criminal law issues surrounding a DUI arrest. He also has a long history of defending his clients against drug, sex and general felony charges.
+                            Todd Kernal has worked as a criminal defense lawyer for 25+ years. He has extensive experience helping his clients navigate through the complex civil and criminal law issues surrounding a DUI arrest. He also has a long history of defending his clients against drug, sex and general felony charges.
                         </p>
 
                         <h3 className="text-2xl font-serif text-white pt-8">A Career Born from Injustice</h3>
@@ -70,7 +70,7 @@ export default function AttorneyPage() {
                             "Many lawyers do not like to practice criminal law because they feel it is beneath them. I believe that all defendants deserve the full protection of the United States and Oklahoma Constitutions."
                         </blockquote>
 
-                        <h3 className="text-2xl font-serif text-white pt-8">Unrelenting Advocacy</h3>
+                        <h3 className="text-2xl font-serif text-white pt-8">Steadfast Protection</h3>
                         <p>
                             While in law school, Todd interned in a criminal law practice and it was a perfect fit. He enjoys being in the courtroom and fighting for his clients every day, and he prides himself on his ethics and his ability to research and prepare a case for the best possible outcome for the client.
                         </p>

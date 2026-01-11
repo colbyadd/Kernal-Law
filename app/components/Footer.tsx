@@ -6,7 +6,11 @@ export function Footer() {
             <div className="container mx-auto px-6 grid md:grid-cols-4 gap-8">
                 <div className="col-span-1 md:col-span-2">
                     <h4 className="font-serif text-xl text-white mb-4">KERNAL <span className="text-silver-500 text-base italic">&</span> ASSOCIATES</h4>
-                    <p className="text-silver-500 text-sm mb-6">1332 SW 89th Street<br />Oklahoma City, OK 73159</p>
+                    <p className="text-silver-500 text-sm mb-6">
+                        <a href="https://www.google.com/maps/search/?api=1&query=1332+SW+89th+Street+Oklahoma+City+OK+73159" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                            1332 SW 89th Street<br />Oklahoma City, OK 73159
+                        </a>
+                    </p>
                     <div className="flex flex-col md:flex-row gap-4 md:gap-6 text-xs text-silver-600 uppercase tracking-wider justify-center md:justify-start">
                         <Link href="/privacy" className="hover:text-silver-400 transition-colors">Privacy Policy</Link>
                         <Link href="/terms" className="hover:text-silver-400 transition-colors">Terms of Service</Link>

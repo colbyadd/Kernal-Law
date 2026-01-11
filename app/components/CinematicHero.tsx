@@ -38,13 +38,13 @@ export function CinematicHero() {
 
                     <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl leading-[0.9] text-white tracking-tight opacity-0 animate-slide-up" style={{ animationDelay: '0.4s' }}>
                         When Your <br />
-                        <span className="text-silver-500">Freedom</span> is <br />
+                        <span className="text-silver-500">Future</span> is <br />
                         on the Line.
                     </h1>
 
                     <p className="max-w-xl text-lg md:text-xl text-silver-400 font-light leading-relaxed border-l-2 border-silver-500 pl-6 opacity-0 animate-slide-up" style={{ animationDelay: '0.6s' }}>
-                        Todd Kernal. 26 years of defending Oklahomans against the most serious charges.
-                        Unrelenting advocacy when it matters most.
+                        Todd Kernal. 25+ years of defending Oklahomans against serious charges and fighting for injury victims.
+                        Uncompromising defense when it matters most.
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-6 pt-4 opacity-0 animate-slide-up" style={{ animationDelay: '0.8s' }}>

@@ -43,7 +43,7 @@ export function CinematicHero() {
                     </h1>
 
                     <p className="max-w-xl text-lg md:text-xl text-silver-400 font-light leading-relaxed border-l-2 border-silver-500 pl-6 opacity-0 animate-slide-up" style={{ animationDelay: '0.6s' }}>
-                        Todd Kernal. 25+ years of defending Oklahomans against serious charges and fighting for injury victims.
+                        Kernal & Associates. 25+ years of defending Oklahomans against serious charges and fighting for injury victims.
                         Uncompromising defense when it matters most.
                     </p>
 

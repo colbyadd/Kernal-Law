@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: "Kernal & Associates | Oklahoma Criminal Defense",
+    title: "Kernal & Associates | Criminal Defense & Personal Injury",
     description: "Uncompromising defense for criminal charges and personal injury cases in Oklahoma. 25+ years of experience.",
     url: baseUrl,
     siteName: "Kernal & Associates",
@@ -70,8 +70,8 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/favicon.ico',
-    // apple: '/apple-icon.png', // We need to generate this or use a default
+    icon: '/icon.png',
+    apple: '/icon.png',
   },
 };
 

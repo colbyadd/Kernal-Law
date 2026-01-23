@@ -85,7 +85,6 @@ export default function RootLayout({
         {children}
         <Footer />
         <ContactFab />
-        <ContactFab />
         <JsonLd />
         <BreadcrumbSchema />
       </body>

@@ -16,7 +16,7 @@ export function PageHero({ title, subtitle, variant = 'default' }: PageHeroProps
                 return (
                     <div className="absolute inset-0 z-0">
                         <Image
-                            src="/images/hero-criminal.png"
+                            src="/images/hero-criminal.webp"
                             alt="Gavel in courtroom shadow"
                             fill
                             className="object-cover opacity-50"
@@ -29,7 +29,7 @@ export function PageHero({ title, subtitle, variant = 'default' }: PageHeroProps
                 return (
                     <div className="absolute inset-0 z-0">
                         <Image
-                            src="/images/hero-injury.png"
+                            src="/images/hero-injury.webp"
                             alt="Rainy highway at night"
                             fill
                             className="object-cover opacity-50"
@@ -43,7 +43,7 @@ export function PageHero({ title, subtitle, variant = 'default' }: PageHeroProps
                 return (
                     <div className="absolute inset-0 z-0 bg-iron-900">
                         <Image
-                            src="/images/hero-abstract.png"
+                            src="/images/hero-abstract.webp"
                             alt="Iron texture"
                             fill
                             className="object-cover opacity-30"

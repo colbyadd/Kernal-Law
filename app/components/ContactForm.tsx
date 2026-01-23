@@ -50,6 +50,12 @@ export function ContactForm() {
             >
                 <input type="hidden" name="form-name" value="contact" />
                 <input type="hidden" name="subject" value="New Case Evaluation Request - Kernal Law" />
+                {/* Honeypot field for spam protection - hidden from users */}
+                <p className="hidden">
+                    <label>
+                        Don't fill this out if you're human: <input name="bot-field" tabIndex={-1} autoComplete="off" />
+                    </label>
+                </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>

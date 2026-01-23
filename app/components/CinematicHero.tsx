@@ -13,7 +13,7 @@ export function CinematicHero() {
                 {/* Image Layer - Now Z-10 and Normal Blend for Visibility */}
                 <div className="absolute inset-0 z-10">
                     <Image
-                        src="/images/hero-abstract.png"
+                        src="/images/hero-abstract.webp"
                         alt="Iron justice abstract"
                         fill
                         className="object-cover opacity-30"

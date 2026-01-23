@@ -36,6 +36,7 @@ export default function ContactPage() {
                             <div className="mt-8 h-64 w-full bg-iron-900 border border-silver-500/20 grayscale invert-[0.9]">
                                 <iframe
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d103984.77708518596!2d-97.62228999999999!3d35.37153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87b212dd0e04772b%3A0x6b83445472856525!2s1332%20SW%2089th%20St%2C%20Oklahoma%20City%2C%20OK%2073159!5e0!3m2!1sen!2sus!4v1715367890123!5m2!1sen!2sus"
+                                    title="Map showing Kernal & Associates office at 1332 SW 89th Street, Oklahoma City, OK"
                                     width="100%"
                                     height="100%"
                                     style={{ border: 0 }}

@@ -22,7 +22,7 @@ export default function PracticeHub() {
                     <Link href="/practice/criminal-defense" className="group relative block overflow-hidden bg-iron-900 border border-silver-500/10 hover:border-accent-gold transition-colors duration-500">
                         <div className="aspect-video relative">
                             <Image
-                                src="/images/hero-criminal.png"
+                                src="/images/hero-criminal.webp"
                                 alt="Criminal Defense"
                                 fill
                                 className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
@@ -42,7 +42,7 @@ export default function PracticeHub() {
                     <Link href="/practice/personal-injury" className="group relative block overflow-hidden bg-iron-900 border border-silver-500/10 hover:border-accent-gold transition-colors duration-500">
                         <div className="aspect-video relative">
                             <Image
-                                src="/images/hero-injury.png"
+                                src="/images/hero-injury.webp"
                                 alt="Personal Injury"
                                 fill
                                 className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"

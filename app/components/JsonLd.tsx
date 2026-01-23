@@ -1,10 +1,9 @@
 export function JsonLd() {
     const jsonLd = {
         "@context": "https://schema.org",
-        "@type": "Attorney",
+        "@type": ["Attorney", "LegalService"],
         "name": "Kernal & Associates",
         "image": "https://kernallaw.com/images/todd-kernal-lhl.jpg",
-        "username": "KernalLaw",
         "url": "https://kernallaw.com",
         "telephone": "+1-405-364-0601",
         "email": "todd@kernallaw.com",
@@ -21,6 +20,20 @@ export function JsonLd() {
             "latitude": 35.37153,
             "longitude": -97.62229
         },
+        "areaServed": [
+            {
+                "@type": "City",
+                "name": "Oklahoma City",
+                "containedInPlace": {
+                    "@type": "State",
+                    "name": "Oklahoma"
+                }
+            },
+            {
+                "@type": "State",
+                "name": "Oklahoma"
+            }
+        ],
         "priceRange": "$$",
         "openingHoursSpecification": {
             "@type": "OpeningHoursSpecification",
@@ -39,9 +52,38 @@ export function JsonLd() {
             "name": "Todd Kernal",
             "jobTitle": "Attorney at Law"
         },
+        "knowsAbout": [
+            "Criminal Defense",
+            "Personal Injury",
+            "DUI Defense",
+            "Drug Charges",
+            "Violent Crimes",
+            "Oil Field Injuries"
+        ],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Legal Services",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Criminal Defense",
+                        "description": "Defense against felonies, DUI, drug charges, and violent crimes in Oklahoma."
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Personal Injury",
+                        "description": "Representation for car accidents, oil field injuries, and wrongful death claims."
+                    }
+                }
+            ]
+        },
         "sameAs": [
-            "https://www.facebook.com/kernallaw",
-            "https://www.linkedin.com/in/todd-kernal-123456789/"
+            "https://www.facebook.com/kernallaw"
         ]
     }
 

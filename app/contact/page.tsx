@@ -1,10 +1,30 @@
 import { PageHero } from "../components/PageHero"
 import { ContactForm } from "../components/ContactForm"
+import { FaqSection } from "../components/FaqSection"
 
 export const metadata = {
     title: "Contact Kernal Law | Oklahoma City Criminal Defense",
     description: "Free consultation with Todd Kernal. Located at 1332 SW 89th Street, Oklahoma City, OK 73159. Call 405.364.0601.",
 }
+
+const contactFaqs = [
+    {
+        question: "Where is your office located?",
+        answer: "Our office is located at 1332 SW 89th Street, Oklahoma City, OK 73159, in the southwest part of Oklahoma City. We're easily accessible from I-44 and I-240, with free parking available on-site."
+    },
+    {
+        question: "Do you offer free consultations?",
+        answer: "Yes, we offer free initial consultations for both criminal defense and personal injury cases. During this consultation, we'll review your situation, explain your options, and discuss how we can help. There's no obligation and no pressure."
+    },
+    {
+        question: "What areas do you serve?",
+        answer: "We serve clients throughout the Oklahoma City metro area, including Norman, Moore, Edmond, Midwest City, Del City, Yukon, and Mustang. We handle cases in Oklahoma County, Cleveland County, Canadian County, and surrounding jurisdictions."
+    },
+    {
+        question: "What should I bring to my first meeting?",
+        answer: "For criminal cases, bring any police reports, court documents, or bond paperwork you've received. For personal injury cases, bring accident reports, medical records, insurance information, and photos of any injuries or property damage. If you don't have these documents yet, we can still meet—we'll help you obtain them."
+    }
+]
 
 export default function ContactPage() {
     return (
@@ -60,6 +80,14 @@ export default function ContactPage() {
 
                 </div>
             </div>
+
+            {/* FAQ Section */}
+            <FaqSection
+                faqs={contactFaqs}
+                practiceArea="contact"
+                title="Common Questions"
+                subtitle="Quick answers about working with Kernal & Associates."
+            />
         </main>
     )
 }

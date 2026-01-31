@@ -5,7 +5,6 @@ import { CinematicNav } from "./components/CinematicNav";
 import { ContactFab } from "./components/ContactFab";
 import { Footer } from "./components/Footer";
 import { JsonLd } from "./components/JsonLd";
-import { BreadcrumbSchema } from "./components/BreadcrumbSchema";
 
 
 const playfair = Playfair_Display({
@@ -86,7 +85,6 @@ export default function RootLayout({
         <Footer />
         <ContactFab />
         <JsonLd />
-        <BreadcrumbSchema />
       </body>
     </html>
   );

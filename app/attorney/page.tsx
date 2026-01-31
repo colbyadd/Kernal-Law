@@ -7,9 +7,76 @@ export const metadata = {
     description: "Todd Kernal has served as a criminal defense lawyer for 25+ years. A graduate of the University of Oklahoma College of Law, he defends constitutional rights across Oklahoma.",
 }
 
+// Attorney Person Schema
+const attorneySchema = {
+    "@context": "https://schema.org",
+    "@type": "Attorney",
+    "@id": "https://kernallaw.com/attorney/#person",
+    "name": "Todd Kernal",
+    "givenName": "Todd",
+    "familyName": "Kernal",
+    "jobTitle": "Criminal Defense & Personal Injury Attorney",
+    "description": "Todd Kernal has worked as a criminal defense lawyer for 25+ years, defending clients against DUI, drug charges, and felonies across Oklahoma.",
+    "image": "https://kernallaw.com/images/todd-kernal-lhl.jpg",
+    "url": "https://kernallaw.com/attorney",
+    "telephone": "+1-405-364-0601",
+    "email": "todd@kernallaw.com",
+    "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "University of Oklahoma College of Law",
+        "sameAs": "https://www.law.ou.edu/"
+    },
+    "hasCredential": [
+        {
+            "@type": "EducationalOccupationalCredential",
+            "credentialCategory": "degree",
+            "name": "Juris Doctor (J.D.)",
+            "educationalLevel": "Graduate"
+        }
+    ],
+    "memberOf": [
+        {
+            "@type": "Organization",
+            "name": "Oklahoma Bar Association"
+        },
+        {
+            "@type": "Organization",
+            "name": "Seminole Nation of Oklahoma"
+        }
+    ],
+    "knowsAbout": [
+        "Criminal Defense",
+        "DUI Defense",
+        "Drug Charges",
+        "Personal Injury",
+        "Oklahoma Criminal Law",
+        "Trial Advocacy"
+    ],
+    "workLocation": {
+        "@type": "Place",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "1332 SW 89th Street",
+            "addressLocality": "Oklahoma City",
+            "addressRegion": "OK",
+            "postalCode": "73159"
+        }
+    },
+    "worksFor": {
+        "@type": "LegalService",
+        "@id": "https://kernallaw.com/#organization"
+    }
+}
+
 export default function AttorneyPage() {
     return (
         <main className="bg-iron-950 min-h-screen">
+            {/* Attorney Schema */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(attorneySchema) }}
+            />
+
             <PageHero
                 title="Todd Kernal"
                 subtitle="Criminal Defense & Personal Injury | 25+ Years of Experience"

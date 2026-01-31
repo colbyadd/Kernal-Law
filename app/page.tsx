@@ -1,4 +1,5 @@
 import { CinematicHero } from "./components/CinematicHero";
+import { TestimonialsSection } from "./components/TestimonialsSection";
 import Link from 'next/link';
 
 export default function Home() {
@@ -65,6 +66,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Testimonials */}
+      <TestimonialsSection />
     </main>
   );
 }

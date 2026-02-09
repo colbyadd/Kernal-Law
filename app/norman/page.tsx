@@ -65,7 +65,7 @@ export default function NormanPage() {
                     </h2>
                     <p className="text-silver-400 text-lg leading-relaxed text-center mb-8">
                         Kernal & Associates provides aggressive legal representation to Norman residents facing criminal charges
-                        in Cleveland County District Court or recovering from serious injuries. Whether you're a University of Oklahoma
+                        in Cleveland County District Court or recovering from serious injuries. Whether you&apos;re a University of Oklahoma
                         student, a local professional, or a longtime resident, you deserve an attorney who will fight for you.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">

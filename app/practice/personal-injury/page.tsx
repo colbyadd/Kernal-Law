@@ -82,7 +82,7 @@ export default function PersonalInjuryPage() {
                     <p className="text-silver-400 text-lg leading-relaxed">
                         An accident can destroy your physical health and your financial stability in seconds.
                         Whether it is a distraction on I-35 or a failure in the oil field, the negligence of others should not cost you your future.
-                        Kernal & Associates treats personal injury with the same aggressive, trial-ready mindset we bring to the courtroom. We don't ask for fair settlements—we demand them.
+                        Kernal & Associates treats personal injury with the same aggressive, trial-ready mindset we bring to the courtroom. We don&apos;t ask for fair settlements—we demand them.
                     </p>
                 </div>
 
@@ -119,7 +119,7 @@ export default function PersonalInjuryPage() {
                             What to Expect After Your Accident
                         </h2>
                         <p className="text-silver-400 text-center mb-12 max-w-2xl mx-auto">
-                            The injury claims process can feel overwhelming. Here's how we guide you from first call to final resolution.
+                            The injury claims process can feel overwhelming. Here&apos;s how we guide you from first call to final resolution.
                         </p>
 
                         <div className="grid gap-6">
@@ -209,7 +209,7 @@ export default function PersonalInjuryPage() {
                                     Facing Criminal Charges After the Accident?
                                 </h3>
                                 <p className="text-silver-400">
-                                    If you're facing DUI, reckless driving, or other charges from the same incident, we provide complete criminal defense representation to protect your record and your injury claim.
+                                    If you&apos;re facing DUI, reckless driving, or other charges from the same incident, we provide complete criminal defense representation to protect your record and your injury claim.
                                 </p>
                             </div>
                             <Link

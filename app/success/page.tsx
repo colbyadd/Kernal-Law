@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { CinematicHero } from '../components/CinematicHero'
+
 
 export const metadata = {
     title: "Message Received | Kernal & Associates",

@@ -3,12 +3,7 @@ import { TestimonialsSection } from "./components/TestimonialsSection";
 import Link from 'next/link';
 
 export default function Home() {
-  const practices = [
-    { title: "Personal Injury", desc: "Justice for victims of negligence, accidents, and oil field injuries." },
-    { title: "DUI & Traffic", desc: "Protecting your license and your record." },
-    { title: "Drug Charges", desc: "Challenging search and seizure violations." },
-    { title: "Violent Crimes", desc: "Defense against assault, battery, and manslaughter." },
-  ];
+
 
   return (
     <main className="min-h-screen bg-iron-950">
@@ -19,7 +14,7 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="max-w-4xl">
             <h2 className="font-serif text-3xl md:text-5xl text-white mb-8 border-l border-accent-gold pl-6">
-              "If I don't stand up for my clients and protect their constitutional rights, then everyone loses."
+              &quot;If I don&apos;t stand up for my clients and protect their constitutional rights, then everyone loses.&quot;
             </h2>
             <div className="grid md:grid-cols-2 gap-12 text-silver-400 leading-relaxed">
               <p>

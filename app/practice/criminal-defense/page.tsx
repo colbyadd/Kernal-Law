@@ -78,7 +78,7 @@ export default function CriminalDefensePage() {
 
                 {/* Intro Section */}
                 <div className="max-w-4xl mx-auto mb-20 text-center">
-                    <h2 className="font-serif text-3xl md:text-4xl text-white mb-6">"Presumed Innocent" is a beautiful theory. <br /><span className="text-silver-500 italic">We make it a reality.</span></h2>
+                    <h2 className="font-serif text-3xl md:text-4xl text-white mb-6">&quot;Presumed Innocent&quot; is a beautiful theory. <br /><span className="text-silver-500 italic">We make it a reality.</span></h2>
                     <p className="text-silver-400 text-lg leading-relaxed">
                         The government has unlimited resources, investigators, and prosecutors working to convict you. You need an equalizer.
                         At Kernal & Associates, we do not simply process files. We investigate, we litigate, and we go to trial.
@@ -120,7 +120,7 @@ export default function CriminalDefensePage() {
                             The Criminal Defense Process
                         </h2>
                         <p className="text-silver-400 text-center mb-12 max-w-2xl mx-auto">
-                            Understanding what happens after an arrest helps you make better decisions. Here's how we protect you at every stage.
+                            Understanding what happens after an arrest helps you make better decisions. Here&apos;s how we protect you at every stage.
                         </p>
 
                         <div className="grid gap-6">

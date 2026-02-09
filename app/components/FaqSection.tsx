@@ -22,7 +22,6 @@ export function FaqSection({
     practiceArea
 }: FaqSectionProps) {
     const [openIndex, setOpenIndex] = useState<number | null>(null)
-    const baseUrl = 'https://kernallaw.com'
 
     // Generate FAQPage schema
     const faqSchema = {
@@ -113,7 +112,7 @@ export function FaqSection({
                 {/* CTA */}
                 <div className="max-w-3xl mx-auto mt-12 text-center">
                     <p className="text-silver-500 mb-4">
-                        Have more questions? We're here to help.
+                        Have more questions? We&apos;re here to help.
                     </p>
                     <a
                         href="/contact"

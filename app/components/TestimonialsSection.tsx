@@ -103,7 +103,7 @@ export function TestimonialsSection() {
                         >
                             <StarRating rating={testimonial.rating} />
                             <blockquote className="text-silver-400 text-sm leading-relaxed flex-1 mb-4">
-                                "{testimonial.quote}"
+                                &quot;{testimonial.quote}&quot;
                             </blockquote>
                             <p className="text-white font-semibold text-sm">
                                 — {testimonial.author}

@@ -53,7 +53,7 @@ export function ContactForm() {
                 {/* Honeypot field for spam protection - hidden from users */}
                 <p className="hidden">
                     <label>
-                        Don't fill this out if you're human: <input name="bot-field" tabIndex={-1} autoComplete="off" />
+                        Don&apos;t fill this out if you&apos;re human: <input name="bot-field" tabIndex={-1} autoComplete="off" />
                     </label>
                 </p>
 

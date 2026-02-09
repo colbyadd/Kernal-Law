@@ -227,7 +227,7 @@ export default function OklahomaCityPage() {
                 <div className="max-w-4xl mx-auto bg-accent-gold/10 border border-accent-gold/20 p-12 text-center">
                     <h3 className="font-serif text-3xl text-accent-gold mb-4">Free Oklahoma City Consultation</h3>
                     <p className="text-silver-400 mb-8 max-w-2xl mx-auto">
-                        Whether you're facing criminal charges or recovering from an injury, get experienced local representation.
+                        Whether you&apos;re facing criminal charges or recovering from an injury, get experienced local representation.
                         Call today or fill out our form for a free case evaluation.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">

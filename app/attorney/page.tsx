@@ -134,7 +134,7 @@ export default function AttorneyPage() {
                         </p>
 
                         <blockquote className="border-l-2 border-accent-gold pl-8 my-12 italic text-xl text-white/90">
-                            "When the government brings its full power against an individual, the only equalizer is a vigorous defense. I don't just represent a client; I defend the Constitutional rights that belong to us all."
+                            &quot;When the government brings its full power against an individual, the only equalizer is a vigorous defense. I don&apos;t just represent a client; I defend the Constitutional rights that belong to us all.&quot;
                         </blockquote>
 
                         <h3 className="text-2xl font-serif text-white pt-8">Steadfast Protection</h3>

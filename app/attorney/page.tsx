@@ -52,6 +52,23 @@ const attorneySchema = {
         "Oklahoma Criminal Law",
         "Trial Advocacy"
     ],
+    "priceRange": "$$",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1332 SW 89th Street",
+        "addressLocality": "Oklahoma City",
+        "addressRegion": "OK",
+        "postalCode": "73159",
+        "addressCountry": "US"
+    },
+    "openingHoursSpecification": [
+        {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "08:30",
+            "closes": "17:30"
+        }
+    ],
     "workLocation": {
         "@type": "Place",
         "address": {

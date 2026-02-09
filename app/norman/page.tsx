@@ -30,6 +30,19 @@ const localBusinessSchema = {
         "postalCode": "73159",
         "addressCountry": "US"
     },
+    "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 35.37153,
+        "longitude": -97.62229
+    },
+    "openingHoursSpecification": [
+        {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "08:30",
+            "closes": "17:30"
+        }
+    ],
     "areaServed": [
         { "@type": "City", "name": "Norman" },
         { "@type": "City", "name": "Moore" },

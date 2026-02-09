@@ -37,6 +37,17 @@ const reviewSchema = {
     "@type": "Attorney",
     "@id": "https://kernallaw.com/#reviews",
     "name": "Kernal & Associates",
+    "image": "https://kernallaw.com/images/todd-kernal-lhl.jpg",
+    "telephone": "+1-405-364-0601",
+    "priceRange": "$$",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1332 SW 89th Street",
+        "addressLocality": "Oklahoma City",
+        "addressRegion": "OK",
+        "postalCode": "73159",
+        "addressCountry": "US"
+    },
     "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.9",

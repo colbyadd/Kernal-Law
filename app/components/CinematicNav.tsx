@@ -15,6 +15,17 @@ export function CinematicNav() {
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
+    // Close mobile menu on Escape key
+    useEffect(() => {
+        const handleEscape = (e: KeyboardEvent) => {
+            if (e.key === 'Escape' && mobileMenuOpen) {
+                setMobileMenuOpen(false)
+            }
+        }
+        document.addEventListener('keydown', handleEscape)
+        return () => document.removeEventListener('keydown', handleEscape)
+    }, [mobileMenuOpen])
+
     const navLinks = [
         { name: 'Home', href: '/' },
         { name: 'The Attorney', href: '/attorney' },
@@ -27,9 +38,9 @@ export function CinematicNav() {
             <div className="container mx-auto px-6 flex justify-between items-center">
                 {/* Brand */}
                 <Link href="/" className="group relative z-50 max-w-[70%]">
-                    <h1 className={`font-serif text-lg md:text-2xl tracking-tighter transition-colors duration-300 leading-tight ${scrolled ? 'text-silver-100' : 'text-white'}`}>
+                    <span className={`font-serif text-lg md:text-2xl tracking-tighter transition-colors duration-300 leading-tight block ${scrolled ? 'text-silver-100' : 'text-white'}`}>
                         KERNAL <span className="text-silver-500 text-xs md:text-sm align-middle italic">&</span> ASSOCIATES
-                    </h1>
+                    </span>
                 </Link>
 
                 {/* Desktop Nav */}
@@ -53,6 +64,8 @@ export function CinematicNav() {
                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                     className="md:hidden z-50 p-2 space-y-1.5 group"
                     aria-label="Toggle Menu"
+                    aria-expanded={mobileMenuOpen}
+                    aria-controls="mobile-menu"
                 >
                     <span className={`block w-8 h-0.5 bg-white transition-transform duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
                     <span className={`block w-6 h-0.5 bg-silver-400 ml-auto transition-opacity duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
@@ -60,7 +73,12 @@ export function CinematicNav() {
                 </button>
 
                 {/* Mobile Overlay */}
-                <div className={`fixed top-0 left-0 w-full h-[100dvh] z-40 bg-iron-950 flex flex-col justify-center items-center gap-8 transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] md:hidden ${mobileMenuOpen ? 'translate-y-0 opacity-100 visible' : '-translate-y-full opacity-0 invisible'}`}>
+                <div
+                    id="mobile-menu"
+                    role="dialog"
+                    aria-label="Navigation menu"
+                    className={`fixed top-0 left-0 w-full h-[100dvh] z-40 bg-iron-950 flex flex-col justify-center items-center gap-8 transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] md:hidden ${mobileMenuOpen ? 'translate-y-0 opacity-100 visible' : '-translate-y-full opacity-0 invisible'}`}
+                >
                     {navLinks.map((link) => (
                         <Link
                             key={link.href}

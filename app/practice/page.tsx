@@ -3,8 +3,9 @@ import Link from "next/link"
 import Image from "next/image"
 
 export const metadata = {
-    title: "Practice Areas | Kernal & Associates",
+    title: "Practice Areas",
     description: "Criminal Defense and Personal Injury representation in Oklahoma. Protecting your rights and your future.",
+    alternates: { canonical: '/practice' },
 }
 
 export default function PracticeHub() {

@@ -1,5 +1,11 @@
 import { PageHero } from "../components/PageHero"
 
+export const metadata = {
+    title: "Terms of Service",
+    description: "Terms of use for the Kernal & Associates website. Legal disclaimer and conditions of access.",
+    alternates: { canonical: '/terms' },
+}
+
 export default function TermsPage() {
     return (
         <main className="bg-iron-950 min-h-screen">

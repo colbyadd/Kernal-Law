@@ -3,8 +3,9 @@ import Image from "next/image"
 import Link from "next/link"
 
 export const metadata = {
-    title: "Todd Kernal | Attorney Profile | Kernal Law",
+    title: "Todd Kernal | Attorney Profile",
     description: "Todd Kernal has served as a criminal defense lawyer for 25+ years. A graduate of the University of Oklahoma College of Law, he defends constitutional rights across Oklahoma.",
+    alternates: { canonical: '/attorney' },
 }
 
 // Attorney Person Schema
@@ -52,7 +53,7 @@ const attorneySchema = {
         "Oklahoma Criminal Law",
         "Trial Advocacy"
     ],
-    "priceRange": "$$",
+
     "address": {
         "@type": "PostalAddress",
         "streetAddress": "1332 SW 89th Street",

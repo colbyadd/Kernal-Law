@@ -16,6 +16,11 @@ export function Footer() {
                         <Link href="/terms" className="hover:text-silver-400 transition-colors">Terms of Service</Link>
                     </div>
                 </div>
+                <div>
+                    <h5 className="text-white uppercase tracking-widest text-xs mb-4">Areas Served</h5>
+                    <p className="text-silver-500 text-sm mb-2"><Link href="/oklahoma-city" className="hover:text-white transition-colors">Oklahoma City</Link></p>
+                    <p className="text-silver-500 text-sm"><Link href="/norman" className="hover:text-white transition-colors">Norman</Link></p>
+                </div>
                 <div className="md:col-start-4">
                     <h5 className="text-white uppercase tracking-widest text-xs mb-4">Contact</h5>
                     <p className="text-silver-500 text-sm mb-2"><a href="tel:4053640601" className="hover:text-white">405.364.0601</a></p>

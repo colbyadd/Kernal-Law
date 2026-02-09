@@ -4,6 +4,11 @@ import Link from 'next/link'
 export const metadata = {
     title: "Message Received | Kernal & Associates",
     description: "Thank you for contacting Kernal & Associates. We will review your message and contact you shortly.",
+    alternates: { canonical: '/success' },
+    robots: {
+        index: false,
+        follow: false,
+    },
 }
 
 export default function SuccessPage() {

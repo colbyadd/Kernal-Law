@@ -3,8 +3,9 @@ import { ContactForm } from "../components/ContactForm"
 import { FaqSection } from "../components/FaqSection"
 
 export const metadata = {
-    title: "Contact Kernal Law | Oklahoma City Criminal Defense",
+    title: "Contact Us | Free Consultation",
     description: "Free consultation with Todd Kernal. Located at 1332 SW 89th Street, Oklahoma City, OK 73159. Call 405.364.0601.",
+    alternates: { canonical: '/contact' },
 }
 
 const contactFaqs = [

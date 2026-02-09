@@ -98,7 +98,7 @@ export function FaqSection({
                             </button>
                             <div
                                 id={`faq-${practiceArea}-${index}`}
-                                className={`overflow-hidden transition-all duration-300 ease-in-out ${openIndex === index ? 'max-h-96 pb-6' : 'max-h-0'
+                                className={`overflow-hidden transition-all duration-300 ease-in-out ${openIndex === index ? 'max-h-[800px] pb-6' : 'max-h-0'
                                     }`}
                             >
                                 <p className="text-silver-400 leading-relaxed pr-16">

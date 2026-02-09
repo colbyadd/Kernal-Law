@@ -9,18 +9,18 @@
 
 <body>
     <!-- 
-      This file is used by Netlify's build bots to detect form definitions 
-      when using the Next.js Runtime v5 (which sometimes misses dynamic React forms).
-      The form name and fields must match exactly what is used in the React component.
+      Canonical Netlify form definition for the contact form.
+      Fields, honeypot, and hidden inputs must EXACTLY match ContactForm.tsx.
     -->
-    <form name="contact" netlify netlify-honeypot="bot-field" action="/success" hidden>
+    <form name="contact" netlify netlify-honeypot="bot-field" method="POST" action="/success" hidden>
         <input type="text" name="name" />
         <input type="tel" name="phone" />
         <input type="email" name="email" />
         <textarea name="message"></textarea>
+        <input type="hidden" name="subject" value="New Case Evaluation Request - Kernal Law" />
+        <input type="hidden" name="form-name" value="contact" />
         <!-- Honeypot -->
         <input name="bot-field" />
-        <input type="hidden" name="form-name" value="contact" />
     </form>
 </body>
 

@@ -3,8 +3,9 @@ import { FaqSection } from "../../components/FaqSection"
 import Link from "next/link"
 
 export const metadata = {
-    title: "Personal Injury | Kernal & Associates",
+    title: "Personal Injury",
     description: "Oklahoma Personal Injury Attorney. Car Accidents, Oil Field Injuries, Wrongful Death. No fee unless we win your case.",
+    alternates: { canonical: '/practice/personal-injury' },
 }
 
 const injuryAreas = [

@@ -5,9 +5,11 @@ import { Metadata } from "next"
 export const metadata: Metadata = {
     title: "Oklahoma City Criminal Defense & Personal Injury Attorney",
     description: "Kernal & Associates serves Oklahoma City with aggressive criminal defense and personal injury representation. 25+ years of experience. Free consultation. Located in SW OKC.",
+    alternates: { canonical: '/oklahoma-city' },
     openGraph: {
         title: "Oklahoma City Criminal Defense & Personal Injury | Kernal & Associates",
         description: "Local Oklahoma City attorney with 25+ years experience. Criminal defense, DUI, personal injury, oil field accidents. Free consultations.",
+        url: 'https://kernallaw.com/oklahoma-city',
     }
 }
 
@@ -21,7 +23,7 @@ const localBusinessSchema = {
     "url": "https://kernallaw.com/oklahoma-city",
     "telephone": "+1-405-364-0601",
     "email": "todd@kernallaw.com",
-    "priceRange": "$$",
+
     "address": {
         "@type": "PostalAddress",
         "streetAddress": "1332 SW 89th Street",
@@ -239,6 +241,11 @@ export default function OklahomaCityPage() {
                         </a>
                     </div>
                 </div>
+                <p className="text-center mt-6">
+                    <Link href="/norman" className="text-accent-gold hover:text-white transition-colors text-sm">
+                        Also serving Norman & Cleveland County →
+                    </Link>
+                </p>
             </div>
         </main>
     )

@@ -1,10 +1,13 @@
+import { Metadata } from "next";
 import { CinematicHero } from "./components/CinematicHero";
 import { TestimonialsSection } from "./components/TestimonialsSection";
 import Link from 'next/link';
 
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+}
+
 export default function Home() {
-
-
   return (
     <main className="min-h-screen bg-iron-950">
       <CinematicHero />

@@ -3,8 +3,9 @@ import { FaqSection } from "../../components/FaqSection"
 import Link from "next/link"
 
 export const metadata = {
-    title: "Criminal Defense | Kernal & Associates",
+    title: "Criminal Defense",
     description: "Oklahoma Criminal Defense Attorney. Felonies, Drug Charges, DUI, and Violent Crimes. 25+ years of trial experience protecting your rights.",
+    alternates: { canonical: '/practice/criminal-defense' },
 }
 
 const defenseAreas = [

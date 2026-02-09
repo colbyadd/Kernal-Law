@@ -63,7 +63,7 @@ export function JsonLd() {
                 "name": "Oklahoma"
             }
         ],
-        "priceRange": "$$",
+
         "currenciesAccepted": "USD",
         "paymentAccepted": "Cash, Check, Credit Card",
         "openingHoursSpecification": [
@@ -82,7 +82,7 @@ export function JsonLd() {
             "description": "25+ year veteran criminal defense and personal injury attorney in Oklahoma City",
             "alumniOf": {
                 "@type": "EducationalOrganization",
-                "name": "Oklahoma City University School of Law"
+                "name": "University of Oklahoma College of Law"
             }
         },
         "knowsAbout": [
@@ -144,14 +144,7 @@ export function JsonLd() {
         "description": "Oklahoma criminal defense and personal injury law firm",
         "publisher": { "@id": `${baseUrl}/#organization` },
         "inLanguage": "en-US",
-        "potentialAction": {
-            "@type": "SearchAction",
-            "target": {
-                "@type": "EntryPoint",
-                "urlTemplate": `${baseUrl}/?s={search_term_string}`
-            },
-            "query-input": "required name=search_term_string"
-        }
+
     }
 
     // WebPage Schema (dynamic per page)

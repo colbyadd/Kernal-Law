@@ -48,9 +48,9 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: '/images/todd-kernal-lhl.jpg', // Using the bio image as a fallback OG image
-        width: 800,
-        height: 600,
+        url: '/images/todd-kernal-lhl.jpg',
+        width: 300,
+        height: 300,
         alt: "Todd Kernal - Kernal & Associates",
       },
     ],

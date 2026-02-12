@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next'
+import { BASE_URL } from '@/lib/constants'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://kernallaw.com'
+    const baseUrl = BASE_URL
 
     // Route configuration with priority and change frequency tuning
     const routes: Array<{

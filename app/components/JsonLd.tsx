@@ -1,11 +1,12 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
+import { BASE_URL } from '@/lib/constants'
 
 export function JsonLd() {
     const pathname = usePathname()
-    const baseUrl = 'https://kernallaw.com'
-    const currentUrl = `${baseUrl}${pathname}`
+    const baseUrl = BASE_URL
+    const currentUrl = pathname === '/' ? baseUrl : `${baseUrl}${pathname}`
 
     // Primary Organization/Attorney Schema
     const organizationSchema = {
@@ -193,7 +194,10 @@ function getPageName(pathname: string): string {
         '/practice': 'Practice Areas | Criminal Defense & Personal Injury',
         '/practice/criminal-defense': 'Criminal Defense | Kernal & Associates',
         '/practice/personal-injury': 'Personal Injury | Kernal & Associates',
+        '/oklahoma-city': 'Oklahoma City Criminal Defense & Personal Injury Attorney',
+        '/norman': 'Norman Criminal Defense & Personal Injury Attorney',
         '/contact': 'Contact Us | Free Consultation',
+        '/success': 'Message Received | Kernal & Associates',
         '/privacy': 'Privacy Policy',
         '/terms': 'Terms of Service'
     }
@@ -209,7 +213,10 @@ function generateBreadcrumbs(pathname: string, baseUrl: string) {
         'practice': 'Practice Areas',
         'criminal-defense': 'Criminal Defense',
         'personal-injury': 'Personal Injury',
+        'oklahoma-city': 'Oklahoma City',
+        'norman': 'Norman',
         'contact': 'Contact',
+        'success': 'Message Received',
         'privacy': 'Privacy Policy',
         'terms': 'Terms of Service'
     }

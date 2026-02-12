@@ -1,2 +1,7 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+[[redirects]]
+  from = "/contact/success"
+  to = "/success"
+  status = 301

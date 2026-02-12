@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 
 interface FaqItem {
     question: string
@@ -114,7 +115,7 @@ export function FaqSection({
                     <p className="text-silver-500 mb-4">
                         Have more questions? We&apos;re here to help.
                     </p>
-                    <a
+                    <Link
                         href="/contact"
                         className="inline-flex items-center text-accent-gold hover:text-white transition-colors text-sm uppercase tracking-widest"
                     >
@@ -132,7 +133,7 @@ export function FaqSection({
                                 d="M17 8l4 4m0 0l-4 4m4-4H3"
                             />
                         </svg>
-                    </a>
+                    </Link>
                 </div>
             </div>
         </section>

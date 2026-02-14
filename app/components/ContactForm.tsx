@@ -102,6 +102,24 @@ export function ContactForm() {
                     ></textarea>
                 </div>
 
+                <div className="flex items-start gap-3">
+                    <input
+                        type="checkbox"
+                        name="consent"
+                        id="consent"
+                        required
+                        className="mt-1 h-4 w-4 shrink-0 accent-accent-gold bg-iron-950 border border-silver-500/20"
+                    />
+                    <label htmlFor="consent" className="text-xs text-silver-500 leading-relaxed">
+                        By submitting this form, I consent to being contacted by Kernal &amp; Associates
+                        via phone, email, or text message at the number provided, including automated
+                        messages. Message &amp; data rates may apply. I have read and agree to the{' '}
+                        <a href="/privacy" className="text-accent-gold hover:underline" target="_blank" rel="noopener noreferrer">
+                            Privacy Policy
+                        </a>.
+                    </label>
+                </div>
+
                 <button
                     type="submit"
                     disabled={status === 'submitting'}

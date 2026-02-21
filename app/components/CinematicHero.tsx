@@ -2,7 +2,7 @@
 
 import React from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
+import { PrimaryConsultationCta } from './PrimaryConsultationCta'
 
 export function CinematicHero() {
     return (
@@ -16,6 +16,7 @@ export function CinematicHero() {
                         src="/images/hero-abstract.webp"
                         alt="Iron justice abstract"
                         fill
+                        sizes="100vw"
                         className="object-cover opacity-30"
                         priority
                     />
@@ -48,14 +49,16 @@ export function CinematicHero() {
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-6 pt-4 opacity-0 animate-slide-up" style={{ animationDelay: '0.8s' }}>
-                        <Link
-                            href="/contact"
+                        <PrimaryConsultationCta
+                            context="home_hero"
+                            controlLabel="Start Your Defense"
+                            challengerLabel="Get Immediate Strategy"
                             className="group relative inline-flex items-center justify-center px-8 py-4 bg-white text-iron-950 text-sm uppercase tracking-widest font-bold overflow-hidden transition-all hover:bg-silver-100"
-                        >
-                            <span className="relative z-10 group-hover:tracking-[0.25em] transition-all">Start Your Defense</span>
-                        </Link>
+                            labelClassName="relative z-10 group-hover:tracking-[0.25em] transition-all"
+                        />
                         <a
                             href="tel:4053640601"
+                            data-cta="hero_call_now"
                             className="inline-flex items-center justify-center px-8 py-4 border border-silver-500/30 text-silver-100 text-sm uppercase tracking-widest hover:bg-white/5 transition-colors"
                         >
                             405.364.0601

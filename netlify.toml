@@ -2,6 +2,48 @@
   package = "@netlify/plugin-nextjs"
 
 [[redirects]]
+  from = "http://www.kernallaw.com/*"
+  to = "https://kernallaw.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.kernallaw.com/*"
+  to = "https://kernallaw.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://kernallaw.com/*"
+  to = "https://kernallaw.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/practice/criminal-defense"
+  to = "/criminal-defense"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/practice/criminal-defense/*"
+  to = "/criminal-defense/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/practice/personal-injury"
+  to = "/personal-injury"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/practice/personal-injury/*"
+  to = "/personal-injury/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/contact/success"
   to = "/success"
   status = 301

@@ -4,9 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build --webpack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "audit:top20": "node scripts/audit-top20.mjs",
+    "qa:content": "node scripts/qa-content-standards.mjs",
+    "qa:conversion": "node scripts/qa-conversion-ux.mjs",
+    "qa:seo": "node scripts/qa-seo-standards.mjs",
+    "verify": "npm run lint && npm run qa:content && npm run qa:conversion && npm run qa:seo && npm run build"
   },
   "dependencies": {
     "next": "16.1.1",

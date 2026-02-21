@@ -97,6 +97,7 @@ export function TestimonialsSection() {
                     </div>
                     <a
                         href="https://maps.app.goo.gl/2mfQkJVZkpGrdVXP6"
+                        data-cta="reviews_view_all"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-silver-500 hover:text-accent-gold transition-colors text-sm uppercase tracking-widest"
@@ -127,6 +128,7 @@ export function TestimonialsSection() {
                 <div className="mt-12 text-center">
                     <Link
                         href="/contact"
+                        data-cta="reviews_schedule_consultation"
                         className="inline-block px-8 py-4 bg-white text-iron-950 font-bold uppercase tracking-widest hover:bg-silver-100 transition-colors"
                     >
                         Schedule Your Free Consultation

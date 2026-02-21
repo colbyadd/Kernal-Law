@@ -1,182 +1,291 @@
-import { PageHero } from "../components/PageHero"
-import Image from "next/image"
-import Link from "next/link"
+import type { Metadata } from 'next'
+import Image from 'next/image'
+import Link from 'next/link'
+import { PageHero } from '../components/PageHero'
 
-export const metadata = {
-    title: "Todd Kernal | Attorney Profile",
-    description: "Todd Kernal has served as a criminal defense lawyer for 25+ years. A graduate of the University of Oklahoma College of Law, he defends constitutional rights across Oklahoma.",
-    alternates: { canonical: '/attorney' },
+export const metadata: Metadata = {
+  title: 'Todd Kernal | Attorney Profile',
+  description:
+    'Todd Kernal is an Oklahoma criminal defense and personal injury attorney with 25+ years of courtroom-focused practice.',
+  alternates: { canonical: '/attorney' },
 }
 
-// Attorney Person Schema
 const attorneySchema = {
-    "@context": "https://schema.org",
-    "@type": "Attorney",
-    "@id": "https://kernallaw.com/attorney/#person",
-    "name": "Todd Kernal",
-    "givenName": "Todd",
-    "familyName": "Kernal",
-    "jobTitle": "Criminal Defense & Personal Injury Attorney",
-    "description": "Todd Kernal has worked as a criminal defense lawyer for 25+ years, defending clients against DUI, drug charges, and felonies across Oklahoma.",
-    "image": "https://kernallaw.com/images/todd-kernal-lhl.jpg",
-    "url": "https://kernallaw.com/attorney",
-    "telephone": "+1-405-364-0601",
-    "email": "todd@kernallaw.com",
-    "alumniOf": {
-        "@type": "CollegeOrUniversity",
-        "name": "University of Oklahoma College of Law",
-        "sameAs": "https://www.law.ou.edu/"
+  '@context': 'https://schema.org',
+  '@type': 'Attorney',
+  '@id': 'https://kernallaw.com/attorney/#person',
+  name: 'Todd Kernal',
+  givenName: 'Todd',
+  familyName: 'Kernal',
+  jobTitle: 'Criminal Defense & Personal Injury Attorney',
+  description:
+    'Todd Kernal has worked as a criminal defense and personal injury lawyer for over 25 years across Oklahoma.',
+  image: 'https://kernallaw.com/images/todd-kernal-lhl.jpg',
+  url: 'https://kernallaw.com/attorney',
+  telephone: '+1-405-364-0601',
+  email: 'todd@kernallaw.com',
+  alumniOf: {
+    '@type': 'CollegeOrUniversity',
+    name: 'University of Oklahoma College of Law',
+    sameAs: 'https://www.law.ou.edu/',
+  },
+  hasCredential: [
+    {
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: 'degree',
+      name: 'Juris Doctor (J.D.)',
+      educationalLevel: 'Graduate',
     },
-    "hasCredential": [
-        {
-            "@type": "EducationalOccupationalCredential",
-            "credentialCategory": "degree",
-            "name": "Juris Doctor (J.D.)",
-            "educationalLevel": "Graduate"
-        }
-    ],
-    "memberOf": [
-        {
-            "@type": "Organization",
-            "name": "Oklahoma Bar Association"
-        },
-        {
-            "@type": "Organization",
-            "name": "Seminole Nation of Oklahoma"
-        }
-    ],
-    "knowsAbout": [
-        "Criminal Defense",
-        "DUI Defense",
-        "Drug Charges",
-        "Personal Injury",
-        "Oklahoma Criminal Law",
-        "Trial Advocacy"
-    ],
-
-    "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "1332 SW 89th Street",
-        "addressLocality": "Oklahoma City",
-        "addressRegion": "OK",
-        "postalCode": "73159",
-        "addressCountry": "US"
+  ],
+  memberOf: [
+    {
+      '@type': 'Organization',
+      name: 'Oklahoma Bar Association',
     },
-    "openingHoursSpecification": [
-        {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-            "opens": "08:30",
-            "closes": "17:30"
-        }
-    ],
-    "workLocation": {
-        "@type": "Place",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "1332 SW 89th Street",
-            "addressLocality": "Oklahoma City",
-            "addressRegion": "OK",
-            "postalCode": "73159"
-        }
+    {
+      '@type': 'Organization',
+      name: 'Seminole Nation of Oklahoma',
     },
-    "worksFor": {
-        "@type": "LegalService",
-        "@id": "https://kernallaw.com/#organization"
-    }
+  ],
+  knowsAbout: [
+    'Criminal Defense',
+    'DUI Defense',
+    'Drug Charges',
+    'Personal Injury',
+    'Oklahoma Criminal Law',
+    'Trial Advocacy',
+  ],
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '1332 SW 89th Street',
+    addressLocality: 'Oklahoma City',
+    addressRegion: 'OK',
+    postalCode: '73159',
+    addressCountry: 'US',
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '08:30',
+      closes: '17:30',
+    },
+  ],
+  workLocation: {
+    '@type': 'Place',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '1332 SW 89th Street',
+      addressLocality: 'Oklahoma City',
+      addressRegion: 'OK',
+      postalCode: '73159',
+    },
+  },
+  worksFor: {
+    '@type': 'LegalService',
+    '@id': 'https://kernallaw.com/#organization',
+  },
 }
+
+const credentialItems = [
+  '25+ Years of Courtroom-Focused Representation',
+  'J.D., University of Oklahoma College of Law',
+  'Member, Oklahoma Bar Association',
+  'Member, Seminole Nation of Oklahoma',
+]
+
+const representationStandards = [
+  {
+    title: 'Direct Risk Analysis',
+    description:
+      'Every case starts with honest assessment of legal exposure, deadlines, and the most important next decisions.',
+  },
+  {
+    title: 'Preparation Before Pressure',
+    description:
+      'Cases are built with evidentiary discipline so negotiation posture reflects real courtroom readiness.',
+  },
+  {
+    title: 'Client Communication Discipline',
+    description:
+      'Clients receive practical updates and clear explanation of options, tradeoffs, and timing across each phase.',
+  },
+]
 
 export default function AttorneyPage() {
-    return (
-        <main className="bg-iron-950 min-h-screen">
-            {/* Attorney Schema */}
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(attorneySchema) }}
-            />
+  return (
+    <main className="bg-iron-950 min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(attorneySchema) }}
+      />
 
-            <PageHero
-                title="Todd Kernal"
-                subtitle="Criminal Defense & Personal Injury | 25+ Years of Experience"
-                variant="bio"
-            />
+      <PageHero
+        title="Todd Kernal"
+        subtitle="Criminal Defense and Personal Injury | 25+ years of Oklahoma courtroom-focused practice"
+        variant="bio"
+      />
 
-            <div className="container mx-auto px-6 py-12 md:py-20">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
+      <section className="py-6 border-b border-silver-500/10 bg-iron-900/40">
+        <div className="container mx-auto px-6">
+          <nav aria-label="On this page" className="max-w-5xl mx-auto flex flex-wrap gap-2 md:gap-3">
+            {[
+              { href: '#profile-overview', label: 'Overview' },
+              { href: '#profile-standards', label: 'Standards' },
+              { href: '#profile-proof', label: 'Proof' },
+              { href: '#profile-contact', label: 'Contact' },
+            ].map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="inline-flex items-center border border-silver-500/20 px-3 py-2 text-[11px] uppercase tracking-[0.18em] text-silver-300 hover:text-white hover:border-accent-gold/45 transition-colors"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+        </div>
+      </section>
 
-                    {/* Sidebar / Image Column */}
-                    <div className="lg:col-span-4 space-y-12">
-                        <div className="relative aspect-[3/4] w-full overflow-hidden grayscale contrast-[1.1] brightness-[0.9] hover:grayscale-0 transition-all duration-700 ease-out">
-                            <Image
-                                src="/images/todd-kernal-lhl.jpg"
-                                alt="Todd Kernal"
-                                fill
-                                className="object-cover"
-                                sizes="(max-width: 768px) 100vw, 33vw"
-                            />
-                        </div>
-
-                        <div className="space-y-6">
-                            <h3 className="font-serif text-2xl text-white border-b border-silver-500/20 pb-4">Credentials</h3>
-                            <ul className="space-y-4 text-silver-400 text-sm tracking-wide">
-                                <li className="flex items-center gap-3">
-                                    <span className="w-1.5 h-1.5 bg-accent-gold rounded-full"></span>
-                                    Member, Oklahoma Bar Association
-                                </li>
-                                <li className="flex items-center gap-3">
-                                    <span className="w-1.5 h-1.5 bg-accent-gold rounded-full"></span>
-                                    Member, Seminole Nation of Oklahoma
-                                </li>
-                                <li className="flex items-center gap-3">
-                                    <span className="w-1.5 h-1.5 bg-accent-gold rounded-full"></span>
-                                    25+ Years of Trial Experience
-                                </li>
-                                <li className="flex items-center gap-3">
-                                    <span className="w-1.5 h-1.5 bg-accent-gold rounded-full"></span>
-                                    J.D., University of Oklahoma College of Law
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    {/* Bio Content Column */}
-                    <div className="lg:col-span-8 space-y-8 text-lg text-silver-400 font-light leading-relaxed">
-
-                        <p className="first-letter:text-5xl first-letter:font-serif first-letter:text-white first-letter:float-left first-letter:mr-3 first-letter:mt-[-4px]">
-                            Todd Kernal has worked as a criminal defense lawyer for 25+ years. He has extensive experience helping his clients navigate through the complex civil and criminal law issues surrounding a DUI arrest. He also has a long history of defending his clients against drug, sex and general felony charges.
-                        </p>
-
-                        <h3 className="text-2xl font-serif text-white pt-8">A Career Born from Injustice</h3>
-                        <p>
-                            Todd started his law career after a run-in with an unfair landlord while in college. The landlord refused to refund his damage deposit. So, Todd went to the law library — after having to ask for directions — and started doing research. He wrote the landlord a letter, explaining the law and why he was legally entitled to the deposit. Two days later, the deposit was returned. That’s when Todd decided to go to law school.
-                        </p>
-
-                        <blockquote className="border-l-2 border-accent-gold pl-8 my-12 italic text-xl text-white/90">
-                            &quot;When the government brings its full power against an individual, the only equalizer is a vigorous defense. I don&apos;t just represent a client; I defend the Constitutional rights that belong to us all.&quot;
-                        </blockquote>
-
-                        <h3 className="text-2xl font-serif text-white pt-8">Steadfast Protection</h3>
-                        <p>
-                            While in law school, Todd interned in a criminal law practice and it was a perfect fit. He enjoys being in the courtroom and fighting for his clients every day, and he prides himself on his ethics and his ability to research and prepare a case for the best possible outcome for the client.
-                        </p>
-
-                        <h3 className="text-2xl font-serif text-white pt-8">Personal Life</h3>
-                        <p>
-                            Todd is originally from Artesia, New Mexico, and was a rugby player at New Mexico State University. He was born in Alaska and lived there until he moved to New Mexico just before high school. His passion for motorcycles began with a 1969 Suzuki T90, maintained with money from an upholstery shop job.
-                        </p>
-                        <p>
-                            Todd’s wife, Erin, is a certified public accountant. Todd and Erin have two children, Katie and Zachary.
-                        </p>
-
-                        <div className="pt-12">
-                            <Link href="/contact" className="inline-block px-8 py-4 bg-white text-iron-950 font-bold uppercase tracking-widest hover:bg-silver-100 transition-colors">
-                                Contact Todd Kernal
-                            </Link>
-                        </div>
-                    </div>
-
-                </div>
+      <div id="profile-overview" className="container mx-auto px-6 py-12 md:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+          <div className="lg:col-span-4 space-y-10">
+            <div className="relative aspect-[3/4] w-full overflow-hidden grayscale contrast-[1.08] brightness-[0.92] hover:grayscale-0 transition-all duration-700">
+              <Image
+                src="/images/todd-kernal-lhl.jpg"
+                alt="Todd Kernal"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
             </div>
-        </main>
-    )
+
+            <div className="space-y-5">
+              <h2 className="font-serif text-2xl text-white border-b border-silver-500/20 pb-3">Credentials</h2>
+              <ul className="space-y-3 text-silver-300 text-sm">
+                {credentialItems.map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="mt-1.5 w-1.5 h-1.5 bg-accent-gold rounded-full" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="lg:col-span-8 space-y-8 text-lg text-silver-400 leading-relaxed">
+            <p>
+              Todd Kernal focuses on high-stakes criminal defense and severe personal-injury matters across Oklahoma.
+              His practice emphasizes early risk control, disciplined evidence strategy, and courtroom readiness when
+              negotiated outcomes are not reasonable.
+            </p>
+            <p>
+              The approach is practical and direct: identify exposure quickly, protect legal position early, and build
+              each case with enough rigor to withstand adversarial scrutiny. Clients are informed clearly about options,
+              tradeoffs, and timing at each stage.
+            </p>
+
+            <blockquote className="border-l-2 border-accent-gold pl-8 italic text-xl text-white/90">
+              &quot;When the government or an insurer applies pressure, preparation is the equalizer. Good outcomes are built,
+              not hoped for.&quot;
+            </blockquote>
+
+            <h3 className="text-2xl font-serif text-white">Practice Focus</h3>
+            <p>
+              Criminal defense work includes DUI, drug allegations, warrants, probation issues, assault-related filings,
+              and other felony or misdemeanor exposure. Personal injury work includes severe collision litigation,
+              catastrophic injury valuation, and wrongful-death accountability claims.
+            </p>
+
+            <h3 className="text-2xl font-serif text-white">Professional Background</h3>
+            <p>
+              Todd is a graduate of the University of Oklahoma College of Law and has spent more than two decades in
+              courtroom-driven legal practice. His legal career began from direct exposure to an unfair dispute and a
+              commitment to learning the law well enough to challenge it effectively.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <section id="profile-standards" className="py-16 md:py-24 border-y border-silver-500/10 bg-iron-900/40">
+        <div className="container mx-auto px-6">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="font-serif text-3xl md:text-4xl text-white mb-8">Representation Standards</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              {representationStandards.map((item) => (
+                <article
+                  key={item.title}
+                  className="bg-iron-900 border border-silver-500/15 p-6 hover:border-accent-gold/35 transition-colors"
+                >
+                  <h3 className="font-serif text-2xl text-white mb-3">{item.title}</h3>
+                  <p className="text-silver-400 leading-relaxed">{item.description}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="profile-proof" className="py-16 md:py-24">
+        <div className="container mx-auto px-6">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="font-serif text-3xl md:text-4xl text-white mb-8">Review Additional Proof</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              <Link
+                href="/case-results"
+                data-cta="attorney_proof_case_results"
+                className="border border-silver-500/20 p-6 text-silver-300 hover:text-white hover:border-accent-gold/45 transition-colors"
+              >
+                <h3 className="font-serif text-2xl mb-2">Case Results</h3>
+                <p className="text-sm text-silver-400">Representative outcomes with risk and strategy context.</p>
+              </Link>
+              <Link
+                href="/client-reviews"
+                data-cta="attorney_proof_client_reviews"
+                className="border border-silver-500/20 p-6 text-silver-300 hover:text-white hover:border-accent-gold/45 transition-colors"
+              >
+                <h3 className="font-serif text-2xl mb-2">Client Reviews</h3>
+                <p className="text-sm text-silver-400">Client feedback themes on communication and execution quality.</p>
+              </Link>
+              <Link
+                href="/contact"
+                data-cta="attorney_proof_contact"
+                className="border border-silver-500/20 p-6 text-silver-300 hover:text-white hover:border-accent-gold/45 transition-colors"
+              >
+                <h3 className="font-serif text-2xl mb-2">Consultation</h3>
+                <p className="text-sm text-silver-400">Discuss your legal matter and immediate next steps directly.</p>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="profile-contact" className="py-16 md:py-24">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto bg-accent-gold/10 border border-accent-gold/20 p-10 md:p-12 text-center">
+            <h2 className="font-serif text-3xl text-accent-gold mb-4">Contact Todd Kernal</h2>
+            <p className="text-silver-400 mb-8">
+              For urgent legal matters, request a confidential consultation now.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/contact"
+                data-cta="attorney_contact_todd"
+                className="inline-flex items-center justify-center px-10 py-4 bg-white text-iron-950 font-bold uppercase tracking-widest hover:bg-silver-100 transition-colors"
+              >
+                Request Consultation
+              </Link>
+              <a
+                href="tel:+14053640601"
+                data-cta="attorney_call_todd"
+                className="inline-flex items-center justify-center px-10 py-4 border border-white text-white font-bold uppercase tracking-widest hover:bg-white/10 transition-colors"
+              >
+                (405) 364-0601
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  )
 }

@@ -19,6 +19,7 @@ export function PageHero({ title, subtitle, variant = 'default' }: PageHeroProps
                             src="/images/hero-criminal.webp"
                             alt="Gavel in courtroom shadow"
                             fill
+                            sizes="100vw"
                             className="object-cover opacity-50"
                             priority
                         />
@@ -32,6 +33,7 @@ export function PageHero({ title, subtitle, variant = 'default' }: PageHeroProps
                             src="/images/hero-injury.webp"
                             alt="Rainy highway at night"
                             fill
+                            sizes="100vw"
                             className="object-cover opacity-50"
                             priority
                         />
@@ -46,6 +48,7 @@ export function PageHero({ title, subtitle, variant = 'default' }: PageHeroProps
                             src="/images/hero-abstract.webp"
                             alt="Iron texture"
                             fill
+                            sizes="100vw"
                             className="object-cover opacity-30"
                             priority
                         />

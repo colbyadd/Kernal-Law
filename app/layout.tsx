@@ -1,26 +1,42 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import localFont from "next/font/local";
+import Script from "next/script";
 import "./globals.css";
 import { CinematicNav } from "./components/CinematicNav";
 import { ContactFab } from "./components/ContactFab";
 import { Footer } from "./components/Footer";
 import { JsonLd } from "./components/JsonLd";
+import { BaseJsonLd } from "./components/BaseJsonLd";
+import { AnalyticsEvents } from "./components/AnalyticsEvents";
+import { LeadAttributionClient } from "./components/LeadAttributionClient";
+import { BASE_URL } from "@/lib/constants";
 
-
-const playfair = Playfair_Display({
-  variable: "--font-serif",
-  subsets: ["latin"],
+const headingFont = localFont({
+  src: "./fonts/geist-latin.woff2",
+  variable: "--font-serif-local",
+  weight: "100 900",
   display: "swap",
 });
 
-const inter = Inter({
-  variable: "--font-sans",
-  subsets: ["latin"],
+const bodyFont = localFont({
+  src: "./fonts/noto-sans-v27-latin-regular.ttf",
+  variable: "--font-sans-local",
+  weight: "400",
   display: "swap",
 });
 
-// Define the base URL for the site to ensure all links are absolute
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kernallaw.com';
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || BASE_URL;
+const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+const googleSiteVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
+const bingSiteVerification = process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION;
+
+const verification: Metadata["verification"] = {};
+if (googleSiteVerification) {
+  verification.google = googleSiteVerification;
+}
+if (bingSiteVerification) {
+  verification.other = { "msvalidate.01": bingSiteVerification };
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -33,6 +49,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Todd Kernal" }],
   creator: "Kernal & Associates",
   publisher: "Kernal & Associates",
+  verification,
   formatDetection: {
     email: false,
     address: false,
@@ -80,13 +97,37 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${playfair.variable} ${inter.variable} antialiased selection:bg-silver-100 selection:text-iron-950 bg-iron-950`}
+        className={`${headingFont.variable} ${bodyFont.variable} antialiased selection:bg-silver-100 selection:text-iron-950 bg-iron-950`}
       >
         <CinematicNav />
         {children}
         <Footer />
         <ContactFab />
+        <BaseJsonLd />
         <JsonLd />
+        {gaMeasurementId ? (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                window.gtag = gtag;
+                gtag('js', new Date());
+                gtag('config', '${gaMeasurementId}', {
+                  send_page_view: false,
+                  anonymize_ip: true,
+                  allow_google_signals: false
+                });
+              `}
+            </Script>
+          </>
+        ) : null}
+        <AnalyticsEvents />
+        <LeadAttributionClient />
       </body>
     </html>
   );

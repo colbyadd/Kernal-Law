@@ -20,12 +20,13 @@ export default function PracticeHub() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
 
                     {/* Criminal Defense Card */}
-                    <Link href="/practice/criminal-defense" className="group relative block overflow-hidden bg-iron-900 border border-silver-500/10 hover:border-accent-gold transition-colors duration-500">
+                    <Link href="/criminal-defense" data-cta="practice_hub_link_criminal_defense" className="group relative block overflow-hidden bg-iron-900 border border-silver-500/10 hover:border-accent-gold transition-colors duration-500">
                         <div className="aspect-video relative">
                             <Image
                                 src="/images/hero-criminal.webp"
                                 alt="Criminal Defense"
                                 fill
+                                sizes="(max-width: 768px) 100vw, 50vw"
                                 className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-iron-900 via-transparent to-transparent opacity-90" />
@@ -35,17 +36,20 @@ export default function PracticeHub() {
                             <p className="text-silver-400 mb-6">
                                 Aggressive protection of your constitutional rights against felonies, DUIs, and serious charges.
                             </p>
-                            <span className="text-xs uppercase tracking-widest text-white border-b border-white/30 pb-1 group-hover:border-accent-gold transition-colors">View Defense Services</span>
+                            <span className="inline-block mt-4 px-6 py-3 border border-white/30 text-xs uppercase tracking-widest text-white group-hover:bg-white group-hover:text-iron-950 transition-all duration-300">
+                                View Defense Services
+                            </span>
                         </div>
                     </Link>
 
                     {/* Personal Injury Card */}
-                    <Link href="/practice/personal-injury" className="group relative block overflow-hidden bg-iron-900 border border-silver-500/10 hover:border-accent-gold transition-colors duration-500">
+                    <Link href="/personal-injury" data-cta="practice_hub_link_personal_injury" className="group relative block overflow-hidden bg-iron-900 border border-silver-500/10 hover:border-accent-gold transition-colors duration-500">
                         <div className="aspect-video relative">
                             <Image
                                 src="/images/hero-injury.webp"
                                 alt="Personal Injury"
                                 fill
+                                sizes="(max-width: 768px) 100vw, 50vw"
                                 className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-iron-900 via-transparent to-transparent opacity-90" />
@@ -55,7 +59,9 @@ export default function PracticeHub() {
                             <p className="text-silver-400 mb-6">
                                 Justice for victims of negligence. Car accidents, oil field injuries, and wrongful death claims.
                             </p>
-                            <span className="text-xs uppercase tracking-widest text-white border-b border-white/30 pb-1 group-hover:border-accent-gold transition-colors">View Injury Services</span>
+                            <span className="inline-block mt-4 px-6 py-3 border border-white/30 text-xs uppercase tracking-widest text-white group-hover:bg-white group-hover:text-iron-950 transition-all duration-300">
+                                View Injury Services
+                            </span>
                         </div>
                     </Link>
 

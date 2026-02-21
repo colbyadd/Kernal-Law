@@ -13,8 +13,8 @@
   --color-accent-gold: #c29b40; /* Subtle Gold Accent for "Law" legitimacy, kept minimal */
 
   /* Typography - "Stark Authority" */
-  --font-serif: "Playfair Display", serif;
-  --font-sans: "Inter", sans-serif;
+  --font-serif: var(--font-serif-local, "Iowan Old Style"), "Palatino Linotype", "Book Antiqua", Garamond, "Times New Roman", serif;
+  --font-sans: var(--font-sans-local, "Avenir Next"), "Segoe UI Variable", "Segoe UI", "Noto Sans", "Helvetica Neue", sans-serif;
   
   /* Animations */
   --animate-fade-in: fade-in 0.5s ease-out forwards;

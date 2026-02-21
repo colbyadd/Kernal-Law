@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { CONTACT_EMAIL } from '@/lib/contact'
 
 export function Footer() {
     return (
@@ -14,17 +15,28 @@ export function Footer() {
                     <div className="flex flex-col md:flex-row gap-4 md:gap-6 text-xs text-silver-600 uppercase tracking-wider justify-center md:justify-start">
                         <Link href="/privacy" className="hover:text-silver-400 transition-colors">Privacy Policy</Link>
                         <Link href="/terms" className="hover:text-silver-400 transition-colors">Terms of Service</Link>
+                        <Link href="/case-results" data-cta="footer_case_results" className="hover:text-silver-400 transition-colors">Case Results</Link>
+                        <Link href="/client-reviews" data-cta="footer_client_reviews" className="hover:text-silver-400 transition-colors">Client Reviews</Link>
+                        <Link href="/fees" data-cta="footer_fees" className="hover:text-silver-400 transition-colors">Fees</Link>
                     </div>
                 </div>
                 <div>
-                    <h5 className="text-white uppercase tracking-widest text-xs mb-4">Areas Served</h5>
-                    <p className="text-silver-500 text-sm mb-2"><Link href="/oklahoma-city" className="hover:text-white transition-colors">Oklahoma City</Link></p>
-                    <p className="text-silver-500 text-sm"><Link href="/norman" className="hover:text-white transition-colors">Norman</Link></p>
+                    <h5 className="text-white uppercase tracking-widest text-xs mb-4">Practice Areas</h5>
+                    <p className="text-silver-500 text-sm mb-2"><Link href="/criminal-defense" data-cta="footer_criminal_defense" className="hover:text-white transition-colors">Criminal Defense</Link></p>
+                    <p className="text-silver-500 text-sm mb-2"><Link href="/personal-injury" data-cta="footer_personal_injury" className="hover:text-white transition-colors">Personal Injury</Link></p>
+                    <p className="text-silver-500 text-sm mb-2"><Link href="/resources" data-cta="footer_resources" className="hover:text-white transition-colors">Legal Resources</Link></p>
+                    <p className="text-silver-500 text-sm"><Link href="/practice" data-cta="footer_practice_hub" className="hover:text-white transition-colors">All Practice Areas</Link></p>
                 </div>
                 <div className="md:col-start-4">
                     <h5 className="text-white uppercase tracking-widest text-xs mb-4">Contact</h5>
                     <p className="text-silver-500 text-sm mb-2"><a href="tel:4053640601" className="hover:text-white">405.364.0601</a></p>
-                    <p className="text-silver-500 text-sm"><a href="mailto:todd@kernallaw.com" className="hover:text-white">todd@kernallaw.com</a></p>
+                    <p className="text-silver-500 text-sm"><a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-white">{CONTACT_EMAIL}</a></p>
+                    <p className="text-silver-500 text-sm mt-3">
+                        <Link href="/oklahoma-city" data-cta="footer_oklahoma_city" className="hover:text-white">Oklahoma City</Link>
+                    </p>
+                    <p className="text-silver-500 text-sm">
+                        <Link href="/norman" data-cta="footer_norman" className="hover:text-white">Norman</Link>
+                    </p>
                 </div>
             </div>
         </footer>

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { SuccessAttribution } from '../components/SuccessAttribution'
 
 
 export const metadata = {
@@ -14,6 +15,7 @@ export const metadata = {
 export default function SuccessPage() {
     return (
         <main className="bg-iron-950 min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
+            <SuccessAttribution />
 
             {/* Ambient Background */}
             <div className="absolute inset-0 z-0">
@@ -37,12 +39,14 @@ export default function SuccessPage() {
                 <div className="flex flex-col sm:flex-row gap-6 justify-center pt-8">
                     <Link
                         href="/"
+                        data-cta="success_return_home"
                         className="inline-flex items-center justify-center px-8 py-4 bg-white text-iron-950 text-sm uppercase tracking-widest font-bold hover:bg-silver-100 transition-colors"
                     >
                         Return Home
                     </Link>
                     <a
                         href="tel:4053640601"
+                        data-cta="success_call_now"
                         className="inline-flex items-center justify-center px-8 py-4 border border-silver-500/30 text-silver-100 text-sm uppercase tracking-widest hover:bg-white/5 transition-colors"
                     >
                         Call 405.364.0601

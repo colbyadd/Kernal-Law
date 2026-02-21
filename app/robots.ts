@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next'
-import { BASE_URL } from '@/lib/constants'
+import { BASE_URL, CANONICAL_HOST } from '@/lib/constants'
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -8,6 +8,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/private/', '/__forms.html', '/form-setup.html'],
     },
+    host: CANONICAL_HOST,
     sitemap: `${BASE_URL}/sitemap.xml`,
   }
 }

@@ -25,6 +25,8 @@ interface NavDropdownItem {
 
 type DesktopNavItem = NavLinkItem | NavDropdownItem
 
+const DESKTOP_DROPDOWN_CLOSE_DELAY_MS = 420
+
 export function CinematicNav() {
     const [scrolled, setScrolled] = useState(false)
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -165,12 +167,12 @@ export function CinematicNav() {
         setActiveDropdown(name)
     }
 
-    const queueCloseDropdown = (name: string) => {
+    const queueCloseDropdown = () => {
         clearDropdownTimeouts()
         dropdownCloseTimeoutRef.current = window.setTimeout(() => {
-            setActiveDropdown((prev) => (prev === name ? null : prev))
+            setActiveDropdown(null)
             dropdownCloseTimeoutRef.current = null
-        }, 260)
+        }, DESKTOP_DROPDOWN_CLOSE_DELAY_MS)
     }
 
     const toggleDropdown = (name: string) => {
@@ -192,7 +194,11 @@ export function CinematicNav() {
                 </Link>
 
                 {/* Desktop Nav */}
-                <div className="hidden lg:flex gap-2 items-center">
+                <div
+                    className="hidden lg:flex gap-2 items-center"
+                    onMouseEnter={clearDropdownTimeouts}
+                    onMouseLeave={queueCloseDropdown}
+                >
                     {desktopNav.map((item) => {
                         if (item.kind === 'link') {
                             return (
@@ -219,7 +225,6 @@ export function CinematicNav() {
                                 key={item.name}
                                 className="relative pb-2 -mb-2"
                                 onMouseEnter={() => openDropdown(item.name)}
-                                onMouseLeave={() => queueCloseDropdown(item.name)}
                             >
                                 <button
                                     type="button"
@@ -251,7 +256,6 @@ export function CinematicNav() {
                                     className={`absolute top-full left-0 w-80 pt-2 transition-all duration-200 ${open ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-1 pointer-events-none'}`}
                                     aria-label={`${item.name} submenu`}
                                     onMouseEnter={() => openDropdown(item.name)}
-                                    onMouseLeave={() => queueCloseDropdown(item.name)}
                                 >
                                     <div className="border border-silver-500/20 bg-iron-900/95 backdrop-blur-md shadow-2xl p-2">
                                         {item.children.map((child) => (

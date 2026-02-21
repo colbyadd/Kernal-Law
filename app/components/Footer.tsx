@@ -25,7 +25,6 @@ export function Footer() {
                     <p className="text-silver-500 text-sm mb-2"><Link href="/criminal-defense" data-cta="footer_criminal_defense" className="hover:text-white transition-colors">Criminal Defense</Link></p>
                     <p className="text-silver-500 text-sm mb-2"><Link href="/personal-injury" data-cta="footer_personal_injury" className="hover:text-white transition-colors">Personal Injury</Link></p>
                     <p className="text-silver-500 text-sm mb-2"><Link href="/resources" data-cta="footer_resources" className="hover:text-white transition-colors">Legal Resources</Link></p>
-                    <p className="text-silver-500 text-sm"><Link href="/practice" data-cta="footer_practice_hub" className="hover:text-white transition-colors">All Practice Areas</Link></p>
                 </div>
                 <div className="md:col-start-4">
                     <h5 className="text-white uppercase tracking-widest text-xs mb-4">Contact</h5>

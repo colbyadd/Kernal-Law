@@ -271,8 +271,8 @@ export default function Home() {
       {/* Intro Section - Stark & Direct */}
       <section className="py-24 md:py-32 border-b border-silver-500/10">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl">
-            <h2 className="font-serif text-3xl md:text-5xl text-white mb-8 border-l border-accent-gold pl-6">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="font-serif text-3xl md:text-5xl text-white mb-8 border-l-2 border-accent-gold pl-6 md:pl-8 max-w-4xl">
               &quot;If I don&apos;t stand up for my clients and protect their constitutional rights, then everyone loses.&quot;
             </h2>
             <div className="grid md:grid-cols-2 gap-12 text-silver-400 leading-relaxed">

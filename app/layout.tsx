@@ -99,8 +99,14 @@ export default function RootLayout({
       <body
         className={`${headingFont.variable} ${bodyFont.variable} antialiased selection:bg-silver-100 selection:text-iron-950 bg-iron-950`}
       >
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:bg-white focus:text-iron-950 focus:px-4 focus:py-3 focus:font-semibold focus:rounded-sm"
+        >
+          Skip to main content
+        </a>
         <CinematicNav />
-        {children}
+        <div id="main-content">{children}</div>
         <Footer />
         <ContactFab />
         <BaseJsonLd />

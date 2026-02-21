@@ -40,7 +40,7 @@ export function QuickPathSection({ title, subtitle, items }: QuickPathSectionPro
                     {item.title}
                   </h3>
                   <p className="text-silver-400 leading-relaxed mb-4">{item.description}</p>
-                  <span className="text-xs uppercase tracking-[0.16em] text-accent-gold">Open Path</span>
+                  <span className="text-xs uppercase tracking-[0.16em] text-accent-gold">Start Here</span>
                 </a>
               ) : (
                 <Link
@@ -56,7 +56,7 @@ export function QuickPathSection({ title, subtitle, items }: QuickPathSectionPro
                     {item.title}
                   </h3>
                   <p className="text-silver-400 leading-relaxed mb-4">{item.description}</p>
-                  <span className="text-xs uppercase tracking-[0.16em] text-accent-gold">Open Path</span>
+                  <span className="text-xs uppercase tracking-[0.16em] text-accent-gold">Start Here</span>
                 </Link>
               )
             ))}

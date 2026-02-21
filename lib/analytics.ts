@@ -6,6 +6,7 @@ type AnalyticsEventName =
   | "map_click"
   | "form_submit_start"
   | "form_submit_success"
+  | "form_submit_blocked"
   | "lead_source_captured"
   | "thank_you_view"
   | "scroll_50"

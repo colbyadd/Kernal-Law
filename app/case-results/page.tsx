@@ -13,6 +13,12 @@ export const metadata: Metadata = {
   description:
     'Representative criminal defense and personal injury outcomes from Kernal & Associates in Oklahoma with context on risk, strategy, and resolution posture.',
   alternates: { canonical: '/case-results' },
+  openGraph: {
+    title: 'Case Results | Kernal & Associates',
+    description:
+      'Review representative criminal defense and injury outcomes with strategic context and legal-safe result framing.',
+    url: 'https://kernallaw.com/case-results',
+  },
 }
 
 const representativeResults = [

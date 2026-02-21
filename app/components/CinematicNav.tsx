@@ -32,7 +32,6 @@ export function CinematicNav() {
     const pathname = usePathname()
     const navRef = useRef<HTMLElement | null>(null)
     const dropdownCloseTimeoutRef = useRef<number | null>(null)
-    const dropdownOpenTimeoutRef = useRef<number | null>(null)
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 50)
@@ -67,11 +66,21 @@ export function CinematicNav() {
             if (dropdownCloseTimeoutRef.current !== null) {
                 window.clearTimeout(dropdownCloseTimeoutRef.current)
             }
-            if (dropdownOpenTimeoutRef.current !== null) {
-                window.clearTimeout(dropdownOpenTimeoutRef.current)
-            }
         }
     }, [])
+
+    useEffect(() => {
+        if (!mobileMenuOpen) {
+            document.body.style.overflow = ''
+            return
+        }
+
+        const previousOverflow = document.body.style.overflow
+        document.body.style.overflow = 'hidden'
+        return () => {
+            document.body.style.overflow = previousOverflow
+        }
+    }, [mobileMenuOpen])
 
     const desktopNav: DesktopNavItem[] = [
         { kind: 'link', name: 'Home', href: '/', cta: 'nav_home' },
@@ -79,13 +88,11 @@ export function CinematicNav() {
             kind: 'dropdown',
             name: 'Practice Areas',
             cta: 'nav_practice_menu',
-            href: '/practice',
             children: [
                 { name: 'Criminal Defense', href: '/criminal-defense', cta: 'nav_practice_criminal_defense' },
                 { name: 'Personal Injury', href: '/personal-injury', cta: 'nav_practice_personal_injury' },
                 { name: 'DUI / DWI Defense', href: '/criminal-defense/dui-dwi', cta: 'nav_practice_dui' },
                 { name: 'Car Accident Claims', href: '/personal-injury/car-accidents', cta: 'nav_practice_car_accidents' },
-                { name: 'All Practice Areas', href: '/practice', cta: 'nav_practice_all' },
             ],
         },
         {
@@ -117,7 +124,6 @@ export function CinematicNav() {
                 { name: 'Personal Injury', href: '/personal-injury', cta: 'nav_mobile_practice_injury' },
                 { name: 'DUI / DWI', href: '/criminal-defense/dui-dwi', cta: 'nav_mobile_practice_dui' },
                 { name: 'Car Accidents', href: '/personal-injury/car-accidents', cta: 'nav_mobile_practice_car' },
-                { name: 'All Practice Areas', href: '/practice', cta: 'nav_mobile_practice_all' },
             ],
         },
         {
@@ -152,17 +158,11 @@ export function CinematicNav() {
             window.clearTimeout(dropdownCloseTimeoutRef.current)
             dropdownCloseTimeoutRef.current = null
         }
-        if (dropdownOpenTimeoutRef.current !== null) {
-            window.clearTimeout(dropdownOpenTimeoutRef.current)
-            dropdownOpenTimeoutRef.current = null
-        }
     }
 
     const openDropdown = (name: string) => {
         clearDropdownTimeouts()
-        dropdownOpenTimeoutRef.current = window.setTimeout(() => {
-            setActiveDropdown(name)
-        }, 150)
+        setActiveDropdown(name)
     }
 
     const queueCloseDropdown = (name: string) => {
@@ -170,7 +170,7 @@ export function CinematicNav() {
         dropdownCloseTimeoutRef.current = window.setTimeout(() => {
             setActiveDropdown((prev) => (prev === name ? null : prev))
             dropdownCloseTimeoutRef.current = null
-        }, 160)
+        }, 260)
     }
 
     const toggleDropdown = (name: string) => {
@@ -217,7 +217,7 @@ export function CinematicNav() {
                         return (
                             <div
                                 key={item.name}
-                                className="relative"
+                                className="relative pb-2 -mb-2"
                                 onMouseEnter={() => openDropdown(item.name)}
                                 onMouseLeave={() => queueCloseDropdown(item.name)}
                             >
@@ -228,7 +228,8 @@ export function CinematicNav() {
                                     onFocus={() => openDropdown(item.name)}
                                     className={`inline-flex items-center gap-2 px-3 py-2 text-xs uppercase tracking-wider font-medium rounded-md transition-colors ${active ? 'text-white bg-white/10' : 'text-silver-400 hover:text-silver-100 hover:bg-white/5'}`}
                                     aria-expanded={open}
-                                    aria-haspopup="menu"
+                                    aria-haspopup="true"
+                                    aria-controls={`desktop-nav-panel-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
                                 >
                                     {item.name}
                                     <svg
@@ -246,8 +247,11 @@ export function CinematicNav() {
                                 </button>
 
                                 <div
+                                    id={`desktop-nav-panel-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
                                     className={`absolute top-full left-0 w-80 pt-2 transition-all duration-200 ${open ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-1 pointer-events-none'}`}
-                                    role="menu"
+                                    aria-label={`${item.name} submenu`}
+                                    onMouseEnter={() => openDropdown(item.name)}
+                                    onMouseLeave={() => queueCloseDropdown(item.name)}
                                 >
                                     <div className="border border-silver-500/20 bg-iron-900/95 backdrop-blur-md shadow-2xl p-2">
                                         {item.children.map((child) => (
@@ -299,6 +303,7 @@ export function CinematicNav() {
                 <div
                     id="mobile-menu"
                     role="dialog"
+                    aria-modal="true"
                     aria-label="Navigation menu"
                     className={`fixed top-0 left-0 w-full h-[100dvh] z-40 bg-iron-950 transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] lg:hidden overflow-y-auto ${mobileMenuOpen ? 'translate-y-0 opacity-100 visible' : '-translate-y-full opacity-0 invisible'}`}
                 >

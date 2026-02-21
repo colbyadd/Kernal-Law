@@ -12,6 +12,11 @@ export const metadata = {
     title: "Contact Us | Free Consultation",
     description: "Free consultation with Todd Kernal. Located at 1332 SW 89th Street, Oklahoma City, OK 73159. Call 405.364.0601.",
     alternates: { canonical: '/contact' },
+    openGraph: {
+        title: "Contact Kernal & Associates | Free Legal Consultation",
+        description: "Call, text, or submit a short intake form to reach Kernal & Associates for urgent criminal defense or injury guidance.",
+        url: 'https://kernallaw.com/contact',
+    },
 }
 
 const contactFaqs = [

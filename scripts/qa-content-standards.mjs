@@ -65,6 +65,13 @@ function validateMarketTemplateContracts() {
   if (uniqueMarketSlugs.length < 20) {
     warnings.push(`Expected broad city/county coverage. Detected ${uniqueMarketSlugs.length} markets.`)
   }
+
+  const requiredMarketSpecSnippets = ['localContextTitle', 'localContextNarrative', 'localContextPoints', 'actionChecklist']
+  for (const snippet of requiredMarketSpecSnippets) {
+    if (!citySubpillarsSource.includes(snippet)) {
+      errors.push(`Market subpillar spec should include richer-local-content snippet: ${snippet}`)
+    }
+  }
 }
 
 function validateServiceTemplateContract() {

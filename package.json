@@ -11,7 +11,8 @@
     "qa:content": "node scripts/qa-content-standards.mjs",
     "qa:conversion": "node scripts/qa-conversion-ux.mjs",
     "qa:seo": "node scripts/qa-seo-standards.mjs",
-    "verify": "npm run lint && npm run qa:content && npm run qa:conversion && npm run qa:seo && npm run build"
+    "qa:rendered": "node scripts/qa-rendered-integrity.mjs",
+    "verify": "npm run lint && npm run qa:content && npm run qa:conversion && npm run qa:seo && npm run build && npm run qa:rendered"
   },
   "dependencies": {
     "next": "16.1.1",

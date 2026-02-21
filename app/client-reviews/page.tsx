@@ -13,6 +13,12 @@ export const metadata: Metadata = {
   description:
     'Read client feedback for Kernal & Associates with practical context on communication, strategy, and representation quality.',
   alternates: { canonical: '/client-reviews' },
+  openGraph: {
+    title: 'Client Reviews | Kernal & Associates',
+    description:
+      'Read client feedback themes on communication speed, strategy clarity, and case execution discipline.',
+    url: 'https://kernallaw.com/client-reviews',
+  },
 }
 
 const reviewThemes = [

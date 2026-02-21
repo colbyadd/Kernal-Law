@@ -1,6 +1,6 @@
 # Top-20 Audit (Automated Heuristic)
 
-Updated: 2026-02-19
+Updated: 2026-02-21
 
 Method: template-aware heuristic using route + shared component signals for content-depth and UX patterns.
 

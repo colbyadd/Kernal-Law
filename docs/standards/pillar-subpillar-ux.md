@@ -65,6 +65,7 @@ Uniqueness rules (mandatory):
 3. Each market page includes unique risk framing for local case patterns.
 4. At least 35% of body copy must be market-specific language.
 5. Internal links must include market-relevant nearby pages, not generic repeats only.
+6. Include a dedicated local strategy context module with market-specific narrative and tactical points.
 
 Content model source:
 - `lib/content/city-subpillars.ts`
@@ -94,13 +95,15 @@ Before publishing any pillar/subpillar update:
 1. `npm run lint` passes.
 2. `npm run qa:content` passes.
 3. `npm run build` passes.
-4. Required section counts are satisfied.
-5. Uniqueness checklist is complete for market pages.
-6. Internal links are live and relevant to user intent.
-7. CTA tracking labels (`data-cta`) are present for key actions.
+4. `npm run qa:rendered` passes.
+5. Required section counts are satisfied.
+6. Uniqueness checklist is complete for market pages.
+7. Internal links are live and relevant to user intent.
+8. CTA tracking labels (`data-cta`) are present for key actions.
 
 Automation reference:
 - `scripts/qa-content-standards.mjs`
+- `scripts/qa-rendered-integrity.mjs`
 - `docs/sprint-2/template-governance-checklist.md`
 
 ## Editorial Governance

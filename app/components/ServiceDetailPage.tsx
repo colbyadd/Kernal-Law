@@ -47,6 +47,10 @@ export interface ServiceDetailPageProps {
   ctaHref?: string
   ctaName: string
   actionChecklist?: [string, string, string, string]
+  localContextTitle?: string
+  localContextSubtitle?: string
+  localContextNarrative?: string[]
+  localContextPoints?: string[]
 }
 
 const relatedLinkFallbacks: Record<ServiceDetailPageProps['heroVariant'], LinkGridItem[]> = {
@@ -150,6 +154,10 @@ function withRelatedFallbacks(
   return unique
 }
 
+function toStepNumber(value: number) {
+  return value.toString().padStart(2, '0')
+}
+
 export function ServiceDetailPage({
   heroTitle,
   heroSubtitle,
@@ -174,14 +182,24 @@ export function ServiceDetailPage({
   ctaHref = '/contact',
   ctaName,
   actionChecklist,
+  localContextTitle,
+  localContextSubtitle,
+  localContextNarrative,
+  localContextPoints,
 }: ServiceDetailPageProps) {
+  const hasLocalContext =
+    Boolean(localContextTitle) ||
+    (localContextNarrative?.length ?? 0) > 0 ||
+    (localContextPoints?.length ?? 0) > 0
+
   const jumpLinks = [
     { href: '#service-overview', label: 'Overview' },
     { href: '#service-focus', label: 'Focus Areas' },
+    ...(hasLocalContext ? [{ href: '#service-local-context', label: 'Local Strategy' }] : []),
     { href: '#service-process', label: 'Process' },
     { href: '#service-faq', label: 'FAQ' },
     { href: '#service-contact', label: 'Contact' },
-  ] as const
+  ]
 
   const defaultChecklist: [string, string, string, string] =
     heroVariant === 'criminal'
@@ -220,120 +238,168 @@ export function ServiceDetailPage({
         ]}
       />
 
-      <section className="py-6 border-b border-silver-500/10 bg-iron-900/40">
+      <section className="py-12 md:py-16 border-y border-silver-500/10 bg-iron-900/25">
         <div className="container mx-auto px-6">
-          <nav
-            aria-label="On this page"
-            className="max-w-5xl mx-auto flex flex-wrap gap-2 md:gap-3"
-          >
-            {jumpLinks.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="inline-flex items-center border border-silver-500/20 px-3 py-2 text-[11px] uppercase tracking-[0.18em] text-silver-300 hover:text-white hover:border-accent-gold/45 transition-colors"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-        </div>
-      </section>
-
-      <section id="service-overview" className="py-12 md:py-20 border-b border-silver-500/10">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl text-white mb-6">{introTitle}</h2>
-            <div className="space-y-5 text-silver-400 text-lg leading-relaxed">
-              {introParagraphs.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
-            <div className="pt-8 flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/contact"
-                data-cta={`${practiceArea}_intro_contact`}
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-iron-950 font-bold uppercase tracking-widest hover:bg-silver-100 transition-colors"
-              >
-                Free Consultation
-              </Link>
-              <a
-                href="tel:+14053640601"
-                data-cta={`${practiceArea}_intro_call`}
-                className="inline-flex items-center justify-center px-8 py-4 border border-silver-500/30 text-white font-bold uppercase tracking-widest hover:border-accent-gold transition-colors"
-              >
-                Call (405) 364-0601
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="service-focus" className="py-16 md:py-24">
-        <div className="container mx-auto px-6">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl text-white mb-10">{focusTitle}</h2>
-            <div className="grid grid-cols-1 gap-8">
-              {focusItems.map((item) => (
-                <article
-                  key={item.title}
-                  className="bg-iron-900 border border-silver-500/10 p-8 md:p-10 hover:border-accent-gold/40 transition-colors"
-                >
-                  <h3 className="font-serif text-2xl text-white mb-4">{item.title}</h3>
-                  <p className="text-silver-400 leading-relaxed mb-5">{item.description}</p>
-                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-silver-400 text-sm">
-                    {item.bullets.map((bullet) => (
-                      <li key={bullet} className="bg-iron-950/60 border border-white/5 p-3 rounded-sm">
-                        {bullet}
+          <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-10">
+            <div className="space-y-6 md:space-y-8">
+              <div className="lg:hidden border border-silver-500/20 bg-iron-900/75 p-4">
+                <p className="text-[11px] uppercase tracking-[0.2em] text-silver-500">On This Page</p>
+                <nav aria-label="On this page" className="mt-3">
+                  <ol className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    {jumpLinks.map((item, index) => (
+                      <li key={item.href}>
+                        <a
+                          href={item.href}
+                          className="flex items-start gap-3 border border-silver-500/20 bg-iron-950/70 px-3 py-3 text-silver-300 hover:text-white hover:border-accent-gold/45 transition-colors"
+                        >
+                          <span className="text-[10px] uppercase tracking-[0.16em] text-silver-500 pt-0.5">
+                            {toStepNumber(index + 1)}
+                          </span>
+                          <span className="text-sm leading-snug">{item.label}</span>
+                        </a>
                       </li>
                     ))}
-                  </ul>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+                  </ol>
+                </nav>
+              </div>
 
-      <section className="py-12 md:py-16 border-y border-silver-500/10 bg-iron-900/30">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">Critical Next Steps</h2>
-            <p className="text-silver-400 mb-7">
-              The first moves after a legal event often determine leverage and avoidable risk.
-            </p>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {checklistItems.map((item) => (
-                <li
-                  key={item}
-                  className="bg-iron-950/70 border border-silver-500/10 p-5 text-silver-300"
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
+              <section id="service-overview" className="scroll-mt-28 bg-iron-900 border border-silver-500/10 p-6 md:p-8">
+                <h2 className="font-serif text-3xl md:text-4xl text-white mb-6">{introTitle}</h2>
+                <div className="space-y-5 text-silver-400 text-lg leading-relaxed">
+                  {introParagraphs.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
+                <div className="pt-8 flex flex-col sm:flex-row gap-4">
+                  <Link
+                    href="/contact"
+                    data-cta={`${practiceArea}_intro_contact`}
+                    className="inline-flex items-center justify-center px-8 py-4 bg-white text-iron-950 font-bold uppercase tracking-widest hover:bg-silver-100 transition-colors"
+                  >
+                    Free Consultation
+                  </Link>
+                  <a
+                    href="tel:+14053640601"
+                    data-cta={`${practiceArea}_intro_call`}
+                    className="inline-flex items-center justify-center px-8 py-4 border border-silver-500/30 text-white font-bold uppercase tracking-widest hover:border-accent-gold transition-colors"
+                  >
+                    Call (405) 364-0601
+                  </a>
+                </div>
+              </section>
 
-      <section id="service-process" className="py-16 md:py-24 bg-iron-900/50 border-y border-silver-500/10">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">{processTitle}</h2>
-            <p className="text-silver-400 mb-10">{processSubtitle}</p>
-            <div className="space-y-5">
-              {processSteps.map((step) => (
-                <article
-                  key={step.step}
-                  className="flex gap-5 bg-iron-950/70 border border-silver-500/10 p-6 hover:border-accent-gold/30 transition-colors"
-                >
-                  <span className="text-accent-gold font-serif text-2xl">{step.step}</span>
-                  <div>
-                    <h3 className="font-serif text-xl text-white mb-2">{step.title}</h3>
-                    <p className="text-silver-400 leading-relaxed">{step.description}</p>
-                  </div>
-                </article>
-              ))}
+              <section id="service-focus" className="scroll-mt-28 bg-iron-900 border border-silver-500/10 p-6 md:p-8">
+                <h2 className="font-serif text-3xl md:text-4xl text-white mb-10">{focusTitle}</h2>
+                <div className="grid grid-cols-1 gap-8">
+                  {focusItems.map((item) => (
+                    <article
+                      key={item.title}
+                      className="bg-iron-950/60 border border-silver-500/10 p-8 md:p-10 hover:border-accent-gold/40 transition-colors"
+                    >
+                      <h3 className="font-serif text-2xl text-white mb-4">{item.title}</h3>
+                      <p className="text-silver-400 leading-relaxed mb-5">{item.description}</p>
+                      <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-silver-400 text-sm">
+                        {item.bullets.map((bullet) => (
+                          <li key={bullet} className="bg-iron-950/60 border border-white/5 p-3 rounded-sm">
+                            {bullet}
+                          </li>
+                        ))}
+                      </ul>
+                    </article>
+                  ))}
+                </div>
+              </section>
+
+              {hasLocalContext ? (
+                <section id="service-local-context" className="scroll-mt-28 bg-iron-900/85 border border-silver-500/10 p-6 md:p-8">
+                  <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
+                    {localContextTitle ?? 'Local Case Strategy Context'}
+                  </h2>
+                  {localContextSubtitle ? (
+                    <p className="text-silver-400 mb-8 max-w-4xl">{localContextSubtitle}</p>
+                  ) : null}
+                  {localContextNarrative?.length ? (
+                    <div className="space-y-5 text-silver-300 leading-relaxed mb-10">
+                      {localContextNarrative.map((paragraph) => (
+                        <p key={paragraph}>{paragraph}</p>
+                      ))}
+                    </div>
+                  ) : null}
+                  {localContextPoints?.length ? (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {localContextPoints.map((item) => (
+                        <article
+                          key={item}
+                          className="bg-iron-900/80 border border-silver-500/10 p-5 text-silver-300 leading-relaxed"
+                        >
+                          {item}
+                        </article>
+                      ))}
+                    </div>
+                  ) : null}
+                </section>
+              ) : null}
+
+              <section className="bg-iron-900 border border-silver-500/10 p-6 md:p-8">
+                <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">Critical Next Steps</h2>
+                <p className="text-silver-400 mb-7">
+                  The first moves after a legal event often determine leverage and avoidable risk.
+                </p>
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {checklistItems.map((item) => (
+                    <li
+                      key={item}
+                      className="bg-iron-950/70 border border-silver-500/10 p-5 text-silver-300"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+
+              <section id="service-process" className="scroll-mt-28 bg-iron-900 border border-silver-500/10 p-6 md:p-8">
+                <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">{processTitle}</h2>
+                <p className="text-silver-400 mb-10">{processSubtitle}</p>
+                <div className="space-y-5">
+                  {processSteps.map((step) => (
+                    <article
+                      key={step.step}
+                      className="flex gap-5 bg-iron-950/70 border border-silver-500/10 p-6 hover:border-accent-gold/30 transition-colors"
+                    >
+                      <span className="text-accent-gold font-serif text-2xl">{step.step}</span>
+                      <div>
+                        <h3 className="font-serif text-xl text-white mb-2">{step.title}</h3>
+                        <p className="text-silver-400 leading-relaxed">{step.description}</p>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </section>
             </div>
+
+            <aside className="hidden lg:block">
+              <nav
+                aria-label="On this page"
+                className="sticky top-28 border border-silver-500/20 bg-iron-900/95 backdrop-blur-md p-4"
+              >
+                <p className="text-[11px] uppercase tracking-[0.2em] text-silver-500">On This Page</p>
+                <ol className="mt-3 space-y-1">
+                  {jumpLinks.map((item, index) => (
+                    <li key={item.href}>
+                      <a
+                        href={item.href}
+                        className="flex items-start gap-3 border-l border-silver-500/20 px-3 py-2 text-silver-300 hover:text-white hover:border-accent-gold/45 transition-colors"
+                      >
+                        <span className="text-[10px] uppercase tracking-[0.14em] text-silver-500 pt-1">
+                          {toStepNumber(index + 1)}
+                        </span>
+                        <span className="text-sm leading-snug">{item.label}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+            </aside>
           </div>
         </div>
       </section>
@@ -345,7 +411,7 @@ export function ServiceDetailPage({
 
       <LinkGridSection title={relatedTitle} subtitle={relatedSubtitle} items={relatedItems} columns="three" />
 
-      <div id="service-faq">
+      <div id="service-faq" className="scroll-mt-28">
         <FaqSection
           title={faqTitle}
           subtitle={faqSubtitle}
@@ -354,7 +420,7 @@ export function ServiceDetailPage({
         />
       </div>
 
-      <section id="service-contact" className="py-16 md:py-24">
+      <section id="service-contact" className="py-16 md:py-24 scroll-mt-28">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto bg-accent-gold/10 border border-accent-gold/20 p-10 md:p-12 text-center">
             <h2 className="font-serif text-3xl text-accent-gold mb-4">{ctaTitle}</h2>

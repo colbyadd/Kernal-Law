@@ -6,6 +6,11 @@ export const metadata = {
     title: "Practice Areas",
     description: "Criminal Defense and Personal Injury representation in Oklahoma. Protecting your rights and your future.",
     alternates: { canonical: '/practice' },
+    openGraph: {
+        title: "Practice Areas | Kernal & Associates",
+        description: "Explore criminal defense and personal injury practice areas, including DUI defense and severe injury claims in Oklahoma.",
+        url: 'https://kernallaw.com/practice',
+    },
 }
 
 export default function PracticeHub() {

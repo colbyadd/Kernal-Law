@@ -8,6 +8,12 @@ export const metadata: Metadata = {
   description:
     'Understand how criminal defense and personal injury fee structures work at Kernal & Associates, including contingency model details for injury cases.',
   alternates: { canonical: '/fees' },
+  openGraph: {
+    title: 'Legal Fees and Billing | Kernal & Associates',
+    description:
+      'Understand criminal defense fee structure and personal injury contingency billing before starting representation.',
+    url: 'https://kernallaw.com/fees',
+  },
 }
 
 export default function FeesPage() {

@@ -53,6 +53,10 @@ function toAnchorId(value: string) {
     .replace(/^-+|-+$/g, '')
 }
 
+function toStepNumber(value: number) {
+  return value.toString().padStart(2, '0')
+}
+
 export function ResourceGuidePage({
   canonicalPath,
   title,
@@ -166,91 +170,119 @@ export function ResourceGuidePage({
         </div>
       </section>
 
-      <section className="py-6 border-b border-silver-500/10 bg-iron-900/40">
+      <section className="py-12 md:py-16 border-y border-silver-500/10 bg-iron-900/25">
         <div className="container mx-auto px-6">
-          <nav
-            aria-label="Guide sections"
-            className="max-w-5xl mx-auto flex flex-wrap gap-2 md:gap-3"
-          >
-            {jumpLinks.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="inline-flex items-center border border-silver-500/20 px-3 py-2 text-[11px] uppercase tracking-[0.18em] text-silver-300 hover:text-white hover:border-accent-gold/45 transition-colors"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-        </div>
-      </section>
-
-      <section id="guide-immediate-actions" className="py-16 md:py-24 bg-iron-900/50 border-b border-silver-500/10">
-        <div className="container mx-auto px-6">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl text-white mb-8">{immediateActionsTitle}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {immediateActions.map((step) => (
-                <article
-                  key={step.title}
-                  className="bg-iron-950 border border-silver-500/10 p-6 hover:border-accent-gold/40 transition-colors"
-                >
-                  <p className="text-accent-gold text-xs uppercase tracking-widest mb-2">{step.label}</p>
-                  <h3 className="font-serif text-2xl text-white mb-2">{step.title}</h3>
-                  <p className="text-silver-400 leading-relaxed">{step.detail}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="guide-key-takeaways" className="py-16 md:py-24">
-        <div className="container mx-auto px-6">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="font-serif text-3xl text-white mb-6">Key Takeaways</h2>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {takeaways.map((takeaway) => (
-                <li key={takeaway} className="bg-iron-900 border border-silver-500/10 p-4 text-silver-400">
-                  {takeaway}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 md:py-24 border-y border-silver-500/10 bg-iron-900/30">
-        <div className="container mx-auto px-6">
-          <div className="max-w-5xl mx-auto space-y-10">
-            {sections.map((section, index) => (
-              <article
-                key={section.title}
-                id={sectionAnchors[index].id}
-                className="bg-iron-900 border border-silver-500/10 p-8 scroll-mt-28"
-              >
-                <h2 className="font-serif text-3xl text-white mb-4">{section.title}</h2>
-                <div className="space-y-4 text-silver-400 leading-relaxed">
-                  {section.paragraphs.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
-                  ))}
-                </div>
-                {section.bullets?.length ? (
-                  <ul className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-3 text-silver-400 text-sm">
-                    {section.bullets.map((bullet) => (
-                      <li key={bullet} className="bg-iron-950/70 border border-white/5 p-3 rounded-sm">
-                        {bullet}
+          <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-10">
+            <div className="space-y-10">
+              <div className="lg:hidden border border-silver-500/20 bg-iron-900/75 p-4">
+                <p className="text-[11px] uppercase tracking-[0.2em] text-silver-500">On This Page</p>
+                <nav aria-label="Guide sections" className="mt-3">
+                  <ol className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    {jumpLinks.map((item, index) => (
+                      <li key={item.href}>
+                        <a
+                          href={item.href}
+                          className="flex items-start gap-3 border border-silver-500/20 bg-iron-950/70 px-3 py-3 text-silver-300 hover:text-white hover:border-accent-gold/45 transition-colors"
+                        >
+                          <span className="text-[10px] uppercase tracking-[0.16em] text-silver-500 pt-0.5">
+                            {toStepNumber(index + 1)}
+                          </span>
+                          <span className="text-sm leading-snug">{item.label}</span>
+                        </a>
                       </li>
                     ))}
-                  </ul>
-                ) : null}
-              </article>
-            ))}
+                  </ol>
+                </nav>
+              </div>
+
+              <section
+                id="guide-immediate-actions"
+                className="scroll-mt-28 bg-iron-900 border border-silver-500/10 p-6 md:p-8"
+              >
+                <h2 className="font-serif text-3xl md:text-4xl text-white mb-8">{immediateActionsTitle}</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {immediateActions.map((step) => (
+                    <article
+                      key={step.title}
+                      className="bg-iron-950 border border-silver-500/10 p-6 hover:border-accent-gold/40 transition-colors"
+                    >
+                      <p className="text-accent-gold text-xs uppercase tracking-widest mb-2">{step.label}</p>
+                      <h3 className="font-serif text-2xl text-white mb-2">{step.title}</h3>
+                      <p className="text-silver-400 leading-relaxed">{step.detail}</p>
+                    </article>
+                  ))}
+                </div>
+              </section>
+
+              <section
+                id="guide-key-takeaways"
+                className="scroll-mt-28 bg-iron-900 border border-silver-500/10 p-6 md:p-8"
+              >
+                <h2 className="font-serif text-3xl text-white mb-6">Key Takeaways</h2>
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {takeaways.map((takeaway) => (
+                    <li key={takeaway} className="bg-iron-950 border border-silver-500/10 p-4 text-silver-400">
+                      {takeaway}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+
+              <section className="space-y-6">
+                {sections.map((section, index) => (
+                  <article
+                    key={section.title}
+                    id={sectionAnchors[index].id}
+                    className="bg-iron-900 border border-silver-500/10 p-8 scroll-mt-28"
+                  >
+                    <h2 className="font-serif text-3xl text-white mb-4">{section.title}</h2>
+                    <div className="space-y-4 text-silver-400 leading-relaxed">
+                      {section.paragraphs.map((paragraph) => (
+                        <p key={paragraph}>{paragraph}</p>
+                      ))}
+                    </div>
+                    {section.bullets?.length ? (
+                      <ul className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-3 text-silver-400 text-sm">
+                        {section.bullets.map((bullet) => (
+                          <li key={bullet} className="bg-iron-950/70 border border-white/5 p-3 rounded-sm">
+                            {bullet}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
+                  </article>
+                ))}
+              </section>
+            </div>
+
+            <aside className="hidden lg:block">
+              <nav
+                aria-label="Guide sections"
+                className="sticky top-28 border border-silver-500/20 bg-iron-900/95 backdrop-blur-md p-4"
+              >
+                <p className="text-[11px] uppercase tracking-[0.2em] text-silver-500">On This Page</p>
+                <ol className="mt-3 space-y-1">
+                  {jumpLinks.map((item, index) => (
+                    <li key={item.href}>
+                      <a
+                        href={item.href}
+                        className="flex items-start gap-3 border-l border-silver-500/20 px-3 py-2 text-silver-300 hover:text-white hover:border-accent-gold/45 transition-colors"
+                      >
+                        <span className="text-[10px] uppercase tracking-[0.14em] text-silver-500 pt-1">
+                          {toStepNumber(index + 1)}
+                        </span>
+                        <span className="text-sm leading-snug">{item.label}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+            </aside>
           </div>
         </div>
       </section>
 
-      <div id="guide-faq">
+      <div id="guide-faq" className="scroll-mt-28">
         <FaqSection
           title="Frequently Asked Questions"
           subtitle={faqSubtitle}
@@ -259,11 +291,11 @@ export function ResourceGuidePage({
         />
       </div>
 
-      <div id="guide-related">
+      <div id="guide-related" className="scroll-mt-28">
         <LinkGridSection title={relatedTitle} subtitle={relatedSubtitle} items={relatedLinks} columns="three" />
       </div>
 
-      <section id="guide-contact" className="py-16 md:py-24">
+      <section id="guide-contact" className="py-16 md:py-24 scroll-mt-28">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto bg-accent-gold/10 border border-accent-gold/20 p-10 md:p-12 text-center">
             <h2 className="font-serif text-3xl text-accent-gold mb-4">{ctaTitle}</h2>

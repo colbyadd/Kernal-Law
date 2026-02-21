@@ -47,6 +47,13 @@ function validateSitemapMarketCoverage() {
   if (sitemapSource.includes("/practice/criminal-defense") || sitemapSource.includes("/practice/personal-injury")) {
     errors.push('Sitemap should not include legacy /practice service routes because they permanently redirect.')
   }
+
+  const disallowedNoindexRoutes = ['/privacy', '/terms', '/success', '/locations']
+  for (const route of disallowedNoindexRoutes) {
+    if (sitemapSource.includes(`'${route}'`) || sitemapSource.includes(`"${route}"`)) {
+      errors.push(`Sitemap should not include noindex route: ${route}`)
+    }
+  }
 }
 
 function validateResourceRoutesInSitemapAndSchema() {

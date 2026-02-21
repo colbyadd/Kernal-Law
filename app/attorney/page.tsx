@@ -8,6 +8,12 @@ export const metadata: Metadata = {
   description:
     'Todd Kernal is an Oklahoma criminal defense and personal injury attorney with 25+ years of courtroom-focused practice.',
   alternates: { canonical: '/attorney' },
+  openGraph: {
+    title: 'Todd Kernal Attorney Profile | Kernal & Associates',
+    description:
+      'Review Todd Kernal\'s courtroom-focused background, legal standards, and practice approach for criminal defense and injury matters.',
+    url: 'https://kernallaw.com/attorney',
+  },
 }
 
 const attorneySchema = {
@@ -112,7 +118,18 @@ const representationStandards = [
   },
 ]
 
+function toStepNumber(value: number) {
+  return value.toString().padStart(2, '0')
+}
+
 export default function AttorneyPage() {
+  const jumpLinks = [
+    { href: '#profile-overview', label: 'Overview' },
+    { href: '#profile-standards', label: 'Standards' },
+    { href: '#profile-proof', label: 'Proof' },
+    { href: '#profile-contact', label: 'Contact' },
+  ] as const
+
   return (
     <main className="bg-iron-950 min-h-screen">
       <script
@@ -126,141 +143,165 @@ export default function AttorneyPage() {
         variant="bio"
       />
 
-      <section className="py-6 border-b border-silver-500/10 bg-iron-900/40">
+      <section className="py-12 md:py-16 border-y border-silver-500/10 bg-iron-900/25">
         <div className="container mx-auto px-6">
-          <nav aria-label="On this page" className="max-w-5xl mx-auto flex flex-wrap gap-2 md:gap-3">
-            {[
-              { href: '#profile-overview', label: 'Overview' },
-              { href: '#profile-standards', label: 'Standards' },
-              { href: '#profile-proof', label: 'Proof' },
-              { href: '#profile-contact', label: 'Contact' },
-            ].map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="inline-flex items-center border border-silver-500/20 px-3 py-2 text-[11px] uppercase tracking-[0.18em] text-silver-300 hover:text-white hover:border-accent-gold/45 transition-colors"
+          <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-10">
+            <div className="space-y-6 md:space-y-8">
+              <div className="lg:hidden border border-silver-500/20 bg-iron-900/75 p-4">
+                <p className="text-[11px] uppercase tracking-[0.2em] text-silver-500">On This Page</p>
+                <nav aria-label="On this page" className="mt-3">
+                  <ol className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    {jumpLinks.map((item, index) => (
+                      <li key={item.href}>
+                        <a
+                          href={item.href}
+                          className="flex items-start gap-3 border border-silver-500/20 bg-iron-950/70 px-3 py-3 text-silver-300 hover:text-white hover:border-accent-gold/45 transition-colors"
+                        >
+                          <span className="text-[10px] uppercase tracking-[0.16em] text-silver-500 pt-0.5">
+                            {toStepNumber(index + 1)}
+                          </span>
+                          <span className="text-sm leading-snug">{item.label}</span>
+                        </a>
+                      </li>
+                    ))}
+                  </ol>
+                </nav>
+              </div>
+
+              <section id="profile-overview" className="scroll-mt-28 bg-iron-900 border border-silver-500/10 p-6 md:p-8">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+                  <div className="lg:col-span-4 space-y-10">
+                    <div className="relative aspect-[3/4] w-full overflow-hidden grayscale contrast-[1.08] brightness-[0.92] hover:grayscale-0 transition-all duration-700">
+                      <Image
+                        src="/images/todd-kernal-lhl.jpg"
+                        alt="Todd Kernal"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
+                    </div>
+
+                    <div className="space-y-5">
+                      <h2 className="font-serif text-2xl text-white border-b border-silver-500/20 pb-3">Credentials</h2>
+                      <ul className="space-y-3 text-silver-300 text-sm">
+                        {credentialItems.map((item) => (
+                          <li key={item} className="flex items-start gap-3">
+                            <span className="mt-1.5 w-1.5 h-1.5 bg-accent-gold rounded-full" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="lg:col-span-8 space-y-8 text-lg text-silver-400 leading-relaxed">
+                    <p>
+                      Todd Kernal focuses on high-stakes criminal defense and severe personal-injury matters across Oklahoma.
+                      His practice emphasizes early risk control, disciplined evidence strategy, and courtroom readiness when
+                      negotiated outcomes are not reasonable.
+                    </p>
+                    <p>
+                      The approach is practical and direct: identify exposure quickly, protect legal position early, and build
+                      each case with enough rigor to withstand adversarial scrutiny. Clients are informed clearly about options,
+                      tradeoffs, and timing at each stage.
+                    </p>
+
+                    <blockquote className="border-l-2 border-accent-gold pl-8 italic text-xl text-white/90">
+                      &quot;When the government or an insurer applies pressure, preparation is the equalizer. Good outcomes are built,
+                      not hoped for.&quot;
+                    </blockquote>
+
+                    <h3 className="text-2xl font-serif text-white">Practice Focus</h3>
+                    <p>
+                      Criminal defense work includes DUI, drug allegations, warrants, probation issues, assault-related filings,
+                      and other felony or misdemeanor exposure. Personal injury work includes severe collision litigation,
+                      catastrophic injury valuation, and wrongful-death accountability claims.
+                    </p>
+
+                    <h3 className="text-2xl font-serif text-white">Professional Background</h3>
+                    <p>
+                      Todd is a graduate of the University of Oklahoma College of Law and has spent more than two decades in
+                      courtroom-driven legal practice. His legal career began from direct exposure to an unfair dispute and a
+                      commitment to learning the law well enough to challenge it effectively.
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              <section id="profile-standards" className="scroll-mt-28 bg-iron-900 border border-silver-500/10 p-6 md:p-8">
+                <h2 className="font-serif text-3xl md:text-4xl text-white mb-8">Representation Standards</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                  {representationStandards.map((item) => (
+                    <article
+                      key={item.title}
+                      className="bg-iron-950/70 border border-silver-500/15 p-6 hover:border-accent-gold/35 transition-colors"
+                    >
+                      <h3 className="font-serif text-2xl text-white mb-3">{item.title}</h3>
+                      <p className="text-silver-400 leading-relaxed">{item.description}</p>
+                    </article>
+                  ))}
+                </div>
+              </section>
+
+              <section id="profile-proof" className="scroll-mt-28 bg-iron-900 border border-silver-500/10 p-6 md:p-8">
+                <h2 className="font-serif text-3xl md:text-4xl text-white mb-8">Review Additional Proof</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                  <Link
+                    href="/case-results"
+                    data-cta="attorney_proof_case_results"
+                    className="border border-silver-500/20 p-6 text-silver-300 hover:text-white hover:border-accent-gold/45 transition-colors"
+                  >
+                    <h3 className="font-serif text-2xl mb-2">Case Results</h3>
+                    <p className="text-sm text-silver-400">Representative outcomes with risk and strategy context.</p>
+                  </Link>
+                  <Link
+                    href="/client-reviews"
+                    data-cta="attorney_proof_client_reviews"
+                    className="border border-silver-500/20 p-6 text-silver-300 hover:text-white hover:border-accent-gold/45 transition-colors"
+                  >
+                    <h3 className="font-serif text-2xl mb-2">Client Reviews</h3>
+                    <p className="text-sm text-silver-400">Client feedback themes on communication and execution quality.</p>
+                  </Link>
+                  <Link
+                    href="/contact"
+                    data-cta="attorney_proof_contact"
+                    className="border border-silver-500/20 p-6 text-silver-300 hover:text-white hover:border-accent-gold/45 transition-colors"
+                  >
+                    <h3 className="font-serif text-2xl mb-2">Consultation</h3>
+                    <p className="text-sm text-silver-400">Discuss your legal matter and immediate next steps directly.</p>
+                  </Link>
+                </div>
+              </section>
+            </div>
+
+            <aside className="hidden lg:block">
+              <nav
+                aria-label="On this page"
+                className="sticky top-28 border border-silver-500/20 bg-iron-900/95 backdrop-blur-md p-4"
               >
-                {item.label}
-              </a>
-            ))}
-          </nav>
+                <p className="text-[11px] uppercase tracking-[0.2em] text-silver-500">On This Page</p>
+                <ol className="mt-3 space-y-1">
+                  {jumpLinks.map((item, index) => (
+                    <li key={item.href}>
+                      <a
+                        href={item.href}
+                        className="flex items-start gap-3 border-l border-silver-500/20 px-3 py-2 text-silver-300 hover:text-white hover:border-accent-gold/45 transition-colors"
+                      >
+                        <span className="text-[10px] uppercase tracking-[0.14em] text-silver-500 pt-1">
+                          {toStepNumber(index + 1)}
+                        </span>
+                        <span className="text-sm leading-snug">{item.label}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+            </aside>
+          </div>
         </div>
       </section>
 
-      <div id="profile-overview" className="container mx-auto px-6 py-12 md:py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
-          <div className="lg:col-span-4 space-y-10">
-            <div className="relative aspect-[3/4] w-full overflow-hidden grayscale contrast-[1.08] brightness-[0.92] hover:grayscale-0 transition-all duration-700">
-              <Image
-                src="/images/todd-kernal-lhl.jpg"
-                alt="Todd Kernal"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 33vw"
-              />
-            </div>
-
-            <div className="space-y-5">
-              <h2 className="font-serif text-2xl text-white border-b border-silver-500/20 pb-3">Credentials</h2>
-              <ul className="space-y-3 text-silver-300 text-sm">
-                {credentialItems.map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <span className="mt-1.5 w-1.5 h-1.5 bg-accent-gold rounded-full" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <div className="lg:col-span-8 space-y-8 text-lg text-silver-400 leading-relaxed">
-            <p>
-              Todd Kernal focuses on high-stakes criminal defense and severe personal-injury matters across Oklahoma.
-              His practice emphasizes early risk control, disciplined evidence strategy, and courtroom readiness when
-              negotiated outcomes are not reasonable.
-            </p>
-            <p>
-              The approach is practical and direct: identify exposure quickly, protect legal position early, and build
-              each case with enough rigor to withstand adversarial scrutiny. Clients are informed clearly about options,
-              tradeoffs, and timing at each stage.
-            </p>
-
-            <blockquote className="border-l-2 border-accent-gold pl-8 italic text-xl text-white/90">
-              &quot;When the government or an insurer applies pressure, preparation is the equalizer. Good outcomes are built,
-              not hoped for.&quot;
-            </blockquote>
-
-            <h3 className="text-2xl font-serif text-white">Practice Focus</h3>
-            <p>
-              Criminal defense work includes DUI, drug allegations, warrants, probation issues, assault-related filings,
-              and other felony or misdemeanor exposure. Personal injury work includes severe collision litigation,
-              catastrophic injury valuation, and wrongful-death accountability claims.
-            </p>
-
-            <h3 className="text-2xl font-serif text-white">Professional Background</h3>
-            <p>
-              Todd is a graduate of the University of Oklahoma College of Law and has spent more than two decades in
-              courtroom-driven legal practice. His legal career began from direct exposure to an unfair dispute and a
-              commitment to learning the law well enough to challenge it effectively.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <section id="profile-standards" className="py-16 md:py-24 border-y border-silver-500/10 bg-iron-900/40">
-        <div className="container mx-auto px-6">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl text-white mb-8">Representation Standards</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-              {representationStandards.map((item) => (
-                <article
-                  key={item.title}
-                  className="bg-iron-900 border border-silver-500/15 p-6 hover:border-accent-gold/35 transition-colors"
-                >
-                  <h3 className="font-serif text-2xl text-white mb-3">{item.title}</h3>
-                  <p className="text-silver-400 leading-relaxed">{item.description}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="profile-proof" className="py-16 md:py-24">
-        <div className="container mx-auto px-6">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl text-white mb-8">Review Additional Proof</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-              <Link
-                href="/case-results"
-                data-cta="attorney_proof_case_results"
-                className="border border-silver-500/20 p-6 text-silver-300 hover:text-white hover:border-accent-gold/45 transition-colors"
-              >
-                <h3 className="font-serif text-2xl mb-2">Case Results</h3>
-                <p className="text-sm text-silver-400">Representative outcomes with risk and strategy context.</p>
-              </Link>
-              <Link
-                href="/client-reviews"
-                data-cta="attorney_proof_client_reviews"
-                className="border border-silver-500/20 p-6 text-silver-300 hover:text-white hover:border-accent-gold/45 transition-colors"
-              >
-                <h3 className="font-serif text-2xl mb-2">Client Reviews</h3>
-                <p className="text-sm text-silver-400">Client feedback themes on communication and execution quality.</p>
-              </Link>
-              <Link
-                href="/contact"
-                data-cta="attorney_proof_contact"
-                className="border border-silver-500/20 p-6 text-silver-300 hover:text-white hover:border-accent-gold/45 transition-colors"
-              >
-                <h3 className="font-serif text-2xl mb-2">Consultation</h3>
-                <p className="text-sm text-silver-400">Discuss your legal matter and immediate next steps directly.</p>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="profile-contact" className="py-16 md:py-24">
+      <section id="profile-contact" className="py-16 md:py-24 scroll-mt-28">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto bg-accent-gold/10 border border-accent-gold/20 p-10 md:p-12 text-center">
             <h2 className="font-serif text-3xl text-accent-gold mb-4">Contact Todd Kernal</h2>

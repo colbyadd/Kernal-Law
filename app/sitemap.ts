@@ -15,15 +15,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
         'yukon',
         'mustang',
     ])
-    const marketSubpillarRoutes = ALL_STANDARD_SUBPILLAR_MARKETS.flatMap((market) => {
-        const isCounty = market.endsWith('-county')
-        const priority = isCounty ? 0.76 : 0.78
+    const dedicatedHighPriorityServiceMarkets = new Set(['oklahoma-city', 'norman'])
+    const marketSubpillarRoutes = ALL_STANDARD_SUBPILLAR_MARKETS
+        .filter((market) => !dedicatedHighPriorityServiceMarkets.has(market))
+        .flatMap((market) => {
+            const isCounty = market.endsWith('-county')
+            const priority = isCounty ? 0.76 : 0.78
 
-        return [
-            { path: `/${market}/criminal-defense`, priority, changeFrequency: 'monthly' as const, lastModified: '2026-02-18' },
-            { path: `/${market}/personal-injury`, priority, changeFrequency: 'monthly' as const, lastModified: '2026-02-18' },
-        ]
-    })
+            return [
+                { path: `/${market}/criminal-defense`, priority, changeFrequency: 'monthly' as const, lastModified: '2026-02-18' },
+                { path: `/${market}/personal-injury`, priority, changeFrequency: 'monthly' as const, lastModified: '2026-02-18' },
+            ]
+        })
     const dynamicMarketOverviewRoutes = getAllMarketSlugs()
         .filter((market) => !dedicatedMarketPages.has(market))
         .map((market) => ({
@@ -102,12 +105,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
             { path: '/client-reviews', priority: 0.75, changeFrequency: 'monthly', lastModified: '2026-02-17' },
             { path: '/fees', priority: 0.7, changeFrequency: 'monthly', lastModified: '2026-02-17' },
 
-            // Legal pages - lower priority
-            { path: '/privacy', priority: 0.3, changeFrequency: 'yearly', lastModified: '2026-02-01' },
-            { path: '/terms', priority: 0.3, changeFrequency: 'yearly', lastModified: '2026-01-01' },
+            // Policy pages are intentionally excluded from sitemap because they are noindex,follow.
         ]
 
-    return routes.map((route) => ({
+    // Deduplicate by path so mixed static/dynamic route sources cannot emit duplicates.
+    const dedupedRoutes = Array.from(
+        routes.reduce((acc, route) => {
+            if (!acc.has(route.path)) {
+                acc.set(route.path, route)
+            }
+            return acc
+        }, new Map<string, (typeof routes)[number]>()).values(),
+    )
+
+    return dedupedRoutes.map((route) => ({
         url: `${baseUrl}${route.path}`,
         lastModified: route.lastModified ? new Date(route.lastModified) : defaultLastModified,
         changeFrequency: route.changeFrequency,

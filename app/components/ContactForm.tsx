@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { derivePageType, trackEvent } from '@/lib/analytics'
 import { getEmptyAttribution, loadLeadAttribution } from '@/lib/lead-attribution'
@@ -28,6 +28,8 @@ interface LeadFieldValues {
 export function ContactForm() {
     const router = useRouter()
     const [status, setStatus] = useState<'idle' | 'submitting' | 'error'>('idle')
+    const [errorMessage, setErrorMessage] = useState<string>('')
+    const formStartedAtRef = useRef<number>(Date.now())
     const [leadFields, setLeadFields] = useState<LeadFieldValues>({
         ...getEmptyAttribution(),
         page_path: '/contact',
@@ -62,6 +64,7 @@ export function ContactForm() {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        setErrorMessage('')
         const pagePath = window.location.pathname
         const pageType = derivePageType(pagePath)
         const attribution = loadLeadAttribution()
@@ -90,7 +93,71 @@ export function ContactForm() {
         const caseType = String(formData.get('case_type') || '')
         const urgency = String(formData.get('urgency') || '')
         const preferredContactMethod = String(formData.get('preferred_contact_method') || '')
+        const honeypotValue = String(formData.get('bot-field') || '').trim()
+        const message = String(formData.get('message') || '').trim()
+        const phone = String(formData.get('phone') || '').trim()
+        const phoneDigits = phone.replace(/\D/g, '')
+        const consent = String(formData.get('consent') || '').trim()
+        const elapsedMs = Date.now() - formStartedAtRef.current
         const params = new URLSearchParams()
+
+        if (honeypotValue) {
+            trackEvent('form_submit_blocked', {
+                form_name: 'contact',
+                page_path: pagePath,
+                page_type: pageType,
+                reason: 'honeypot',
+            })
+            return
+        }
+
+        if (elapsedMs < 1500) {
+            setStatus('error')
+            setErrorMessage('Please wait a moment and submit again.')
+            trackEvent('form_submit_blocked', {
+                form_name: 'contact',
+                page_path: pagePath,
+                page_type: pageType,
+                reason: 'submit_too_fast',
+            })
+            return
+        }
+
+        if (phoneDigits.length < 10) {
+            setStatus('error')
+            setErrorMessage('Please enter a valid phone number so we can reach you.')
+            trackEvent('form_submit_blocked', {
+                form_name: 'contact',
+                page_path: pagePath,
+                page_type: pageType,
+                reason: 'invalid_phone',
+            })
+            return
+        }
+
+        if (!consent) {
+            setStatus('error')
+            setErrorMessage('Consent is required before sending your request.')
+            trackEvent('form_submit_blocked', {
+                form_name: 'contact',
+                page_path: pagePath,
+                page_type: pageType,
+                reason: 'missing_consent',
+            })
+            return
+        }
+
+        if (message.length > 3000) {
+            setStatus('error')
+            setErrorMessage('Please shorten your message to 3000 characters or fewer.')
+            trackEvent('form_submit_blocked', {
+                form_name: 'contact',
+                page_path: pagePath,
+                page_type: pageType,
+                reason: 'message_too_long',
+            })
+            return
+        }
 
         trackEvent('form_submit_start', {
             form_name: 'contact',
@@ -129,6 +196,8 @@ export function ContactForm() {
         params.set('wbraid', mergedLead.wbraid)
         params.set('msclkid', mergedLead.msclkid)
         params.set('fbclid', mergedLead.fbclid)
+        params.set('form_started_at', new Date(formStartedAtRef.current).toISOString())
+        params.set('js_enabled', 'true')
 
         try {
             const response = await fetch('/form-setup.html', {
@@ -159,6 +228,7 @@ export function ContactForm() {
         } catch (error) {
             console.error(error)
             setStatus('error')
+            setErrorMessage('Sorry, there was a problem sending your message. Please call us directly.')
         }
     }
 
@@ -172,6 +242,7 @@ export function ContactForm() {
                 name="contact"
                 method="POST"
                 data-netlify="true"
+                netlify-honeypot="bot-field"
                 onSubmit={handleSubmit}
                 className="space-y-5"
             >
@@ -194,6 +265,8 @@ export function ContactForm() {
                 <input type="hidden" name="wbraid" value={leadFields.wbraid} />
                 <input type="hidden" name="msclkid" value={leadFields.msclkid} />
                 <input type="hidden" name="fbclid" value={leadFields.fbclid} />
+                <input type="hidden" name="form_started_at" value={new Date(formStartedAtRef.current).toISOString()} />
+                <input type="hidden" name="js_enabled" value="true" />
                 {/* Honeypot field for spam protection - hidden from users */}
                 <p className="hidden">
                     <label>
@@ -260,6 +333,8 @@ export function ContactForm() {
                             name="name"
                             id="name"
                             required
+                            minLength={2}
+                            maxLength={120}
                             autoComplete="name"
                             placeholder="Your full name"
                             className="w-full bg-iron-950 border border-silver-500/20 p-4 text-white focus:border-accent-gold focus:outline-none transition-colors"
@@ -274,6 +349,7 @@ export function ContactForm() {
                             required
                             autoComplete="tel"
                             inputMode="tel"
+                            pattern="[0-9()+\\-.\\s]{10,20}"
                             placeholder="(405) 364-0601"
                             className="w-full bg-iron-950 border border-silver-500/20 p-4 text-white focus:border-accent-gold focus:outline-none transition-colors"
                         />
@@ -298,6 +374,7 @@ export function ContactForm() {
                         name="message"
                         id="message"
                         rows={3}
+                        maxLength={3000}
                         placeholder="What happened, when, and your biggest concern right now."
                         className="w-full bg-iron-950 border border-silver-500/20 p-4 text-white focus:border-accent-gold focus:outline-none transition-colors"
                     ></textarea>
@@ -343,7 +420,7 @@ export function ContactForm() {
                 </p>
 
                 {status === 'error' && (
-                    <p className="text-red-500 text-sm text-center">Sorry, there was a problem sending your message. Please call us directly.</p>
+                    <p className="text-red-500 text-sm text-center">{errorMessage || 'Sorry, there was a problem sending your message. Please call us directly.'}</p>
                 )}
 
                 <p className="text-xs text-silver-500 text-center pt-4">

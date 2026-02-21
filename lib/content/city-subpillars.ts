@@ -2,6 +2,7 @@ import { createSubpillarSpec, type SubpillarSpec } from '@/lib/content/subpillar
 
 type ServiceSlug = 'criminal-defense' | 'personal-injury'
 type MarketType = 'city' | 'county'
+type MarketTier = 'core-city' | 'regional-city' | 'county'
 
 interface MarketLink {
   href: string
@@ -17,6 +18,8 @@ export interface MarketProfile {
   criminalCourtContext: string
   injuryContext: string
   corridorContext: string
+  injuryNarrativeAddendum?: string[]
+  injuryDifferentiators?: string[]
   hubLink: MarketLink
   nearbyLinks: [MarketLink, MarketLink]
 }
@@ -68,6 +71,86 @@ export const ALL_STANDARD_SUBPILLAR_MARKETS = [
 ] as const
 
 export type MarketSlug = (typeof ALL_STANDARD_SUBPILLAR_MARKETS)[number]
+
+const CRIMINAL_TIER_CONTEXT: Record<
+  MarketTier,
+  {
+    docketProfile: string
+    pressurePattern: string
+    hearingPosture: string
+  }
+> = {
+  'core-city': {
+    docketProfile:
+      'metro-core filing volatility, specialty-docket turnover, and multi-agency allegation reporting',
+    pressurePattern:
+      'fast prosecutor screening cycles, compact hearing calendars, and early narrative lock-in risk',
+    hearingPosture:
+      'high-volume urban calendars where preparation sequence and evidentiary framing must be trial-ready early',
+  },
+  'regional-city': {
+    docketProfile:
+      'regional-city filings with county-seat scheduling constraints, travel-linked witness issues, and tighter reset windows',
+    pressurePattern:
+      'mixed local and highway enforcement patterns that can shift allegation posture between hearings',
+    hearingPosture:
+      'regional calendars where delay strategy is limited, so motion sequencing and mitigation timing have to be deliberate',
+  },
+  county: {
+    docketProfile:
+      'county-wide venue management with district-calendar spacing, township officer variance, and broader geography',
+    pressurePattern:
+      'cross-jurisdiction reporting differences that can distort timelines unless records are reconciled early',
+    hearingPosture:
+      'county district settings where venue posture, officer credibility, and timeline precision drive negotiation leverage',
+  },
+}
+
+const INJURY_TIER_CONTEXT: Record<
+  MarketTier,
+  {
+    claimProfile: string
+    documentationRisk: string
+    valuationPressure: string
+  }
+> = {
+  'core-city': {
+    claimProfile:
+      'urban intersection collisions, commercial-fleet involvement, and multi-policy exposure in dense metro traffic',
+    documentationRisk:
+      'rapid treatment transitions and high-volume provider handoffs that can create chronology gaps',
+    valuationPressure:
+      'large-carrier negotiation pressure where early liability framing and damages proof must be litigation-capable',
+  },
+  'regional-city': {
+    claimProfile:
+      'regional-route crashes with mixed passenger, commercial, and agricultural traffic exposure',
+    documentationRisk:
+      'treatment-access lag and referral timing issues that can understate injury progression if not organized quickly',
+    valuationPressure:
+      'carrier discount pressure on regional claims that requires disciplined evidence packaging and escalation planning',
+  },
+  county: {
+    claimProfile:
+      'county-wide roadway incidents with long-distance travel patterns and layered venue considerations',
+    documentationRisk:
+      'transport-time, provider-distance, and county-line treatment movement that can fragment medical narratives',
+    valuationPressure:
+      'venue-sensitive mediation and litigation valuation where causation and future-loss proof must be explicit',
+  },
+}
+
+function getMarketTier(profile: MarketProfile): MarketTier {
+  if (profile.marketType === 'county') {
+    return 'county'
+  }
+
+  if (CORE_CITY_SUBPILLAR_MARKETS.includes(profile.slug as (typeof CORE_CITY_SUBPILLAR_MARKETS)[number])) {
+    return 'core-city'
+  }
+
+  return 'regional-city'
+}
 
 function createHubLink(href: string, title: string, description: string): MarketLink {
   return { href, title, description }
@@ -448,6 +531,16 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
     criminalCourtContext: 'high-volume Oklahoma County criminal dockets with allegation-heavy filings',
     injuryContext: 'metro-area crash and negligence claims across dense urban traffic corridors',
     corridorContext: 'I-35, I-40, I-44, and Kilpatrick Turnpike corridor activity',
+    injuryNarrativeAddendum: [
+      'Oklahoma County claims often require early evidence mapping around Downtown interchange zones, including I-235 connectors, Broadway Extension merges, and NW Expressway bottlenecks where liability narratives can shift quickly.',
+      'We also evaluate commercial-vehicle and delivery-route exposure tied to Bricktown, the medical district, and airport-bound freight movement, because these patterns frequently affect both causation disputes and policy-limit strategy.',
+    ],
+    injuryDifferentiators: [
+      'Downtown OKC interchange collision sequencing (I-235, I-40, and I-44 connectors) is analyzed early for fault-allocation disputes.',
+      'Medical district record timing and care-transition chronology are audited to prevent avoidable gaps in catastrophic-injury valuation.',
+      'Commercial fleet and rideshare evidence holds are issued quickly for Bricktown, Midtown, and airport-corridor incident patterns.',
+      'Venue preparation accounts for Oklahoma County jury-value exposure and mediation leverage in high-severity urban crash claims.',
+    ],
     hubLink: locationsHubLink,
     nearbyLinks: [
       createHubLink('/oklahoma-city/criminal-defense', 'Oklahoma City Criminal Defense', 'City-level defense strategy for Oklahoma County matters.'),
@@ -598,6 +691,8 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
 
 function buildCriminalSubpillar(profile: MarketProfile): SubpillarSpec {
   const slugPrefix = `${profile.slug}_criminal_defense`
+  const marketTier = getMarketTier(profile)
+  const tierContext = CRIMINAL_TIER_CONTEXT[marketTier]
 
   return createSubpillarSpec({
     metadata: {
@@ -616,42 +711,50 @@ function buildCriminalSubpillar(profile: MarketProfile): SubpillarSpec {
       heroVariant: 'criminal',
       introTitle: `Criminal cases in ${profile.marketName} require immediate legal control.`,
       introParagraphs: [
-        `${profile.marketName} criminal allegations often move quickly through bond, condition, and evidentiary stages. Early missteps can reduce leverage before full defense review starts.`,
-        `Kernal & Associates handles ${profile.criminalCourtContext} with a structured defense process across DUI, drug, assault, theft, warrant, and probation matters.`,
+        `${profile.marketName} criminal allegations often move through first-appearance, bond, and condition stages faster than most clients expect. Early legal decisions influence admissibility disputes, negotiation posture, and long-term record risk before full case facts are even organized.`,
+        `Our defense workflow is built for ${profile.criminalCourtContext}, where charging pressure and procedural timelines can change quickly. We begin by identifying immediate control points, communication risks, and hearing preparation tasks tied to your exact filing profile. In ${profile.marketName}, that frequently includes ${tierContext.docketProfile}.`,
+        `${profile.countyContext} often requires coordinated strategy across court requirements, compliance obligations, and evidence development. Defense planning is sequenced to protect rights while preserving practical options for dismissal, reduction, or trial-readiness.`,
+        `Because many matters in ${profile.marketName} intersect with ${profile.corridorContext}, we evaluate traffic-stop procedure, witness quality, and timeline accuracy early so avoidable narrative gaps do not reduce leverage later in the case. This is especially important where ${tierContext.pressurePattern}.`,
       ],
       focusTitle: `What We Focus On in ${profile.marketName} Criminal Defense`,
       focusItems: [
         {
           title: 'Immediate Case Stabilization',
           description:
-            'Early strategic controls reduce avoidable exposure and protect defense options before prosecution framing hardens.',
+            `Early legal controls are used to reduce avoidable exposure before prosecution framing hardens. We prioritize release-condition compliance, hearing posture, and communication discipline specific to ${profile.marketName} allegations so the case begins in a defensible position. Intake strategy is calibrated for ${tierContext.docketProfile}.`,
           bullets: [
-            'Bond and release-condition analysis',
-            'No-contact and compliance planning',
-            'Urgent filing and deadline control',
-            `${profile.countyContext} risk triage`,
+            `Bond and release-condition analysis tied to ${profile.countyContext}`,
+            'No-contact and compliance planning for day-one risk reduction',
+            'Urgent filing, appearance, and deadline control checklist',
+            `Local timeline triage for ${profile.criminalCourtContext}`,
+            `Risk-screening for incident patterns around ${profile.corridorContext}`,
+            `Coordination with nearby venue strategy from ${profile.nearbyLinks[0].title}`,
           ],
         },
         {
           title: 'Evidence and Procedure Challenges',
           description:
-            'Many defense gains come from scrutinizing how evidence was obtained, recorded, preserved, and presented.',
+            `Many defense gains come from disciplined review of search, seizure, testing, and documentation process. We stress-test how evidence was collected and preserved so procedural errors in ${profile.marketName} matters can be surfaced before negotiation positions harden.`,
           bullets: [
-            'Stop-and-search legality review',
-            'Report versus video inconsistency checks',
-            'Interview and testing process analysis',
-            'Suppression-motion sequencing',
+            `Stop-and-search legality review for ${profile.corridorContext} encounter patterns`,
+            'Officer report versus audio/video inconsistency checks',
+            'Interview, testing, and chain-of-custody process analysis',
+            'Suppression-motion sequencing with deadline discipline',
+            `Witness-timeline reconstruction for ${profile.marketName} venue expectations`,
+            'Case-file contradiction mapping for negotiation leverage',
           ],
         },
         {
           title: 'Negotiation Backed by Trial Readiness',
           description:
-            'We build every case with courtroom pressure in mind so negotiation outcomes are tied to real litigation risk.',
+            `We prepare each case for courtroom scrutiny so negotiations reflect real litigation risk, not default pressure. This approach helps align plea decisions, mitigation strategy, and long-range consequences with what is actually defensible in ${profile.marketName}.`,
           bullets: [
-            'Case-theory and mitigation planning',
-            'Resolution-path risk modeling',
-            'Plea versus trial decision support',
-            `${profile.marketName} venue-specific preparation`,
+            'Case-theory and mitigation planning aligned to filed allegations',
+            'Resolution-path risk modeling across plea and trial branches',
+            'Plea versus trial decision support with documented tradeoffs',
+            `${profile.marketName} venue-specific preparation and hearing sequencing`,
+            `Coordination with broader market strategy through ${profile.hubLink.title}`,
+            `Transition planning when exposure overlaps nearby courts such as ${profile.nearbyLinks[0].title}`,
           ],
         },
       ],
@@ -662,26 +765,43 @@ function buildCriminalSubpillar(profile: MarketProfile): SubpillarSpec {
           step: '01',
           title: 'Urgent Intake and Case Controls',
           description:
-            'We map immediate risks, condition obligations, and communication boundaries at the start of representation.',
+            `We map immediate risks, condition obligations, and communication boundaries at intake so early mistakes do not compound exposure in ${profile.marketName} proceedings.`,
         },
         {
           step: '02',
           title: 'Evidence Collection and Review',
           description:
-            'We gather key records and test procedural reliability to identify leverage for dismissal, reduction, or trial.',
+            `We gather filings, reports, media, and timeline records, then test procedural reliability to identify leverage for dismissal motions, charge reduction strategy, or trial defense.`,
         },
         {
           step: '03',
           title: 'Motion and Negotiation Strategy',
           description:
-            'We apply evidentiary pressure while building realistic resolution pathways based on facts and long-term goals.',
+            `We apply evidentiary pressure while building realistic resolution pathways that reflect venue dynamics, long-term consequences, and client priorities in ${profile.countyContext}. This phase is structured for ${tierContext.hearingPosture}.`,
         },
         {
           step: '04',
           title: 'Trial or Final Resolution',
           description:
-            'If negotiated outcomes are unreasonable, we advance into trial-ready litigation with clear defense theory.',
+            `If negotiated outcomes remain unreasonable, we advance into trial-ready litigation with a clear defense theory, witness plan, and evidentiary challenge framework.`,
         },
+      ],
+      localContextTitle: `${profile.marketName} Criminal Case Pressure Points`,
+      localContextSubtitle:
+        'Local enforcement, venue, and timeline dynamics that commonly shape defense strategy in this market.',
+      localContextNarrative: [
+        `${profile.marketName} criminal matters frequently require rapid adjustment between courtroom deadlines and investigation pacing. For ${profile.criminalCourtContext}, we prioritize sequence control so evidence review, mitigation development, and court communication move in the right order. Local planning also accounts for ${tierContext.docketProfile}.`,
+        `When allegations arise around ${profile.corridorContext}, early record collection is critical. Dispatch detail, body-cam timing, and witness positioning often determine whether procedural issues can be raised effectively before adverse narratives are treated as settled.`,
+        `Cases connected to ${profile.countyContext} are managed with long-horizon planning, not short-term reaction. The objective is to protect immediate liberty and long-term record outcomes at the same time while maintaining credible trial posture under ${tierContext.hearingPosture}.`,
+      ],
+      localContextPoints: [
+        `Venue risk analysis is calibrated to ${profile.criminalCourtContext} rather than generic statewide assumptions.`,
+        `Timeline control includes first-appearance preparation, condition compliance planning, and documented communication safeguards.`,
+        `Defense investigation scope is prioritized around ${profile.corridorContext} where stop procedure and witness geometry often matter.`,
+        `Mitigation strategy is sequenced so it supports, rather than weakens, suppression and negotiation leverage.`,
+        `Nearby market comparison through ${profile.nearbyLinks[0].title} is used when venue overlap affects filing or negotiation posture.`,
+        `Court-facing decisions are benchmarked against long-term impacts on record, employment, licensing, and financial risk.`,
+        `Operational assumptions are pressure-tested against ${tierContext.pressurePattern}, not just generic docket timelines.`,
       ],
       relatedTitle: `Related ${profile.marketName} Criminal Defense Pages`,
       relatedSubtitle: 'Use these pages to compare local-market and charge-specific strategy options.',
@@ -719,7 +839,7 @@ function buildCriminalSubpillar(profile: MarketProfile): SubpillarSpec {
         {
           href: '/contact',
           title: 'Request Defense Consultation',
-          description: 'Confidential legal review for urgent criminal matters.',
+          description: `Confidential legal review for urgent ${profile.marketName} criminal matters and deadline-driven filings.`,
           ctaName: `${slugPrefix}_related_contact`,
         },
       ],
@@ -729,35 +849,43 @@ function buildCriminalSubpillar(profile: MarketProfile): SubpillarSpec {
         {
           question: `How quickly should I call a lawyer after an arrest in ${profile.marketName}?`,
           answer:
-            'Immediately. Early legal strategy can influence condition compliance, evidentiary posture, and negotiation leverage.',
+            `Immediately. Early legal strategy can materially affect condition compliance, evidentiary posture, and negotiation leverage for ${profile.marketName} criminal filings.`,
         },
         {
           question: `Do you handle felony and misdemeanor matters in ${profile.countyContext}?`,
           answer:
-            'Yes. We represent clients across misdemeanor and felony categories, including DUI, violent allegations, theft, and warrant exposure.',
+            `Yes. We represent clients across misdemeanor and felony categories, including DUI, violent allegations, theft, warrant exposure, and probation-risk proceedings tied to ${profile.countyContext}.`,
         },
         {
           question: 'Can a case still be defended after I already gave a statement?',
           answer:
-            'Often yes. Defense strategy depends on full context, procedural issues, and how statements were obtained and documented.',
+            `Often yes. Defense strategy depends on full context, procedure, and how statements were obtained, recorded, and interpreted in relation to the rest of the evidence file.`,
         },
         {
           question: 'What should I bring to the first consultation?',
           answer:
-            'Bring all court and release documents, citations, and any records tied to timeline, witnesses, or communications.',
+            `Bring all court and release documents, citations, timeline notes, witness details, and communication records so strategy can be aligned quickly to ${profile.marketName} deadlines.`,
         },
       ],
       practiceArea: slugPrefix,
       ctaTitle: `Need Criminal Defense in ${profile.marketName}?`,
-      ctaDescription: 'Get immediate guidance on risk, deadlines, and the next best strategic move.',
+      ctaDescription: `Get immediate guidance on risk, deadlines, and the next best strategic move for ${profile.countyContext}.`,
       ctaLabel: 'Start Defense Review',
       ctaName: `${slugPrefix}_bottom_cta`,
+      actionChecklist: [
+        `Confirm hearing dates and release conditions for ${profile.countyContext} before making any new statements.`,
+        `Preserve all records tied to ${profile.corridorContext}, including citations, media, and witness contacts.`,
+        `Avoid broad case discussions outside privileged attorney communication channels.`,
+        `Schedule a strategy review early so dismissal, reduction, and trial options are evaluated in sequence for ${tierContext.hearingPosture}.`,
+      ],
     },
   })
 }
 
 function buildInjurySubpillar(profile: MarketProfile): SubpillarSpec {
   const slugPrefix = `${profile.slug}_personal_injury`
+  const marketTier = getMarketTier(profile)
+  const tierContext = INJURY_TIER_CONTEXT[marketTier]
 
   return createSubpillarSpec({
     metadata: {
@@ -776,42 +904,50 @@ function buildInjurySubpillar(profile: MarketProfile): SubpillarSpec {
       heroVariant: 'injury',
       introTitle: `Injury claims in ${profile.marketName} are won on evidence depth and timing.`,
       introParagraphs: [
-        `${profile.corridorContext} generate serious crash and negligence cases where early claim errors can reduce recoverable value.`,
-        `Kernal & Associates represents ${profile.marketName} clients with a litigation-ready process for liability proof, damages buildout, and insurer pressure management.`,
+        `${profile.corridorContext} generate serious collision and negligence matters where early claim mistakes can reduce recoverable value before treatment and damages are fully documented. In ${profile.marketName}, this usually reflects ${tierContext.claimProfile}.`,
+        `Kernal & Associates represents ${profile.marketName} clients using an evidence-first framework for liability proof, medical chronology, and insurer-pressure response from intake through resolution.`,
+        `In ${profile.countyContext}, we structure claims around provable facts and timeline discipline so adjuster narratives do not outrun the actual evidence record. Documentation design also addresses ${tierContext.documentationRisk}.`,
+        `Because high-severity matters in ${profile.marketName} often involve overlapping medical, employment, and policy issues, strategy is built to protect both near-term stability and long-horizon recovery value.`,
       ],
       focusTitle: `How We Build ${profile.marketName} Injury Cases`,
       focusItems: [
         {
           title: 'Liability Proof Development',
           description:
-            'We construct fault narratives from records and technical context rather than relying on insurer assumptions.',
+            `We construct fault narratives from records, vehicle data, and timeline evidence instead of relying on insurer assumptions. The goal is to present a defensible liability story that holds under negotiation and litigation scrutiny.`,
           bullets: [
-            'Scene and timeline documentation',
-            'Witness and report reconciliation',
-            'Third-party and commercial liability mapping',
+            `Scene and timeline documentation tied to ${profile.corridorContext}`,
+            'Witness, report, and media reconciliation',
+            'Third-party and commercial liability mapping when applicable',
             `${profile.marketName} route-risk context analysis`,
+            `Venue and incident framing aligned to ${profile.countyContext}`,
+            `Comparative market pattern checks using ${profile.nearbyLinks[1].title}`,
           ],
         },
         {
           title: 'Damages and Medical Documentation',
           description:
-            'Claim value is tied to complete proof of treatment progression, economic loss, and long-term impact.',
+            `Claim value depends on complete proof of treatment progression, economic loss, and long-term functional impact. We organize records so damages are substantiated rather than implied.`,
           bullets: [
             'Medical chronology and consistency tracking',
             'Wage-loss and earning-impact records',
-            'Future care and impairment planning',
+            'Future care, impairment, and treatment planning',
             'Out-of-pocket and daily-impact evidence',
+            `Provider communication alignment for ${profile.marketName} claim timing`,
+            'Documentation controls before recorded insurer statements',
           ],
         },
         {
           title: 'Negotiation Strength and Litigation Readiness',
           description:
-            'We negotiate from a trial-capable posture so insurers must value real litigation risk, not assumed settlement pressure.',
+            `We negotiate from a trial-capable posture so carriers must value real litigation risk, not assumed settlement pressure. This helps protect recovery potential when liability, causation, or policy limits are disputed. Positioning is built for ${tierContext.valuationPressure}.`,
           bullets: [
-            'Demand package structure',
+            'Demand package structure with liability and damages integration',
             'Delay and undervaluation response strategy',
-            'Settlement-risk benchmarking',
+            'Settlement-risk benchmarking against litigation posture',
             `${profile.countyContext} litigation path planning`,
+            `Escalation triggers tied to ${profile.injuryContext}`,
+            `Case sequencing that preserves leverage in ${profile.marketName} negotiations`,
           ],
         },
       ],
@@ -822,26 +958,45 @@ function buildInjurySubpillar(profile: MarketProfile): SubpillarSpec {
           step: '01',
           title: 'Case Intake and Evidence Safeguards',
           description:
-            'We secure records, set communication boundaries, and preserve proof before claim narratives lock in.',
+            `We secure records, set communication boundaries, and preserve proof before insurer narratives lock in around incomplete or misleading assumptions.`,
         },
         {
           step: '02',
           title: 'Treatment and Damages Development',
           description:
-            'We align medical progression and financial-loss documentation for complete claim valuation.',
+            `We align treatment progression, provider records, and financial-loss documentation so claim valuation reflects full injury impact rather than partial snapshots.`,
         },
         {
           step: '03',
           title: 'Demand and Negotiation Phase',
           description:
-            'We present a full evidence package and negotiate from a litigation-capable position.',
+            `We present a comprehensive evidence package and negotiate from a litigation-capable position that accounts for disputed fault, policy issues, and recovery timing. The demand sequence is tuned to ${tierContext.valuationPressure}.`,
         },
         {
           step: '04',
           title: 'Litigation When Necessary',
           description:
-            'If pre-suit outcomes remain unreasonable, we move to litigation to pursue full and fair recovery.',
+            `If pre-suit outcomes remain unreasonable, we transition to litigation to pursue full and fair recovery based on documented liability and damages proof.`,
         },
+      ],
+      localContextTitle: `${profile.marketName} Injury Claim Pressure Points`,
+      localContextSubtitle:
+        'Local roadway, insurer, and documentation dynamics that commonly shape injury claim outcomes.',
+      localContextNarrative: [
+        `${profile.marketName} injury claims are usually won or lost on documentation quality in the first stages. We focus on sequencing records, treatment evidence, and communications so liability and damages development stays credible as the claim matures.`,
+        `Where losses involve ${profile.corridorContext}, collision mechanics and timeline proof are often central. We map incident facts to record support early so adjuster framing does not outrun available evidence.`,
+        `In ${profile.countyContext}, claim strategy is built to protect long-range recovery value. That includes policy analysis, medical progression tracking, and escalation planning when negotiation pressure conflicts with provable case value in markets facing ${tierContext.claimProfile}.`,
+        ...(profile.injuryNarrativeAddendum ?? []),
+      ],
+      localContextPoints: [
+        `Liability and causation framing is adapted to incident patterns in ${profile.marketName}, not generic claim templates.`,
+        `Medical and damages buildout is staged to support negotiation, mediation, and litigation transitions without narrative gaps.`,
+        `Policy-limit and coverage pathways are reviewed early when losses involve underinsured or multi-party exposure.`,
+        `Communication controls are used to reduce avoidable misstatements during active insurer pressure windows.`,
+        `Evidence strategy is cross-checked with nearby market behavior through ${profile.nearbyLinks[1].title}.`,
+        `Resolution planning keeps short-term cash pressure from undermining long-term recovery outcomes.`,
+        `Claim architecture explicitly addresses ${tierContext.documentationRisk} to avoid undervaluation based on fragmented records.`,
+        ...(profile.injuryDifferentiators ?? []),
       ],
       relatedTitle: `Related ${profile.marketName} Injury Pages`,
       relatedSubtitle: 'Use these pages to compare local-market and injury-category strategy.',
@@ -879,7 +1034,7 @@ function buildInjurySubpillar(profile: MarketProfile): SubpillarSpec {
         {
           href: '/contact',
           title: 'Request Injury Consultation',
-          description: 'Confidential claim review for urgent injury matters.',
+          description: `Confidential claim review for urgent ${profile.marketName} injury matters and insurer-pressure timelines.`,
           ctaName: `${slugPrefix}_related_contact`,
         },
       ],
@@ -889,29 +1044,35 @@ function buildInjurySubpillar(profile: MarketProfile): SubpillarSpec {
         {
           question: `How soon should I call a lawyer after an accident in ${profile.marketName}?`,
           answer:
-            'Immediately when possible. Early legal guidance helps preserve evidence and avoid insurer communication mistakes.',
+            `Immediately when possible. Early legal guidance helps preserve evidence, control insurer communications, and protect claim value in ${profile.marketName} matters.`,
         },
         {
           question: `Can you handle disputed-fault claims in ${profile.countyContext}?`,
           answer:
-            'Yes. We handle contested liability using structured evidence development and litigation-ready case framing.',
+            `Yes. We handle contested liability using structured evidence development, medical chronology control, and litigation-ready claim framing for ${profile.countyContext}.`,
         },
         {
           question: 'What records should I keep after a serious injury event?',
           answer:
-            'Keep medical records, bills, wage-loss proof, photos, repair estimates, and all insurer communications.',
+            'Keep medical records, bills, wage-loss proof, photos, repair estimates, and all insurer communications so liability and damages can be documented clearly.',
         },
         {
           question: 'Do you handle catastrophic and wrongful death matters?',
           answer:
-            'Yes. We represent high-severity injury and fatal-loss cases with long-horizon damages strategy.',
+            `Yes. We represent high-severity injury and fatal-loss cases with long-horizon damages strategy and litigation-capable case development.`,
         },
       ],
       practiceArea: slugPrefix,
       ctaTitle: `Need Injury Representation in ${profile.marketName}?`,
-      ctaDescription: 'Start with a focused legal review before insurer pressure narrows your options.',
+      ctaDescription: `Start with a focused legal review before insurer pressure narrows your options in ${profile.countyContext}.`,
       ctaLabel: 'Start Injury Case Review',
       ctaName: `${slugPrefix}_bottom_cta`,
+      actionChecklist: [
+        `Preserve records tied to ${profile.corridorContext}, including reports, photos, witness contacts, and timeline notes.`,
+        'Follow treatment plans consistently and keep all provider documentation in one chronology.',
+        'Avoid recorded insurer narratives until legal strategy and evidence sequencing are defined.',
+        `Request claim review early so valuation planning reflects full damages exposure in ${profile.marketName} under ${tierContext.valuationPressure}.`,
+      ],
     },
   })
 }

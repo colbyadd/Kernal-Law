@@ -6,7 +6,7 @@ export function Footer() {
         <footer className="py-12 bg-iron-950 border-t border-silver-500/10 text-center md:text-left">
             <div className="container mx-auto px-6 grid md:grid-cols-4 gap-8">
                 <div className="col-span-1 md:col-span-2">
-                    <h4 className="font-serif text-xl text-white mb-4">KERNAL <span className="text-silver-500 text-base italic">&</span> ASSOCIATES</h4>
+                    <h2 className="font-serif text-xl text-white mb-4">KERNAL <span className="text-silver-500 text-base italic">&</span> ASSOCIATES</h2>
                     <p className="text-silver-500 text-sm mb-6">
                         <a href="https://www.google.com/maps/search/?api=1&query=1332+SW+89th+Street+Oklahoma+City+OK+73159" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                             1332 SW 89th Street<br />Oklahoma City, OK 73159
@@ -21,21 +21,19 @@ export function Footer() {
                     </div>
                 </div>
                 <div>
-                    <h5 className="text-white uppercase tracking-widest text-xs mb-4">Practice Areas</h5>
+                    <h3 className="text-white uppercase tracking-widest text-xs mb-4">Practice Areas</h3>
                     <p className="text-silver-500 text-sm mb-2"><Link href="/criminal-defense" data-cta="footer_criminal_defense" className="hover:text-white transition-colors">Criminal Defense</Link></p>
                     <p className="text-silver-500 text-sm mb-2"><Link href="/personal-injury" data-cta="footer_personal_injury" className="hover:text-white transition-colors">Personal Injury</Link></p>
                     <p className="text-silver-500 text-sm mb-2"><Link href="/resources" data-cta="footer_resources" className="hover:text-white transition-colors">Legal Resources</Link></p>
                 </div>
                 <div className="md:col-start-4">
-                    <h5 className="text-white uppercase tracking-widest text-xs mb-4">Contact</h5>
+                    <h3 className="text-white uppercase tracking-widest text-xs mb-4">Contact</h3>
                     <p className="text-silver-500 text-sm mb-2"><a href="tel:4053640601" className="hover:text-white">405.364.0601</a></p>
                     <p className="text-silver-500 text-sm"><a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-white">{CONTACT_EMAIL}</a></p>
-                    <p className="text-silver-500 text-sm mt-3">
-                        <Link href="/oklahoma-city" data-cta="footer_oklahoma_city" className="hover:text-white">Oklahoma City</Link>
-                    </p>
-                    <p className="text-silver-500 text-sm">
-                        <Link href="/norman" data-cta="footer_norman" className="hover:text-white">Norman</Link>
-                    </p>
+                    <div className="text-silver-500 text-sm mt-3 flex flex-col items-center md:items-start">
+                        <Link href="/oklahoma-city" data-cta="footer_oklahoma_city" className="hover:text-white block py-2">Oklahoma City</Link>
+                        <Link href="/norman" data-cta="footer_norman" className="hover:text-white block py-2">Norman</Link>
+                    </div>
                 </div>
             </div>
         </footer>

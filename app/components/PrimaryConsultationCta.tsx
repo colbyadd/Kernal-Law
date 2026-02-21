@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { getOrCreateCtaVariant, type CtaVariant } from '@/lib/cro'
 
 interface PrimaryConsultationCtaProps {
@@ -21,14 +21,13 @@ export function PrimaryConsultationCta({
   href = '/contact',
   labelClassName,
 }: PrimaryConsultationCtaProps) {
-  const [variant] = useState<CtaVariant>(() => {
-    if (typeof window === 'undefined') {
-      return 'control'
-    }
+  const [variant, setVariant] = useState<CtaVariant>('control')
 
+  useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search)
-    return getOrCreateCtaVariant(searchParams)
-  })
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setVariant(getOrCreateCtaVariant(searchParams))
+  }, [])
 
   return (
     <Link

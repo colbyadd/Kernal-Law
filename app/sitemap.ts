@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next'
 import { BASE_URL, DEFAULT_LAST_MODIFIED } from '@/lib/constants'
 import { ALL_STANDARD_SUBPILLAR_MARKETS, getAllMarketSlugs } from '@/lib/content/city-subpillars'
+import { resolveSitemapLastModified } from '@/lib/sitemap-lastmod'
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = BASE_URL
@@ -120,7 +121,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     return dedupedRoutes.map((route) => ({
         url: `${baseUrl}${route.path}`,
-        lastModified: route.lastModified ? new Date(route.lastModified) : defaultLastModified,
+        lastModified: resolveSitemapLastModified(
+            route.path,
+            route.lastModified ? new Date(route.lastModified) : defaultLastModified,
+        ),
         changeFrequency: route.changeFrequency,
         priority: route.priority,
     }))

@@ -28,6 +28,13 @@ function parseLocUrls(sitemapXml) {
   return Array.from(sitemapXml.matchAll(/<loc>(.*?)<\/loc>/g), (match) => match[1])
 }
 
+function normalizeRoute(route) {
+  if (!route || route === '/') {
+    return '/'
+  }
+  return route.endsWith('/') ? route.slice(0, -1) : route
+}
+
 function routeToHtmlPath(route) {
   if (route === '/') {
     return '.next/server/app/index.html'
@@ -66,6 +73,77 @@ function htmlToDuplicationTokens(html) {
     .filter((word) => word.length > 2 && !DUPLICATE_TOKEN_STOP_WORDS.has(word))
 }
 
+function isRenderedRedirect(html) {
+  return /NEXT_REDIRECT;|http-equiv="refresh"/i.test(html)
+}
+
+function listRenderedHtmlRoutes() {
+  const appServerDir = path.join(rootDir, '.next/server/app')
+  const routes = []
+
+  function walk(currentDir) {
+    const entries = fs.readdirSync(currentDir, { withFileTypes: true })
+    for (const entry of entries) {
+      const fullPath = path.join(currentDir, entry.name)
+      if (entry.isDirectory()) {
+        walk(fullPath)
+        continue
+      }
+      if (!entry.isFile() || !entry.name.endsWith('.html')) {
+        continue
+      }
+
+      const relativePath = path.relative(appServerDir, fullPath).split(path.sep).join('/')
+      const withoutExtension = relativePath.slice(0, -'.html'.length)
+      const route = normalizeRoute(withoutExtension === 'index' ? '/' : `/${withoutExtension}`)
+      const firstSegment = route.split('/')[1] ?? ''
+      if (firstSegment.startsWith('_')) {
+        continue
+      }
+
+      routes.push(route)
+    }
+  }
+
+  walk(appServerDir)
+  return routes
+}
+
+function validateIndexableRoutesCoveredBySitemap(sitemapRoutes) {
+  const renderedRoutes = listRenderedHtmlRoutes()
+  const sitemapRouteSet = new Set(sitemapRoutes.map(normalizeRoute))
+  const missingRoutes = []
+
+  for (const route of renderedRoutes) {
+    const htmlPath = routeToHtmlPath(route)
+    if (!fileExists(htmlPath)) {
+      continue
+    }
+
+    const html = readFile(htmlPath)
+    if (isRenderedRedirect(html)) {
+      continue
+    }
+
+    const robots = extractMeta(html, /<meta[^>]+name="robots"[^>]+content="([^"]+)"/i)
+    const isNoindex = /noindex/i.test(robots)
+
+    if (isNoindex || NOINDEX_ROUTES.has(route)) {
+      continue
+    }
+
+    if (!sitemapRouteSet.has(route)) {
+      missingRoutes.push(route)
+    }
+  }
+
+  if (missingRoutes.length > 0) {
+    errors.push(
+      `Indexable routes missing from sitemap: ${missingRoutes.sort((a, b) => a.localeCompare(b)).join(', ')}`,
+    )
+  }
+}
+
 function validateSitemapIntegrity() {
   const sitemapPath = '.next/server/app/sitemap.xml.body'
   if (!fileExists(sitemapPath)) {
@@ -87,7 +165,7 @@ function validateSitemapIntegrity() {
     errors.push(`Sitemap contains duplicate URLs: ${duplicates.join(', ')}`)
   }
 
-  const routes = [...uniqueUrls].map((url) => new URL(url).pathname)
+  const routes = [...uniqueUrls].map((url) => normalizeRoute(new URL(url).pathname))
 
   for (const route of routes) {
     if (NOINDEX_ROUTES.has(route)) {
@@ -118,6 +196,7 @@ function validateSitemapIntegrity() {
     }
   }
 
+  validateIndexableRoutesCoveredBySitemap(routes)
   validateOpenGraphUniqueness(routes)
   validateMarketSubpillarUniqueness(routes)
 }

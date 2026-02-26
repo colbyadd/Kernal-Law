@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/private/', '/__forms.html', '/form-setup.html'],
+      disallow: ['/private', '/private/', '/__forms.html', '/form-setup.html'],
     },
     host: CANONICAL_HOST,
     sitemap: `${BASE_URL}/sitemap.xml`,

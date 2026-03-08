@@ -173,7 +173,7 @@ export function ResourceGuidePage({
       <section className="py-12 md:py-16 border-y border-silver-500/10 bg-iron-900/25">
         <div className="container mx-auto px-6">
           <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-10">
-            <div className="space-y-10">
+            <div className="min-w-0 space-y-10">
               <div className="lg:hidden border border-silver-500/20 bg-iron-900/75 p-4">
                 <p className="text-[11px] uppercase tracking-[0.2em] text-silver-500">On This Page</p>
                 <nav aria-label="Guide sections" className="mt-3">

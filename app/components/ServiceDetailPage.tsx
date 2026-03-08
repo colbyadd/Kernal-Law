@@ -205,17 +205,17 @@ export function ServiceDetailPage({
   const defaultChecklist: [string, string, string, string] =
     heroVariant === 'criminal'
       ? [
-          'Do not discuss facts of your case with anyone except your lawyer.',
-          'Gather all citations, bond paperwork, and court notices in one place.',
-          'Follow release conditions exactly to avoid compounding exposure.',
-          'Schedule legal strategy review before your next hearing date.',
-        ]
+        'Do not discuss facts of your case with anyone except your lawyer.',
+        'Gather all citations, bond paperwork, and court notices in one place.',
+        'Follow release conditions exactly to avoid compounding exposure.',
+        'Schedule legal strategy review before your next hearing date.',
+      ]
       : [
-          'Preserve photos, records, and witness information from the incident.',
-          'Track treatment, symptoms, and expenses in a single chronology.',
-          'Avoid recorded insurer statements before legal strategy review.',
-          'Start claim evaluation before deadlines and valuation pressure increase.',
-        ]
+        'Preserve photos, records, and witness information from the incident.',
+        'Track treatment, symptoms, and expenses in a single chronology.',
+        'Avoid recorded insurer statements before legal strategy review.',
+        'Start claim evaluation before deadlines and valuation pressure increase.',
+      ]
 
   const checklistItems = actionChecklist ?? defaultChecklist
   const relatedItems = withRelatedFallbacks(relatedLinks, heroVariant)
@@ -243,7 +243,7 @@ export function ServiceDetailPage({
       <section className="py-12 md:py-16 border-y border-silver-500/10 bg-iron-900/25">
         <div className="container mx-auto px-6">
           <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-10">
-            <div className="space-y-6 md:space-y-8">
+            <div className="min-w-0 space-y-6 md:space-y-8">
               <div className="lg:hidden border border-silver-500/20 bg-iron-900/75 p-4">
                 <p className="text-[11px] uppercase tracking-[0.2em] text-silver-500">On This Page</p>
                 <nav aria-label="On this page" className="mt-3">

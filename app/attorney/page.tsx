@@ -146,7 +146,7 @@ export default function AttorneyPage() {
       <section className="py-12 md:py-16 border-y border-silver-500/10 bg-iron-900/25">
         <div className="container mx-auto px-6">
           <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-10">
-            <div className="space-y-6 md:space-y-8">
+            <div className="min-w-0 space-y-6 md:space-y-8">
               <div className="lg:hidden border border-silver-500/20 bg-iron-900/75 p-4">
                 <p className="text-[11px] uppercase tracking-[0.2em] text-silver-500">On This Page</p>
                 <nav aria-label="On this page" className="mt-3">
@@ -169,7 +169,7 @@ export default function AttorneyPage() {
               </div>
 
               <section id="profile-overview" className="scroll-mt-28 bg-iron-900 border border-silver-500/10 p-6 md:p-8">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10">
                   <div className="lg:col-span-4 space-y-10">
                     <div className="relative aspect-[3/4] w-full overflow-hidden grayscale contrast-[1.08] brightness-[0.92] hover:grayscale-0 transition-all duration-700">
                       <Image

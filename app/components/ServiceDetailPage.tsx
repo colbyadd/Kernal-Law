@@ -4,6 +4,7 @@ import { PageHero } from './PageHero'
 import { FaqSection } from './FaqSection'
 import { LinkGridItem, LinkGridSection } from './LinkGridSection'
 import { MobileConversionBar } from './MobileConversionBar'
+import { ServicePageJsonLd } from './ServicePageJsonLd'
 import { TrustProofSection } from './TrustProofSection'
 
 export interface FocusItem {
@@ -221,6 +222,7 @@ export function ServiceDetailPage({
 
   return (
     <main className="bg-iron-950 min-h-screen">
+      <ServicePageJsonLd description={heroSubtitle} variant={heroVariant} />
       <PageHero title={heroTitle} subtitle={heroSubtitle} variant={heroVariant} />
       <MobileConversionBar
         context={practiceArea}
@@ -272,7 +274,7 @@ export function ServiceDetailPage({
                 </div>
                 <div className="pt-8 flex flex-col sm:flex-row gap-4">
                   <Link
-                    href="/contact"
+                    href={ctaHref}
                     data-cta={`${practiceArea}_intro_contact`}
                     className="inline-flex items-center justify-center px-8 py-4 bg-white text-iron-950 font-bold uppercase tracking-widest hover:bg-silver-100 transition-colors"
                   >

@@ -6,17 +6,18 @@ import { LinkGridSection } from '../components/LinkGridSection'
 import { MobileConversionBar } from '../components/MobileConversionBar'
 import { PrimaryConsultationCta } from '../components/PrimaryConsultationCta'
 import { QuickPathSection } from '../components/QuickPathSection'
+import { ServicePageJsonLd } from '../components/ServicePageJsonLd'
 import { TrustProofSection } from '../components/TrustProofSection'
 
 export const metadata: Metadata = {
-  title: 'Criminal Defense Attorney in Oklahoma',
+  title: 'Oklahoma Criminal Defense Lawyer',
   description:
-    'Aggressive Oklahoma criminal defense for DUI, drug charges, violent crimes, and felony cases. Free consultation with Kernal & Associates.',
+    'Kernal & Associates defends Oklahoma clients facing DUI, felony, drug, domestic violence, warrant, and probation cases with trial-ready criminal defense strategy.',
   alternates: { canonical: '/criminal-defense' },
   openGraph: {
-    title: 'Oklahoma Criminal Defense Attorney | Kernal & Associates',
+    title: 'Oklahoma Criminal Defense Lawyer | Kernal & Associates',
     description:
-      'Courtroom-ready defense for serious criminal charges in Oklahoma. DUI, drug charges, felonies, and trial representation.',
+      'Trial-ready Oklahoma criminal defense for DUI, felony, drug, warrant, domestic violence, and probation cases.',
     url: 'https://kernallaw.com/criminal-defense',
   },
 }
@@ -82,6 +83,29 @@ const takeaways = [
   'Trial-ready preparation improves negotiation outcomes even when a case resolves pretrial.',
 ]
 
+const oklahomaCriminalSignals = [
+  {
+    title: 'DUI and Traffic-Stop Cases',
+    description:
+      'Oklahoma DUI and drug cases often turn on stop legality, field testing, chemical-test procedure, and the timing of DPS-related license consequences.',
+  },
+  {
+    title: 'Felony and Violent-Charge Defense',
+    description:
+      'High-exposure felony files need early witness review, mitigation planning, and courtroom posture that is credible at preliminary-hearing and trial stages.',
+  },
+  {
+    title: 'Warrants, Bond, and Probation Risk',
+    description:
+      'Many Oklahoma defense problems escalate because of unresolved warrants, release-condition issues, or probation allegations that were not addressed early enough.',
+  },
+  {
+    title: 'Long-Term Record Protection',
+    description:
+      'The right defense strategy should account for employment, licensing, immigration, expungement eligibility, and the downstream cost of any plea decision.',
+  },
+]
+
 const relatedLinks = [
   {
     href: '/criminal-defense/sex-crimes',
@@ -144,6 +168,10 @@ const relatedLinks = [
 export default function CriminalDefenseHubPage() {
   return (
     <main className="bg-iron-950 min-h-screen">
+      <ServicePageJsonLd
+        description="Trial-ready Oklahoma criminal defense for DUI, felony, drug, warrant, domestic violence, and probation cases."
+        variant="criminal"
+      />
       <PageHero
         title="Criminal Defense"
         subtitle="Trial-ready defense for Oklahoma misdemeanors and felonies."
@@ -244,6 +272,32 @@ export default function CriminalDefenseHubPage() {
         ctaPrefix="criminal_hub"
         context="criminal"
       />
+
+      <section className="py-12 md:py-16 border-b border-silver-500/10 bg-iron-900/30">
+        <div className="container mx-auto px-6">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="font-serif text-3xl md:text-4xl text-white mb-3">
+              Oklahoma Criminal Defense Problems We Solve
+            </h2>
+            <p className="text-silver-400 mb-8 max-w-3xl">
+              Search intent in this practice area is usually tied to a specific charge, a specific deadline,
+              or a specific risk outside the courtroom. These are the pressure points our defense pages are
+              built to answer.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {oklahomaCriminalSignals.map((item) => (
+                <article
+                  key={item.title}
+                  className="bg-iron-900 border border-silver-500/15 p-6 hover:border-accent-gold/35 transition-colors"
+                >
+                  <h3 className="font-serif text-2xl text-white mb-3">{item.title}</h3>
+                  <p className="text-silver-400 leading-relaxed">{item.description}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
       <LinkGridSection
         title="Criminal Defense Services"

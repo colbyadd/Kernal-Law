@@ -9,7 +9,16 @@ import { TestimonialsSection } from "./components/TestimonialsSection";
 import Link from 'next/link';
 
 export const metadata: Metadata = {
+  title: 'Oklahoma Criminal Defense Lawyer & Personal Injury Attorney',
+  description:
+    'Kernal & Associates helps Oklahoma clients with criminal defense and personal injury matters, including DUI, felony charges, car accidents, truck accidents, and wrongful death claims.',
   alternates: { canonical: '/' },
+  openGraph: {
+    title: 'Oklahoma Criminal Defense Lawyer & Personal Injury Attorney | Kernal & Associates',
+    description:
+      'Oklahoma legal representation for serious criminal charges and injury claims, with direct attorney strategy for DUI, warrants, car accidents, truck accidents, and severe losses.',
+    url: 'https://kernallaw.com',
+  },
 }
 
 const processSteps = [

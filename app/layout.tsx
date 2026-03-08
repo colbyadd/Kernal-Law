@@ -41,11 +41,11 @@ if (bingSiteVerification) {
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "Kernal & Associates | Oklahoma Criminal Defense & Personal Injury",
+    default: "Kernal & Associates | Oklahoma Criminal Defense Lawyer & Personal Injury Attorney",
     template: "%s | Kernal & Associates"
   },
-  description: "When your freedom is on the line. Todd Kernal is a 25+ year veteran criminal defense attorney in Oklahoma City. Serious defense for serious charges.",
-  keywords: ["Criminal Defense Attorney Oklahoma City", "DUI Lawyer OKC", "Personal Injury Attorney Oklahoma", "Todd Kernal", "Kernal Law"],
+  description:
+    "Kernal & Associates represents Oklahoma clients in criminal defense and personal injury matters, including DUI, drug charges, warrants, car accidents, truck accidents, and wrongful death claims.",
   authors: [{ name: "Todd Kernal" }],
   creator: "Kernal & Associates",
   publisher: "Kernal & Associates",
@@ -57,8 +57,9 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "Kernal & Associates | Criminal Defense & Personal Injury",
-    description: "Uncompromising defense for criminal charges and personal injury cases in Oklahoma. 25+ years of experience.",
+    title: "Kernal & Associates | Oklahoma Criminal Defense & Personal Injury",
+    description:
+      "Oklahoma criminal defense and personal injury representation for DUI, felony, warrant, car accident, truck accident, and wrongful death cases.",
     url: baseUrl,
     siteName: "Kernal & Associates",
     locale: "en_US",
@@ -71,6 +72,13 @@ export const metadata: Metadata = {
         alt: "Todd Kernal - Kernal & Associates",
       },
     ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Kernal & Associates | Oklahoma Criminal Defense & Personal Injury',
+    description:
+      'Oklahoma criminal defense and personal injury representation for DUI, felony, warrant, car accident, truck accident, and wrongful death matters.',
+    images: ['/images/todd-kernal-lhl.jpg'],
   },
   robots: {
     index: true,

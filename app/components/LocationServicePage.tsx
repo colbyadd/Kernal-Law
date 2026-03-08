@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { BASE_URL } from '@/lib/constants'
+import { buildContactPointSchema } from '@/lib/schema/builders'
 import { BreadcrumbTrail } from './BreadcrumbTrail'
 import { PageHero } from './PageHero'
 import { FaqSection } from './FaqSection'
@@ -62,24 +63,60 @@ export function LocationServicePage({
     { href: '#location-contact', label: 'Contact' },
   ] as const
 
+  const isCountyPage = locationName.includes('County')
+  const contactPoint = buildContactPointSchema()
   const legalServiceSchema = {
     '@context': 'https://schema.org',
     '@type': 'LegalService',
     '@id': `${BASE_URL}${canonicalPath}#legal-service`,
-    name: `Kernal & Associates ${locationName} Legal Services`,
+    name: `${locationName} Criminal Defense and Personal Injury Attorney`,
     description: subtitle,
     url: `${BASE_URL}${canonicalPath}`,
     provider: { '@id': `${BASE_URL}/#organization` },
     areaServed: [
-      { '@type': 'City', name: locationName },
-      { '@type': 'AdministrativeArea', name: countyFocus },
+      {
+        '@type': isCountyPage ? 'AdministrativeArea' : 'City',
+        name: locationName,
+        containedInPlace: { '@type': 'State', name: 'Oklahoma' },
+      },
+      { '@type': 'State', name: 'Oklahoma' },
     ],
-    serviceType: serviceLinks.map((service) => service.title),
+    serviceType: 'Criminal Defense and Personal Injury',
+    knowsAbout: [
+      'Criminal Defense',
+      'Personal Injury',
+      ...serviceLinks.slice(0, 6).map((service) => service.title),
+    ],
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: `${locationName} Legal Services`,
+      itemListElement: serviceLinks.map((service) => ({
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          '@id': `${BASE_URL}${service.href}#service`,
+          name: service.title,
+          description: service.description,
+          serviceType: service.title,
+          url: `${BASE_URL}${service.href}`,
+          provider: { '@id': `${BASE_URL}/#organization` },
+          areaServed: [
+            {
+              '@type': isCountyPage ? 'AdministrativeArea' : 'City',
+              name: locationName,
+              containedInPlace: { '@type': 'State', name: 'Oklahoma' },
+            },
+            { '@type': 'State', name: 'Oklahoma' },
+          ],
+        },
+      })),
+    },
     availableChannel: {
       '@type': 'ServiceChannel',
       serviceUrl: `${BASE_URL}/contact`,
-      servicePhone: '+1-405-364-0601',
+      availableLanguage: ['English'],
     },
+    contactPoint,
   }
 
   return (
@@ -88,7 +125,10 @@ export function LocationServicePage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(legalServiceSchema) }}
       />
-      <PageHero title={`${locationName} Attorney`} subtitle={subtitle} />
+      <PageHero
+        title={`${locationName} Criminal Defense & Personal Injury Attorney`}
+        subtitle={subtitle}
+      />
       <MobileConversionBar
         context={ctaName}
         primaryHref="/contact"
@@ -225,8 +265,8 @@ export function LocationServicePage({
 
       <div id="location-nearby">
         <LinkGridSection
-          title="Nearby Service Areas"
-          subtitle="Review nearby location pages and related legal resources."
+          title="Related Service Areas and Oklahoma Guides"
+          subtitle="Compare nearby market pages and action-focused legal resources."
           items={relatedLocationLinks}
           columns="three"
         />

@@ -1,9 +1,21 @@
 import { CONTACT_EMAIL } from '@/lib/contact'
-import { ALL_STANDARD_SUBPILLAR_MARKETS, getMarketDisplayName, type MarketSlug } from '@/lib/content/city-subpillars'
+import {
+  ALL_STANDARD_SUBPILLAR_MARKETS,
+  getMarketDisplayName,
+  getMarketType,
+  type MarketSlug,
+} from '@/lib/content/city-subpillars'
 
 interface FaqItem {
   question: string
   answer: string
+}
+
+interface ServicePageSchemaInput {
+  pathname: string
+  baseUrl: string
+  description: string
+  variant: 'criminal' | 'injury'
 }
 
 const PAGE_NAMES: Record<string, string> = {
@@ -168,6 +180,143 @@ export function getPageName(pathname: string): string {
   return 'Kernal & Associates'
 }
 
+const OKLAHOMA_AREA = {
+  '@type': 'State',
+  name: 'Oklahoma',
+} as const
+
+const SERVICE_TYPE_OVERRIDES: Record<string, string> = {
+  'criminal-defense': 'Criminal Defense',
+  'personal-injury': 'Personal Injury',
+  'dui-dwi': 'DUI / DWI Defense',
+  'drug-charges': 'Drug Charges Defense',
+  'domestic-violence': 'Domestic Violence Defense',
+  'assault-battery': 'Assault and Battery Defense',
+  'sex-crimes': 'Sex Crimes Defense',
+  'theft-fraud': 'Theft and Fraud Defense',
+  expungement: 'Expungement Services',
+  'probation-violation': 'Probation Violation Defense',
+  warrants: 'Warrants Defense',
+  'car-accidents': 'Car Accident Claims',
+  'truck-accidents': 'Truck Accident Litigation',
+  'oil-field-injuries': 'Oil Field Injury Claims',
+  'wrongful-death': 'Wrongful Death Claims',
+  'motorcycle-accidents': 'Motorcycle Accident Claims',
+  'catastrophic-injury': 'Catastrophic Injury Claims',
+  'slip-and-fall': 'Slip and Fall Claims',
+  'uninsured-motorist': 'Uninsured Motorist Claims',
+}
+
+const SERVICE_CATALOG_BY_VARIANT = {
+  criminal: [
+    { href: '/criminal-defense/dui-dwi', name: 'DUI / DWI Defense' },
+    { href: '/criminal-defense/drug-charges', name: 'Drug Charges Defense' },
+    { href: '/criminal-defense/domestic-violence', name: 'Domestic Violence Defense' },
+    { href: '/criminal-defense/sex-crimes', name: 'Sex Crimes Defense' },
+    { href: '/criminal-defense/warrants', name: 'Warrants Defense' },
+    { href: '/criminal-defense/expungement', name: 'Expungement Services' },
+  ],
+  injury: [
+    { href: '/personal-injury/car-accidents', name: 'Car Accident Claims' },
+    { href: '/personal-injury/truck-accidents', name: 'Truck Accident Litigation' },
+    { href: '/personal-injury/oil-field-injuries', name: 'Oil Field Injury Claims' },
+    { href: '/personal-injury/wrongful-death', name: 'Wrongful Death Claims' },
+    { href: '/personal-injury/catastrophic-injury', name: 'Catastrophic Injury Claims' },
+    { href: '/personal-injury/uninsured-motorist', name: 'Uninsured Motorist Claims' },
+  ],
+} as const
+
+export function buildContactPointSchema() {
+  return {
+    '@type': 'ContactPoint',
+    telephone: '+1-405-364-0601',
+    email: CONTACT_EMAIL,
+    contactType: 'customer service',
+    areaServed: OKLAHOMA_AREA,
+    availableLanguage: ['English'],
+  }
+}
+
+function buildServiceCatalog(baseUrl: string, variant: 'criminal' | 'injury') {
+  return {
+    '@type': 'OfferCatalog',
+    name: variant === 'criminal' ? 'Oklahoma Criminal Defense Services' : 'Oklahoma Personal Injury Services',
+    itemListElement: SERVICE_CATALOG_BY_VARIANT[variant].map((service) => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        '@id': `${baseUrl}${service.href}#service`,
+        name: service.name,
+        serviceType: service.name,
+        url: `${baseUrl}${service.href}`,
+        provider: { '@id': `${baseUrl}/#organization` },
+        areaServed: OKLAHOMA_AREA,
+      },
+    })),
+  }
+}
+
+function extractMarketSlug(pathname: string) {
+  const marketMatch = pathname.match(/^\/([^/]+)\/(criminal-defense|personal-injury)$/)
+
+  if (!marketMatch) {
+    return null
+  }
+
+  const marketSlug = marketMatch[1]
+  if (!(ALL_STANDARD_SUBPILLAR_MARKETS as readonly string[]).includes(marketSlug)) {
+    return null
+  }
+
+  return marketSlug as MarketSlug
+}
+
+function buildAreaServed(pathname: string) {
+  const marketSlug = extractMarketSlug(pathname)
+
+  if (!marketSlug) {
+    return [OKLAHOMA_AREA]
+  }
+
+  const marketName = getMarketDisplayName(marketSlug)
+  const marketType = getMarketType(marketSlug)
+
+  return [
+    {
+      '@type': marketType === 'county' ? 'AdministrativeArea' : 'City',
+      name: marketName,
+      containedInPlace: OKLAHOMA_AREA,
+    },
+    OKLAHOMA_AREA,
+  ]
+}
+
+function getServiceType(pathname: string, variant: 'criminal' | 'injury') {
+  if (pathname === '/criminal-defense') {
+    return 'Criminal Defense'
+  }
+
+  if (pathname === '/personal-injury') {
+    return 'Personal Injury'
+  }
+
+  const segments = pathname.split('/').filter(Boolean)
+  const lastSegment = segments[segments.length - 1]
+
+  if (!lastSegment) {
+    return variant === 'criminal' ? 'Criminal Defense' : 'Personal Injury'
+  }
+
+  if (
+    segments.length === 2 &&
+    (lastSegment === 'criminal-defense' || lastSegment === 'personal-injury')
+  ) {
+    return SERVICE_TYPE_OVERRIDES[lastSegment]
+  }
+
+  return SERVICE_TYPE_OVERRIDES[lastSegment] ?? humanizeSlug(lastSegment)
+}
+
 export function buildOrganizationSchema(baseUrl: string) {
   return {
     '@context': 'https://schema.org',
@@ -176,11 +325,12 @@ export function buildOrganizationSchema(baseUrl: string) {
     name: 'Kernal & Associates',
     legalName: 'Kernal & Associates',
     description:
-      'Oklahoma criminal defense and personal injury law firm with 25+ years of trial experience. Aggressive representation for felonies, DUI, drug charges, car accidents, and oil field injuries.',
+      'Oklahoma criminal defense and personal injury law firm with 25+ years of trial experience handling DUI, drug charges, warrants, car accidents, truck accidents, oil field injuries, and wrongful death claims.',
     image: `${baseUrl}/images/todd-kernal-lhl.jpg`,
     url: baseUrl,
     telephone: '+1-405-364-0601',
     email: CONTACT_EMAIL,
+    contactPoint: buildContactPointSchema(),
     foundingDate: '1999',
     address: {
       '@type': 'PostalAddress',
@@ -254,40 +404,21 @@ export function buildOrganizationSchema(baseUrl: string) {
       'Violent Crimes',
       'Oil Field Injuries',
       'Car Accidents',
+      'Truck Accidents',
       'Wrongful Death',
       'Felony Defense',
       'Expungements',
+      'Warrants Defense',
+      'Probation Violations',
+      'Catastrophic Injury Claims',
+      'Uninsured Motorist Claims',
     ],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Legal Services',
       itemListElement: [
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            '@id': `${baseUrl}/criminal-defense/#service`,
-            name: 'Criminal Defense',
-            description:
-              'Aggressive defense against felonies, DUI, drug charges, violent crimes, and property offenses in Oklahoma. Trial-ready representation.',
-            provider: { '@id': `${baseUrl}/#organization` },
-            areaServed: { '@type': 'State', name: 'Oklahoma' },
-            serviceType: 'Criminal Defense Law',
-          },
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            '@id': `${baseUrl}/personal-injury/#service`,
-            name: 'Personal Injury',
-            description:
-              'Maximum compensation for car accidents, oil field injuries, wrongful death, and catastrophic injury claims. No fee unless we win.',
-            provider: { '@id': `${baseUrl}/#organization` },
-            areaServed: { '@type': 'State', name: 'Oklahoma' },
-            serviceType: 'Personal Injury Law',
-          },
-        },
+        ...buildServiceCatalog(baseUrl, 'criminal').itemListElement,
+        ...buildServiceCatalog(baseUrl, 'injury').itemListElement,
       ],
     },
     sameAs: ['https://www.facebook.com/kernallaw', 'https://maps.app.goo.gl/2mfQkJVZkpGrdVXP6'],
@@ -321,6 +452,42 @@ export function buildWebPageSchema(pathname: string, baseUrl: string) {
     about: { '@id': `${baseUrl}/#organization` },
     inLanguage: 'en-US',
   }
+}
+
+export function buildServicePageSchema({
+  pathname,
+  baseUrl,
+  description,
+  variant,
+}: ServicePageSchemaInput) {
+  const currentUrl = pathname === '/' ? baseUrl : `${baseUrl}${pathname}`
+  const schema: Record<string, unknown> = {
+    '@context': 'https://schema.org',
+    '@type': 'LegalService',
+    '@id': `${currentUrl}#legal-service`,
+    name: getPageName(pathname),
+    description,
+    url: currentUrl,
+    provider: { '@id': `${baseUrl}/#organization` },
+    areaServed: buildAreaServed(pathname),
+    serviceType: getServiceType(pathname, variant),
+    knowsAbout:
+      variant === 'criminal'
+        ? ['Criminal Defense', 'DUI / DWI Defense', 'Felony Defense', 'Warrants Defense', 'Expungement']
+        : ['Personal Injury', 'Car Accident Claims', 'Truck Accident Litigation', 'Wrongful Death Claims', 'UM/UIM Claims'],
+    availableChannel: {
+      '@type': 'ServiceChannel',
+      serviceUrl: `${baseUrl}/contact`,
+      availableLanguage: ['English'],
+    },
+    contactPoint: buildContactPointSchema(),
+  }
+
+  if (pathname === '/criminal-defense' || pathname === '/personal-injury') {
+    schema.hasOfferCatalog = buildServiceCatalog(baseUrl, variant)
+  }
+
+  return schema
 }
 
 export function buildBreadcrumbSchema(pathname: string, baseUrl: string) {

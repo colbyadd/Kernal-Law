@@ -6,17 +6,18 @@ import { LinkGridSection } from '../components/LinkGridSection'
 import { MobileConversionBar } from '../components/MobileConversionBar'
 import { PrimaryConsultationCta } from '../components/PrimaryConsultationCta'
 import { QuickPathSection } from '../components/QuickPathSection'
+import { ServicePageJsonLd } from '../components/ServicePageJsonLd'
 import { TrustProofSection } from '../components/TrustProofSection'
 
 export const metadata: Metadata = {
-  title: 'Personal Injury Attorney in Oklahoma',
+  title: 'Oklahoma Personal Injury Lawyer',
   description:
-    'Oklahoma personal injury representation for car crashes, trucking collisions, and catastrophic injuries. No fee unless we recover compensation.',
+    'Kernal & Associates handles Oklahoma personal injury claims involving car accidents, truck wrecks, oil field injuries, catastrophic injuries, wrongful death, and uninsured motorist disputes.',
   alternates: { canonical: '/personal-injury' },
   openGraph: {
-    title: 'Oklahoma Personal Injury Attorney | Kernal & Associates',
+    title: 'Oklahoma Personal Injury Lawyer | Kernal & Associates',
     description:
-      'Pursuing full compensation after serious accidents in Oklahoma. Car crashes, truck accidents, wrongful death, and severe injury claims.',
+      'Oklahoma personal injury representation for car accidents, truck wrecks, catastrophic losses, wrongful death, and UM/UIM claim disputes.',
     url: 'https://kernallaw.com/personal-injury',
   },
 }
@@ -82,6 +83,29 @@ const takeaways = [
   'Serious injury claims require long-horizon planning, not rushed settlement timing.',
 ]
 
+const oklahomaInjurySignals = [
+  {
+    title: 'Car, Truck, and Highway Corridor Crashes',
+    description:
+      'Oklahoma injury claims often turn on fast evidence preservation from interstate crashes, commercial vehicles, scene documentation, and witness timing.',
+  },
+  {
+    title: 'Oil Field and Industrial Losses',
+    description:
+      'Worksite negligence, contractor overlap, and severe trauma claims need early investigation before liability is narrowed to the wrong party.',
+  },
+  {
+    title: 'Catastrophic Injury and Wrongful Death',
+    description:
+      'Life-changing losses require a long-horizon damages model that accounts for future care, income disruption, family impact, and litigation leverage.',
+  },
+  {
+    title: 'UM/UIM and Comparative-Fault Disputes',
+    description:
+      'Many Oklahoma claims are undervalued through coverage fights or blame shifting, which is why policy analysis and objective proof have to be built early.',
+  },
+]
+
 const relatedLinks = [
   {
     href: '/personal-injury/motorcycle-accidents',
@@ -144,6 +168,10 @@ const relatedLinks = [
 export default function PersonalInjuryHubPage() {
   return (
     <main className="bg-iron-950 min-h-screen">
+      <ServicePageJsonLd
+        description="Oklahoma personal injury representation for car accidents, truck wrecks, catastrophic losses, wrongful death, and UM/UIM claim disputes."
+        variant="injury"
+      />
       <PageHero
         title="Personal Injury"
         subtitle="Strategic representation for serious accidents across Oklahoma."
@@ -244,6 +272,31 @@ export default function PersonalInjuryHubPage() {
         ctaPrefix="injury_hub"
         context="injury"
       />
+
+      <section className="py-12 md:py-16 border-b border-silver-500/10 bg-iron-900/30">
+        <div className="container mx-auto px-6">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="font-serif text-3xl md:text-4xl text-white mb-3">
+              Oklahoma Injury Claim Risks We Address
+            </h2>
+            <p className="text-silver-400 mb-8 max-w-3xl">
+              Most personal injury searches start with the type of accident, but rankings and conversions
+              improve when the page also answers the valuation, liability, and insurance issues that follow.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {oklahomaInjurySignals.map((item) => (
+                <article
+                  key={item.title}
+                  className="bg-iron-900 border border-silver-500/15 p-6 hover:border-accent-gold/35 transition-colors"
+                >
+                  <h3 className="font-serif text-2xl text-white mb-3">{item.title}</h3>
+                  <p className="text-silver-400 leading-relaxed">{item.description}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
       <LinkGridSection
         title="Personal Injury Services"

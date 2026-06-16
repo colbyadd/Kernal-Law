@@ -183,6 +183,8 @@ export function getLocationMarketPageSpec(market: MarketSlug): LocationMarketPag
         `Defense planning tailored to ${profile.criminalCourtContext}.`,
         `Injury-claim development tailored to ${profile.injuryContext}.`,
         `Evidence strategy adapted to ${profile.corridorContext}.`,
+        'Office consultations available at 1332 SW 89th Street in south Oklahoma City, with phone and text intake for urgent matters.',
+        `Local planning accounts for ${profile.marketName} venue, travel, and scheduling pressure before hearings or claim deadlines tighten.`,
         `Rapid response for deadlines, hearings, and high-pressure communications.`,
         `Attorney-led case sequencing from intake through negotiation or trial posture.`,
         `Long-term planning for record, financial, and recovery-risk protection.`,

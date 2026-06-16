@@ -27,6 +27,7 @@ export default function MoorePage() {
       ]}
       countyFocus="Cleveland County and South Metro Court Coverage"
       localHighlights={[
+        'Office consultations available at 1332 SW 89th Street in south Oklahoma City, with phone and text intake for urgent matters.',
         'Rapid response for arrest and bond-risk situations impacting Moore residents.',
         'Representation for crash and injury claims along I-35 and heavily traveled metro corridors.',
         'Coordinated legal strategy when criminal and injury exposure overlap from the same event.',

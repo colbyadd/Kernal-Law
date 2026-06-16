@@ -27,6 +27,7 @@ export default function NormanPage() {
       ]}
       countyFocus="Cleveland County Court and South-Metro Claim Strategy"
       localHighlights={[
+        'Office consultations available at 1332 SW 89th Street in south Oklahoma City, with phone and text intake for urgent matters.',
         'Immediate defense support for arrest, warrant, and bond-condition exposure in Cleveland County.',
         'Strategic representation for collisions along I-35 south, SH-9, and university-area corridors.',
         'Structured case planning for allegation-heavy criminal prosecutions and evidentiary disputes.',

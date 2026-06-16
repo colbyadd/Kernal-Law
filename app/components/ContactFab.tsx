@@ -1,10 +1,39 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation'
 
 export function ContactFab() {
+    const pathname = usePathname()
+    const isHome = pathname === '/'
+    const [homeScrolled, setHomeScrolled] = useState(false)
+
+    useEffect(() => {
+        if (!isHome) {
+            return
+        }
+
+        const updateVisibility = () => {
+            setHomeScrolled(window.scrollY > Math.min(window.innerHeight * 0.72, 620))
+        }
+
+        const frameId = window.requestAnimationFrame(updateVisibility)
+        window.addEventListener('scroll', updateVisibility, { passive: true })
+        window.addEventListener('resize', updateVisibility)
+
+        return () => {
+            window.cancelAnimationFrame(frameId)
+            window.removeEventListener('scroll', updateVisibility)
+            window.removeEventListener('resize', updateVisibility)
+        }
+    }, [isHome])
+
+    const isVisible = !isHome || homeScrolled
+
     return (
-        <div className="fixed bottom-4 right-4 z-50 flex gap-2 md:hidden">
+        <div
+            className={`mobile-contact-fab fixed bottom-4 right-4 z-50 flex gap-2 md:hidden transition-all duration-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0 pointer-events-none'}`}
+        >
             <a
                 href="sms:+14053640601"
                 data-cta="mobile_text_fab"

@@ -50,4 +50,10 @@
   .cinematic-shadow {
     box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7);
   }
+
+  html[data-mobile-menu="open"] .mobile-contact-fab {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(1rem);
+  }
 }

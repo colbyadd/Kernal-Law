@@ -27,6 +27,7 @@ export default function EdmondPage() {
       ]}
       countyFocus="Oklahoma County and North Metro Court Strategy"
       localHighlights={[
+        'Office consultations available at 1332 SW 89th Street in south Oklahoma City, with phone and text intake for urgent matters.',
         'Rapid legal response for arrest, warrant, and bond-related risk events.',
         'Serious injury claim representation for major roadway and multi-vehicle collisions.',
         'Discipline-driven defense strategy for DUI, violent, and allegation-heavy cases.',

@@ -27,6 +27,7 @@ export default function MidwestCityPage() {
       ]}
       countyFocus="Oklahoma County East Metro Coverage"
       localHighlights={[
+        'Office consultations available at 1332 SW 89th Street in south Oklahoma City, with phone and text intake for urgent matters.',
         'Defense support for arrest, warrant, and probation-related exposure.',
         'Injury case development for highway and multi-vehicle crash scenarios.',
         'Strategic handling of allegation-driven prosecutions and contested evidence.',

@@ -27,6 +27,7 @@ export default function MustangPage() {
       ]}
       countyFocus="Canadian County and West-South Metro Representation"
       localHighlights={[
+        'Office consultations available at 1332 SW 89th Street in south Oklahoma City, with phone and text intake for urgent matters.',
         'Urgent defense support for arrest and warrant-related situations.',
         'Injury claim strategy for collision and negligence events with serious losses.',
         'Case planning for overlapping criminal and civil exposure from a single incident.',

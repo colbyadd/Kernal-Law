@@ -22,6 +22,8 @@ export function PageHero({ title, subtitle, variant = 'default' }: PageHeroProps
                             sizes="100vw"
                             className="object-cover opacity-50"
                             priority
+                            fetchPriority="high"
+                            quality={70}
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-iron-950 via-iron-950/60 to-iron-950/30" />
                     </div>
@@ -36,6 +38,8 @@ export function PageHero({ title, subtitle, variant = 'default' }: PageHeroProps
                             sizes="100vw"
                             className="object-cover opacity-50"
                             priority
+                            fetchPriority="high"
+                            quality={70}
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-iron-950 via-iron-950/60 to-iron-950/30" />
                     </div>
@@ -51,6 +55,8 @@ export function PageHero({ title, subtitle, variant = 'default' }: PageHeroProps
                             sizes="100vw"
                             className="object-cover opacity-30"
                             priority
+                            fetchPriority="high"
+                            quality={65}
                         />
                         <div className="absolute inset-0 bg-gradient-to-b from-iron-950/50 to-iron-950" />
                     </div>

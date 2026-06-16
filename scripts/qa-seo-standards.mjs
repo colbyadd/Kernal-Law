@@ -238,6 +238,67 @@ function validateMarketTemplateResourceLinks() {
   }
 }
 
+function hasPngSignature(relativePath) {
+  if (!fileExists(relativePath)) {
+    return false
+  }
+
+  const signature = fs.readFileSync(path.join(rootDir, relativePath)).subarray(0, 8)
+  return signature.equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]))
+}
+
+function validateEnvVerificationControls() {
+  const envExample = readFile('.env.example')
+  const requiredSnippets = [
+    'NEXT_PUBLIC_SITE_URL=https://kernallaw.com',
+    'NEXT_PUBLIC_GA_MEASUREMENT_ID=',
+    'NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=',
+    'NEXT_PUBLIC_BING_SITE_VERIFICATION=',
+  ]
+
+  for (const snippet of requiredSnippets) {
+    if (!envExample.includes(snippet)) {
+      errors.push(`.env.example missing public verification/analytics control: ${snippet}`)
+    }
+  }
+}
+
+function validateAssetHygiene() {
+  const manifestSource = readFile('app/manifest.ts')
+  const requiredManifestSnippets = [
+    "src: '/icon-192.png'",
+    "sizes: '192x192'",
+    "src: '/icon-512.png'",
+    "sizes: '512x512'",
+  ]
+
+  for (const snippet of requiredManifestSnippets) {
+    if (!manifestSource.includes(snippet)) {
+      errors.push(`Manifest missing icon hygiene snippet: ${snippet}`)
+    }
+  }
+
+  const pngIconFiles = ['app/icon.png', 'app/apple-icon.png', 'public/icon-192.png', 'public/icon-512.png']
+  for (const filePath of pngIconFiles) {
+    if (!hasPngSignature(filePath)) {
+      errors.push(`${filePath} must be a real PNG file, not a mislabeled image.`)
+    }
+  }
+
+  const obsoleteAssets = [
+    'public/icon.png',
+    'public/images/hero-abstract.png',
+    'public/images/hero-criminal.png',
+    'public/images/hero-injury.png',
+  ]
+
+  for (const filePath of obsoleteAssets) {
+    if (fileExists(filePath)) {
+      errors.push(`Obsolete heavyweight asset should stay removed: ${filePath}`)
+    }
+  }
+}
+
 validateSitemapMarketCoverage()
 validateResourceRoutesInSitemapAndSchema()
 validateResourceMetadataCanonicalAndOg()
@@ -245,6 +306,8 @@ validateMoneyPageResourceLinks()
 validateDynamicMarketSchemaNaming()
 validateIntentDisambiguation()
 validateMarketTemplateResourceLinks()
+validateEnvVerificationControls()
+validateAssetHygiene()
 
 if (warnings.length > 0) {
   console.log('Warnings:')

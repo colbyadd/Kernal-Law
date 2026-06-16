@@ -27,6 +27,7 @@ export default function DelCityPage() {
       ]}
       countyFocus="Oklahoma County Southeast Metro Strategy"
       localHighlights={[
+        'Office consultations available at 1332 SW 89th Street in south Oklahoma City, with phone and text intake for urgent matters.',
         'Rapid intake for arrest and warrant-risk situations requiring immediate action.',
         'Collision and injury claim representation for high-traffic metro corridors.',
         'Cross-track strategy where criminal charges and injury recovery overlap.',

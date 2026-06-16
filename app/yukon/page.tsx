@@ -27,6 +27,7 @@ export default function YukonPage() {
       ]}
       countyFocus="Canadian County and West Metro Court Coordination"
       localHighlights={[
+        'Office consultations available at 1332 SW 89th Street in south Oklahoma City, with phone and text intake for urgent matters.',
         'Rapid response for arrest events, active warrants, and hearing-risk exposure.',
         'Injury claim support for high-speed corridor and commercial vehicle incidents.',
         'Coordinated legal planning where insurance and criminal concerns overlap.',

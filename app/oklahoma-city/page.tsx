@@ -27,6 +27,7 @@ export default function OklahomaCityPage() {
       ]}
       countyFocus="Oklahoma County Court and Metro Claim Strategy"
       localHighlights={[
+        'Office consultations available at 1332 SW 89th Street in south Oklahoma City, with phone and text intake for urgent matters.',
         'Rapid response for bond, warrant, and hearing-risk exposure in Oklahoma County filings.',
         'Evidence-first injury strategy for I-35, I-40, I-44, and Kilpatrick Turnpike collisions.',
         'Structured handling of allegation-heavy prosecutions and high-pressure plea environments.',

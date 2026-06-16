@@ -28,10 +28,15 @@ type DesktopNavItem = NavLinkItem | NavDropdownItem
 const DESKTOP_DROPDOWN_CLOSE_DELAY_MS = 420
 
 export function CinematicNav() {
+    const pathname = usePathname()
+
+    return <CinematicNavContent key={pathname} pathname={pathname} />
+}
+
+function CinematicNavContent({ pathname }: { pathname: string }) {
     const [scrolled, setScrolled] = useState(false)
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
-    const pathname = usePathname()
     const navRef = useRef<HTMLElement | null>(null)
     const dropdownCloseTimeoutRef = useRef<number | null>(null)
 
@@ -72,6 +77,8 @@ export function CinematicNav() {
     }, [])
 
     useEffect(() => {
+        document.documentElement.dataset.mobileMenu = mobileMenuOpen ? 'open' : 'closed'
+
         if (!mobileMenuOpen) {
             document.body.style.overflow = ''
             return
@@ -81,6 +88,7 @@ export function CinematicNav() {
         document.body.style.overflow = 'hidden'
         return () => {
             document.body.style.overflow = previousOverflow
+            document.documentElement.dataset.mobileMenu = 'closed'
         }
     }, [mobileMenuOpen])
 
@@ -294,7 +302,7 @@ export function CinematicNav() {
                 <button
                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                     className="lg:hidden z-50 p-2 space-y-1.5 group"
-                    aria-label="Toggle Menu"
+                    aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
                     aria-expanded={mobileMenuOpen}
                     aria-controls="mobile-menu"
                 >

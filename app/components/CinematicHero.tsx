@@ -19,6 +19,8 @@ export function CinematicHero() {
                         sizes="100vw"
                         className="object-cover opacity-30"
                         priority
+                        fetchPriority="high"
+                        quality={65}
                     />
                 </div>
 
@@ -33,7 +35,7 @@ export function CinematicHero() {
 
                     <div className="space-y-2 opacity-0 animate-slide-up" style={{ animationDelay: '0.2s' }}>
                         <span className="inline-block px-4 py-1 border border-silver-500/30 text-silver-400 text-xs uppercase tracking-[0.2em] bg-iron-950/50 backdrop-blur-sm">
-                            Criminal Defense & Personal Injury
+                            Oklahoma Criminal Defense & Personal Injury
                         </span>
                     </div>
 
@@ -44,8 +46,8 @@ export function CinematicHero() {
                     </h1>
 
                     <p className="max-w-xl text-lg md:text-xl text-silver-400 font-light leading-relaxed border-l-2 border-silver-500 pl-6 opacity-0 animate-slide-up" style={{ animationDelay: '0.6s' }}>
-                        Kernal & Associates. 25+ years of defending Oklahomans against serious charges and fighting for injury victims.
-                        Uncompromising defense when it matters most.
+                        Oklahoma criminal defense and personal injury counsel with 25+ years of courtroom experience.
+                        Direct strategy for arrests, serious charges, crash claims, and urgent legal risk.
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-6 pt-4 opacity-0 animate-slide-up" style={{ animationDelay: '0.8s' }}>

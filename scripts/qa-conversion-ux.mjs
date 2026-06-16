@@ -52,6 +52,8 @@ function validateMobileQuickActions() {
   const requiredFabSnippets = [
     'mobile_text_fab',
     'mobile_call_fab',
+    'mobile-contact-fab',
+    'homeScrolled',
     'sms:+14053640601',
     'tel:4053640601',
   ]
@@ -67,6 +69,18 @@ function validateMobileQuickActions() {
   for (const snippet of requiredBarSnippets) {
     if (!mobileBarSource.includes(snippet)) {
       errors.push(`Mobile conversion bar missing snippet: ${snippet}`)
+    }
+  }
+
+  const navSource = readFile('app/components/CinematicNav.tsx')
+  const requiredNavSnippets = [
+    "document.documentElement.dataset.mobileMenu",
+    "mobileMenuOpen ? 'Close menu' : 'Open menu'",
+  ]
+
+  for (const snippet of requiredNavSnippets) {
+    if (!navSource.includes(snippet)) {
+      errors.push(`Mobile navigation missing state-aware conversion/accessibility snippet: ${snippet}`)
     }
   }
 }

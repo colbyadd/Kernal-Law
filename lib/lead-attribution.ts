@@ -140,7 +140,12 @@ export function loadLeadAttribution(): LeadAttribution | null {
     return null
   }
 
-  const raw = window.sessionStorage.getItem(STORAGE_KEY)
+  let raw: string | null = null
+  try {
+    raw = window.sessionStorage.getItem(STORAGE_KEY)
+  } catch {
+    return null
+  }
   if (!raw) {
     return null
   }
@@ -158,7 +163,11 @@ export function saveLeadAttribution(value: LeadAttribution) {
     return
   }
 
-  window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(value))
+  try {
+    window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(value))
+  } catch {
+    // Attribution is best-effort and must never block site or form behavior.
+  }
 }
 
 export function mergeLeadAttribution(existing: LeadAttribution | null, incoming: LeadAttribution): LeadAttribution {

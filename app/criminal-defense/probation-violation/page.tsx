@@ -2,14 +2,14 @@ import { Metadata } from 'next'
 import { ServiceDetailPage } from '../../components/ServiceDetailPage'
 
 export const metadata: Metadata = {
-  title: 'Oklahoma Probation Violation Defense Lawyer',
+  title: 'Oklahoma Probation Violation Lawyer',
   description:
-    'Defense for Oklahoma probation violation allegations, including compliance disputes, hearing strategy, and revocation risk control.',
+    'Defense for Oklahoma probation violation allegations involving missed reporting, treatment, payments, new charges, or other disputed conditions.',
   alternates: { canonical: '/criminal-defense/probation-violation' },
   openGraph: {
     title: 'Oklahoma Probation Violation Defense | Kernal & Associates',
     description:
-      'Strategic defense to protect against probation revocation and additional criminal exposure.',
+      'Representation for Oklahoma probation violation hearings, disputed compliance, and possible revocation.',
     url: 'https://kernallaw.com/criminal-defense/probation-violation',
   },
 }
@@ -18,12 +18,12 @@ const probationFaqs = [
   {
     question: 'What happens after a probation violation allegation?',
     answer:
-      'The court can schedule a violation hearing and may impose additional conditions, sanctions, or revocation risk depending on facts and prior history. Early legal response is critical.',
+      'The court may schedule a violation hearing. Depending on the facts, prior history, and terms of supervision, the court may continue probation, change the conditions, impose another sanction, or revoke some or all of the suspended sentence.',
   },
   {
     question: 'Can technical violations still lead to jail?',
     answer:
-      'Potentially, yes. Even non-new-crime allegations can carry serious consequences depending on case posture. Defense strategy should address both legal and compliance evidence.',
+      'Yes. An allegation involving reporting, payments, testing, or a program can still lead to custody in some cases. The notice, supervision records, and evidence of compliance or mitigation should be reviewed before the hearing.',
   },
   {
     question: 'Do I have to admit the violation to resolve it?',
@@ -33,12 +33,12 @@ const probationFaqs = [
   {
     question: 'How should I handle missed reporting or program issues?',
     answer:
-      'Document facts immediately and avoid unstructured explanations without counsel. Timelines, proof of effort, and mitigating context can be significant in hearing strategy.',
+      'Save messages, receipts, appointment records, and documents showing what happened. Avoid making an unplanned statement about the alleged violation before counsel reviews the notice and supporting records.',
   },
   {
     question: 'Can probation be modified instead of revoked?',
     answer:
-      'Sometimes. Depending on circumstances and court posture, legal strategy may pursue modifications or alternative sanctions in place of full revocation.',
+      'Sometimes. Depending on the violation, history, and available programs, the court may consider a change in conditions or another sanction instead of full revocation. No particular result can be promised.',
   },
   {
     question: 'Should I wait until the hearing date to hire counsel?',
@@ -51,79 +51,79 @@ export default function ProbationViolationPage() {
   return (
     <ServiceDetailPage
       heroTitle="Probation Violation Defense"
-      heroSubtitle="Protecting against revocation, sanctions, and avoidable escalation."
+      heroSubtitle="Representation for alleged violations, revocation hearings, and possible sanctions."
       heroVariant="criminal"
-      introTitle="Probation allegations need immediate strategy, not delay."
+      introTitle="A probation violation notice can put a suspended sentence at risk."
       introParagraphs={[
-        'Probation violation proceedings can move quickly and create significant custody risk if not addressed with a clear defense plan.',
-        'Kernal & Associates handles probation matters with evidence-based hearing strategy, mitigation development, and court-focused compliance positioning.',
+        'A violation may be based on a new charge, missed reporting, a failed test, unpaid costs, an incomplete program, or another condition of supervision. Some allegations are disputed; others require a clear explanation supported by records.',
+        'Kernal & Associates reviews the violation notice, probation records, prior orders, and evidence of compliance or mitigation. Todd Kernal prepares for the hearing and discusses whether to contest the allegation or seek an alternative to revocation.',
       ]}
-      focusTitle="Core Probation Defense Priorities"
+      focusTitle="What We Review Before a Violation Hearing"
       focusItems={[
         {
           title: 'Allegation and Evidence Testing',
           description:
-            'Violation claims should be reviewed for factual accuracy and procedural weakness.',
+            'The notice and supporting records should be checked against the actual supervision terms and what occurred.',
           bullets: [
             'Violation notice accuracy review',
-            'Timeline and reporting evidence audit',
+            'Timeline and reporting records',
             'Program-compliance documentation',
-            'Disputed allegation challenge strategy',
+            'Evidence bearing on a disputed allegation',
           ],
         },
         {
           title: 'Revocation Risk Management',
           description:
-            'The defense goal is to reduce custody exposure and preserve legal options.',
+            'The hearing may involve the truth of the allegation and what sanction, if any, the court should impose.',
           bullets: [
-            'Revocation exposure forecasting',
-            'Mitigation package preparation',
-            'Alternative sanction positioning',
-            'Custody-risk argument development',
+            'Possible revocation consequences',
+            'Documents supporting mitigation',
+            'Available alternative sanctions',
+            'Facts bearing on custody',
           ],
         },
         {
-          title: 'Courtroom Hearing Strategy',
+          title: 'Probation Hearing Preparation',
           description:
-            'A structured hearing plan improves outcomes and strengthens negotiation posture.',
+            'Preparation includes the relevant witnesses, documents, disputed facts, and any proposed alternative to revocation.',
           bullets: [
             'Witness and document sequencing',
-            'Compliance narrative construction',
-            'Judicial concern targeting',
+            'Clear account of compliance history',
+            'Response to the alleged violation',
             'Post-hearing condition planning',
           ],
         },
       ]}
-      processTitle="Probation Violation Workflow"
-      processSubtitle="Early preparation significantly improves hearing posture and outcome flexibility."
+      processTitle="Preparing for a Probation Violation Hearing"
+      processSubtitle="The work begins with the violation notice, supervision records, and the next hearing date."
       processSteps={[
         {
           step: '01',
-          title: 'Immediate Case Intake',
+          title: 'Violation Notice Review',
           description:
-            'We review allegations, deadlines, and immediate custody or reporting risk factors.',
+            'We review the allegation, hearing date, current supervision terms, and any immediate custody or reporting concern.',
         },
         {
           step: '02',
-          title: 'Compliance Evidence Build',
+          title: 'Compliance Records and Witnesses',
           description:
-            'We gather documents and context supporting defense and mitigation arguments.',
+            'We gather records and witness information that bear on whether a violation occurred and what response is appropriate.',
         },
         {
           step: '03',
-          title: 'Hearing and Resolution Strategy',
+          title: 'Hearing Preparation',
           description:
-            'We prepare contested-hearing posture and alternative sanction options where appropriate.',
+            'We prepare to contest disputed facts and present an alternative to revocation when the circumstances support one.',
         },
         {
           step: '04',
           title: 'Court Representation and Follow-Through',
           description:
-            'We advocate at hearing and manage post-order compliance strategy moving forward.',
+            'We appear at the hearing and explain any new or changed conditions in the court’s order afterward.',
         },
       ]}
       relatedTitle="Related Criminal Defense Pages"
-      relatedSubtitle="Use these pages for connected post-charge and record-protection strategy."
+      relatedSubtitle="Read about related warrants, pending charges, and possible record sealing after an eligible outcome."
       relatedLinks={[
         {
           href: '/criminal-defense',
@@ -140,7 +140,7 @@ export default function ProbationViolationPage() {
         {
           href: '/criminal-defense/expungement',
           title: 'Expungement Services',
-          description: 'Record strategy planning after eligible case outcomes.',
+          description: 'Information about sealing records after an eligible case outcome.',
           ctaName: 'probation_related_expungement',
         },
         {
@@ -153,8 +153,8 @@ export default function ProbationViolationPage() {
       faqSubtitle="Answers to common probation violation questions in Oklahoma."
       faqs={probationFaqs}
       practiceArea="probation-violation"
-      ctaTitle="Act Before Revocation Risk Increases"
-      ctaDescription="Early probation defense preparation can reduce sanctions and protect long-term outcomes."
+      ctaTitle="Prepare Before the Probation Hearing"
+      ctaDescription="Bring the violation notice, supervision papers, and proof of compliance to a confidential review."
       ctaLabel="Start Probation Defense"
       ctaName="probation_bottom_cta"
     />

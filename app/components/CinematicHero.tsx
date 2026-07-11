@@ -14,7 +14,7 @@ export function CinematicHero() {
                 <div className="absolute inset-0 z-10">
                     <Image
                         src="/images/hero-abstract.webp"
-                        alt="Iron justice abstract"
+                        alt=""
                         fill
                         sizes="100vw"
                         className="object-cover opacity-30"
@@ -33,28 +33,28 @@ export function CinematicHero() {
             <div className="container relative z-30 mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-12">
                 <div className="md:col-span-8 lg:col-span-7 space-y-8">
 
-                    <div className="space-y-2 opacity-0 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+                    <div className="space-y-2">
                         <span className="inline-block px-4 py-1 border border-silver-500/30 text-silver-400 text-xs uppercase tracking-[0.2em] bg-iron-950/50 backdrop-blur-sm">
                             Oklahoma Criminal Defense & Personal Injury
                         </span>
                     </div>
 
-                    <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl leading-[0.9] text-white tracking-tight opacity-0 animate-slide-up" style={{ animationDelay: '0.4s' }}>
+                    <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl leading-[0.9] text-white tracking-tight">
                         When Your <br />
                         <span className="text-silver-500">Future</span> is <br />
                         on the Line.
                     </h1>
 
-                    <p className="max-w-xl text-lg md:text-xl text-silver-400 font-light leading-relaxed border-l-2 border-silver-500 pl-6 opacity-0 animate-slide-up" style={{ animationDelay: '0.6s' }}>
-                        Oklahoma criminal defense and personal injury counsel with 25+ years of courtroom experience.
-                        Direct strategy for arrests, serious charges, crash claims, and urgent legal risk.
+                    <p className="max-w-xl text-lg md:text-xl text-silver-400 font-light leading-relaxed border-l-2 border-silver-500 pl-6">
+                        Oklahoma criminal defense and personal injury counsel with nearly 26 years of experience.
+                        Direct legal help for arrests, serious charges, crash claims, and urgent deadlines.
                     </p>
 
-                    <div className="flex flex-col sm:flex-row gap-6 pt-4 opacity-0 animate-slide-up" style={{ animationDelay: '0.8s' }}>
+                    <div className="flex flex-col sm:flex-row gap-6 pt-4">
                         <PrimaryConsultationCta
                             context="home_hero"
                             controlLabel="Start Your Defense"
-                            challengerLabel="Get Immediate Strategy"
+                            challengerLabel="Discuss Your Case"
                             className="group relative inline-flex items-center justify-center px-8 py-4 bg-white text-iron-950 text-sm uppercase tracking-widest font-bold overflow-hidden transition-all hover:bg-silver-100"
                             labelClassName="relative z-10 group-hover:tracking-[0.25em] transition-all"
                         />

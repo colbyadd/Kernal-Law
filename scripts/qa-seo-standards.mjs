@@ -48,11 +48,64 @@ function validateSitemapMarketCoverage() {
     errors.push('Sitemap should not include legacy /practice service routes because they permanently redirect.')
   }
 
-  const disallowedNoindexRoutes = ['/privacy', '/terms', '/success', '/locations']
+  const disallowedNoindexRoutes = ['/privacy', '/terms', '/success']
   for (const route of disallowedNoindexRoutes) {
     if (sitemapSource.includes(`'${route}'`) || sitemapSource.includes(`"${route}"`)) {
       errors.push(`Sitemap should not include noindex route: ${route}`)
     }
+  }
+
+  if (!sitemapSource.includes("'/locations'")) {
+    errors.push('Sitemap should include the indexable /locations hub.')
+  }
+}
+
+function validateSharedSocialImages() {
+  const layoutSource = readFile('app/layout.tsx')
+  const requiredFiles = ['app/social-card/route.ts', 'app/components/SocialImage.tsx']
+
+  for (const filePath of requiredFiles) {
+    if (!fileExists(filePath)) {
+      errors.push(`Missing shared social image route: ${filePath}`)
+    }
+  }
+
+  const requiredSnippets = [
+    '<meta property="og:image" content={`${baseUrl}/social-card`} />',
+    '<meta name="twitter:image" content={`${baseUrl}/social-card`} />',
+  ]
+  for (const snippet of requiredSnippets) {
+    if (!layoutSource.includes(snippet)) {
+      errors.push(`Root metadata missing shared social-image fallback: ${snippet}`)
+    }
+  }
+}
+
+function validateEntitySchema() {
+  const schemaSource = readFile('lib/schema/builders.ts')
+  const attorneySource = readFile('app/attorney/page.tsx')
+  const requiredSchemaSnippets = [
+    "'@type': 'Person'",
+    'getToddKernalPersonId(baseUrl)',
+    "'@id': `${baseUrl}/#organization`",
+  ]
+
+  for (const snippet of requiredSchemaSnippets) {
+    if (!schemaSource.includes(snippet)) {
+      errors.push(`Schema builder missing entity-identity control: ${snippet}`)
+    }
+  }
+
+  if (!attorneySource.includes("'@type': 'Person'")) {
+    errors.push('Attorney profile schema must identify Todd Kernal as a Person.')
+  }
+
+  if (!attorneySource.includes("'@id': 'https://kernallaw.com/attorney/#person'")) {
+    errors.push('Attorney profile schema must reuse the shared Todd Kernal Person identifier.')
+  }
+
+  if (/aggregateRating|reviewRating/.test(schemaSource)) {
+    errors.push('Self-controlled local-business rating markup should not be emitted in shared schema.')
   }
 }
 
@@ -96,6 +149,14 @@ function validateResourceMetadataCanonicalAndOg() {
 
     if (!source.includes(`url: 'https://kernallaw.com${route}'`)) {
       errors.push(`${filePath} missing Open Graph URL for ${route}.`)
+    }
+
+    if (!source.includes('datePublished="') || !source.includes('lastUpdated="')) {
+      errors.push(`${filePath} must distinguish original publication from the current editorial update date.`)
+    }
+
+    if (!source.includes('officialSources={[') || !source.includes('https://')) {
+      errors.push(`${filePath} must show at least one primary-source link.`)
     }
   }
 }
@@ -263,6 +324,27 @@ function validateEnvVerificationControls() {
   }
 }
 
+function validateSecurityHeaderSource() {
+  const configSource = readFile('next.config.ts')
+  const requiredSnippets = [
+    'Content-Security-Policy',
+    'Strict-Transport-Security',
+    'X-Content-Type-Options',
+    'Referrer-Policy',
+    "isDevelopment ? \" 'unsafe-eval'\" : \"\"",
+  ]
+
+  for (const snippet of requiredSnippets) {
+    if (!configSource.includes(snippet)) {
+      errors.push(`Next configuration missing security-header control: ${snippet}`)
+    }
+  }
+
+  if (fileExists('public/_headers')) {
+    errors.push('Legacy public/_headers must not duplicate or weaken the Next.js security policy.')
+  }
+}
+
 function validateAssetHygiene() {
   const manifestSource = readFile('app/manifest.ts')
   const requiredManifestSnippets = [
@@ -300,6 +382,8 @@ function validateAssetHygiene() {
 }
 
 validateSitemapMarketCoverage()
+validateSharedSocialImages()
+validateEntitySchema()
 validateResourceRoutesInSitemapAndSchema()
 validateResourceMetadataCanonicalAndOg()
 validateMoneyPageResourceLinks()
@@ -307,6 +391,7 @@ validateDynamicMarketSchemaNaming()
 validateIntentDisambiguation()
 validateMarketTemplateResourceLinks()
 validateEnvVerificationControls()
+validateSecurityHeaderSource()
 validateAssetHygiene()
 
 if (warnings.length > 0) {

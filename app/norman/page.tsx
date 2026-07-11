@@ -1,15 +1,14 @@
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 import { LocationServicePage } from '../components/LocationServicePage'
 
 export const metadata: Metadata = {
-  title: 'Norman Criminal Defense and Personal Injury Attorney',
+  title: 'Norman Criminal & Injury Lawyer',
   description:
-    'Kernal & Associates serves Norman with criminal defense and personal injury representation for Cleveland County court matters and severe loss claims.',
+    'Legal help for Norman criminal cases and injury claims involving Cleveland County, I-35, SH-9, and south-metro travel.',
   alternates: { canonical: '/norman' },
   openGraph: {
-    title: 'Norman Criminal Defense and Injury Attorney | Kernal & Associates',
-    description:
-      'Local Norman representation for Cleveland County criminal charges and serious injury claims.',
+    title: 'Norman Criminal & Injury Lawyer',
+    description: 'Help with Cleveland County court matters and Norman-area injury claims.',
     url: 'https://kernallaw.com/norman',
   },
 }
@@ -19,105 +18,131 @@ export default function NormanPage() {
     <LocationServicePage
       canonicalPath="/norman"
       locationName="Norman"
-      subtitle="Criminal defense and injury representation for Cleveland County and south-metro communities."
-      introTitle="Norman legal pressure requires early strategy and disciplined execution."
+      subtitle="Criminal defense and injury help for Norman matters in Cleveland County and along south-metro routes."
+      introTitle="Two calendars may start after one Norman incident"
       introParagraphs={[
-        'Norman cases often involve fast Cleveland County timelines, high-stakes allegation decisions, and insurer pressure following major collision events. The first legal moves can shape long-term outcome risk.',
-        'Kernal & Associates represents Norman clients with trial-ready criminal defense and evidence-driven injury strategy designed for high-impact results, not short-term fixes.',
+        'A criminal filing in Cleveland County has court dates and release requirements. A collision claim has medical, vehicle, and insurance deadlines. When one Norman event creates both, keep the papers in separate groups and note every date on a single calendar.',
+        'Student-area and corridor enforcement can produce citations, body-camera footage, dispatch records, test results, and witness accounts. Bring the charging paper and release instructions first; the remaining records can then be identified by source.',
+        'For an injury on I-35 south or SH-9, preserve scene photographs, treatment records, bills, and communications from every insurer. A clear chronology is especially useful when care or travel crosses the south metro.',
       ]}
-      countyFocus="Cleveland County Court and South-Metro Claim Strategy"
+      countyFocus="Cleveland County filings and Norman travel corridors"
       localHighlights={[
-        'Office consultations available at 1332 SW 89th Street in south Oklahoma City, with phone and text intake for urgent matters.',
-        'Immediate defense support for arrest, warrant, and bond-condition exposure in Cleveland County.',
-        'Strategic representation for collisions along I-35 south, SH-9, and university-area corridors.',
-        'Structured case planning for allegation-heavy criminal prosecutions and evidentiary disputes.',
-        'Long-horizon injury damages development for severe trauma and major recovery losses.',
-        'Coordinated planning where student, licensing, and employment consequences overlap legal risk.',
-        'Direct attorney guidance through hearings, filing deadlines, and insurer communications.',
+        'A Cleveland County court notice controls the date and place of appearance.',
+        'Student-area incidents may create school, work, and court questions at the same time.',
+        'Release instructions should be checked for contact, travel, or reporting terms.',
+        'I-35 south crashes may involve commuters, commercial traffic, and several vehicles.',
+        'SH-9 incidents can leave records with different responding agencies or providers.',
+        'A treatment timeline should include referrals and follow-up care outside Norman.',
+        'Save screenshots or copies of insurer messages before responding.',
+        'List witnesses by name, contact information, and what each person observed.',
       ]}
       serviceLinks={[
         {
           href: '/norman/criminal-defense',
           title: 'Norman Criminal Defense',
-          description: 'Local defense strategy for Cleveland County criminal allegations.',
+          description: 'Review of Cleveland County charges, court notices, and release instructions.',
           ctaName: 'norman_service_criminal_defense',
         },
         {
-          href: '/criminal-defense/drug-charges',
-          title: 'Drug Charges Defense',
-          description: 'Search-and-seizure focused strategy for possession and intent allegations.',
-          ctaName: 'norman_service_drug_charges',
+          href: '/criminal-defense/dui-dwi',
+          title: 'DUI / DWI Defense',
+          description: 'Help sorting the criminal case, testing material, and driver-license questions.',
+          ctaName: 'norman_service_dui_dwi',
         },
         {
-          href: '/criminal-defense/domestic-violence',
-          title: 'Domestic Violence Defense',
-          description: 'Coordinated strategy for criminal and no-contact order exposure.',
-          ctaName: 'norman_service_domestic_violence',
+          href: '/criminal-defense/warrants',
+          title: 'Warrants Defense',
+          description: 'Confirmation of the warrant, the originating case, and the correct appearance process.',
+          ctaName: 'norman_service_warrants',
         },
         {
           href: '/norman/personal-injury',
           title: 'Norman Personal Injury',
-          description: 'Local injury strategy for severe negligence and disputed-fault claims.',
+          description: 'Claims affecting Norman commuters, students, families, and south-metro travelers.',
           ctaName: 'norman_service_personal_injury',
         },
         {
           href: '/personal-injury/car-accidents',
           title: 'Car Accident Claims',
-          description: 'Evidence-first fault and damages strategy for serious collisions.',
+          description: 'Collecting collision reports, vehicle evidence, care records, and wage information.',
           ctaName: 'norman_service_car_accidents',
         },
         {
           href: '/personal-injury/uninsured-motorist',
           title: 'Uninsured Motorist Claims',
-          description: 'Coverage-focused UM/UIM strategy for underinsured recovery disputes.',
+          description: 'Checking available policies when liability coverage does not cover the loss.',
           ctaName: 'norman_service_uninsured_motorist',
+        },
+        {
+          href: '/criminal-defense/drug-charges',
+          title: 'Drug Charges Defense',
+          description: 'Examination of the alleged substance, search, testing, statements, and possession proof.',
+          ctaName: 'norman_service_drug_charges',
+        },
+        {
+          href: '/personal-injury/truck-accidents',
+          title: 'Truck Accident Claims',
+          description: 'Claims that may require carrier, driver, cargo, maintenance, and policy records.',
+          ctaName: 'norman_service_truck_accidents',
         },
       ]}
       relatedLocationLinks={[
         {
-          href: '/moore',
-          title: 'Moore',
-          description: 'Nearby Cleveland County page for connected south-metro case exposure.',
-          ctaName: 'norman_related_moore',
+          href: '/moore/criminal-defense',
+          title: 'Moore Criminal Defense',
+          description: 'Nearby information for south-metro criminal matters in Cleveland County.',
+          ctaName: 'norman_related_nearby_a',
         },
         {
-          href: '/oklahoma-city',
-          title: 'Oklahoma City',
-          description: 'Metro hub for broader county-overlap criminal and injury strategy.',
-          ctaName: 'norman_related_oklahoma_city',
+          href: '/oklahoma-city/personal-injury',
+          title: 'Oklahoma City Personal Injury',
+          description: 'Metro injury information for serious negligence and transportation events.',
+          ctaName: 'norman_related_nearby_b',
         },
         {
-          href: '/resources/what-to-do-after-arrest-oklahoma',
-          title: 'Post-Arrest Guide',
-          description: 'Immediate rights-protection checklist for the first 48 hours.',
-          ctaName: 'norman_related_arrest_guide',
+          href: '/locations',
+          title: 'Service Area Directory',
+          description: 'Browse other Oklahoma cities and counties served by the firm.',
+          ctaName: 'norman_related_locations_hub',
+        },
+        {
+          href: '/resources',
+          title: 'Oklahoma Legal Guides',
+          description: 'Find plain-language guides for arrests, court proceedings, and claims.',
+          ctaName: 'norman_related_resources_hub',
+        },
+        {
+          href: '/resources/what-to-do-after-car-accident-oklahoma',
+          title: 'Steps After an Oklahoma Crash',
+          description: 'What to save after medical care begins and insurance calls start.',
+          ctaName: 'norman_related_local_guide',
         },
       ]}
-      faqSubtitle="Frequent questions from Norman and Cleveland County clients."
+      faqSubtitle="Common Norman questions about court papers, crash records, and timing."
       faqs={[
         {
-          question: 'How fast should I get legal help after a Norman arrest?',
+          question: 'Where do I find the next date for a Norman criminal case?',
           answer:
-            'Immediately. Early defense planning can materially affect condition compliance, evidence posture, and negotiation leverage.',
+            'Start with the citation, bond paperwork, release instructions, or filed court notice. Bring every version so any conflict can be checked.',
         },
         {
-          question: 'Do you represent clients in both criminal and injury cases in Norman?',
+          question: 'Should I keep school or employment documents after an arrest?',
           answer:
-            'Yes. We handle both tracks, including situations where one incident creates criminal and personal injury exposure.',
+            'Keep any document that shows a deadline, consequence, or instruction connected to the incident, along with the court papers.',
         },
         {
-          question: 'Can you handle high-severity collisions and UM/UIM claim disputes?',
+          question: 'What helps document an I-35 or SH-9 injury claim?',
           answer:
-            'Yes. We build liability and coverage strategy for severe-loss cases, including underinsured recovery conflicts.',
+            'Preserve scene photographs, the report number, vehicle information, treatment records, bills, wage records, and all insurer messages.',
         },
         {
-          question: 'What should I avoid before speaking with counsel?',
+          question: 'Can a consultation cover a matter involving both court and insurance?',
           answer:
-            'Avoid discussing case facts on calls, texts, or social media and avoid recorded insurer statements without legal guidance.',
+            'Yes. The two issues can be reviewed separately so each deadline and record source is clear.',
         },
       ]}
-      ctaTitle="Need Immediate Counsel in Norman?"
-      ctaDescription="Request a confidential consultation to assess risk, preserve leverage, and define your next legal step."
+      ctaTitle="Discuss a Norman Case or Claim"
+      ctaDescription="Bring the Cleveland County papers, insurer messages, and the dates already known."
       ctaName="norman"
     />
   )

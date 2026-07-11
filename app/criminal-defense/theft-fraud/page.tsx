@@ -2,14 +2,14 @@ import { Metadata } from 'next'
 import { ServiceDetailPage } from '../../components/ServiceDetailPage'
 
 export const metadata: Metadata = {
-  title: 'Oklahoma Theft and Fraud Defense Lawyer',
+  title: 'Oklahoma Theft & Fraud Lawyer',
   description:
-    'Defense for Oklahoma theft, embezzlement, and fraud allegations with intent-focused strategy and evidence challenge preparation.',
+    'Defense for Oklahoma theft, embezzlement, and fraud allegations involving intent, financial records, ownership, and disputed transactions.',
   alternates: { canonical: '/criminal-defense/theft-fraud' },
   openGraph: {
     title: 'Oklahoma Theft and Fraud Defense | Kernal & Associates',
     description:
-      'Strategic defense for property and financial crime allegations in Oklahoma courts.',
+      'Defense for Oklahoma theft, embezzlement, and fraud allegations involving disputed intent and financial records.',
     url: 'https://kernallaw.com/criminal-defense/theft-fraud',
   },
 }
@@ -18,7 +18,7 @@ const theftFraudFaqs = [
   {
     question: 'Can business disputes be charged as criminal fraud?',
     answer:
-      'Sometimes. Prosecutors may treat disputed transactions as criminal conduct if they believe intent elements can be proven. Defense strategy often focuses on separating civil disagreement from criminal intent.',
+      'Sometimes. Prosecutors may treat a disputed transaction as criminal conduct if they believe they can prove fraudulent intent. The surrounding agreements, communications, payment history, and conduct may help show whether the matter is a civil dispute or a crime.',
   },
   {
     question: 'What does the prosecution have to prove in theft or fraud cases?',
@@ -33,7 +33,7 @@ const theftFraudFaqs = [
   {
     question: 'Can restitution discussions impact outcome?',
     answer:
-      'Potentially. Depending on case posture, restitution factors can influence negotiations. Strategy should be handled carefully to avoid unnecessary admissions.',
+      'Potentially. Restitution may affect negotiations in some cases, but a payment or statement can also be treated as an admission. It should be discussed with counsel before any offer or payment is made.',
   },
   {
     question: 'Do theft and fraud convictions affect professional licenses?',
@@ -43,7 +43,7 @@ const theftFraudFaqs = [
   {
     question: 'How early should legal review begin?',
     answer:
-      'As soon as possible. Early defense work improves evidence control and response strategy before allegations harden into a single prosecution narrative.',
+      'As soon as practical. Early review can help preserve complete records and communications before accounts are closed, messages are lost, or only part of the transaction history is presented.',
   },
 ]
 
@@ -51,19 +51,19 @@ export default function TheftFraudPage() {
   return (
     <ServiceDetailPage
       heroTitle="Theft and Fraud Defense"
-      heroSubtitle="Intent-focused defense for property and financial crime allegations."
+      heroSubtitle="Defense involving disputed intent, records, property, and financial transactions."
       heroVariant="criminal"
-      introTitle="These cases are often won on intent, context, and record interpretation."
+      introTitle="A disputed transaction is not automatically proof of criminal intent."
       introParagraphs={[
-        'Theft and fraud prosecutions frequently rely on selective records and assumption-based intent arguments. Strong defense requires careful reconstruction of transaction context and decision timeline.',
-        'Kernal & Associates builds theft and fraud defense around element-by-element challenge strategy, evidentiary precision, and litigation readiness where negotiation posture is unreasonable.',
+        'Theft, embezzlement, and fraud cases often involve bank records, contracts, messages, and competing explanations for the same transaction. A complete timeline can matter as much as any single document.',
+        'Kernal & Associates reviews what the State must prove, who created or controlled the records, and whether the evidence supports criminal intent. Todd Kernal then advises on negotiations, evidentiary issues, and trial based on the facts of the case.',
       ]}
-      focusTitle="How We Defend Theft and Fraud Charges"
+      focusTitle="Evidence in Theft and Fraud Cases"
       focusItems={[
         {
           title: 'Intent-Element Challenge',
           description:
-            'The State must prove criminal intent, not just bad outcomes or disputed transactions.',
+            'The State must prove the required criminal intent, not merely a failed deal, accounting error, or disputed obligation.',
           bullets: [
             'Intent timeline reconstruction',
             'Alternative explanation development',
@@ -74,7 +74,7 @@ export default function TheftFraudPage() {
         {
           title: 'Financial and Document Evidence Review',
           description:
-            'Records must be complete, attributable, and interpreted correctly to support prosecution claims.',
+            'Financial records must be complete, tied to the right person, and read in context before they support a criminal allegation.',
           bullets: [
             'Source record completeness checks',
             'Attribution and authorship disputes',
@@ -85,33 +85,33 @@ export default function TheftFraudPage() {
         {
           title: 'Outcome and Collateral Risk Management',
           description:
-            'Defense planning should address both court exposure and long-term professional impact.',
+            'The available options should be considered alongside possible restitution, employment, licensing, and record consequences.',
           bullets: [
-            'Charge-severity risk mapping',
-            'Restitution strategy controls',
-            'Licensing/employment impact planning',
-            'Trial-position leverage development',
+            'Charge level and possible penalties',
+            'Restitution questions',
+            'Licensing and employment concerns',
+            'Preparation for motions or trial',
           ],
         },
       ]}
-      processTitle="Theft and Fraud Defense Workflow"
-      processSubtitle="A precise evidence and intent strategy improves outcomes in document-heavy prosecutions."
+      processTitle="From Records Review to Court"
+      processSubtitle="The review follows the records, the timeline, and the intent the State claims those records prove."
       processSteps={[
         {
           step: '01',
-          title: 'Intake and Exposure Mapping',
+          title: 'Charge and Records Review',
           description:
-            'We review allegation scope, charge level, and immediate document-preservation priorities.',
+            'We review the allegation, charge level, available records, and documents that should be preserved or requested.',
         },
         {
           step: '02',
-          title: 'Record and Timeline Audit',
+          title: 'Record and Timeline Analysis',
           description:
-            'Financial and transaction records are analyzed for gaps, context issues, and weak assumptions.',
+            'Financial and transaction records are organized to identify missing context, authorship questions, and disputed assumptions.',
         },
         {
           step: '03',
-          title: 'Pretrial Strategy and Motions',
+          title: 'Pretrial Motions and Preparation',
           description:
             'We challenge flawed inferences, unsupported elements, and evidentiary defects.',
         },
@@ -119,11 +119,11 @@ export default function TheftFraudPage() {
           step: '04',
           title: 'Negotiation or Trial',
           description:
-            'We negotiate from strength and litigate fully where prosecution theory is not supportable.',
+            'We discuss any negotiated option with the client and prepare for trial when the charge is contested.',
         },
       ]}
       relatedTitle="Related Criminal Defense Pages"
-      relatedSubtitle="Explore connected charge categories and practical post-case strategy pages."
+      relatedSubtitle="Read about related charges, warrants, and possible record sealing after an eligible outcome."
       relatedLinks={[
         {
           href: '/criminal-defense',
@@ -134,13 +134,13 @@ export default function TheftFraudPage() {
         {
           href: '/criminal-defense/expungement',
           title: 'Expungement Services',
-          description: 'Record-sealing strategy after eligible case outcomes.',
+          description: 'Information about sealing records after an eligible case outcome.',
           ctaName: 'theft_related_expungement',
         },
         {
           href: '/criminal-defense/warrants',
           title: 'Warrants Defense',
-          description: 'Handling pending warrant exposure and court-entry strategy.',
+          description: 'Help with an active warrant or a missed court appearance.',
           ctaName: 'theft_related_warrants',
         },
         {
@@ -153,8 +153,8 @@ export default function TheftFraudPage() {
       faqSubtitle="Answers to common theft and fraud defense questions in Oklahoma."
       faqs={theftFraudFaqs}
       practiceArea="theft-fraud"
-      ctaTitle="Clarify Intent and Evidence Before the Case Hardens"
-      ctaDescription="Early legal strategy is critical in document-heavy property and financial allegations."
+      ctaTitle="Get the Complete Record Reviewed"
+      ctaDescription="A prompt review can preserve financial records and put the disputed transaction in its full context."
       ctaLabel="Start Theft and Fraud Defense"
       ctaName="theft_bottom_cta"
     />

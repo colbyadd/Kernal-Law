@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Oklahoma DUI Defense Attorney | Kernal & Associates',
     description:
-      'Strategic DUI and DWI defense across Oklahoma, including suppression analysis, administrative hearing strategy, and trial-ready representation.',
+      'Defense for Oklahoma DUI and DWI cases, including the traffic stop, testing evidence, court proceedings, and driver’s-license issues.',
     url: 'https://kernallaw.com/criminal-defense/dui-dwi',
   },
 }
@@ -28,7 +28,7 @@ const duiFaqs = [
   {
     question: 'Will I lose my driver’s license after a DUI?',
     answer:
-      'Potentially. Oklahoma DUI allegations can trigger both court penalties and separate administrative license actions. Early legal strategy is critical to preserve hearing options and minimize license disruption while the criminal case is pending.',
+      'Possibly. A DUI arrest can lead to a criminal case and a separate driver’s-license process. The deadlines and available options depend on the arrest and testing records, so those documents should be reviewed promptly.',
   },
   {
     question: 'Are field sobriety tests mandatory?',
@@ -38,7 +38,7 @@ const duiFaqs = [
   {
     question: 'Do I need a lawyer for a first DUI?',
     answer:
-      'Yes. First allegations can still carry jail exposure, fines, interlock requirements, insurance consequences, and long-term record impact. Early representation helps protect rights and can improve negotiation posture before positions harden.',
+      'A first allegation can still involve jail, fines, an ignition interlock, insurance consequences, and a lasting court record. A lawyer can review the stop and testing evidence, explain both case tracks, and help you make informed decisions.',
   },
   {
     question: 'How long does a DUI case take in Oklahoma?',
@@ -51,86 +51,86 @@ export default function DuiDwiPage() {
   return (
     <ServiceDetailPage
       heroTitle="DUI / DWI Defense"
-      heroSubtitle="Protect your license, record, and freedom with immediate DUI strategy across both court and DPS tracks."
+      heroSubtitle="Help with the criminal case and the separate driver’s-license process after an Oklahoma DUI arrest."
       heroVariant="criminal"
-      introTitle="A DUI charge creates two legal battles that must be managed together."
+      introTitle="A DUI arrest can start both a court case and a separate license process."
       introParagraphs={[
-        'Oklahoma DUI cases are not just about whether an arrest occurred. They are built on layered procedures: the reason for the stop, officer observations, field-testing sequence, chemical-test handling, and documentation quality. A weakness in one layer can shift leverage across the entire case.',
-        'Most people discover quickly that DUI allegations involve parallel risk. One track runs through criminal court and can affect penalties, record exposure, and liberty. The second track involves license consequences and mobility disruption. Strategy has to coordinate both at the same time.',
-        'Kernal & Associates treats DUI defense as a technical litigation file from day one. We examine constitutional issues, test reliability records, and timeline defects while building a practical resolution path aligned with long-term risk, not just short-term pressure.',
+        'A DUI case can turn on the reason for the traffic stop, what the officer observed, how field tests were given, how a breath or blood sample was handled, and whether the reports match the available video.',
+        'The criminal case and the driver’s-license process are separate. Each can have its own deadlines and consequences. Both should be reviewed at the outset so a decision in one does not create an avoidable problem in the other.',
+        'Kernal & Associates reviews the stop, testing records, video, reports, and license documents. Todd Kernal then explains the disputed issues and the available paths, which may include negotiation, a motion hearing, or trial depending on the evidence.',
       ]}
-      focusTitle="What We Analyze in Every Oklahoma DUI Case"
+      focusTitle="What We Review in an Oklahoma DUI Case"
       focusItems={[
         {
           title: 'Traffic Stop and Detention Legality',
           description:
-            'The legal basis for the stop and subsequent detention is foundational. If probable cause or reasonable suspicion is weak, major portions of the State’s evidence can be limited or excluded.',
+            'Police need a lawful reason for the stop and for extending the detention. The reports and video should show what happened and when.',
           bullets: [
             'Reasonable suspicion and stop-basis analysis',
             'Duration and expansion of detention review',
             'Dashcam/bodycam timing comparison',
             'Officer report consistency testing',
             'Witness and third-party corroboration',
-            'Suppression pathway mapping',
+            'Possible grounds to suppress evidence',
           ],
         },
         {
           title: 'Chemical Testing and Measurement Reliability',
           description:
-            'Breath and blood results are only as strong as the procedure behind them. We audit device records, collection protocol, and documentation continuity for reliability and admissibility problems.',
+            'Breath and blood results depend on the equipment, collection method, records, and handling of the sample. Problems in that process may affect whether a result is reliable or admissible.',
           bullets: [
             'Machine maintenance and calibration logs',
             'Observation-period compliance review',
-            'Sample collection and transfer controls',
+            'Sample collection and transfer records',
             'Lab process and analyst documentation',
             'Variance and uncertainty analysis',
             'Chain-of-custody integrity checks',
           ],
         },
         {
-          title: 'Penalty Control and License Preservation',
+          title: 'Court Penalties and Driver’s-License Issues',
           description:
-            'Every recommendation should be informed by full exposure modeling. We evaluate criminal and administrative consequences together so case decisions do not create avoidable long-term damage.',
+            'Before choosing a course, a client should understand possible court penalties, license consequences, work concerns, and the effect on day-to-day transportation.',
           bullets: [
             'Jail, fine, and supervision exposure',
             'Interlock and ignition-device requirements',
-            'DPS hearing and suspension strategy',
+            'Department of Public Safety hearing and suspension issues',
             'Employment and licensing consequences',
             'Insurance and mobility impact',
-            'Record-management planning',
+            'Possible record consequences',
           ],
         },
       ]}
-      processTitle="DUI Defense Workflow"
-      processSubtitle="A disciplined technical workflow improves leverage, negotiation quality, and trial readiness."
+      processTitle="How We Review a DUI Case"
+      processSubtitle="The work begins with deadlines and records, then turns to the legal and factual disputes in the case."
       processSteps={[
         {
           step: '01',
-          title: 'Immediate Intake and Deadline Control',
+          title: 'Paperwork and Deadlines',
           description:
-            'We secure reports, release paperwork, and media quickly, then map critical court and license timelines so rights are preserved from the first stage of representation.',
+            'We review the citation, release papers, temporary license documents, and available media, then identify the court and license dates that apply.',
         },
         {
           step: '02',
-          title: 'Constitutional and Technical Evidence Audit',
+          title: 'Legal and Technical Evidence Review',
           description:
             'Stop basis, field assessments, chemical testing, and officer procedure are audited for constitutional defects and technical reliability weaknesses.',
         },
         {
           step: '03',
-          title: 'Integrated Court and License Strategy',
+          title: 'Court and License Planning',
           description:
-            'We coordinate criminal-court positioning with administrative license planning so one track does not undermine the other.',
+            'We address the criminal case and the license process together while keeping their separate rules and deadlines clear.',
         },
         {
           step: '04',
           title: 'Negotiation, Motion Practice, or Trial',
           description:
-            'When proposed outcomes are not reasonable, we escalate through targeted motion practice and trial-prepared litigation strategy.',
+            'Depending on the evidence, the next step may be negotiation, a motion challenging evidence, or preparation for trial.',
         },
       ]}
       relatedTitle="Related Defense and Location Pages"
-      relatedSubtitle="Use these pages to compare DUI strategy with related charge and local-court context."
+      relatedSubtitle="Read about related charges, the Oklahoma DUI process, and representation in nearby courts."
       relatedLinks={[
         {
           href: '/criminal-defense',
@@ -141,7 +141,7 @@ export default function DuiDwiPage() {
         {
           href: '/criminal-defense/drug-charges',
           title: 'Drug Charges Defense',
-          description: 'Cross-over strategy when impairment allegations involve controlled substances.',
+          description: 'Related issues when an impairment allegation involves a controlled substance.',
           ctaName: 'dui_related_drug_charges',
         },
         {
@@ -165,7 +165,7 @@ export default function DuiDwiPage() {
         {
           href: '/norman/criminal-defense',
           title: 'Norman Criminal Defense',
-          description: 'Cleveland County defense strategy for drivers arrested in south-metro corridors.',
+          description: 'Criminal defense for cases filed in Norman and Cleveland County.',
           ctaName: 'dui_related_norman_criminal',
         },
       ]}
@@ -176,10 +176,10 @@ export default function DuiDwiPage() {
         'Save all citation, release, and temporary-license documents immediately.',
         'Write a private timeline while details of the stop and testing are fresh.',
         'Avoid discussing your case facts with anyone except legal counsel.',
-        'Start legal review now to protect both court and license-track options.',
+        'Have both the court case and driver’s-license papers reviewed promptly.',
       ]}
-      ctaTitle="Take Control of Your DUI Case Early"
-      ctaDescription="The first week after arrest often determines leverage. Request a confidential DUI case review now."
+      ctaTitle="Talk With an Oklahoma DUI Lawyer"
+      ctaDescription="Court and driver’s-license deadlines can begin soon after arrest. Request a confidential case review."
       ctaLabel="Start DUI Defense"
       ctaName="dui_bottom_cta"
     />

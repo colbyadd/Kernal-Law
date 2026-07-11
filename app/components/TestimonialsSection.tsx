@@ -31,41 +31,16 @@ const testimonials: Testimonial[] = [
     }
 ]
 
-// Schema for aggregate rating
-const reviewSchema = {
-    "@context": "https://schema.org",
-    "@type": "Attorney",
-    "@id": "https://kernallaw.com/#reviews",
-    "name": "Kernal & Associates",
-    "image": "https://kernallaw.com/images/todd-kernal-lhl.jpg",
-    "telephone": "+1-405-364-0601",
-    "priceRange": "$$",
-    "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "1332 SW 89th Street",
-        "addressLocality": "Oklahoma City",
-        "addressRegion": "OK",
-        "postalCode": "73159",
-        "addressCountry": "US"
-    },
-    "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "16",
-        "bestRating": "5",
-        "worstRating": "1"
-    }
-}
-
 function StarRating({ rating }: { rating: number }) {
     return (
-        <div className="flex gap-1 mb-4">
+        <div className="flex gap-1 mb-4" role="img" aria-label={`${rating} out of 5 stars`}>
             {[...Array(5)].map((_, i) => (
                 <svg
                     key={i}
                     className={`w-5 h-5 ${i < rating ? 'text-accent-gold' : 'text-silver-500/30'}`}
                     fill="currentColor"
                     viewBox="0 0 20 20"
+                    aria-hidden="true"
                 >
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                 </svg>
@@ -77,12 +52,6 @@ function StarRating({ rating }: { rating: number }) {
 export function TestimonialsSection() {
     return (
         <section className="py-24 md:py-32 bg-iron-950 border-t border-silver-500/10">
-            {/* Review Schema */}
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
-            />
-
             <div className="container mx-auto px-6">
                 {/* Header */}
                 <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-16 gap-6">
@@ -100,7 +69,7 @@ export function TestimonialsSection() {
                         data-cta="reviews_view_all"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-silver-500 hover:text-accent-gold transition-colors text-sm uppercase tracking-widest"
+                        className="text-link text-silver-500 hover:text-accent-gold transition-colors text-sm uppercase tracking-widest"
                     >
                         View All Reviews →
                     </a>

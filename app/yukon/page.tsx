@@ -1,15 +1,14 @@
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 import { LocationServicePage } from '../components/LocationServicePage'
 
 export const metadata: Metadata = {
-  title: 'Yukon Criminal Defense and Personal Injury Attorney',
+  title: 'Yukon Criminal & Injury Lawyer',
   description:
-    'Kernal & Associates serves Yukon with criminal defense and personal injury representation for Canadian County and surrounding metro matters.',
+    'Criminal defense and personal injury help for Yukon matters involving Canadian County, I-40, the Kilpatrick Turnpike, and west-metro travel.',
   alternates: { canonical: '/yukon' },
   openGraph: {
-    title: 'Yukon Criminal Defense and Injury Attorney | Kernal & Associates',
-    description:
-      'Strategic legal representation for Yukon residents facing criminal or injury cases.',
+    title: 'Yukon Criminal & Injury Lawyer',
+    description: 'Help with Canadian County filings and serious west-metro injury claims.',
     url: 'https://kernallaw.com/yukon',
   },
 }
@@ -19,105 +18,131 @@ export default function YukonPage() {
     <LocationServicePage
       canonicalPath="/yukon"
       locationName="Yukon"
-      subtitle="Criminal defense and injury representation for Yukon and west metro communities."
-      introTitle="West metro legal issues need rapid, trial-ready strategy."
+      subtitle="Help with Canadian County criminal matters and west-metro crash or industrial injury claims."
+      introTitle="Confirm the venue before working from the deadline"
       introParagraphs={[
-        'Yukon clients frequently face cross-jurisdiction legal issues involving both Canadian County and metro-area case dynamics. Immediate strategy helps avoid procedural and evidentiary mistakes.',
-        'Kernal & Associates provides aggressive criminal defense and full-value injury claim representation with clear planning from intake through courtroom pressure.',
+        'A Yukon incident may lead to a Canadian County filing even when the people involved travel or work elsewhere in the metro. Use the case number and court notice to confirm the venue, then list the release, appearance, and response dates in one place.',
+        'I-40 and the Kilpatrick Turnpike carry daily west-metro traffic. After a serious crash, retain the report information, original images, vehicle papers, medical records, bills, employer documents, and letters from every insurance company.',
+        'Industrial-loss claims can add workplace and company records to the medical and insurance file. Keep those sources distinct so the incident, treatment, time away from work, and claimed losses can be followed in order.',
       ]}
-      countyFocus="Canadian County and West Metro Court Coordination"
+      countyFocus="Canadian County venue and west-metro record sources"
       localHighlights={[
-        'Office consultations available at 1332 SW 89th Street in south Oklahoma City, with phone and text intake for urgent matters.',
-        'Rapid response for arrest events, active warrants, and hearing-risk exposure.',
-        'Injury claim support for high-speed corridor and commercial vehicle incidents.',
-        'Coordinated legal planning where insurance and criminal concerns overlap.',
-        'Litigation-focused preparation for contested liability and evidence disputes.',
-        'Long-term record and licensing risk analysis for criminal matters.',
-        'Direct legal communication and deadline control from first consultation onward.',
+        'The case number and filed notice identify the court handling the criminal matter.',
+        'West-metro enforcement activity may not match a mailing address or usual commute.',
+        'Release conditions and appearance dates should be copied to a reliable calendar.',
+        'I-40 crashes can involve local drivers, freight traffic, and several vehicles.',
+        'Kilpatrick Turnpike events may produce roadway records separate from the police report.',
+        'Workplace documents may show job duties, incident reporting, and time missed.',
+        'Keep insurer correspondence grouped by company and policy.',
+        'Travel for treatment should appear in a complete medical chronology.',
       ]}
       serviceLinks={[
         {
           href: '/yukon/criminal-defense',
           title: 'Yukon Criminal Defense',
-          description: 'Local defense planning for Yukon criminal allegations.',
+          description: 'Help confirming Canadian County venue, filings, and the next obligation.',
           ctaName: 'yukon_service_criminal_defense',
         },
         {
           href: '/criminal-defense/dui-dwi',
           title: 'DUI / DWI Defense',
-          description: 'Court and license-track strategy for DUI allegations.',
-          ctaName: 'yukon_service_dui',
+          description: 'Review of traffic evidence, testing material, license notices, and court papers.',
+          ctaName: 'yukon_service_dui_dwi',
         },
         {
-          href: '/criminal-defense/theft-fraud',
-          title: 'Theft and Fraud Defense',
-          description: 'Intent and records-focused strategy in financial allegations.',
-          ctaName: 'yukon_service_theft',
+          href: '/criminal-defense/warrants',
+          title: 'Warrants Defense',
+          description: 'Checking which court issued the warrant and what proceeding remains open.',
+          ctaName: 'yukon_service_warrants',
         },
         {
           href: '/yukon/personal-injury',
           title: 'Yukon Personal Injury',
-          description: 'Local claim strategy for serious crash and negligence losses.',
-          ctaName: 'yukon_service_injury',
+          description: 'Claims involving west-metro roadways, industrial events, and serious harm.',
+          ctaName: 'yukon_service_personal_injury',
+        },
+        {
+          href: '/personal-injury/car-accidents',
+          title: 'Car Accident Claims',
+          description: 'Review of crash evidence, care history, damaged property, and income loss.',
+          ctaName: 'yukon_service_car_accidents',
+        },
+        {
+          href: '/personal-injury/uninsured-motorist',
+          title: 'Uninsured Motorist Claims',
+          description: 'Locating policy benefits when the other vehicle has too little insurance.',
+          ctaName: 'yukon_service_uninsured_motorist',
+        },
+        {
+          href: '/criminal-defense/drug-charges',
+          title: 'Drug Charges Defense',
+          description: 'Reviewing the alleged possession, search basis, chain of custody, and test.',
+          ctaName: 'yukon_service_drug_charges',
         },
         {
           href: '/personal-injury/truck-accidents',
-          title: 'Truck Accident Litigation',
-          description: 'Commercial collision strategy and layered liability analysis.',
-          ctaName: 'yukon_service_truck',
-        },
-        {
-          href: '/personal-injury/oil-field-injuries',
-          title: 'Oil Field Injury Claims',
-          description: 'Technical industrial injury strategy for high-severity losses.',
-          ctaName: 'yukon_service_oil_field',
+          title: 'Truck Accident Claims',
+          description: 'Obtaining driver, company, equipment, and policy information after a wreck.',
+          ctaName: 'yukon_service_truck_accidents',
         },
       ]}
       relatedLocationLinks={[
         {
-          href: '/mustang',
-          title: 'Mustang',
-          description: 'Nearby west metro service page for additional local context.',
-          ctaName: 'yukon_related_mustang',
+          href: '/el-reno/criminal-defense',
+          title: 'El Reno Criminal Defense',
+          description: 'Canadian County information for criminal matters farther west.',
+          ctaName: 'yukon_related_nearby_a',
         },
         {
-          href: '/oklahoma-city',
-          title: 'Oklahoma City',
-          description: 'Metro-area criminal defense and injury representation hub.',
-          ctaName: 'yukon_related_oklahoma_city',
+          href: '/mustang/personal-injury',
+          title: 'Mustang Personal Injury',
+          description: 'Claim information for nearby west-south metro travel.',
+          ctaName: 'yukon_related_nearby_b',
+        },
+        {
+          href: '/locations',
+          title: 'Regional Coverage Pages',
+          description: 'Look up a connected city or county in the service-area directory.',
+          ctaName: 'yukon_related_locations_hub',
+        },
+        {
+          href: '/resources',
+          title: 'Prepare With a Legal Guide',
+          description: 'Review Oklahoma checklists for charges, collisions, and insurance matters.',
+          ctaName: 'yukon_related_resources_hub',
         },
         {
           href: '/resources/what-to-do-after-car-accident-oklahoma',
-          title: 'Post-Accident Guide',
-          description: 'Immediate claim-protection checklist after serious crashes.',
-          ctaName: 'yukon_related_accident_guide',
+          title: 'After a Car Accident',
+          description: 'A guide to medical care, scene material, insurer calls, and record keeping.',
+          ctaName: 'yukon_related_local_guide',
         },
       ]}
-      faqSubtitle="Key legal questions from Yukon clients facing urgent criminal or injury exposure."
+      faqSubtitle="Yukon answers about Canadian County venue and west-metro records."
       faqs={[
         {
-          question: 'Can you represent Yukon clients in Canadian County and metro courts?',
+          question: 'How do I confirm where a Yukon criminal case is filed?',
           answer:
-            'Yes. We coordinate strategy across jurisdictions when cases involve Canadian County and surrounding metro venues.',
+            'Use the case number, charging paper, bond document, and court notice. Bring all of them if the venue or date appears inconsistent.',
         },
         {
-          question: 'How do you approach DUI cases from Yukon arrests?',
+          question: 'What should I keep after a Kilpatrick Turnpike crash?',
           answer:
-            'We build a unified strategy for both criminal allegations and administrative license risk so one process does not undermine the other.',
+            'Preserve the precise location, time, report details, original photographs, vehicle records, medical documents, and insurer communications.',
         },
         {
-          question: 'Do you take serious commercial truck injury cases near Yukon?',
+          question: 'Do workplace records matter in an industrial injury claim?',
           answer:
-            'Yes. We handle commercial collision claims with evidence preservation, liability mapping, and long-term damages planning.',
+            'They may document job duties, how the event was reported, time away, pay, and communications connected to the incident.',
         },
         {
-          question: 'What should I avoid doing before speaking with counsel?',
+          question: 'What if several insurance companies contact me?',
           answer:
-            'Avoid detailed case discussions on calls, texts, or social media, and avoid recorded insurer statements without legal guidance.',
+            'Create a separate folder and call log for each company. Save the policy or claim number and any requested response date.',
         },
       ]}
-      ctaTitle="Need Immediate Counsel in Yukon?"
-      ctaDescription="Request a confidential review to map risk, preserve evidence, and set case strategy."
+      ctaTitle="Review a Yukon Court or Injury File"
+      ctaDescription="Bring the Canadian County notice and the west-metro records you have saved."
       ctaName="yukon"
     />
   )

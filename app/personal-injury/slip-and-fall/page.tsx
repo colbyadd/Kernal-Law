@@ -18,7 +18,7 @@ const slipFallFaqs = [
   {
     question: 'What makes a slip and fall case legally valid?',
     answer:
-      'A valid premises claim generally requires proof of unsafe condition, property-owner duty, notice or knowledge, and causation of injury. Case value depends heavily on evidence quality.',
+      'A premises claim generally requires proof of an unsafe condition, a legal duty owed by the property owner or occupier, actual or constructive notice of the condition, and an injury caused by it. The facts and available evidence determine whether those requirements can be met.',
   },
   {
     question: 'How important are photos and incident reports?',
@@ -28,7 +28,7 @@ const slipFallFaqs = [
   {
     question: 'Can businesses deny responsibility automatically?',
     answer:
-      'They often contest responsibility aggressively. Liability depends on whether conditions were foreseeable, known, and unreasonably dangerous under the circumstances.',
+      'A business can dispute responsibility, but its denial does not decide the claim. Liability depends on the condition, how long it existed, what the business knew or should have known, and whether reasonable warnings or repairs were provided.',
   },
   {
     question: 'What if I was partially distracted at the time?',
@@ -38,12 +38,12 @@ const slipFallFaqs = [
   {
     question: 'Do slip and fall injuries need immediate treatment records?',
     answer:
-      'Yes. Prompt treatment and clear symptom documentation significantly strengthen causation and damages presentation.',
+      'Prompt treatment can document the timing, symptoms, and diagnosis. Delayed care does not automatically defeat a claim, but the reason for the delay may become an issue.',
   },
   {
     question: 'How soon should a premises claim be reviewed by counsel?',
     answer:
-      'As soon as possible. Early evidence control is often the difference between a strong and weak premises liability case.',
+      'As soon as practical. A spill may be cleaned, a defect repaired, or surveillance video erased. Photos, witness information, and a written incident report may be difficult to replace later.',
   },
 ]
 
@@ -53,17 +53,17 @@ export default function SlipAndFallPage() {
       heroTitle="Slip and Fall Claims"
       heroSubtitle="Premises liability representation for hazardous property conditions."
       heroVariant="injury"
-      introTitle="Premises cases are won on documentation speed and hazard proof."
+      introTitle="The condition that caused a fall may be gone within minutes."
       introParagraphs={[
-        'Property hazard evidence can disappear quickly after an incident. Fast documentation and condition analysis are essential to proving liability.',
-        'Kernal & Associates handles slip and fall claims with focused hazard reconstruction, notice analysis, and full damages development for negotiation and trial positioning.',
+        'A spill may be cleaned, a broken surface repaired, or surveillance video overwritten soon after an incident. Photos, witness names, an incident report, and a request to preserve video can help show what the property looked like at the time.',
+        'Kernal & Associates examines the unsafe condition, whether the owner knew or should have known about it, what warnings were provided, and how the fall caused the injury and financial losses.',
       ]}
       focusTitle="Slip and Fall Case Priorities"
       focusItems={[
         {
           title: 'Hazard and Notice Proof',
           description:
-            'Premises claims require clear evidence that unsafe conditions existed and should have been addressed.',
+            'The evidence should show what the condition was, how long it may have existed, and what the owner did about it.',
           bullets: [
             'Condition documentation and timing',
             'Warning-sign adequacy analysis',
@@ -74,52 +74,52 @@ export default function SlipAndFallPage() {
         {
           title: 'Causation and Injury Development',
           description:
-            'Injury proof must connect incident mechanism to medical consequences with consistency.',
+            'Medical records and the incident history should explain how the fall caused or worsened the claimed injuries.',
           bullets: [
-            'Incident-to-treatment timeline control',
+            'Incident and treatment timeline',
             'Medical causation documentation',
-            'Functional-impact evidence',
-            'Future treatment projection analysis',
+            'Daily and work limitations',
+            'Expected future treatment',
           ],
         },
         {
-          title: 'Liability Dispute Management',
+          title: 'Fault Disputes',
           description:
-            'Defense teams often push comparative-fault narratives that require early rebuttal.',
+            'The property owner may dispute notice, argue that the condition was open and obvious, or blame the injured person.',
           bullets: [
-            'Comparative fault challenge strategy',
+            'Comparative-fault allegations',
             'Scene visibility and layout analysis',
             'Witness and camera evidence review',
-            'Litigation escalation planning',
+            'Filing suit when necessary',
           ],
         },
       ]}
       processTitle="Slip and Fall Claim Workflow"
-      processSubtitle="Fast evidence preservation and structured liability proof are central to strong premises claims."
+      processSubtitle="The first task is preserving proof of the condition before it is repaired, cleaned, or erased."
       processSteps={[
         {
           step: '01',
           title: 'Immediate Intake and Evidence Capture',
           description:
-            'We gather incident records, photos, witness data, and condition evidence quickly.',
+            'We gather the incident report, photographs, witness information, video, and other records of the condition.',
         },
         {
           step: '02',
           title: 'Liability and Notice Analysis',
           description:
-            'We assess unsafe condition history and owner-response obligations.',
+            'We examine inspection and maintenance practices, prior notice, warning signs, and the owner’s response.',
         },
         {
           step: '03',
           title: 'Damages Documentation',
           description:
-            'Medical and economic damages are organized for full-value claim posture.',
+            'We collect medical, wage, and expense records and document any lasting limits on work or daily activities.',
         },
         {
           step: '04',
           title: 'Negotiation or Litigation',
           description:
-            'We negotiate from evidence strength and escalate where liability is denied unfairly.',
+            'We address disputes about the hazard, notice, and injury with insurers and, when necessary, in court.',
         },
       ]}
       relatedTitle="Related Injury Pages"
@@ -128,13 +128,13 @@ export default function SlipAndFallPage() {
         {
           href: '/personal-injury',
           title: 'Personal Injury Hub',
-          description: 'Overview of broader injury case categories and strategy.',
+          description: 'See other Oklahoma injury claims handled by the firm.',
           ctaName: 'slip_related_injury_hub',
         },
         {
           href: '/personal-injury/catastrophic-injury',
           title: 'Catastrophic Injury Claims',
-          description: 'Long-horizon valuation strategy for severe injury outcomes.',
+          description: 'Legal issues when a fall causes permanent limitations or ongoing care needs.',
           ctaName: 'slip_related_catastrophic',
         },
         {
@@ -146,7 +146,7 @@ export default function SlipAndFallPage() {
         {
           href: '/contact',
           title: 'Request Premises Case Review',
-          description: 'Get immediate assessment of liability and evidence strength.',
+          description: 'Ask about the condition, notice evidence, injuries, and deadlines in your case.',
           ctaName: 'slip_related_contact',
         },
       ]}
@@ -154,7 +154,7 @@ export default function SlipAndFallPage() {
       faqs={slipFallFaqs}
       practiceArea="slip-and-fall"
       ctaTitle="Preserve Premises Evidence Before It Changes"
-      ctaDescription="Early action can materially improve liability proof and settlement leverage."
+      ctaDescription="An early review can identify photographs, video, witnesses, maintenance records, and deadlines that may matter."
       ctaLabel="Start Slip and Fall Review"
       ctaName="slip_bottom_cta"
     />

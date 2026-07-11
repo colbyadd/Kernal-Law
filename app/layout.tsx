@@ -64,32 +64,12 @@ export const metadata: Metadata = {
     siteName: "Kernal & Associates",
     locale: "en_US",
     type: "website",
-    images: [
-      {
-        url: '/images/todd-kernal-lhl.jpg',
-        width: 300,
-        height: 300,
-        alt: "Todd Kernal - Kernal & Associates",
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Kernal & Associates | Oklahoma Criminal Defense & Personal Injury',
     description:
       'Oklahoma criminal defense and personal injury representation for DUI, felony, warrant, car accident, truck accident, and wrongful death matters.',
-    images: ['/images/todd-kernal-lhl.jpg'],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
   },
 };
 
@@ -104,6 +84,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta property="og:image" content={`${baseUrl}/social-card`} />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta
+          property="og:image:alt"
+          content="Kernal & Associates — Oklahoma criminal defense and personal injury"
+        />
+        <meta name="twitter:image" content={`${baseUrl}/social-card`} />
+        <meta
+          name="twitter:image:alt"
+          content="Kernal & Associates — Oklahoma criminal defense and personal injury"
+        />
+      </head>
       <body
         className={`${headingFont.variable} ${bodyFont.variable} antialiased selection:bg-silver-100 selection:text-iron-950 bg-iron-950`}
       >
@@ -114,22 +109,25 @@ export default function RootLayout({
           Skip to main content
         </a>
         <CinematicNav />
-        <div id="main-content">{children}</div>
+        <div id="main-content" tabIndex={-1}>{children}</div>
         <Footer />
         <ContactFab />
         <BaseJsonLd />
         <JsonLd />
         {gaMeasurementId ? (
           <>
+            <Script id="ga4-queue" strategy="beforeInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                window.gtag = window.gtag || function(){dataLayer.push(arguments);};
+              `}
+            </Script>
             <Script
               src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
               strategy="afterInteractive"
             />
             <Script id="ga4-init" strategy="afterInteractive">
               {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                window.gtag = gtag;
                 gtag('js', new Date());
                 gtag('config', '${gaMeasurementId}', {
                   send_page_view: false,

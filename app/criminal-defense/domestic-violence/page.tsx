@@ -2,14 +2,14 @@ import { Metadata } from 'next'
 import { ServiceDetailPage } from '../../components/ServiceDetailPage'
 
 export const metadata: Metadata = {
-  title: 'Oklahoma Domestic Violence Defense Lawyer',
+  title: 'Oklahoma Domestic Violence Lawyer',
   description:
-    'Defense for Oklahoma domestic violence allegations with coordinated strategy for criminal exposure, protective-order overlap, and bond-condition compliance.',
+    'Defense for Oklahoma domestic violence allegations involving criminal charges, protective orders, no-contact terms, and bond conditions.',
   alternates: { canonical: '/criminal-defense/domestic-violence' },
   openGraph: {
     title: 'Oklahoma Domestic Violence Defense | Kernal & Associates',
     description:
-      'Strategic domestic-violence defense with immediate control of no-contact restrictions, court conditions, and trial-risk posture.',
+      'Defense for Oklahoma domestic violence cases involving no-contact restrictions, court conditions, and disputed evidence.',
     url: 'https://kernallaw.com/criminal-defense/domestic-violence',
   },
 }
@@ -18,7 +18,7 @@ const domesticViolenceFaqs = [
   {
     question: 'What should I do right after a domestic violence arrest?',
     answer:
-      'Follow release conditions exactly and avoid prohibited contact. Do not discuss allegations with law enforcement or third parties without counsel. Early communication mistakes can trigger additional exposure and complicate defense strategy.',
+      'Follow every release condition and avoid any prohibited contact. Do not discuss the allegations with law enforcement or third parties without counsel. A call, message, or indirect contact can create another allegation even when the intent seems harmless.',
   },
   {
     question: 'Can the case continue if the complaining witness wants to drop it?',
@@ -28,7 +28,7 @@ const domesticViolenceFaqs = [
   {
     question: 'How do protective orders affect criminal defense?',
     answer:
-      'Protective orders can immediately affect residence access, communication, and family contact. Because protective-order and criminal tracks often interact, strategy must be coordinated to avoid unintended legal conflicts.',
+      'A protective order can affect access to a home, communication, and family contact. Because statements and rulings in that proceeding may affect the criminal case, both matters should be reviewed together.',
   },
   {
     question: 'Will a domestic violence allegation affect firearms rights?',
@@ -38,7 +38,7 @@ const domesticViolenceFaqs = [
   {
     question: 'Do I need a trial lawyer for this type of case?',
     answer:
-      'Yes. These cases frequently depend on credibility disputes and contested context. Trial readiness improves negotiation leverage and protects your position if the matter proceeds to hearing or jury trial.',
+      'These cases often turn on credibility, context, and conflicting accounts. Counsel should be prepared to test that evidence at a hearing or trial, even if the case may resolve without one.',
   },
   {
     question: 'Can a domestic violence case be sealed later?',
@@ -51,27 +51,27 @@ export default function DomesticViolencePage() {
   return (
     <ServiceDetailPage
       heroTitle="Domestic Violence Defense"
-      heroSubtitle="Immediate, disciplined defense for high-risk allegations, court restrictions, and collateral exposure."
+      heroSubtitle="Help with the criminal charge, no-contact terms, and related protective-order proceedings."
       heroVariant="criminal"
-      introTitle="Domestic violence allegations require immediate legal control across multiple court pressures."
+      introTitle="A domestic violence arrest can affect more than the criminal case."
       introParagraphs={[
-        'Domestic violence allegations can trigger overlapping criminal exposure, emergency no-contact restrictions, protective-order proceedings, and immediate disruption to housing and family routines. These files move quickly, and early decisions can materially change long-term case posture.',
-        'A common mistake is treating these as a single-track criminal matter. In reality, communications, order compliance, and collateral consequences must be managed in parallel. One misstep can create additional allegations or weaken defense credibility.',
-        'Kernal & Associates builds coordinated strategy from day one: stabilizing immediate risk, structuring legally safe communication protocols, and preparing a defense that can withstand pretrial pressure and trial-level scrutiny if needed.',
+        'A domestic violence allegation may lead to criminal charges, a no-contact condition, and a separate protective-order proceeding. It can also disrupt housing, parenting arrangements, and ordinary communication before the facts have been heard in court.',
+        'Release terms and court orders must be followed exactly. Attempts to explain the situation directly, even through another person, can create a new allegation or complicate the existing case.',
+        'Kernal & Associates reviews the orders, statements, messages, video, and other available evidence. Todd Kernal also considers how the criminal and protective-order matters may affect one another before advising on hearings, negotiations, or trial.',
       ]}
-      focusTitle="Primary Defense Priorities"
+      focusTitle="What Needs Attention First"
       focusItems={[
         {
-          title: 'Condition Compliance and Risk Control',
+          title: 'Following Court and Release Conditions',
           description:
-            'The first objective is preventing technical violations that create new charges, bond complications, or strategic damage before evidence litigation begins.',
+            'The first task is to understand the release terms and avoid conduct that could lead to a new charge or a bond problem.',
           bullets: [
             'No-contact order interpretation',
             'Bond and release condition planning',
-            'Communication-risk protocols',
+            'Limits on direct and indirect contact',
             'Court-compliance documentation',
             'Residence and access planning',
-            'Violation-risk response protocol',
+            'Response to alleged violations',
           ],
         },
         {
@@ -88,21 +88,21 @@ export default function DomesticViolencePage() {
           ],
         },
         {
-          title: 'Parallel Proceeding Coordination',
+          title: 'Criminal and Protective-Order Cases',
           description:
-            'Protective-order and criminal tracks influence each other and must be managed as one integrated strategy to reduce contradiction risk.',
+            'The criminal case and a protective-order case may involve the same events, witnesses, and statements. They should be handled with that overlap in mind.',
           bullets: [
             'Protective order defense alignment',
             'Collateral family-impact planning',
-            'Plea and record consequence modeling',
-            'Trial preparation positioning',
-            'Hearing-sequence strategy',
-            'Long-term collateral risk planning',
+            'Plea and record consequences',
+            'Preparation for hearings or trial',
+            'Order and hearing deadlines',
+            'Employment and firearm-rights concerns',
           ],
         },
       ]}
-      processTitle="Domestic Violence Case Workflow"
-      processSubtitle="A coordinated process protects both immediate stability and long-term legal outcome."
+      processTitle="From Release Conditions to the Next Court Date"
+      processSubtitle="The first steps are understanding the orders, preserving evidence, and preparing for the next court date."
       processSteps={[
         {
           step: '01',
@@ -112,15 +112,15 @@ export default function DomesticViolencePage() {
         },
         {
           step: '02',
-          title: 'Evidence Preservation and Narrative Stress-Testing',
+          title: 'Evidence Preservation and Review',
           description:
-            'Statements, messages, and timeline evidence are audited for consistency, corroboration, and legal vulnerability.',
+            'Statements, messages, photos, video, and timeline evidence are compared for consistency and corroboration.',
         },
         {
           step: '03',
-          title: 'Pretrial Strategy and Motion Practice',
+          title: 'Pretrial Hearings and Motions',
           description:
-            'We challenge weak evidence, address overbroad allegations, and build a trial-ready posture with controlled hearing strategy.',
+            'We address admissibility questions, disputed allegations, and the issues that must be prepared for a hearing or trial.',
         },
         {
           step: '04',
@@ -141,19 +141,19 @@ export default function DomesticViolencePage() {
         {
           href: '/criminal-defense/assault-battery',
           title: 'Assault and Battery Defense',
-          description: 'Defense strategy for alleged violence and bodily injury claims.',
+          description: 'Defense for allegations involving threatened force, physical contact, or injury.',
           ctaName: 'dv_related_assault_battery',
         },
         {
           href: '/criminal-defense/warrants',
           title: 'Warrants Defense',
-          description: 'Related strategy when no-contact or hearing issues create warrant exposure.',
+          description: 'Help with an active warrant or a missed court appearance.',
           ctaName: 'dv_related_warrants',
         },
         {
           href: '/criminal-defense/probation-violation',
           title: 'Probation Violation Defense',
-          description: 'Overlap strategy for clients with existing supervision obligations.',
+          description: 'Related representation when a new allegation affects existing supervision.',
           ctaName: 'dv_related_probation',
         },
         {
@@ -165,7 +165,7 @@ export default function DomesticViolencePage() {
         {
           href: '/norman/criminal-defense',
           title: 'Norman Criminal Defense',
-          description: 'Cleveland County defense strategy for south-metro domestic allegations.',
+          description: 'Criminal defense for cases filed in Norman and Cleveland County.',
           ctaName: 'dv_related_norman_criminal',
         },
       ]}
@@ -176,10 +176,10 @@ export default function DomesticViolencePage() {
         'Follow no-contact and release conditions exactly to avoid new allegations.',
         'Save all court papers, order documents, and communication records immediately.',
         'Do not discuss case facts with police, investigators, or third parties without counsel.',
-        'Start coordinated criminal and protective-order strategy before first key hearings.',
+        'Have the criminal case and any protective-order matter reviewed before the next hearing.',
       ]}
-      ctaTitle="Stabilize the Case Early"
-      ctaDescription="Early legal control can reduce escalation risk, protect compliance posture, and improve long-term defense outcomes."
+      ctaTitle="Talk With an Oklahoma Domestic Violence Lawyer"
+      ctaDescription="Get clear guidance on release terms, protective-order deadlines, and the criminal case."
       ctaLabel="Start Domestic Violence Defense"
       ctaName="dv_bottom_cta"
     />

@@ -4,12 +4,12 @@ import { ServiceDetailPage } from '../../components/ServiceDetailPage'
 export const metadata: Metadata = {
   title: 'Oklahoma Oil Field Injury Lawyer',
   description:
-    'Representation for Oklahoma oil field and industrial injury claims with focus on third-party liability, technical evidence preservation, and catastrophic-loss recovery strategy.',
+    'Oklahoma oil field and industrial injury representation involving third-party liability, equipment records, serious injuries, and wrongful death.',
   alternates: { canonical: '/personal-injury/oil-field-injuries' },
   openGraph: {
     title: 'Oklahoma Oil Field Injury Attorney | Kernal & Associates',
     description:
-      'Strategic representation for rig, refinery, and industrial injury cases with multi-party liability analysis across Oklahoma.',
+      'Representation after Oklahoma oil field and industrial incidents involving serious injury or wrongful death.',
     url: 'https://kernallaw.com/personal-injury/oil-field-injuries',
   },
 }
@@ -18,12 +18,12 @@ const oilFieldFaqs = [
   {
     question: 'Are oil field injury claims only workers compensation cases?',
     answer:
-      'Not always. Some incidents involve third-party liability beyond workers compensation, including contractors, equipment vendors, and site operators. Full liability review is essential before narrowing claim scope.',
+      'Not always. A worker may have a workers’ compensation claim and also have a separate claim against a contractor, equipment vendor, site operator, or another third party. The available claims depend on who caused the incident and each company’s role.',
   },
   {
     question: 'What causes are common in oil field injury cases?',
     answer:
-      'Common factors include equipment failure, inadequate maintenance, unsafe procedure execution, supervision breakdowns, and contractor coordination failures. Multiple entities may share fault in one event.',
+      'Possible causes include equipment failure, poor maintenance, unsafe procedures, inadequate supervision, and coordination failures among contractors. More than one company may be responsible for the same incident.',
   },
   {
     question: 'What damages can be recovered in an oil field injury claim?',
@@ -33,17 +33,17 @@ const oilFieldFaqs = [
   {
     question: 'How soon should evidence be preserved after an industrial accident?',
     answer:
-      'Immediately. Site conditions, inspection records, and machine-state data can change quickly. Early legal action materially improves access to high-value evidence.',
+      'As soon as possible. Site conditions can change, equipment can be repaired, and electronic or inspection records may be overwritten or discarded. Prompt preservation requests can help keep that evidence available.',
   },
   {
     question: 'Can catastrophic injury cases require experts?',
     answer:
-      'Yes. Technical, medical, and economic experts are often necessary to establish liability mechanisms and full future-loss valuation in severe industrial injury matters.',
+      'They can. Engineers or other technical professionals may be needed to explain how equipment or operations failed. Medical, vocational, or economic professionals may also be needed to address lasting injuries and future losses.',
   },
   {
     question: 'How long do oil field injury cases take?',
     answer:
-      'Case duration depends on liability complexity, injury severity, and number of defendants. Complex industrial matters often require extended development before full-value resolution.',
+      'The timing depends on the injury, the number of companies involved, the available records, and whether fault is disputed. An industrial case may take longer when technical investigation or litigation is required.',
   },
 ]
 
@@ -51,82 +51,82 @@ export default function OilFieldInjuriesPage() {
   return (
     <ServiceDetailPage
       heroTitle="Oil Field Injury Claims"
-      heroSubtitle="High-stakes industrial injury representation for Oklahoma rig, refinery, and field operations."
+      heroSubtitle="Representation after serious incidents at Oklahoma rigs, refineries, and industrial sites."
       heroVariant="injury"
       introTitle="Industrial injury cases require technical investigation from day one."
       introParagraphs={[
-        'Oil field and industrial injury claims often involve layered liability among operators, contractors, and equipment-related entities, along with specialized safety and maintenance standards. Without early case control, critical evidence can be lost or narrowed by defense framing.',
-        'Industrial defendants frequently move quickly to shape causation narratives. A plaintiff-side strategy must move just as fast on evidence preservation, technical analysis, and liability mapping to protect full recovery options.',
-        'Kernal & Associates develops oil field injury claims with immediate preservation strategy, multi-party liability analysis, and long-term damages modeling designed for negotiation leverage and litigation strength.',
+        'An oil field or industrial incident may involve an operator, several contractors, equipment suppliers, and maintenance companies. Contracts, site-control records, inspection files, and machine data may be needed to understand who was responsible.',
+        'The scene may change quickly after an incident. Equipment can be repaired or moved, and electronic records can be lost, so early photographs, witness information, and preservation requests matter.',
+        'Kernal & Associates investigates the companies involved, preserves technical records, reviews possible third-party claims, and documents the medical and financial effects of the injury.',
       ]}
       focusTitle="Core Oil Field Injury Case Priorities"
       focusItems={[
         {
-          title: 'Liability Mapping Across Entities',
+          title: 'Responsibility Across Companies',
           description:
-            'Industrial events frequently involve multiple responsible parties with overlapping operational roles.',
+            'We identify who owned the equipment, controlled the site, directed the work, and had responsibility for safety or maintenance.',
           bullets: [
             'Contractor and operator role analysis',
             'Site-control responsibility review',
             'Equipment vendor exposure assessment',
-            'Third-party claim pathway planning',
+            'Possible third-party claims',
             'Contract allocation review',
-            'Supervision-chain accountability analysis',
+            'Supervision and reporting structure',
           ],
         },
         {
           title: 'Technical Evidence Preservation',
           description:
-            'Industrial evidence must be secured quickly and interpreted accurately before records or site conditions change.',
+            'Site conditions, equipment, electronic data, and company records should be preserved before they change or disappear.',
           bullets: [
             'Incident scene and system-state capture',
             'Maintenance and inspection record review',
-            'Operational protocol deviation analysis',
-            'Safety compliance document audit',
+            'Departures from operating procedures',
+            'Safety policies and compliance records',
             'Electronic monitoring data collection',
             'Failure-mode investigation support',
           ],
         },
         {
-          title: 'Catastrophic Loss Valuation',
+          title: 'Long-Term Injury and Financial Losses',
           description:
-            'Severe industrial injuries require full long-horizon damages modeling supported by medical and economic analysis.',
+            'Serious injuries may require evidence of future medical care, reduced earning ability, and permanent changes in daily life.',
           bullets: [
             'Future care requirement analysis',
-            'Vocational and wage-loss modeling',
+            'Vocational and wage-loss analysis',
             'Disability and life-impact evidence',
-            'Trial-ready damages framework',
-            'Household-support loss analysis',
-            'Permanent-impairment valuation planning',
+            'Medical and financial loss records',
+            'Lost household services',
+            'Permanent impairment and limitations',
           ],
         },
       ]}
       processTitle="Oil Field Injury Claim Process"
-      processSubtitle="Early preservation and technical case development are critical to outcome quality."
+      processSubtitle="The work begins with preserving the scene and records, then identifying each company’s role."
       processSteps={[
         {
           step: '01',
-          title: 'Immediate Intake and Preservation Control',
+          title: 'Initial Review and Evidence Preservation',
           description:
-            'We secure incident records, identify responsible entities, and initiate evidence-hold strategy immediately.',
+            'We identify the companies involved and request preservation of incident records, equipment, video, and electronic data.',
         },
         {
           step: '02',
-          title: 'Technical Investigation and Liability Mapping',
+          title: 'Technical Investigation and Responsibility Review',
           description:
-            'Operational records, equipment history, and safety protocol compliance are analyzed in detail across involved entities.',
+            'We examine operating records, equipment history, safety procedures, contracts, and each company’s control over the work.',
         },
         {
           step: '03',
           title: 'Damages and Future-Loss Development',
           description:
-            'Medical and economic projections are structured for full-value negotiation and litigation support.',
+            'We gather medical, wage, and other records showing the immediate losses and any lasting care or work limitations.',
         },
         {
           step: '04',
           title: 'Negotiation and Litigation',
           description:
-            'We pursue full accountability and escalate to litigation when settlement posture is inadequate.',
+            'We negotiate with responsible companies and insurers. If material disputes remain, we can ask a court or jury to decide them.',
         },
       ]}
       relatedTitle="Related Injury Pages"
@@ -135,7 +135,7 @@ export default function OilFieldInjuriesPage() {
         {
           href: '/personal-injury',
           title: 'Personal Injury Hub',
-          description: 'Overview of high-value injury claim strategy and service categories.',
+          description: 'Learn about other accident and injury claims handled across Oklahoma.',
           ctaName: 'oil_related_injury_hub',
         },
         {
@@ -153,25 +153,25 @@ export default function OilFieldInjuriesPage() {
         {
           href: '/personal-injury/catastrophic-injury',
           title: 'Catastrophic Injury Claims',
-          description: 'Long-horizon damages strategy for permanent trauma and major life-impact losses.',
+          description: 'Legal issues when industrial trauma causes permanent limitations or future care needs.',
           ctaName: 'oil_related_catastrophic',
         },
         {
           href: '/oklahoma-city/personal-injury',
           title: 'Oklahoma City Personal Injury',
-          description: 'Metro injury strategy for industrial and severe negligence losses.',
+          description: 'Help with industrial and other injury claims in the Oklahoma City area.',
           ctaName: 'oil_related_okc_injury',
         },
         {
           href: '/norman/personal-injury',
           title: 'Norman Personal Injury',
-          description: 'Cleveland County strategy for south-metro industrial and severe-trauma claims.',
+          description: 'Industrial and other injury representation in Norman and Cleveland County.',
           ctaName: 'oil_related_norman_injury',
         },
         {
           href: '/resources/what-to-do-after-car-accident-oklahoma',
           title: 'Evidence Preservation Guide',
-          description: 'Practical checklist for documentation and insurer-risk control after serious incidents.',
+          description: 'A practical checklist for preserving records and communicating with insurers after an injury.',
           ctaName: 'oil_related_evidence_guide',
         },
       ]}
@@ -184,8 +184,8 @@ export default function OilFieldInjuriesPage() {
         'Preserve all communications and avoid recorded insurer statements before legal review.',
         'Start legal investigation early so technical and operational evidence can be protected.',
       ]}
-      ctaTitle="Protect Your Industrial Injury Claim Early"
-      ctaDescription="Technical evidence and liability pathways should be evaluated before insurers define the case narrative."
+      ctaTitle="Review an Oil Field or Industrial Injury"
+      ctaDescription="An early review can identify the companies, equipment records, and deadlines that may matter."
       ctaLabel="Start Oil Field Injury Review"
       ctaName="oil_bottom_cta"
     />

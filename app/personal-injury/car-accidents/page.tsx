@@ -4,12 +4,12 @@ import { ServiceDetailPage } from '../../components/ServiceDetailPage'
 export const metadata: Metadata = {
   title: 'Oklahoma Car Accident Lawyer',
   description:
-    'Car accident representation in Oklahoma focused on liability proof, complete damages development, and insurer-pressure response in high-stakes injury claims.',
+    'Oklahoma car accident representation for disputed fault, serious injuries, medical costs, lost income, and insurance claims.',
   alternates: { canonical: '/personal-injury/car-accidents' },
   openGraph: {
     title: 'Oklahoma Car Accident Attorney | Kernal & Associates',
     description:
-      'Evidence-driven Oklahoma car-accident representation for disputed fault, severe injuries, and undervalued insurance offers.',
+      'Help with disputed fault, serious injuries, and insurance claims after an Oklahoma car accident.',
     url: 'https://kernallaw.com/personal-injury/car-accidents',
   },
 }
@@ -18,27 +18,27 @@ const carAccidentFaqs = [
   {
     question: 'What should I do immediately after a car accident in Oklahoma?',
     answer:
-      'Get medical evaluation first, report the crash, preserve photos and witness details, and avoid recorded insurer statements before legal review. Early evidence preservation directly affects liability strength and claim value.',
+      'Get medical care, report the crash, save photos and witness information, and be cautious about giving a recorded statement to an insurer. Early records can make it easier to show what happened and how you were hurt.',
   },
   {
     question: 'How much is my car accident claim worth?',
     answer:
-      'Claim value depends on liability strength, injury severity, treatment progression, wage loss, future impairment, and available coverage. Strong valuation requires complete medical and economic documentation over time.',
+      'It depends on fault, the available insurance, the nature of the injuries, medical expenses, lost income, and any lasting limitations. A lawyer needs the records and policy information before giving a useful assessment.',
   },
   {
     question: 'Should I accept the first insurance offer?',
     answer:
-      'Usually not without legal review. Early offers are often discounted before treatment and long-term impact are clear. Settling too early can waive future recovery even if symptoms worsen.',
+      'Have the offer reviewed before accepting it. An early offer may arrive before the extent of the injury or future care is known, and a signed release usually ends the claim.',
   },
   {
     question: 'What if the other driver says I caused the crash?',
     answer:
-      'Fault disputes are common and often insurer-driven. Liability should be built with objective evidence including scene data, witness statements, damage patterns, and timeline reconstruction.',
+      'The other driver’s account is only one piece of the case. Photos, witness statements, the crash report, vehicle damage, video, and other records may help establish what happened.',
   },
   {
     question: 'Can I recover compensation if I was partially at fault?',
     answer:
-      'Possibly. Oklahoma comparative-fault rules may still allow recovery depending on fault allocation. Percentage disputes are often central to negotiation and, when necessary, litigation strategy.',
+      'Possibly. Oklahoma’s comparative-fault rules can permit recovery in some cases involving shared fault. The exact result depends on the facts and the percentage of fault assigned to each party.',
   },
   {
     question: 'How long does a car accident case take?',
@@ -51,82 +51,82 @@ export default function CarAccidentsPage() {
   return (
     <ServiceDetailPage
       heroTitle="Car Accident Claims"
-      heroSubtitle="Evidence-driven representation for serious collisions and insurer dispute across Oklahoma."
+      heroSubtitle="Help with fault disputes, serious injuries, and insurance claims after an Oklahoma crash."
       heroVariant="injury"
-      introTitle="Car accident claims are won with disciplined proof, timing, and pressure."
+      introTitle="A car accident claim starts with clear records of the crash and the harm it caused."
       introParagraphs={[
-        'Insurance carriers begin claim strategy immediately, often before complete medical information exists. Without structured legal development, valid claims can be undercut through early fault-shifting, partial-record valuation, and fast-closeout pressure.',
-        'A high-value car-accident case requires parallel development: proving fault while documenting full damages over time. If one side is underdeveloped, the insurer can use that gap to discount recovery.',
-        'Kernal & Associates builds car-accident files for full-value outcomes. We establish liability from objective evidence, develop damages with medical and economic rigor, and prepare litigation leverage when settlement proposals are not reasonable.',
+        'An insurer may ask for a recorded statement or make an offer before treatment is complete. Before signing anything, it helps to understand the available coverage and whether the medical record reflects the full extent of the injury.',
+        'A sound claim addresses two separate questions: who caused the crash, and what losses followed. Photos, witness accounts, medical records, wage information, and policy documents can all matter.',
+        'Kernal & Associates investigates the collision, organizes the medical and financial records, handles insurer communications, and files suit when a claim cannot be resolved on reasonable terms.',
       ]}
       focusTitle="How We Build a Strong Car Accident Claim"
       focusItems={[
         {
           title: 'Liability and Fault Analysis',
           description:
-            'Objective fault evidence is the engine of settlement value and trial posture in disputed collision claims.',
+            'We compare the drivers’ accounts with the physical and documentary evidence from the crash.',
           bullets: [
             'Police report and scene reconstruction',
             'Witness credibility and sequence review',
             'Vehicle damage pattern analysis',
-            'Comparative fault defense strategy',
-            'Intersection and right-of-way mapping',
+            'Comparative-fault allegations',
+            'Intersection and right-of-way review',
             'Digital timeline consolidation',
           ],
         },
         {
           title: 'Medical and Economic Damage Proof',
           description:
-            'Claim value improves when treatment progression and long-term impact are documented with precision and consistency.',
+            'Medical and financial records should show both the immediate losses and any lasting effects.',
           bullets: [
             'Treatment timeline and prognosis',
             'Future care and impairment analysis',
             'Lost wages and earning-capacity losses',
-            'Pain and life-impact evidence package',
-            'Medical-gap explanation strategy',
+            'Pain and daily-life limitations',
+            'Gaps or changes in treatment',
             'Out-of-pocket loss documentation',
           ],
         },
         {
-          title: 'Insurer Negotiation and Escalation',
+          title: 'Insurance Negotiation and Next Steps',
           description:
-            'We negotiate from complete demand packages and escalate quickly when delay, undervaluation, or bad-faith behavior continues.',
+            'We submit the supporting records, respond to fault or damage disputes, and discuss the choices if the insurer will not make a reasonable offer.',
           bullets: [
-            'Coverage and policy-limit mapping',
-            'Demand strategy sequencing',
-            'Bad-faith pressure points',
-            'Litigation readiness if needed',
-            'Recorded-statement risk control',
-            'Settlement-offer benchmarking',
+            'Coverage and policy-limit review',
+            'Timing of the demand',
+            'Claim-handling concerns',
+            'Filing suit when necessary',
+            'Recorded-statement questions',
+            'Review of settlement offers',
           ],
         },
       ]}
       processTitle="Car Accident Claim Process"
-      processSubtitle="A structured claim process protects both immediate recovery and long-term damages."
+      processSubtitle="The work moves from preserving crash evidence to documenting losses and resolving disputed issues."
       processSteps={[
         {
           step: '01',
           title: 'Immediate Intake and Evidence Preservation',
           description:
-            'We secure crash documentation, witness details, and insurer communications before memory and evidence quality degrade.',
+            'We gather crash reports, photos, witness information, and insurer correspondence while those records are available.',
         },
         {
           step: '02',
           title: 'Medical and Liability Development',
           description:
-            'Treatment records and liability proof are developed in parallel so valuation is evidence-backed instead of assumption-driven.',
+            'We review the fault evidence while collecting records of treatment, expenses, lost work, and any continuing limitations.',
         },
         {
           step: '03',
           title: 'Demand Package and Negotiation',
           description:
-            'We present full-value demand supported by liability proof and complete damages records, then challenge discount tactics directly.',
+            'Once the necessary information is available, we send the insurer a demand supported by the liability and loss records.',
         },
         {
           step: '04',
           title: 'Litigation if Necessary',
           description:
-            'If insurers refuse reasonable terms, we escalate through filing, discovery, and trial-prepared litigation.',
+            'If negotiation does not resolve the claim, we can file suit, use discovery to obtain evidence, and prepare for court.',
         },
       ]}
       relatedTitle="Related Injury and Location Pages"
@@ -135,37 +135,37 @@ export default function CarAccidentsPage() {
         {
           href: '/personal-injury',
           title: 'Personal Injury Hub',
-          description: 'Overview of injury representation strategy and claim categories.',
+          description: 'See the firm’s other injury services and general information about making a claim.',
           ctaName: 'car_related_injury_hub',
         },
         {
           href: '/personal-injury/truck-accidents',
           title: 'Truck Accident Claims',
-          description: 'Commercial collision strategy with carrier and regulatory evidence requirements.',
+          description: 'Commercial crash claims involving carriers, driver records, and maintenance evidence.',
           ctaName: 'car_related_truck_accidents',
         },
         {
           href: '/personal-injury/uninsured-motorist',
           title: 'Uninsured Motorist Claims',
-          description: 'Coverage-aware strategy where at-fault drivers lack adequate insurance.',
+          description: 'Coverage questions when the at-fault driver has too little insurance or none at all.',
           ctaName: 'car_related_uninsured',
         },
         {
           href: '/personal-injury/catastrophic-injury',
           title: 'Catastrophic Injury Claims',
-          description: 'Long-horizon damages strategy for life-altering trauma cases.',
+          description: 'Permanent-injury claims that require evidence of future medical and work limitations.',
           ctaName: 'car_related_catastrophic',
         },
         {
           href: '/oklahoma-city/personal-injury',
           title: 'Oklahoma City Personal Injury',
-          description: 'Metro injury strategy for high-volume corridor collisions and major damages.',
+          description: 'Car-crash and other injury representation in the Oklahoma City area.',
           ctaName: 'car_related_oklahoma_city_injury',
         },
         {
           href: '/norman/personal-injury',
           title: 'Norman Personal Injury',
-          description: 'Cleveland County claim strategy for south-metro crash and negligence losses.',
+          description: 'Car-crash and other injury representation for Norman and Cleveland County.',
           ctaName: 'car_related_norman_injury',
         },
       ]}
@@ -175,11 +175,11 @@ export default function CarAccidentsPage() {
       actionChecklist={[
         'Get medical evaluation and keep a complete treatment timeline from day one.',
         'Preserve scene photos, witness contacts, and all insurer communications.',
-        'Avoid recorded insurance statements before legal strategy review.',
-        'Start claim planning early to prevent fault-shifting and undervaluation pressure.',
+        'Ask for legal advice before giving a recorded insurance statement or signing a release.',
+        'Have the available insurance policies and deadlines reviewed early.',
       ]}
-      ctaTitle="Protect the Value of Your Car Accident Claim"
-      ctaDescription="Early strategy prevents low-value settlement pressure and protects long-term claim leverage."
+      ctaTitle="Talk Through Your Car Accident Claim"
+      ctaDescription="A review can identify the crash records, available policies, and filing deadlines that may matter."
       ctaLabel="Start Car Accident Case Review"
       ctaName="car_bottom_cta"
     />

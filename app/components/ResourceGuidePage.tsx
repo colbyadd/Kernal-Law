@@ -18,6 +18,12 @@ interface GuideStep {
   detail: string
 }
 
+interface OfficialSource {
+  label: string
+  href: string
+  description: string
+}
+
 interface ResourceGuidePageProps {
   canonicalPath: string
   title: string
@@ -26,7 +32,9 @@ interface ResourceGuidePageProps {
   authorName: string
   reviewedBy: string
   reviewedTitle: string
+  datePublished: string
   lastUpdated: string
+  officialSources: OfficialSource[]
   immediateActionsTitle: string
   immediateActions: GuideStep[]
   takeaways: string[]
@@ -57,6 +65,13 @@ function toStepNumber(value: number) {
   return value.toString().padStart(2, '0')
 }
 
+function formatEditorialDate(value: string) {
+  return new Intl.DateTimeFormat('en-US', {
+    dateStyle: 'long',
+    timeZone: 'UTC',
+  }).format(new Date(`${value}T00:00:00.000Z`))
+}
+
 export function ResourceGuidePage({
   canonicalPath,
   title,
@@ -65,7 +80,9 @@ export function ResourceGuidePage({
   authorName,
   reviewedBy,
   reviewedTitle,
+  datePublished,
   lastUpdated,
+  officialSources,
   immediateActionsTitle,
   immediateActions,
   takeaways,
@@ -89,6 +106,7 @@ export function ResourceGuidePage({
   const jumpLinks = [
     { href: '#guide-immediate-actions', label: 'Immediate Actions' },
     { href: '#guide-key-takeaways', label: 'Key Takeaways' },
+    { href: '#guide-official-sources', label: 'Official Sources' },
     ...sectionAnchors.map((anchor) => ({ href: `#${anchor.id}`, label: anchor.title })),
     { href: '#guide-faq', label: 'FAQ' },
     { href: '#guide-related', label: 'Related Links' },
@@ -101,7 +119,7 @@ export function ResourceGuidePage({
     headline: title,
     description: subtitle,
     author: {
-      '@type': 'Person',
+      '@type': 'Organization',
       name: authorName,
     },
     reviewedBy: {
@@ -109,7 +127,7 @@ export function ResourceGuidePage({
       name: reviewedBy,
       jobTitle: reviewedTitle,
     },
-    datePublished: lastUpdated,
+    datePublished,
     dateModified: lastUpdated,
     inLanguage: 'en-US',
     mainEntityOfPage: {
@@ -157,7 +175,7 @@ export function ResourceGuidePage({
               <div>
                 <p className="text-silver-500 uppercase tracking-widest text-[10px] mb-1">Last Updated</p>
                 <time dateTime={lastUpdated} className="text-silver-300">
-                  {lastUpdated}
+                  {formatEditorialDate(lastUpdated)}
                 </time>
               </div>
             </div>
@@ -223,6 +241,31 @@ export function ResourceGuidePage({
                   {takeaways.map((takeaway) => (
                     <li key={takeaway} className="bg-iron-950 border border-silver-500/10 p-4 text-silver-400">
                       {takeaway}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+
+              <section
+                id="guide-official-sources"
+                className="scroll-mt-28 bg-iron-900 border border-silver-500/10 p-6 md:p-8"
+              >
+                <h2 className="font-serif text-3xl text-white mb-3">Official Sources</h2>
+                <p className="text-silver-400 mb-6">
+                  These government sources provide the underlying rules and public information referenced in this guide.
+                </p>
+                <ul className="space-y-4">
+                  {officialSources.map((source) => (
+                    <li key={source.href} className="bg-iron-950 border border-silver-500/10 p-5">
+                      <a
+                        href={source.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white hover:text-accent-gold transition-colors font-semibold"
+                      >
+                        {source.label} <span aria-hidden="true">&rarr;</span>
+                      </a>
+                      <p className="text-silver-400 text-sm mt-2 leading-relaxed">{source.description}</p>
                     </li>
                   ))}
                 </ul>

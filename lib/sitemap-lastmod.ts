@@ -1,41 +1,20 @@
-import fs from 'node:fs'
-import path from 'node:path'
+const EDITORIAL_DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/
 
-function routeToAppPageFile(routePath: string): string {
-  return routePath === '' ? 'app/page.tsx' : `app${routePath}/page.tsx`
-}
-
-function getRouteSourceFiles(routePath: string): string[] {
-  const normalizedRoute = routePath === '' ? '/' : routePath
-  const sources = new Set<string>([routeToAppPageFile(routePath)])
-
-  if (/^\/[^/]+$/.test(normalizedRoute)) {
-    sources.add('app/[market]/page.tsx')
-    sources.add('lib/content/location-market-page-specs.ts')
+/**
+ * Convert a human-maintained editorial date to the stable UTC date used by the
+ * sitemap. Filesystem mtimes are intentionally ignored because installs and
+ * deploys change them without reflecting a meaningful page update.
+ */
+export function resolveSitemapLastModified(editorialDate: string): Date {
+  if (!EDITORIAL_DATE_PATTERN.test(editorialDate)) {
+    throw new Error(`Invalid sitemap editorial date: ${editorialDate}`)
   }
 
-  if (/^\/[^/]+\/(criminal-defense|personal-injury)$/.test(normalizedRoute)) {
-    sources.add('lib/content/city-subpillars.ts')
-    sources.add('lib/content/subpillar-standards.ts')
+  const parsedDate = new Date(`${editorialDate}T00:00:00.000Z`)
+
+  if (Number.isNaN(parsedDate.getTime())) {
+    throw new Error(`Invalid sitemap editorial date: ${editorialDate}`)
   }
 
-  return [...sources]
-}
-
-function getMtime(filePath: string): Date | null {
-  try {
-    return fs.statSync(path.join(process.cwd(), filePath)).mtime
-  } catch {
-    return null
-  }
-}
-
-export function resolveSitemapLastModified(routePath: string, fallbackDate: Date): Date {
-  const sourceDates = getRouteSourceFiles(routePath)
-    .map(getMtime)
-    .filter((value): value is Date => value !== null)
-
-  return sourceDates.reduce((latestDate, currentDate) => {
-    return currentDate > latestDate ? currentDate : latestDate
-  }, fallbackDate)
+  return parsedDate
 }

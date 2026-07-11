@@ -2,9 +2,8 @@
 
 import { useEffect } from 'react'
 import { trackEvent } from '@/lib/analytics'
+import { consumeConfirmedFormSubmission } from '@/lib/contact'
 import { loadLeadAttribution } from '@/lib/lead-attribution'
-
-const THANK_YOU_TRACK_KEY = 'kernal_thank_you_tracked'
 
 export function SuccessAttribution() {
   useEffect(() => {
@@ -12,7 +11,7 @@ export function SuccessAttribution() {
       return
     }
 
-    if (window.sessionStorage.getItem(THANK_YOU_TRACK_KEY) === '1') {
+    if (!consumeConfirmedFormSubmission()) {
       return
     }
 
@@ -29,7 +28,6 @@ export function SuccessAttribution() {
       landing_page: attribution?.landing_page || '',
     })
 
-    window.sessionStorage.setItem(THANK_YOU_TRACK_KEY, '1')
   }, [])
 
   return null

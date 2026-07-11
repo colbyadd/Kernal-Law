@@ -59,13 +59,13 @@ const relatedLinkFallbacks: Record<ServiceDetailPageProps['heroVariant'], LinkGr
     {
       href: '/criminal-defense',
       title: 'Criminal Defense Hub',
-      description: 'Review charge categories, process, and defense strategy priorities.',
+      description: 'Review charge categories, court process, and common defense issues.',
       ctaName: 'related_fallback_criminal_hub',
     },
     {
       href: '/criminal-defense/dui-dwi',
       title: 'DUI / DWI Defense',
-      description: 'Charge-specific DUI strategy with license-risk planning.',
+      description: 'DUI court proceedings and related driver-license issues.',
       ctaName: 'related_fallback_criminal_dui',
     },
     {
@@ -89,7 +89,7 @@ const relatedLinkFallbacks: Record<ServiceDetailPageProps['heroVariant'], LinkGr
     {
       href: '/contact',
       title: 'Request Consultation',
-      description: 'Get immediate legal guidance based on your current risk profile.',
+      description: 'Talk with an attorney about the facts, documents, and next deadline.',
       ctaName: 'related_fallback_contact',
     },
   ],
@@ -97,19 +97,19 @@ const relatedLinkFallbacks: Record<ServiceDetailPageProps['heroVariant'], LinkGr
     {
       href: '/personal-injury',
       title: 'Personal Injury Hub',
-      description: 'Review injury claim categories, process, and strategy priorities.',
+      description: 'Review injury claim categories, records, damages, and the usual process.',
       ctaName: 'related_fallback_injury_hub',
     },
     {
       href: '/personal-injury/car-accidents',
       title: 'Car Accident Claims',
-      description: 'Fault and damages strategy for serious vehicle collisions.',
+      description: 'Fault, insurance, medical records, and damages after a serious collision.',
       ctaName: 'related_fallback_injury_car',
     },
     {
       href: '/resources/oklahoma-uninsured-motorist-claim-guide',
       title: 'Uninsured Motorist Claim Guide',
-      description: 'Policy-aware UM/UIM strategy for coverage and damages disputes.',
+      description: 'Coverage and damages issues in uninsured and underinsured motorist claims.',
       ctaName: 'related_fallback_injury_um_uim_guide',
     },
     {
@@ -127,7 +127,7 @@ const relatedLinkFallbacks: Record<ServiceDetailPageProps['heroVariant'], LinkGr
     {
       href: '/contact',
       title: 'Request Consultation',
-      description: 'Get a focused legal review before insurer pressure escalates.',
+      description: 'Talk with an attorney before signing a release or missing a deadline.',
       ctaName: 'related_fallback_contact',
     },
   ],
@@ -196,7 +196,7 @@ export function ServiceDetailPage({
   const jumpLinks = [
     { href: '#service-overview', label: 'Overview' },
     { href: '#service-focus', label: 'Focus Areas' },
-    ...(hasLocalContext ? [{ href: '#service-local-context', label: 'Local Strategy' }] : []),
+    ...(hasLocalContext ? [{ href: '#service-local-context', label: 'Local Information' }] : []),
     { href: '#service-process', label: 'Process' },
     { href: '#service-faq', label: 'FAQ' },
     { href: '#service-contact', label: 'Contact' },
@@ -208,13 +208,13 @@ export function ServiceDetailPage({
         'Do not discuss facts of your case with anyone except your lawyer.',
         'Gather all citations, bond paperwork, and court notices in one place.',
         'Follow release conditions exactly to avoid compounding exposure.',
-        'Schedule legal strategy review before your next hearing date.',
+        'Have the charge, documents, and deadlines reviewed before your next hearing.',
       ]
       : [
         'Preserve photos, records, and witness information from the incident.',
         'Track treatment, symptoms, and expenses in a single chronology.',
-        'Avoid recorded insurer statements before legal strategy review.',
-        'Start claim evaluation before deadlines and valuation pressure increase.',
+        'Avoid recorded insurer statements before you understand their purpose and effect.',
+        'Have the claim and applicable deadlines reviewed before signing a release.',
       ]
 
   const checklistItems = actionChecklist ?? defaultChecklist
@@ -315,7 +315,7 @@ export function ServiceDetailPage({
               {hasLocalContext ? (
                 <section id="service-local-context" className="scroll-mt-28 bg-iron-900/85 border border-silver-500/10 p-6 md:p-8">
                   <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
-                    {localContextTitle ?? 'Local Case Strategy Context'}
+                    {localContextTitle ?? 'Local Case Information'}
                   </h2>
                   {localContextSubtitle ? (
                     <p className="text-silver-400 mb-8 max-w-4xl">{localContextSubtitle}</p>
@@ -345,7 +345,7 @@ export function ServiceDetailPage({
               <section className="bg-iron-900 border border-silver-500/10 p-6 md:p-8">
                 <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">Critical Next Steps</h2>
                 <p className="text-silver-400 mb-7">
-                  The first moves after a legal event often determine leverage and avoidable risk.
+                  Early choices can affect deadlines, evidence, release conditions, and insurance rights.
                 </p>
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {checklistItems.map((item) => (

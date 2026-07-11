@@ -25,7 +25,11 @@ function persistVariant(variant: CtaVariant) {
   if (typeof window === 'undefined') {
     return
   }
-  window.sessionStorage.setItem(CTA_VARIANT_STORAGE_KEY, variant)
+  try {
+    window.sessionStorage.setItem(CTA_VARIANT_STORAGE_KEY, variant)
+  } catch {
+    // A/B attribution is best-effort when storage is blocked.
+  }
 }
 
 export function loadCtaVariant(): CtaVariant | null {
@@ -33,7 +37,11 @@ export function loadCtaVariant(): CtaVariant | null {
     return null
   }
 
-  return normalizeVariant(window.sessionStorage.getItem(CTA_VARIANT_STORAGE_KEY))
+  try {
+    return normalizeVariant(window.sessionStorage.getItem(CTA_VARIANT_STORAGE_KEY))
+  } catch {
+    return null
+  }
 }
 
 export function getOrCreateCtaVariant(searchParams: SearchParamsLike): CtaVariant {

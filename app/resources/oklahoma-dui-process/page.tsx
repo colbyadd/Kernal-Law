@@ -19,16 +19,28 @@ export default function DuiProcessGuidePage() {
     <ResourceGuidePage
       canonicalPath="/resources/oklahoma-dui-process"
       title="Oklahoma DUI Process Guide"
-      subtitle="Understand the legal timeline before early decisions lock in avoidable criminal and license risk."
+      subtitle="Understand the criminal case and driver-license process after an Oklahoma DUI arrest."
       intro={[
-        'Most Oklahoma DUI cases involve two simultaneous tracks: criminal court exposure and a separate license-risk process. Handling only one track can produce preventable damage in the other.',
-        'This guide is built as a timeline decision map. It shows where deadlines, evidence-control decisions, and strategy sequencing usually have the largest impact.',
-        'Use this page to understand the process, then move to the related defense pages for charge-specific planning.',
+        'An Oklahoma DUI arrest can involve two separate matters: a criminal case and an administrative process affecting driving privileges.',
+        'The deadlines and available options depend on the arrest date, test request, results, prior history, and notices you received. Keep every document and have the dates reviewed promptly.',
       ]}
       authorName="Kernal Law Editorial Team"
       reviewedBy="Todd Kernal"
       reviewedTitle="Founding Attorney"
-      lastUpdated="2026-02-18"
+      datePublished="2026-02-18"
+      lastUpdated="2026-07-11"
+      officialSources={[
+        {
+          label: 'Oklahoma Highway Safety Office: Alcohol-Impaired Driving',
+          href: 'https://oklahoma.gov/highwaysafety/focus-areas/alcohol-impaired.html',
+          description: 'Official Oklahoma information about DUI, driving while impaired, and related state laws.',
+        },
+        {
+          label: 'Service Oklahoma: Modified Driver License',
+          href: 'https://oklahoma.gov/service/all-pages/modified-driver-license.html',
+          description: 'Current state information about modified licenses and the Impaired Driver Accountability Program.',
+        },
+      ]}
       immediateActionsTitle="Immediate DUI Priorities"
       immediateActions={[
         {
@@ -59,13 +71,13 @@ export default function DuiProcessGuidePage() {
           label: 'Priority 5',
           title: 'Map Collateral Consequences',
           detail:
-            'Assess employment, CDL, professional license, and travel consequences early so strategy reflects real-world impact.',
+            'Identify employment, commercial driver license, professional license, and travel concerns before making case decisions.',
         },
         {
           label: 'Priority 6',
-          title: 'Build Unified Court + License Strategy',
+          title: 'Track Both Proceedings',
           detail:
-            'Court negotiations and administrative decisions should reinforce each other, not conflict.',
+            'Keep criminal-court dates and driver-license notices on one calendar so neither process is overlooked.',
         },
       ]}
       takeaways={[
@@ -75,7 +87,7 @@ export default function DuiProcessGuidePage() {
         'Early evidence preservation improves suppression and negotiation options.',
         'Field and chemical testing procedures are challengeable when flawed.',
         'Trial-readiness often improves negotiated outcomes.',
-        'Collateral consequences should be built into strategy from day one.',
+        'Employment and licensing consequences should be identified at the start.',
         'A unified plan reduces contradictory moves across two legal tracks.',
       ]}
       sections={[
@@ -89,13 +101,13 @@ export default function DuiProcessGuidePage() {
             'Criminal case calendar and hearing sequence',
             'Administrative license events and response windows',
             'Evidence request timeline for both tracks',
-            'Coordination points between court and mobility strategy',
+            'Dates that affect court obligations or driving privileges',
           ],
         },
         {
           title: 'First 10 Days: Deadline and Evidence Control Window',
           paragraphs: [
-            'The first 10 days after arrest are often the highest-leverage period for preserving rights and documents. Delay can reduce options for both motion practice and administrative relief requests.',
+            'The first days after arrest are important for preserving documents and identifying any response deadlines. Delay can reduce available options.',
             'Treat early days as a preservation phase: lock down records, identify witnesses, and begin an evidence map before narratives harden in official reports.',
           ],
           bullets: [
@@ -109,7 +121,7 @@ export default function DuiProcessGuidePage() {
           title: 'How DUI Evidence Is Challenged',
           paragraphs: [
             'DUI outcomes are often shaped by evidentiary detail. Common challenge points include stop legality, officer observations, field-test administration, chemical-test process, and chain-of-custody handling.',
-            'No single argument wins every case. Strong defense strategy tests each stage for procedural defects and presents challenges in a sequence that maximizes leverage.',
+            'No single argument applies to every case. Counsel should compare each procedure with the reports, recordings, test records, and governing law.',
           ],
           bullets: [
             'Initial stop basis and constitutional validity',
@@ -119,9 +131,9 @@ export default function DuiProcessGuidePage() {
           ],
         },
         {
-          title: 'Negotiation vs Trial Posture in DUI Cases',
+          title: 'Negotiation and Trial Decisions in DUI Cases',
           paragraphs: [
-            'Many DUI cases resolve through negotiated outcomes, but meaningful negotiation strength usually comes from demonstrated readiness to litigate. Early motion analysis and factual development influence that leverage.',
+            'Many DUI cases resolve without trial, but the decision should follow a careful review of the evidence and any available motions.',
             'A disciplined decision framework compares risk, evidence quality, collateral impact, and long-term record consequences before any resolution choice is made.',
           ],
           bullets: [
@@ -134,21 +146,21 @@ export default function DuiProcessGuidePage() {
         {
           title: 'License-Risk Planning and Daily-Life Continuity',
           paragraphs: [
-            'Driving disruption can produce immediate employment and family impact. Strategy should include transportation planning, compliance logistics, and documentation protocols while legal options are pursued.',
+            'Losing driving privileges can affect work and family obligations. Plan for transportation, follow all requirements, and keep the related records while legal options are reviewed.',
             'Even where restrictions apply, proactive planning can reduce chaos and help preserve compliance credibility with courts and agencies.',
           ],
           bullets: [
             'Work-route and backup transportation planning',
             'Compliance calendar for reporting and restrictions',
-            'Employer communication strategy where necessary',
+            'Employer communication plan where necessary',
             'Contingency planning for extended case timelines',
           ],
         },
         {
-          title: 'What to Bring to a DUI Strategy Meeting',
+          title: 'What to Bring to a DUI Attorney Meeting',
           paragraphs: [
-            'Bring every available document and timeline detail. Case quality improves when counsel can quickly compare official records against your chronology and identify pressure points.',
-            'A complete early file helps determine whether to prioritize procedural motions, negotiation strategy, license-track action, or parallel collateral-risk management.',
+            'Bring every available document and a timeline of the stop, testing, arrest, and release. Counsel can compare your account with the official records as they are obtained.',
+            'A complete early file helps identify court deadlines, driver-license issues, possible motions, and employment or licensing concerns.',
           ],
           bullets: [
             'Citations, release papers, and booking information',
@@ -158,7 +170,7 @@ export default function DuiProcessGuidePage() {
           ],
         },
       ]}
-      faqSubtitle="Answers to common questions about Oklahoma DUI case timelines and early strategy."
+      faqSubtitle="Answers to common questions about Oklahoma DUI case and driver-license timelines."
       faqs={[
         {
           question: 'Is a DUI case only about criminal court?',
@@ -197,7 +209,7 @@ export default function DuiProcessGuidePage() {
         {
           href: '/criminal-defense/dui-dwi',
           title: 'DUI / DWI Defense',
-          description: 'Charge-specific defense strategy and hearing/timeline planning.',
+          description: 'Charge-specific defense, hearing dates, testing issues, and driver-license concerns.',
           ctaName: 'guide_dui_process_related_dui_page',
         },
         {
@@ -215,7 +227,7 @@ export default function DuiProcessGuidePage() {
         {
           href: '/criminal-defense/drug-charges',
           title: 'Drug Charges Defense',
-          description: 'Cross-over strategy where impairment and controlled substances overlap.',
+          description: 'Defense information when impairment allegations involve a controlled substance.',
           ctaName: 'guide_dui_process_related_drug',
         },
         {
@@ -232,7 +244,7 @@ export default function DuiProcessGuidePage() {
         },
       ]}
       ctaTitle="Clarify Your DUI Timeline Before It Tightens"
-      ctaDescription="A coordinated strategy across court and license tracks can prevent avoidable outcomes."
+      ctaDescription="Bring your notices and arrest paperwork so both timelines can be reviewed."
       ctaLabel="Start DUI Case Review"
       ctaName="guide_dui_process_bottom_cta"
     />

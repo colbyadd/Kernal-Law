@@ -1,6 +1,31 @@
 const DEFAULT_PRIMARY_PHONE_E164 = '+14053640601'
 const DEFAULT_CONTACT_EMAIL = 'todd@kernallaw.com'
 
+export const CONTACT_CONSENT_VERSION = '2026-07-11'
+export const FORM_SUBMISSION_SESSION_KEY = 'kernal_form_submission_confirmed'
+
+export function recordConfirmedFormSubmission() {
+  if (typeof window === 'undefined') return
+
+  try {
+    window.sessionStorage.setItem(FORM_SUBMISSION_SESSION_KEY, '1')
+  } catch {
+    // Submission delivery must not be reported as failed when browser storage is unavailable.
+  }
+}
+
+export function consumeConfirmedFormSubmission() {
+  if (typeof window === 'undefined') return false
+
+  try {
+    const confirmed = window.sessionStorage.getItem(FORM_SUBMISSION_SESSION_KEY) === '1'
+    if (confirmed) window.sessionStorage.removeItem(FORM_SUBMISSION_SESSION_KEY)
+    return confirmed
+  } catch {
+    return false
+  }
+}
+
 function normalizeDigits(value: string) {
   return value.replace(/\D/g, '')
 }

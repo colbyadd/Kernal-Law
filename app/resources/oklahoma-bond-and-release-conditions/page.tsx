@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import { ResourceGuidePage } from '../../components/ResourceGuidePage'
 
 export const metadata: Metadata = {
-  title: 'Oklahoma Bond and Release Conditions Guide',
+  title: 'Oklahoma Bond & Release Guide',
   description:
     'Learn how Oklahoma bond and release conditions work, what violations can trigger, and how to manage compliance without damaging your defense case.',
   alternates: { canonical: '/resources/oklahoma-bond-and-release-conditions' },
@@ -19,16 +19,28 @@ export default function BondAndReleaseGuidePage() {
     <ResourceGuidePage
       canonicalPath="/resources/oklahoma-bond-and-release-conditions"
       title="Oklahoma Bond and Release Conditions Guide"
-      subtitle="How to protect your case after release by managing conditions with zero-error discipline."
+      subtitle="How to understand and follow Oklahoma release conditions after an arrest."
       intro={[
-        'Bond release is not the end of legal risk. It is the beginning of a compliance phase where mistakes can create new exposure and weaken your defense position.',
+        'Release conditions are court orders. Missing a date, leaving an approved area, or violating a no-contact term can lead to revocation or a new arrest.',
         'This guide explains how to read release conditions, avoid common violations, and respond quickly if a condition conflict appears.',
-        'Use it as a practical checklist while your defense strategy is being developed.',
       ]}
       authorName="Kernal Law Editorial Team"
       reviewedBy="Todd Kernal"
       reviewedTitle="Founding Attorney"
-      lastUpdated="2026-02-18"
+      datePublished="2026-02-18"
+      lastUpdated="2026-07-11"
+      officialSources={[
+        {
+          label: 'Oklahoma Statutes, Title 22, Section 1105',
+          href: 'https://www.oscn.net/applications/OCISWeb/DeliverDocument.asp?CiteID=438671',
+          description: 'Current Oklahoma law addressing release, bail, and court considerations for certain arrests.',
+        },
+        {
+          label: 'Oklahoma Statutes, Title 22: Bail',
+          href: 'https://www.oscn.net/applications/oscn/Index.asp?ftdb=STOKST22&level=1',
+          description: 'The official Title 22 index, including the statutes collected in the bail chapter.',
+        },
+      ]}
       immediateActionsTitle="Immediate Bond-Compliance Actions"
       immediateActions={[
         {
@@ -59,13 +71,13 @@ export default function BondAndReleaseGuidePage() {
           label: 'Action 5',
           title: 'Avoid New Law-Enforcement Interactions',
           detail:
-            'Any new incident can complicate release status and negotiation posture, even if unrelated to the original case.',
+            'A new arrest or alleged violation can affect release even when it is unrelated to the original case.',
         },
         {
           label: 'Action 6',
-          title: 'Coordinate Compliance With Defense Strategy',
+          title: 'Keep Counsel Informed',
           detail:
-            'Bond decisions should support hearing goals, motion sequencing, and long-term case objectives.',
+            'Tell counsel promptly about missed check-ins, accidental contact, work conflicts, address changes, or other compliance concerns.',
         },
       ]}
       takeaways={[
@@ -76,13 +88,13 @@ export default function BondAndReleaseGuidePage() {
         'Unworkable conditions should be modified through formal legal process.',
         'Documentation is critical if disputes arise over compliance.',
         'Consistent compliance strengthens credibility in court.',
-        'Post-release discipline is part of defense strategy, not separate from it.',
+        'Keep written proof of check-ins, testing, treatment, payments, and other required activity.',
       ]}
       sections={[
         {
           title: 'What Bond and Release Conditions Usually Cover',
           paragraphs: [
-            'Conditions commonly address court appearance obligations, reporting requirements, travel limits, no-contact orders, treatment, and conduct restrictions. Terms vary by charge type and risk profile.',
+            'Conditions commonly address court appearances, reporting, travel limits, no-contact orders, treatment, and conduct. The exact terms depend on the charge and the court\'s order.',
             'Understanding the exact scope of each requirement is essential because courts evaluate compliance strictly and often quickly after alleged violations.',
           ],
           bullets: [
@@ -145,16 +157,16 @@ export default function BondAndReleaseGuidePage() {
           ],
         },
         {
-          title: 'Integrating Bond Compliance With Overall Defense Strategy',
+          title: 'Keeping a Clear Compliance Record',
           paragraphs: [
-            'Bond conduct can affect courtroom credibility, negotiation posture, and sentencing perception. Strong compliance supports stronger advocacy in later phases.',
-            'Your defense plan should connect release management with discovery, motion practice, and long-term risk reduction goals.',
+            'A clear record of compliance helps counsel answer questions from the court and identify problems before they grow.',
+            'Keep release documents, check-in confirmations, test results, program records, and communications in one place.',
           ],
           bullets: [
             'Weekly compliance audit against written terms',
             'Central file for all bond-related documents',
             'Proactive updates to counsel about conflicts',
-            'Coordination with hearing and negotiation milestones',
+            'Regular review before hearings and court dates',
           ],
         },
       ]}
@@ -183,7 +195,7 @@ export default function BondAndReleaseGuidePage() {
         {
           question: 'Can bond compliance affect the final case outcome?',
           answer:
-            'Yes. Compliance history can influence credibility, negotiation posture, and sentencing context.',
+            'Yes. Courts may consider conduct while on release when deciding whether to continue release, change conditions, or impose a sentence.',
         },
         {
           question: 'Should I keep proof of compliance activities?',
@@ -192,12 +204,12 @@ export default function BondAndReleaseGuidePage() {
         },
       ]}
       relatedTitle="Related Bond, Arrest, and Defense Pages"
-      relatedSubtitle="Use these pages for broader strategy beyond release-condition management."
+      relatedSubtitle="Use these pages for the arrest, felony, warrant, and probation issues that may overlap with release terms."
       relatedLinks={[
         {
           href: '/resources/what-to-do-after-arrest-oklahoma',
           title: 'Post-Arrest Guide',
-          description: 'First-48-hours strategy after arrest and release from custody.',
+          description: 'A first-48-hours checklist after arrest and release from custody.',
           ctaName: 'guide_bond_related_after_arrest',
         },
         {
@@ -215,13 +227,13 @@ export default function BondAndReleaseGuidePage() {
         {
           href: '/criminal-defense/probation-violation',
           title: 'Probation Violation Defense',
-          description: 'Post-release compliance strategy where supervision conditions overlap.',
+          description: 'Information about alleged violations of probation or supervision terms.',
           ctaName: 'guide_bond_related_probation',
         },
         {
           href: '/criminal-defense',
           title: 'Criminal Defense Hub',
-          description: 'Full criminal defense services and charge-specific strategy pathways.',
+          description: 'Criminal defense services and charge-specific information.',
           ctaName: 'guide_bond_related_criminal_hub',
         },
         {
@@ -233,7 +245,7 @@ export default function BondAndReleaseGuidePage() {
       ]}
       ctaTitle="Need Help Managing Bond Conditions Without Mistakes?"
       ctaDescription="A structured compliance and modification plan can prevent avoidable legal setbacks."
-      ctaLabel="Start Bond Strategy Review"
+      ctaLabel="Request a Bond Review"
       ctaName="guide_bond_bottom_cta"
     />
   )

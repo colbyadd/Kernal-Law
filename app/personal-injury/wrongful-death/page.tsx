@@ -4,12 +4,12 @@ import { ServiceDetailPage } from '../../components/ServiceDetailPage'
 export const metadata: Metadata = {
   title: 'Oklahoma Wrongful Death Lawyer',
   description:
-    'Wrongful death representation in Oklahoma for families pursuing accountability, statutory compliance, and full financial recovery after fatal negligence events.',
+    'Oklahoma wrongful death representation for families facing estate questions, filing deadlines, financial losses, and fatal negligence claims.',
   alternates: { canonical: '/personal-injury/wrongful-death' },
   openGraph: {
     title: 'Oklahoma Wrongful Death Attorney | Kernal & Associates',
     description:
-      'Compassionate, evidence-driven, and trial-ready representation for fatal-loss negligence claims across Oklahoma.',
+      'Legal help for Oklahoma families after a death caused by negligence.',
     url: 'https://kernallaw.com/personal-injury/wrongful-death',
   },
 }
@@ -18,12 +18,12 @@ const wrongfulDeathFaqs = [
   {
     question: 'Who can file a wrongful death claim in Oklahoma?',
     answer:
-      'Wrongful death claims are generally filed through the personal representative of the decedent’s estate for eligible beneficiaries. Proper filing structure is essential and should be handled carefully at intake.',
+      'A wrongful death claim is generally brought by the personal representative of the deceased person’s estate for the benefit of those entitled under Oklahoma law. The correct estate and filing procedure depends on the circumstances.',
   },
   {
     question: 'How long do families have to file a wrongful death claim?',
     answer:
-      'In many Oklahoma cases, wrongful-death filing timelines are measured from the date of death, though case-specific factors can affect deadlines. Early legal review helps protect timing and evidence-preservation requirements.',
+      'Oklahoma law imposes filing deadlines, and the date of death is often important. Other facts can affect the deadline, so families should obtain case-specific advice promptly rather than rely on a general time estimate.',
   },
   {
     question: 'What damages are available in a wrongful death case?',
@@ -33,12 +33,12 @@ const wrongfulDeathFaqs = [
   {
     question: 'Can wrongful death claims involve multiple defendants?',
     answer:
-      'Yes. Fatal incidents can involve shared responsibility among drivers, companies, contractors, and other entities. Comprehensive liability mapping is a core part of wrongful-death case development.',
+      'Yes. Drivers, employers, contractors, property owners, manufacturers, or other parties may share responsibility depending on what happened and who controlled the conduct or equipment involved.',
   },
   {
     question: 'Do these cases always settle?',
     answer:
-      'Not always. Some resolve through negotiation, while others require litigation to pursue fair compensation and accountability. Trial readiness often influences settlement quality.',
+      'No. Some claims are resolved through negotiation, while others require a lawsuit and may proceed to trial. The course of a case depends on the evidence and the parties’ positions.',
   },
   {
     question: 'What should families preserve after a fatal accident?',
@@ -51,82 +51,82 @@ export default function WrongfulDeathPage() {
   return (
     <ServiceDetailPage
       heroTitle="Wrongful Death Claims"
-      heroSubtitle="Accountability-focused representation for families after fatal negligence and preventable loss events."
+      heroSubtitle="Legal guidance for Oklahoma families after a death caused by negligence."
       heroVariant="injury"
-      introTitle="Wrongful death cases require legal precision, disciplined advocacy, and careful family-centered process."
+      introTitle="Families should not have to sort out estate procedure, deadlines, and insurers on their own."
       introParagraphs={[
-        'Families facing wrongful death litigation are managing profound loss while navigating complex legal and procedural demands. Liability proof, estate structure, and damages strategy all need to be handled carefully from the start.',
-        'Wrongful death matters are rarely simple. They often involve multiple defendants, high-stakes causation disputes, and insurance defense pressure aimed at limiting valuation before complete family-impact evidence is developed.',
-        'Kernal & Associates handles wrongful-death claims with a dual focus: honoring the human impact while building a rigorous case for accountability and full financial recovery under Oklahoma law.',
+        'A wrongful death claim raises practical questions at an already difficult time: who may bring the claim, whether an estate must be opened, what deadlines apply, and which people or companies may be responsible.',
+        'The evidence can include incident records, witness accounts, company documents, medical and funeral expenses, income history, and information about the loss to the family. When several parties are involved, each role must be examined separately.',
+        'Kernal & Associates handles the legal and procedural work, keeps the family informed, and builds the claim from the available evidence. No result can undo the loss, but the process can seek the compensation Oklahoma law allows.',
       ]}
       focusTitle="Wrongful Death Case Priorities"
       focusItems={[
         {
           title: 'Liability and Causation Proof',
           description:
-            'Establishing fault and legal causation is central to any wrongful-death claim and often requires multi-party analysis.',
+            'The evidence must show what happened, who was responsible, and how the wrongful conduct caused the death.',
           bullets: [
             'Incident causation analysis',
             'Defendant role and duty evaluation',
             'Evidence and witness development',
-            'Counter-defense strategy planning',
-            'Multi-defendant responsibility mapping',
-            'Expert causation alignment',
+            'Review of disputed defenses',
+            'Responsibility among multiple defendants',
+            'Expert review when needed',
           ],
         },
         {
           title: 'Estate and Beneficiary Coordination',
           description:
-            'Claim structure must align with statutory requirements, estate procedure, and beneficiary rights from the outset.',
+            'The claim must follow Oklahoma estate procedure and account for the people entitled to recover under the law.',
           bullets: [
             'Personal representative coordination',
-            'Damages allocation framework',
-            'Deadline and filing control',
-            'Documentation and compliance tracking',
-            'Beneficiary communication protocol',
-            'Court-process timeline management',
+            'Beneficiary and loss information',
+            'Filing deadlines and court requirements',
+            'Required documents and records',
+            'Family communications',
+            'Estate and court timelines',
           ],
         },
         {
-          title: 'Full-Loss Valuation',
+          title: 'Family and Financial Losses',
           description:
-            'Wrongful-death claims require complete economic and non-economic damages development supported by clear evidentiary structure.',
+            'The claim should document the economic losses and the personal harm recognized by Oklahoma law.',
           bullets: [
-            'Financial support loss modeling',
+            'Lost financial support',
             'Medical and funeral loss documentation',
-            'Family-impact evidentiary development',
-            'Litigation-ready damages package',
-            'Future household-impact analysis',
-            'Long-term support-loss planning',
+            'Evidence of the loss to the family',
+            'Medical, financial, and family records',
+            'Changes in household services',
+            'Future financial support',
           ],
         },
       ]}
       processTitle="Wrongful Death Claim Process"
-      processSubtitle="A careful process protects family interests and strengthens case value."
+      processSubtitle="The first steps address the estate, filing deadline, and preservation of evidence."
       processSteps={[
         {
           step: '01',
           title: 'Initial Legal, Estate, and Timing Review',
           description:
-            'We identify filing structure, protect deadlines, preserve evidence, and define immediate legal priorities for the family.',
+            'We determine who can bring the claim, identify the likely deadline, and address immediate estate or evidence needs.',
         },
         {
           step: '02',
           title: 'Liability Investigation',
           description:
-            'We develop causation and fault evidence across all potentially responsible individuals and entities.',
+            'We gather incident records and examine the conduct of each person or company that may be responsible.',
         },
         {
           step: '03',
           title: 'Damages Development',
           description:
-            'Economic and family-impact losses are documented thoroughly for full-value demand posture and trial support.',
+            'We document medical and funeral expenses, financial support, and other losses available under Oklahoma law.',
         },
         {
           step: '04',
           title: 'Negotiation and Litigation',
           description:
-            'We pursue fair resolution where possible and escalate to litigation when accountability and valuation require it.',
+            'We seek a resolution that reflects the evidence and Oklahoma law. If the parties cannot agree, we can continue the claim in court.',
         },
       ]}
       relatedTitle="Related Injury Pages"
@@ -135,31 +135,31 @@ export default function WrongfulDeathPage() {
         {
           href: '/personal-injury',
           title: 'Personal Injury Hub',
-          description: 'Broad injury representation framework and claim categories.',
+          description: 'Review the firm’s broader work for people harmed by negligence.',
           ctaName: 'wd_related_injury_hub',
         },
         {
           href: '/personal-injury/oil-field-injuries',
           title: 'Oil Field Injury Claims',
-          description: 'Industrial and workplace fatality claim strategy with multi-party liability analysis.',
+          description: 'Industrial incidents involving contractors, equipment, and more than one responsible company.',
           ctaName: 'wd_related_oil_field',
         },
         {
           href: '/personal-injury/truck-accidents',
           title: 'Truck Accident Litigation',
-          description: 'Commercial collision claims often linked to severe or fatal outcomes.',
+          description: 'Commercial collision claims involving serious injuries or death.',
           ctaName: 'wd_related_truck_accidents',
         },
         {
           href: '/personal-injury/car-accidents',
           title: 'Car Accident Claims',
-          description: 'Collision-liability strategy where fatal-loss claims follow major roadway events.',
+          description: 'Fault and insurance issues after a serious passenger vehicle collision.',
           ctaName: 'wd_related_car_accidents',
         },
         {
           href: '/oklahoma-city/personal-injury',
           title: 'Oklahoma City Personal Injury',
-          description: 'Metro claim strategy for high-severity negligence and fatal-loss matters.',
+          description: 'Wrongful death and injury representation for Oklahoma City-area families.',
           ctaName: 'wd_related_okc_injury',
         },
         {
@@ -180,12 +180,12 @@ export default function WrongfulDeathPage() {
       practiceArea="wrongful-death"
       actionChecklist={[
         'Preserve all incident records, correspondence, and financial documents in one secure file.',
-        'Avoid insurer interviews or settlement conversations before legal strategy review.',
-        'Identify estate-representation and filing structure needs early to protect deadlines.',
-        'Begin accountability and damages planning promptly to preserve full recovery options.',
+        'Ask for legal advice before an insurer interview or settlement discussion.',
+        'Identify the personal representative and any estate filing needs early.',
+        'Have the filing deadline and possible responsible parties reviewed promptly.',
       ]}
       ctaTitle="Begin Wrongful Death Case Review"
-      ctaDescription="Early legal structure protects evidence, deadlines, and full recovery options for your family."
+      ctaDescription="A private consultation can address the estate, filing deadline, evidence, and insurance questions."
       ctaLabel="Start Wrongful Death Review"
       ctaName="wd_bottom_cta"
     />

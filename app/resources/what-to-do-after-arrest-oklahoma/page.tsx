@@ -4,7 +4,7 @@ import { ResourceGuidePage } from '../../components/ResourceGuidePage'
 export const metadata: Metadata = {
   title: 'What to Do After an Arrest in Oklahoma',
   description:
-    'A practical Oklahoma arrest checklist covering silence rights, bond decisions, evidence preservation, and immediate legal strategy.',
+    'A practical Oklahoma arrest checklist covering the right to remain silent, release conditions, evidence preservation, and the first court date.',
   alternates: { canonical: '/resources/what-to-do-after-arrest-oklahoma' },
   openGraph: {
     title: 'What to Do After Arrest in Oklahoma | Legal Guide',
@@ -19,16 +19,28 @@ export default function AfterArrestGuidePage() {
     <ResourceGuidePage
       canonicalPath="/resources/what-to-do-after-arrest-oklahoma"
       title="What to Do After an Arrest in Oklahoma"
-      subtitle="A practical first-48-hours playbook for protecting rights, leverage, and long-term outcomes."
+      subtitle="A practical checklist for protecting your rights during the first 48 hours."
       intro={[
-        'The first day after an arrest is rarely neutral. Statements, consent decisions, bond conditions, and digital activity can all become part of the prosecution record.',
-        'This guide gives you a structured response plan for the first 48 hours, plus the first-week steps that usually separate controlled defense strategy from avoidable damage.',
-        'It is written for urgent use. Start with immediate actions, then move to the timeline sections that match your stage.',
+        'Statements, consent decisions, release conditions, and digital activity can all become part of a criminal case.',
+        'Start with the immediate steps below. Then gather the documents and timeline an attorney will need to review what happened.',
       ]}
       authorName="Kernal Law Editorial Team"
       reviewedBy="Todd Kernal"
       reviewedTitle="Founding Attorney"
-      lastUpdated="2026-02-18"
+      datePublished="2026-02-18"
+      lastUpdated="2026-07-11"
+      officialSources={[
+        {
+          label: 'Fifth Amendment to the United States Constitution',
+          href: 'https://constitution.congress.gov/constitution/amendment-5/',
+          description: 'Congress.gov text and historical notes concerning the right against compelled self-incrimination.',
+        },
+        {
+          label: 'Oklahoma Statutes, Title 22, Section 1105',
+          href: 'https://www.oscn.net/applications/OCISWeb/DeliverDocument.asp?CiteID=438671',
+          description: 'Current Oklahoma law addressing release, bail, and court considerations for certain arrests.',
+        },
+      ]}
       immediateActionsTitle="Immediate Actions After Arrest"
       immediateActions={[
         {
@@ -53,7 +65,7 @@ export default function AfterArrestGuidePage() {
           label: 'Step 4',
           title: 'Treat Bond and Release Terms as Critical',
           detail:
-            'Read every condition in writing. Violations can create new charges, revocation risk, and reduced leverage at hearings.',
+            'Read every condition in writing. Violations can lead to revocation, a new arrest, or other court consequences.',
         },
         {
           label: 'Step 5',
@@ -65,16 +77,16 @@ export default function AfterArrestGuidePage() {
           label: 'Step 6',
           title: 'Get Defense Counsel Involved Before First Court Date',
           detail:
-            'Early attorney control improves bond strategy, evidence preservation, and the first negotiation posture.',
+            'An attorney can review release terms, preserve evidence, and prepare for the first appearance.',
         },
       ]}
       takeaways={[
-        'Silence is a constitutional strategy tool, not an admission.',
-        'Bond compliance is as important as the underlying charge in early case posture.',
+        'Using the right to remain silent is not an admission of guilt.',
+        'Release conditions are court orders and should be followed exactly.',
         'Timeline precision from day one often determines motion quality later.',
         'Digital messages can become prosecution exhibits even when informal.',
         'Witness and location details fade quickly without immediate preservation.',
-        'Early legal intervention can affect charging, negotiation, and suppression strategy.',
+        'Early legal review can uncover deadlines and evidence that may otherwise be missed.',
         'No-contact and travel terms should be treated as strict obligations.',
         'A controlled first-week plan reduces avoidable long-term exposure.',
       ]}
@@ -108,7 +120,7 @@ export default function AfterArrestGuidePage() {
         {
           title: 'Evidence Preservation Checklist for the First Week',
           paragraphs: [
-            'Defense leverage increases when facts are preserved before memory drift and data loss. This includes photos, witness contacts, timeline notes, medical records, and communications relevant to the event.',
+            'Facts are easier to evaluate when they are preserved before memories fade or data is lost. This includes photos, witness contacts, timeline notes, medical records, and relevant communications.',
             'Do not alter, edit, or “clean up” potentially relevant data. Preservation means securing originals in an organized way so counsel can evaluate what helps and what needs legal protection.',
           ],
           bullets: [
@@ -135,19 +147,19 @@ export default function AfterArrestGuidePage() {
           title: 'Parallel Risks: Protective Orders, Licensing, and Employment',
           paragraphs: [
             'An arrest can trigger issues beyond criminal court, including emergency protective-order exposure, professional license consequences, school disciplinary action, and employer reporting obligations.',
-            'Early legal planning should account for these parallel risks so your defense strategy supports both courtroom outcomes and broader life-impact control.',
+            'Tell counsel about these issues early so advice about the criminal case does not create a separate problem at work, school, or with a licensing board.',
           ],
           bullets: [
             'Identify any licensing board or job-reporting triggers',
             'Screen for related civil or protective-order filings',
-            'Coordinate workplace communication with legal strategy',
+            'Coordinate necessary workplace communication with counsel',
             'Map collateral consequences before first court appearance',
           ],
         },
         {
-          title: 'First-Week Attorney Strategy Session: What to Bring',
+          title: 'What to Bring to the First Attorney Meeting',
           paragraphs: [
-            'The quality of your first legal strategy meeting depends on preparation. Organized records and a clean timeline allow faster issue spotting and stronger early decisions on bond, motions, and negotiation posture.',
+            'Organized records and a clear timeline help counsel identify release issues, possible motions, and important evidence quickly.',
             'You do not need to pre-analyze legal theories. You do need complete facts, documents, and a timeline that counsel can test against prosecution evidence.',
           ],
           bullets: [
@@ -183,16 +195,16 @@ export default function AfterArrestGuidePage() {
         {
           question: 'Do first-time defendants still need immediate legal help?',
           answer:
-            'Yes. First-time status does not prevent long-term consequences. Early strategy can still materially affect outcome quality.',
+            'Yes. A first case can still affect employment, licensing, driving privileges, and a criminal record.',
         },
         {
           question: 'What if I already made statements before reading this?',
           answer:
-            'Do not compound the issue with more discussion. Preserve records and speak with defense counsel immediately about damage-control strategy.',
+            'Do not try to correct or expand the statement on your own. Preserve any related records and discuss the statement with counsel.',
         },
       ]}
       relatedTitle="Related Criminal Defense Guides and Service Pages"
-      relatedSubtitle="Move from immediate response to full case strategy using these linked pages."
+      relatedSubtitle="Use these pages for the next stage of the criminal process."
       relatedLinks={[
         {
           href: '/resources/oklahoma-felony-case-timeline',
@@ -203,13 +215,13 @@ export default function AfterArrestGuidePage() {
         {
           href: '/resources/oklahoma-bond-and-release-conditions',
           title: 'Bond and Release Conditions Guide',
-          description: 'Detailed instructions for compliance and modification strategy after release.',
+          description: 'Detailed instructions for compliance and requests to modify release terms.',
           ctaName: 'guide_after_arrest_related_bond_guide',
         },
         {
           href: '/criminal-defense/warrants',
           title: 'Warrants Defense',
-          description: 'Controlled warrant-resolution planning and safe surrender strategy.',
+          description: 'What to consider before addressing an active warrant or surrendering.',
           ctaName: 'guide_after_arrest_related_warrants',
         },
         {
@@ -221,7 +233,7 @@ export default function AfterArrestGuidePage() {
         {
           href: '/resources/oklahoma-dui-process',
           title: 'Oklahoma DUI Process Guide',
-          description: 'If arrest includes impairment allegations, review court and license-track strategy.',
+          description: 'If the arrest involves impairment, review both the court and driver-license processes.',
           ctaName: 'guide_after_arrest_related_dui',
         },
         {

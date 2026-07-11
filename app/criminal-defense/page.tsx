@@ -1,9 +1,9 @@
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 import { BreadcrumbTrail } from '../components/BreadcrumbTrail'
-import { PageHero } from '../components/PageHero'
 import { FaqSection } from '../components/FaqSection'
 import { LinkGridSection } from '../components/LinkGridSection'
 import { MobileConversionBar } from '../components/MobileConversionBar'
+import { PageHero } from '../components/PageHero'
 import { PrimaryConsultationCta } from '../components/PrimaryConsultationCta'
 import { QuickPathSection } from '../components/QuickPathSection'
 import { ServicePageJsonLd } from '../components/ServicePageJsonLd'
@@ -12,155 +12,123 @@ import { TrustProofSection } from '../components/TrustProofSection'
 export const metadata: Metadata = {
   title: 'Oklahoma Criminal Defense Lawyer',
   description:
-    'Kernal & Associates defends Oklahoma clients facing DUI, felony, drug, domestic violence, warrant, and probation cases with trial-ready criminal defense strategy.',
+    'Kernal & Associates represents Oklahoma clients facing DUI, felony, drug, domestic violence, warrant, and probation matters.',
   alternates: { canonical: '/criminal-defense' },
   openGraph: {
     title: 'Oklahoma Criminal Defense Lawyer | Kernal & Associates',
     description:
-      'Trial-ready Oklahoma criminal defense for DUI, felony, drug, warrant, domestic violence, and probation cases.',
+      'Oklahoma criminal defense for DUI, felony, drug, warrant, domestic violence, and probation matters.',
     url: 'https://kernallaw.com/criminal-defense',
   },
 }
 
 const criminalDefenseFaqs = [
   {
-    question: 'When should I hire a criminal defense lawyer in Oklahoma?',
+    question: 'When should I hire a criminal defense lawyer?',
     answer:
-      'Immediately. The first 24-72 hours after arrest are often the most important for protecting your rights, preserving evidence, and avoiding statements that can hurt your case. Early representation can change the direction of your case before formal charging decisions are finalized.',
+      'As soon as possible after an arrest or when you learn you are under investigation. Early review can identify release conditions, court dates, evidence to preserve, and statements to avoid.',
   },
   {
-    question: 'Can charges be reduced before trial?',
+    question: 'Can charges be reduced or dismissed before trial?',
     answer:
-      'Yes. Many cases are reduced or dismissed before trial through pretrial investigation, suppression motions, and strategic negotiations. Outcomes depend on the evidence, prior record, and the legal issues in your specific case.',
+      'Sometimes. The result depends on the evidence, applicable law, charging decisions, criminal history, motion rulings, and prosecutor. No outcome can be promised before those facts are reviewed.',
   },
   {
     question: 'Do I need a lawyer for a first offense?',
     answer:
-      'Yes. Even a first offense can create long-term consequences for employment, licensing, immigration, and insurance. A defense attorney can evaluate diversion options, challenge weak evidence, and protect your record.',
+      'A first case can still affect employment, driving privileges, professional licenses, immigration status, and a criminal record. It should be evaluated before any plea or waiver of rights.',
   },
   {
-    question: 'What if law enforcement violated my rights?',
+    question: 'What if police violated my rights?',
     answer:
-      'Constitutional violations can lead to suppressed evidence or case dismissal. We analyze stop legality, warrant validity, search scope, interrogation methods, and chain-of-custody issues to identify suppression opportunities.',
+      'Counsel can review the stop, warrant, search, questioning, identification procedure, and handling of evidence. A remedy depends on the facts and the law governing the violation.',
   },
   {
     question: 'How much does criminal defense cost?',
     answer:
-      'Fees vary by charge level, case complexity, and whether trial is required. We discuss scope, strategy, and fee structure during consultation so you know exactly what representation includes before moving forward.',
+      'Fees depend on the charge, complexity, expected hearings, and whether the case is tried. The scope and fee should be explained before representation begins.',
   },
   {
     question: 'Can a conviction be removed later?',
     answer:
-      'Some Oklahoma cases may be eligible for expungement after specific waiting periods and conditions. We review your record and eligibility to determine whether sealing or record-clearing options are available.',
+      'Some Oklahoma records may qualify for expungement after required conditions and waiting periods. Eligibility depends on the disposition, criminal history, and current law.',
   },
 ]
 
-const processSteps = [
+const services = [
   {
-    step: 'Step 1',
-    title: 'Early Intervention',
-    description:
-      'Immediate case review, bond strategy, and pre-charge advocacy where available.',
+    href: '/criminal-defense/dui-dwi',
+    title: 'DUI / DWI Defense',
+    description: 'Court charges, testing issues, and related driver-license concerns after an Oklahoma DUI arrest.',
+    ctaName: 'criminal_hub_link_dui_dwi',
   },
   {
-    step: 'Step 2',
-    title: 'Evidence Challenges',
-    description:
-      'Suppress unlawful searches, attack weak forensic procedures, and test witness reliability.',
+    href: '/criminal-defense/drug-charges',
+    title: 'Drug Charges',
+    description: 'Defense of possession, distribution, trafficking, and cases involving searches or warrants.',
+    ctaName: 'criminal_hub_link_drug_charges',
   },
   {
-    step: 'Step 3',
-    title: 'Trial Readiness',
-    description:
-      'Negotiate from strength and prepare for jury trial when prosecutors refuse reasonable terms.',
-  },
-]
-
-const takeaways = [
-  'Criminal cases are often decided by early process control, not late-stage scrambling.',
-  'Constitutional and evidentiary pressure creates leverage before plea conversations mature.',
-  'Record, licensing, and employment exposure should be built into strategy from day one.',
-  'Trial-ready preparation improves negotiation outcomes even when a case resolves pretrial.',
-]
-
-const oklahomaCriminalSignals = [
-  {
-    title: 'DUI and Traffic-Stop Cases',
-    description:
-      'Oklahoma DUI and drug cases often turn on stop legality, field testing, chemical-test procedure, and the timing of DPS-related license consequences.',
+    href: '/criminal-defense/domestic-violence',
+    title: 'Domestic Violence Defense',
+    description: 'Criminal allegations, no-contact conditions, and related protective-order issues.',
+    ctaName: 'criminal_hub_link_domestic_violence',
   },
   {
-    title: 'Felony and Violent-Charge Defense',
-    description:
-      'High-exposure felony files need early witness review, mitigation planning, and courtroom posture that is credible at preliminary-hearing and trial stages.',
+    href: '/criminal-defense/assault-battery',
+    title: 'Assault and Battery Defense',
+    description: 'Misdemeanor and felony assault charges, including matters involving self-defense claims.',
+    ctaName: 'criminal_hub_link_assault_battery',
   },
-  {
-    title: 'Warrants, Bond, and Probation Risk',
-    description:
-      'Many Oklahoma defense problems escalate because of unresolved warrants, release-condition issues, or probation allegations that were not addressed early enough.',
-  },
-  {
-    title: 'Long-Term Record Protection',
-    description:
-      'The right defense strategy should account for employment, licensing, immigration, expungement eligibility, and the downstream cost of any plea decision.',
-  },
-]
-
-const relatedLinks = [
   {
     href: '/criminal-defense/sex-crimes',
     title: 'Sex Crimes Defense',
-    description:
-      'Confidential defense strategy for high-stakes allegation-driven prosecutions.',
+    description: 'Confidential representation in cases involving serious allegations and lasting consequences.',
     ctaName: 'criminal_hub_link_sex_crimes',
   },
   {
     href: '/criminal-defense/theft-fraud',
     title: 'Theft and Fraud Defense',
-    description:
-      'Intent-focused defense for property and financial allegations.',
+    description: 'Defense of property, financial, and intent-based criminal allegations.',
     ctaName: 'criminal_hub_link_theft_fraud',
   },
   {
-    href: '/criminal-defense/expungement',
-    title: 'Expungement Services',
-    description:
-      'Eligibility review and record-sealing strategy under Oklahoma law.',
-    ctaName: 'criminal_hub_link_expungement',
-  },
-  {
-    href: '/criminal-defense/probation-violation',
-    title: 'Probation Violation Defense',
-    description:
-      'Defense strategy for revocation risk, sanctions, and compliance disputes.',
-    ctaName: 'criminal_hub_link_probation_violation',
-  },
-  {
     href: '/criminal-defense/warrants',
-    title: 'Warrants Defense',
-    description:
-      'Controlled safe-surrender and warrant-resolution planning.',
+    title: 'Warrants',
+    description: 'Review of warrant status, surrender options, release concerns, and the underlying charge.',
     ctaName: 'criminal_hub_link_warrants',
   },
   {
+    href: '/criminal-defense/probation-violation',
+    title: 'Probation Violations',
+    description: 'Representation in alleged violations involving reporting, treatment, testing, or new charges.',
+    ctaName: 'criminal_hub_link_probation_violation',
+  },
+  {
+    href: '/criminal-defense/expungement',
+    title: 'Expungement',
+    description: 'Review of Oklahoma record-sealing eligibility and the filing process.',
+    ctaName: 'criminal_hub_link_expungement',
+  },
+]
+
+const guideLinks = [
+  {
     href: '/resources/what-to-do-after-arrest-oklahoma',
-    title: 'Post-Arrest Guide',
-    description:
-      'Immediate rights-protection checklist for the first 48 hours after arrest.',
+    title: 'What to Do After an Arrest',
+    description: 'A practical checklist for the first 48 hours after an Oklahoma arrest.',
     ctaName: 'criminal_hub_link_post_arrest_guide',
   },
   {
     href: '/resources/oklahoma-felony-case-timeline',
-    title: 'Felony Case Timeline Guide',
-    description:
-      'Stage-by-stage felony process map from filing through trial-readiness decisions.',
+    title: 'Oklahoma Felony Case Timeline',
+    description: 'The usual stages from arrest and filing through motions, resolution, or trial.',
     ctaName: 'criminal_hub_link_felony_timeline_guide',
   },
   {
     href: '/resources/oklahoma-bond-and-release-conditions',
-    title: 'Bond and Release Conditions Guide',
-    description:
-      'Practical checklist for bond compliance and condition-modification strategy.',
+    title: 'Bond and Release Conditions',
+    description: 'How to understand release terms, avoid violations, and document a need for modification.',
     ctaName: 'criminal_hub_link_bond_conditions_guide',
   },
 ]
@@ -169,91 +137,68 @@ export default function CriminalDefenseHubPage() {
   return (
     <main className="bg-iron-950 min-h-screen">
       <ServicePageJsonLd
-        description="Trial-ready Oklahoma criminal defense for DUI, felony, drug, warrant, domestic violence, and probation cases."
+        description="Oklahoma criminal defense for DUI, felony, drug, warrant, domestic violence, and probation matters."
         variant="criminal"
       />
       <PageHero
         title="Criminal Defense"
-        subtitle="Trial-ready defense for Oklahoma misdemeanors and felonies."
+        subtitle="Experienced representation for Oklahoma misdemeanors and felonies."
         variant="criminal"
       />
-      <MobileConversionBar
-        context="criminal_hub"
-        primaryHref="/contact"
-        primaryLabel="Start Defense Review"
-      />
-      <BreadcrumbTrail
-        items={[
-          { label: 'Home', href: '/' },
-          { label: 'Criminal Defense' },
-        ]}
-      />
+      <MobileConversionBar context="criminal_hub" primaryHref="/contact" primaryLabel="Request Consultation" />
+      <BreadcrumbTrail items={[{ label: 'Home', href: '/' }, { label: 'Criminal Defense' }]} />
 
       <QuickPathSection
-        title="Start in the Right Place"
-        subtitle="Early decisions control leverage. Choose the path that best matches your current criminal case pressure."
+        title="Start Here"
+        subtitle="Choose the option closest to your situation."
         items={[
           {
-            badge: 'Urgent',
-            title: 'Arrested in the Last 72 Hours',
-            description: 'Protect rights, avoid harmful statements, and establish immediate defense posture.',
+            badge: 'Recent Arrest',
+            title: 'What to Do in the First 48 Hours',
+            description: 'Protect your right to remain silent, follow release terms, and preserve documents.',
             href: '/resources/what-to-do-after-arrest-oklahoma',
             ctaName: 'criminal_hub_quick_path_arrest',
           },
           {
-            badge: 'Charge Specific',
-            title: 'DUI / DWI Exposure',
-            description: 'Address criminal and license-risk timelines before avoidable deadlines close.',
+            badge: 'DUI',
+            title: 'Court and Driver-License Issues',
+            description: 'Understand the two proceedings that may follow an Oklahoma DUI arrest.',
             href: '/criminal-defense/dui-dwi',
             ctaName: 'criminal_hub_quick_path_dui',
           },
           {
-            badge: 'Immediate Action',
-            title: 'Talk to Defense Counsel',
-            description: 'Get a confidential strategy consultation focused on your next high-impact decisions.',
+            badge: 'Contact',
+            title: 'Speak With Defense Counsel',
+            description: 'Request a confidential consultation about the charge, court date, or investigation.',
             href: '/contact',
             ctaName: 'criminal_hub_quick_path_contact',
           },
         ]}
       />
 
-      <section className="py-12 md:py-20 border-b border-silver-500/10">
+      <section className="py-14 md:py-20 border-b border-silver-500/10">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl text-white mb-6">
-              Your case is not a file number. It is your future.
-            </h2>
+            <h2 className="font-serif text-3xl md:text-4xl text-white mb-6">Your case deserves a careful, honest review</h2>
             <div className="space-y-5 text-silver-400 text-lg leading-relaxed">
               <p>
-                Criminal charges move fast. Prosecutors begin building their case immediately, and every
-                decision you make early can affect the final outcome. Kernal &amp; Associates treats
-                criminal defense as a high-stakes litigation process from day one.
+                Todd Kernal has worked as a criminal defense lawyer for nearly 26 years. His practice includes
+                DUI, drug charges, sex offenses, and other felony and misdemeanor cases.
               </p>
               <p>
-                Our strategy is straightforward: investigate aggressively, challenge unlawful evidence,
-                pressure weak prosecutions, and prepare every case as if it is going to trial. That is how
-                leverage is created and how better outcomes are earned.
+                The work begins with the record: what was said, what was searched or seized, what the reports and
+                recordings show, and what deadlines are approaching. Todd prepares cases for court while giving
+                clients plain answers about their options and risks.
               </p>
             </div>
-            <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-              <article className="bg-iron-900 border border-silver-500/15 p-4">
-                <h3 className="text-white font-semibold mb-2">Arrest-Stage Risk Control</h3>
-                <p className="text-silver-400">Early statement and bond decisions are managed to avoid avoidable case damage.</p>
-              </article>
-              <article className="bg-iron-900 border border-silver-500/15 p-4">
-                <h3 className="text-white font-semibold mb-2">Evidence Suppression Opportunities</h3>
-                <p className="text-silver-400">Stop, search, interview, and testing procedures are audited for constitutional defects.</p>
-              </article>
-              <article className="bg-iron-900 border border-silver-500/15 p-4">
-                <h3 className="text-white font-semibold mb-2">Long-Term Impact Protection</h3>
-                <p className="text-silver-400">Record, licensing, and career consequences are factored into every strategy decision.</p>
-              </article>
-            </div>
+            <blockquote className="mt-8 border-l-2 border-accent-gold pl-6 text-xl text-white font-serif leading-relaxed">
+              &quot;All defendants deserve the full protection of the United States and Oklahoma Constitutions.&quot;
+            </blockquote>
             <div className="pt-8 flex flex-col sm:flex-row gap-4">
               <PrimaryConsultationCta
                 context="criminal_hub"
-                controlLabel="Free Defense Consultation"
-                challengerLabel="Get Defense Strategy Session"
+                controlLabel="Request Consultation"
+                challengerLabel="Discuss Your Case"
                 className="inline-flex items-center justify-center px-8 py-4 bg-white text-iron-950 font-bold uppercase tracking-widest hover:bg-silver-100 transition-colors"
               />
               <a
@@ -268,128 +213,26 @@ export default function CriminalDefenseHubPage() {
         </div>
       </section>
 
-      <TrustProofSection
-        ctaPrefix="criminal_hub"
-        context="criminal"
-      />
-
-      <section className="py-12 md:py-16 border-b border-silver-500/10 bg-iron-900/30">
-        <div className="container mx-auto px-6">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl text-white mb-3">
-              Oklahoma Criminal Defense Problems We Solve
-            </h2>
-            <p className="text-silver-400 mb-8 max-w-3xl">
-              Search intent in this practice area is usually tied to a specific charge, a specific deadline,
-              or a specific risk outside the courtroom. These are the pressure points our defense pages are
-              built to answer.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              {oklahomaCriminalSignals.map((item) => (
-                <article
-                  key={item.title}
-                  className="bg-iron-900 border border-silver-500/15 p-6 hover:border-accent-gold/35 transition-colors"
-                >
-                  <h3 className="font-serif text-2xl text-white mb-3">{item.title}</h3>
-                  <p className="text-silver-400 leading-relaxed">{item.description}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <TrustProofSection ctaPrefix="criminal_hub" context="criminal" />
 
       <LinkGridSection
         title="Criminal Defense Services"
-        subtitle="Start with the charge category closest to your situation."
+        subtitle="Choose the charge or court issue closest to your case."
         columns="three"
-        items={[
-          {
-            href: '/criminal-defense/dui-dwi',
-            title: 'DUI / DWI Defense',
-            description:
-              'Protect your license, challenge roadside evidence, and defend against jail, fines, and interlock penalties.',
-            ctaName: 'criminal_hub_link_dui_dwi',
-          },
-          {
-            href: '/criminal-defense/drug-charges',
-            title: 'Drug Charges',
-            description:
-              'Defense for possession, intent, trafficking, and search-and-seizure violations in Oklahoma courts.',
-            ctaName: 'criminal_hub_link_drug_charges',
-          },
-          {
-            href: '/criminal-defense/domestic-violence',
-            title: 'Domestic Violence Defense',
-            description:
-              'Defense for domestic violence allegations, no-contact conditions, and overlapping protective-order risk.',
-            ctaName: 'criminal_hub_link_domestic_violence',
-          },
-          {
-            href: '/criminal-defense/assault-battery',
-            title: 'Assault and Battery Defense',
-            description:
-              'Defense strategy for misdemeanor and felony assault charges, including self-defense claims.',
-            ctaName: 'criminal_hub_link_assault_battery',
-          },
-          {
-            href: '/oklahoma-city',
-            title: 'Oklahoma City Criminal Defense',
-            description:
-              'Local representation across Oklahoma County and metro court systems.',
-            ctaName: 'criminal_hub_link_okc_location',
-          },
-          {
-            href: '/norman',
-            title: 'Norman Criminal Defense',
-            description:
-              'Criminal defense representation for Cleveland County courts and surrounding communities.',
-            ctaName: 'criminal_hub_link_norman_location',
-          },
-        ]}
+        items={services}
       />
 
       <LinkGridSection
-        title="Additional Criminal Defense Topics"
-        subtitle="Explore related charge and post-charge strategy pages."
+        title="Criminal Defense Guides"
+        subtitle="Plain-language information about arrest, release, and the felony process."
         columns="three"
-        items={relatedLinks}
+        items={guideLinks}
       />
-
-      <section className="py-16 md:py-24 scroll-mt-32">
-        <div className="container mx-auto px-6">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl text-white mb-8">How We Build Leverage</h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              {processSteps.map((item) => (
-                <article
-                  key={item.title}
-                  className="bg-iron-900 border border-silver-500/10 p-7 hover:border-accent-gold/40 transition-colors"
-                >
-                  <p className="text-accent-gold text-[11px] uppercase tracking-[0.2em] mb-2">{item.step}</p>
-                  <h3 className="font-serif text-2xl text-white mb-3">{item.title}</h3>
-                  <p className="text-silver-400 leading-relaxed">{item.description}</p>
-                </article>
-              ))}
-            </div>
-            <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-              {takeaways.map((item) => (
-                <div
-                  key={item}
-                  className="bg-iron-900/70 border border-silver-500/10 p-4 text-silver-300 text-sm leading-relaxed"
-                >
-                  {item}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       <FaqSection
         faqs={criminalDefenseFaqs}
         practiceArea="criminal-defense-hub"
-        subtitle="Answers to the questions we hear most before and after an arrest."
+        subtitle="Answers to common questions before and after an arrest."
       />
     </main>
   )

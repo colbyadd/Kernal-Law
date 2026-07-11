@@ -18,7 +18,7 @@ export default function PracticeHub() {
         <main className="bg-iron-950 min-h-screen">
             <PageHero
                 title="Practice Areas"
-                subtitle="Comprehensive legal defense and injury representation."
+                subtitle="Criminal defense and personal injury representation in Oklahoma."
             />
 
             <div className="container mx-auto px-6 py-12 md:py-24">
@@ -39,7 +39,7 @@ export default function PracticeHub() {
                         <div className="p-8 md:p-12 relative z-10">
                             <h2 className="font-serif text-3xl text-white mb-4 group-hover:text-accent-gold transition-colors">Criminal Defense</h2>
                             <p className="text-silver-400 mb-6">
-                                Aggressive protection of your constitutional rights against felonies, DUIs, and serious charges.
+                                Help with DUI, felony, drug, warrant, and other criminal matters in Oklahoma courts.
                             </p>
                             <span className="inline-block mt-4 px-6 py-3 border border-white/30 text-xs uppercase tracking-widest text-white group-hover:bg-white group-hover:text-iron-950 transition-all duration-300">
                                 View Defense Services
@@ -62,7 +62,7 @@ export default function PracticeHub() {
                         <div className="p-8 md:p-12 relative z-10">
                             <h2 className="font-serif text-3xl text-white mb-4 group-hover:text-accent-gold transition-colors">Personal Injury</h2>
                             <p className="text-silver-400 mb-6">
-                                Justice for victims of negligence. Car accidents, oil field injuries, and wrongful death claims.
+                                Help with car crashes, truck crashes, oil field injuries, and wrongful death claims.
                             </p>
                             <span className="inline-block mt-4 px-6 py-3 border border-white/30 text-xs uppercase tracking-widest text-white group-hover:bg-white group-hover:text-iron-950 transition-all duration-300">
                                 View Injury Services

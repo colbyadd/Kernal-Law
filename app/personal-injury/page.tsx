@@ -1,9 +1,9 @@
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 import { BreadcrumbTrail } from '../components/BreadcrumbTrail'
-import { PageHero } from '../components/PageHero'
 import { FaqSection } from '../components/FaqSection'
 import { LinkGridSection } from '../components/LinkGridSection'
 import { MobileConversionBar } from '../components/MobileConversionBar'
+import { PageHero } from '../components/PageHero'
 import { PrimaryConsultationCta } from '../components/PrimaryConsultationCta'
 import { QuickPathSection } from '../components/QuickPathSection'
 import { ServicePageJsonLd } from '../components/ServicePageJsonLd'
@@ -12,12 +12,12 @@ import { TrustProofSection } from '../components/TrustProofSection'
 export const metadata: Metadata = {
   title: 'Oklahoma Personal Injury Lawyer',
   description:
-    'Kernal & Associates handles Oklahoma personal injury claims involving car accidents, truck wrecks, oil field injuries, catastrophic injuries, wrongful death, and uninsured motorist disputes.',
+    'Oklahoma injury representation for car and truck crashes, oil field injuries, catastrophic injuries, wrongful death, and uninsured motorist disputes.',
   alternates: { canonical: '/personal-injury' },
   openGraph: {
     title: 'Oklahoma Personal Injury Lawyer | Kernal & Associates',
     description:
-      'Oklahoma personal injury representation for car accidents, truck wrecks, catastrophic losses, wrongful death, and UM/UIM claim disputes.',
+      'Oklahoma personal injury representation for car accidents, truck wrecks, serious injuries, wrongful death, and uninsured motorist claims.',
     url: 'https://kernallaw.com/personal-injury',
   },
 }
@@ -26,142 +26,104 @@ const personalInjuryFaqs = [
   {
     question: 'How long do I have to file an injury claim in Oklahoma?',
     answer:
-      'For most injury claims, Oklahoma applies a two-year statute of limitations. Some claim types have different deadlines, especially if a government entity is involved. Acting quickly helps preserve evidence and avoids deadline risks.',
+      'Many Oklahoma injury claims have a two-year limitations period, but important exceptions and shorter notice deadlines can apply, including claims involving government entities. Have the date and responsible parties reviewed promptly.',
   },
   {
-    question: 'Do I need a lawyer if the insurer already offered money?',
+    question: 'Should I accept an early insurance offer?',
     answer:
-      'Yes. Early offers are often structured to close the claim before the full medical and wage impact is known. Once you sign a release, you generally cannot reopen the claim later. Legal review protects your leverage before settlement.',
+      'Understand your injuries, losses, available coverage, and the release language first. Once a claim is released, it generally cannot be reopened because treatment or wage loss turned out to be greater than expected.',
   },
   {
-    question: 'What compensation is typically available in injury cases?',
+    question: 'What losses may be included in an injury claim?',
     answer:
-      'Compensation may include medical costs, future treatment, lost wages, reduced earning capacity, pain and suffering, and in some severe matters, additional damages permitted under Oklahoma law.',
+      'Depending on the facts, a claim may include medical expenses, future care, lost wages, reduced earning capacity, pain, and other losses allowed by Oklahoma law.',
   },
   {
-    question: 'What if I am partly at fault for the crash?',
+    question: 'What if I may be partly at fault?',
     answer:
-      'Oklahoma follows modified comparative fault rules. Recovery may still be available if your percentage of fault stays below the legal threshold. Fault allocation is heavily disputed in many insurer negotiations.',
+      'Oklahoma uses modified comparative fault. Your percentage of fault can reduce or bar recovery, so preserve the photographs, video, witness information, and vehicle evidence needed to evaluate what happened.',
   },
   {
     question: 'How long does a personal injury case take?',
     answer:
-      'Simple cases can resolve in a few months. High-value or contested cases often take longer because litigation, medical development, and expert analysis require time. We prioritize full-value outcomes over rushed settlements.',
+      'It depends on the injuries, treatment, fault dispute, available insurance, and whether a lawsuit is necessary. A serious case should not be closed before the likely future losses can be reasonably evaluated.',
   },
   {
-    question: 'How are legal fees handled in personal injury cases?',
+    question: 'How are attorney fees handled?',
     answer:
-      'Most injury matters are handled on a contingency basis, meaning no attorney fee unless recovery is obtained. Fee structure and expenses are reviewed clearly before representation begins.',
+      'Many personal injury matters are handled on a contingency fee. The written agreement should explain the percentage, expenses, and how costs are handled before representation begins.',
   },
 ]
 
-const processSteps = [
+const services = [
   {
-    step: 'Step 1',
-    title: 'Liability Development',
-    description:
-      'We secure crash reports, scene evidence, witness statements, and technical records early.',
+    href: '/personal-injury/car-accidents',
+    title: 'Car Accidents',
+    description: 'Claims involving serious injuries, disputed fault, medical expenses, and insurance coverage.',
+    ctaName: 'injury_hub_link_car_accidents',
   },
   {
-    step: 'Step 2',
-    title: 'Damage Documentation',
-    description:
-      'Medical, economic, and future-loss evidence is organized for full-value demand positioning.',
+    href: '/personal-injury/truck-accidents',
+    title: 'Truck Accidents',
+    description: 'Commercial vehicle cases involving carrier records, electronic data, and severe injuries.',
+    ctaName: 'injury_hub_link_truck_accidents',
   },
   {
-    step: 'Step 3',
-    title: 'Litigation Pressure',
-    description:
-      'When insurers underpay, we escalate with structured litigation and trial-ready case framing.',
-  },
-]
-
-const takeaways = [
-  'Early insurer communication errors can reduce claim value before strategy begins.',
-  'Documenting treatment progression is essential for full-value recovery positioning.',
-  'Comparative-fault disputes are won through evidence discipline and narrative control.',
-  'Serious injury claims require long-horizon planning, not rushed settlement timing.',
-]
-
-const oklahomaInjurySignals = [
-  {
-    title: 'Car, Truck, and Highway Corridor Crashes',
-    description:
-      'Oklahoma injury claims often turn on fast evidence preservation from interstate crashes, commercial vehicles, scene documentation, and witness timing.',
+    href: '/personal-injury/oil-field-injuries',
+    title: 'Oil Field Injuries',
+    description: 'Claims involving worksite hazards, contractors, equipment, and serious physical injury.',
+    ctaName: 'injury_hub_link_oil_field_injuries',
   },
   {
-    title: 'Oil Field and Industrial Losses',
-    description:
-      'Worksite negligence, contractor overlap, and severe trauma claims need early investigation before liability is narrowed to the wrong party.',
+    href: '/personal-injury/wrongful-death',
+    title: 'Wrongful Death',
+    description: 'Representation for families after a death caused by negligence or wrongful conduct.',
+    ctaName: 'injury_hub_link_wrongful_death',
   },
-  {
-    title: 'Catastrophic Injury and Wrongful Death',
-    description:
-      'Life-changing losses require a long-horizon damages model that accounts for future care, income disruption, family impact, and litigation leverage.',
-  },
-  {
-    title: 'UM/UIM and Comparative-Fault Disputes',
-    description:
-      'Many Oklahoma claims are undervalued through coverage fights or blame shifting, which is why policy analysis and objective proof have to be built early.',
-  },
-]
-
-const relatedLinks = [
   {
     href: '/personal-injury/motorcycle-accidents',
-    title: 'Motorcycle Accident Claims',
-    description:
-      'Rider-focused strategy for severe injury and liability disputes.',
+    title: 'Motorcycle Accidents',
+    description: 'Serious-injury claims involving roadway evidence, visibility, and disputed fault.',
     ctaName: 'injury_hub_link_motorcycle',
   },
   {
     href: '/personal-injury/catastrophic-injury',
-    title: 'Catastrophic Injury Claims',
-    description:
-      'Long-horizon valuation strategy for life-altering trauma cases.',
+    title: 'Catastrophic Injuries',
+    description: 'Claims involving future medical care, lost earning capacity, and lasting limitations.',
     ctaName: 'injury_hub_link_catastrophic',
   },
   {
     href: '/personal-injury/slip-and-fall',
-    title: 'Slip and Fall Claims',
-    description:
-      'Premises liability strategy for unsafe-property injuries.',
+    title: 'Unsafe Property Injuries',
+    description: 'Premises cases involving dangerous conditions, notice, and injury evidence.',
     ctaName: 'injury_hub_link_slip_fall',
   },
   {
     href: '/personal-injury/uninsured-motorist',
     title: 'Uninsured Motorist Claims',
-    description:
-      'Coverage-aware UM/UIM strategy for underinsured recovery disputes.',
+    description: 'Claims under uninsured or underinsured motorist coverage after a serious crash.',
     ctaName: 'injury_hub_link_uninsured_motorist',
   },
+]
+
+const guideLinks = [
   {
     href: '/resources/what-to-do-after-car-accident-oklahoma',
-    title: 'Post-Accident Guide',
-    description:
-      'Evidence and insurer communication checklist after an Oklahoma crash.',
+    title: 'What to Do After a Car Accident',
+    description: 'A checklist for medical care, photographs, reports, expenses, and insurance calls.',
     ctaName: 'injury_hub_link_post_accident_guide',
   },
   {
     href: '/resources/oklahoma-uninsured-motorist-claim-guide',
     title: 'Uninsured Motorist Claim Guide',
-    description:
-      'UM/UIM coverage and damages strategy when at-fault insurance is limited.',
+    description: 'How policy language, notices, proof of loss, and releases may affect a claim.',
     ctaName: 'injury_hub_link_um_uim_guide',
   },
   {
     href: '/resources/oklahoma-truck-accident-evidence-guide',
     title: 'Truck Accident Evidence Guide',
-    description:
-      'Commercial-crash evidence workflow and record-preservation priorities.',
+    description: 'Commercial-carrier, electronic, maintenance, scene, and medical records to identify early.',
     ctaName: 'injury_hub_link_truck_evidence_guide',
-  },
-  {
-    href: '/resources',
-    title: 'Legal Resources Hub',
-    description:
-      'Practical guides for immediate legal decisions in injury and defense matters.',
-    ctaName: 'injury_hub_link_resources_hub',
   },
 ]
 
@@ -169,91 +131,77 @@ export default function PersonalInjuryHubPage() {
   return (
     <main className="bg-iron-950 min-h-screen">
       <ServicePageJsonLd
-        description="Oklahoma personal injury representation for car accidents, truck wrecks, catastrophic losses, wrongful death, and UM/UIM claim disputes."
+        description="Oklahoma personal injury representation for car accidents, truck wrecks, serious injuries, wrongful death, and uninsured motorist claims."
         variant="injury"
       />
       <PageHero
         title="Personal Injury"
-        subtitle="Strategic representation for serious accidents across Oklahoma."
+        subtitle="Oklahoma representation after serious accidents and injuries."
         variant="injury"
       />
-      <MobileConversionBar
-        context="injury_hub"
-        primaryHref="/contact"
-        primaryLabel="Start Injury Review"
-      />
-      <BreadcrumbTrail
-        items={[
-          { label: 'Home', href: '/' },
-          { label: 'Personal Injury' },
-        ]}
-      />
+      <MobileConversionBar context="injury_hub" primaryHref="/contact" primaryLabel="Request Consultation" />
+      <BreadcrumbTrail items={[{ label: 'Home', href: '/' }, { label: 'Personal Injury' }]} />
 
       <QuickPathSection
-        title="Protect Claim Value Early"
-        subtitle="Insurer strategy starts immediately after a crash. Choose the path that matches your claim risk now."
+        title="Start Here"
+        subtitle="Choose the option closest to your situation."
         items={[
           {
-            badge: 'First 48 Hours',
-            title: 'Recent Car Accident',
-            description: 'Preserve evidence and avoid recorded-statement mistakes before claim framing hardens.',
+            badge: 'Recent Crash',
+            title: 'What to Do First',
+            description: 'Get medical care, preserve scene evidence, and keep insurance communications accurate.',
             href: '/resources/what-to-do-after-car-accident-oklahoma',
             ctaName: 'injury_hub_quick_path_recent_crash',
           },
           {
-            badge: 'High Exposure',
-            title: 'Commercial Truck Crash',
-            description: 'Move quickly on carrier evidence, liability analysis, and severe-damage valuation.',
+            badge: 'Commercial Vehicle',
+            title: 'Truck Crash Evidence',
+            description: 'Identify the carrier, vehicles, witnesses, and records that may not be kept indefinitely.',
             href: '/personal-injury/truck-accidents',
             ctaName: 'injury_hub_quick_path_truck',
           },
           {
-            badge: 'Immediate Action',
-            title: 'Request Case Evaluation',
-            description: 'Get a confidential legal assessment before settlement pressure reduces leverage.',
+            badge: 'Contact',
+            title: 'Request a Case Review',
+            description: 'Discuss the crash, injuries, insurance, and any proposed release with an attorney.',
             href: '/contact',
             ctaName: 'injury_hub_quick_path_contact',
           },
         ]}
       />
 
-      <section className="py-12 md:py-20 border-b border-silver-500/10">
+      <section className="py-14 md:py-20 border-b border-silver-500/10">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl text-white mb-6">
-              Insurance companies evaluate risk. We build pressure.
-            </h2>
+            <h2 className="font-serif text-3xl md:text-4xl text-white mb-6">Build the claim from the records</h2>
             <div className="space-y-5 text-silver-400 text-lg leading-relaxed">
               <p>
-                Personal injury cases are won through preparation, evidence, and timing. The defense team
-                is already collecting statements, preserving favorable narratives, and minimizing exposure.
-                Your claim needs the same urgency and structure.
+                A serious injury affects more than the first hospital bill. The claim may involve ongoing care,
+                missed work, lasting physical limits, and insurance questions that are not clear during the first week.
               </p>
               <p>
-                Kernal &amp; Associates builds every injury case for maximum negotiating leverage. We analyze
-                liability, document damages with discipline, and prepare trial-ready files when offers do
-                not reflect the real value of your losses.
+                Todd Kernal knows that experience personally. An oil field accident gave him a direct view of how an
+                injury can change work and daily life. The legal work starts by preserving the evidence, identifying
+                the responsible parties and policies, and documenting losses as they develop.
               </p>
             </div>
             <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-              <article className="bg-iron-900 border border-silver-500/15 p-4">
-                <h3 className="text-white font-semibold mb-2">Medical Timeline Protection</h3>
-                <p className="text-silver-400">Treatment documentation is organized to prevent valuation gaps and insurer attacks.</p>
-              </article>
-              <article className="bg-iron-900 border border-silver-500/15 p-4">
-                <h3 className="text-white font-semibold mb-2">Liability and Fault Pressure</h3>
-                <p className="text-silver-400">Objective crash and witness evidence is built early to control comparative-fault disputes.</p>
-              </article>
-              <article className="bg-iron-900 border border-silver-500/15 p-4">
-                <h3 className="text-white font-semibold mb-2">Settlement Timing Discipline</h3>
-                <p className="text-silver-400">Cases are not closed before long-term damages are defined and fully supported.</p>
-              </article>
+              {[
+                ['Medical records', 'Keep records of treatment, restrictions, expenses, and future recommendations.'],
+                ['Fault evidence', 'Preserve photographs, video, witness information, reports, and vehicle evidence.'],
+                ['Insurance documents', 'Collect declarations pages, claim correspondence, offers, and proposed releases.'],
+              ].map(([title, description]) => (
+                <article key={title} className="bg-iron-900 border border-silver-500/15 p-5">
+                  <h3 className="text-white font-semibold mb-2">{title}</h3>
+                  <p className="text-silver-400 leading-relaxed">{description}</p>
+                </article>
+              ))}
             </div>
             <div className="pt-8 flex flex-col sm:flex-row gap-4">
               <PrimaryConsultationCta
                 context="injury_hub"
-                controlLabel="Free Case Evaluation"
-                challengerLabel="Get Injury Strategy Session"
+                controlLabel="Request Case Evaluation"
+                challengerLabel="Discuss Your Injury Claim"
                 className="inline-flex items-center justify-center px-8 py-4 bg-white text-iron-950 font-bold uppercase tracking-widest hover:bg-silver-100 transition-colors"
               />
               <a
@@ -268,127 +216,26 @@ export default function PersonalInjuryHubPage() {
         </div>
       </section>
 
-      <TrustProofSection
-        ctaPrefix="injury_hub"
-        context="injury"
-      />
-
-      <section className="py-12 md:py-16 border-b border-silver-500/10 bg-iron-900/30">
-        <div className="container mx-auto px-6">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl text-white mb-3">
-              Oklahoma Injury Claim Risks We Address
-            </h2>
-            <p className="text-silver-400 mb-8 max-w-3xl">
-              Most personal injury searches start with the type of accident, but rankings and conversions
-              improve when the page also answers the valuation, liability, and insurance issues that follow.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              {oklahomaInjurySignals.map((item) => (
-                <article
-                  key={item.title}
-                  className="bg-iron-900 border border-silver-500/15 p-6 hover:border-accent-gold/35 transition-colors"
-                >
-                  <h3 className="font-serif text-2xl text-white mb-3">{item.title}</h3>
-                  <p className="text-silver-400 leading-relaxed">{item.description}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <TrustProofSection ctaPrefix="injury_hub" context="injury" />
 
       <LinkGridSection
         title="Personal Injury Services"
-        subtitle="Choose the accident category that best fits your case."
+        subtitle="Choose the accident or injury category closest to your matter."
         columns="three"
-        items={[
-          {
-            href: '/personal-injury/car-accidents',
-            title: 'Car Accident Claims',
-            description:
-              'Representation for collisions involving serious injuries, disputed fault, and insurer delay tactics.',
-            ctaName: 'injury_hub_link_car_accidents',
-          },
-          {
-            href: '/personal-injury/truck-accidents',
-            title: 'Truck Accident Litigation',
-            description:
-              'High-stakes claims involving commercial carriers, FMCSA evidence, and catastrophic damages.',
-            ctaName: 'injury_hub_link_truck_accidents',
-          },
-          {
-            href: '/personal-injury/oil-field-injuries',
-            title: 'Oil Field Injury Claims',
-            description:
-              'Industrial and rig injury representation with technical liability and catastrophic-loss strategy.',
-            ctaName: 'injury_hub_link_oil_field_injuries',
-          },
-          {
-            href: '/personal-injury/wrongful-death',
-            title: 'Wrongful Death Claims',
-            description:
-              'Representation for families pursuing accountability and full financial recovery after fatal negligence.',
-            ctaName: 'injury_hub_link_wrongful_death',
-          },
-          {
-            href: '/oklahoma-city',
-            title: 'Oklahoma City Injury Representation',
-            description:
-              'Metro-area injury representation for major crashes and severe-loss claims.',
-            ctaName: 'injury_hub_link_oklahoma_city',
-          },
-          {
-            href: '/norman',
-            title: 'Norman Injury Representation',
-            description:
-              'Cleveland County and metro-area personal injury counsel with local court familiarity.',
-            ctaName: 'injury_hub_link_norman_location',
-          },
-        ]}
+        items={services}
       />
 
       <LinkGridSection
-        title="Additional Injury Topics"
-        subtitle="Explore additional claim categories and practical claim-protection guides."
+        title="Personal Injury Guides"
+        subtitle="Practical information about crashes, commercial vehicles, and uninsured motorist coverage."
         columns="three"
-        items={relatedLinks}
+        items={guideLinks}
       />
-
-      <section className="py-16 md:py-24 scroll-mt-32">
-        <div className="container mx-auto px-6">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl text-white mb-8">How We Protect Claim Value</h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              {processSteps.map((item) => (
-                <article
-                  key={item.title}
-                  className="bg-iron-900 border border-silver-500/10 p-7 hover:border-accent-gold/40 transition-colors"
-                >
-                  <p className="text-accent-gold text-[11px] uppercase tracking-[0.2em] mb-2">{item.step}</p>
-                  <h3 className="font-serif text-2xl text-white mb-3">{item.title}</h3>
-                  <p className="text-silver-400 leading-relaxed">{item.description}</p>
-                </article>
-              ))}
-            </div>
-            <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-              {takeaways.map((item) => (
-                <div
-                  key={item}
-                  className="bg-iron-900/70 border border-silver-500/10 p-4 text-silver-300 text-sm leading-relaxed"
-                >
-                  {item}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       <FaqSection
         faqs={personalInjuryFaqs}
         practiceArea="personal-injury-hub"
-        subtitle="Answers to common questions before you settle your injury claim."
+        subtitle="Answers to common questions before an injury claim is resolved."
       />
     </main>
   )

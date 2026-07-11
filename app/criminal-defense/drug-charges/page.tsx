@@ -4,12 +4,12 @@ import { ServiceDetailPage } from '../../components/ServiceDetailPage'
 export const metadata: Metadata = {
   title: 'Oklahoma Drug Charges Defense Lawyer',
   description:
-    'Defense for Oklahoma possession, intent, and trafficking allegations with focus on search-and-seizure legality, possession proof, and forensic evidence reliability.',
+    'Defense for Oklahoma drug allegations involving possession, distribution, trafficking, prescriptions, searches, and forensic evidence.',
   alternates: { canonical: '/criminal-defense/drug-charges' },
   openGraph: {
     title: 'Oklahoma Drug Charge Defense | Kernal & Associates',
     description:
-      'Strategic defense for Oklahoma drug allegations with constitutional suppression analysis and trial-ready representation.',
+      'Defense for Oklahoma drug allegations involving possession, searches, warrants, and laboratory evidence.',
     url: 'https://kernallaw.com/criminal-defense/drug-charges',
   },
 }
@@ -23,12 +23,12 @@ const drugChargeFaqs = [
   {
     question: 'What if drugs were found in a shared vehicle or residence?',
     answer:
-      'Shared-space cases frequently involve constructive-possession disputes. The State must prove specific linkage, not just proximity. Defense strategy focuses on control, knowledge, and ownership assumptions that are often overstated.',
+      'Shared-space cases often raise constructive-possession questions. The State must prove more than physical proximity. The facts may include who controlled the area, who knew the substance was there, and whether it can be tied to a particular person.',
   },
   {
     question: 'Do search warrants always make evidence valid?',
     answer:
-      'No. Warrants can be challenged for probable-cause defects, stale facts, scope overreach, execution problems, and documentation inconsistencies. A signed warrant does not end constitutional suppression analysis.',
+      'No. A warrant may still raise questions about probable cause, old information, the area officers were allowed to search, how the search was carried out, or whether the records are consistent. A signed warrant does not end the review.',
   },
   {
     question: 'How serious is a possession with intent allegation?',
@@ -38,7 +38,7 @@ const drugChargeFaqs = [
   {
     question: 'Can I avoid jail on a first drug offense?',
     answer:
-      'Potentially. Outcome options depend on charge level, prior history, jurisdiction, and evidentiary posture. Some cases may qualify for alternatives or structured resolutions, but early legal positioning is critical.',
+      'Possibly. The available outcomes depend on the charge, prior history, court, and evidence. Some cases may qualify for an alternative to jail, but no result can be assessed without reviewing the specific case.',
   },
   {
     question: 'Should I talk to investigators to explain my side?',
@@ -51,25 +51,25 @@ export default function DrugChargesPage() {
   return (
     <ServiceDetailPage
       heroTitle="Drug Charges Defense"
-      heroSubtitle="Strategic defense for possession, intent, and trafficking allegations across Oklahoma courts."
+      heroSubtitle="Defense for Oklahoma possession, distribution, and trafficking allegations."
       heroVariant="criminal"
-      introTitle="Drug cases are frequently decided by constitutional procedure and proof quality."
+      introTitle="A drug charge may depend on how evidence was found and who it can be tied to."
       introParagraphs={[
-        'Many Oklahoma drug prosecutions are built on search events, officer interpretation, and forensic reporting. These files often appear strong on first read, but deeper review can reveal legal flaws in probable cause, scope, seizure procedure, and evidence handling.',
-        'The difference between a weak defense and a strong one is disciplined analysis. We evaluate whether the State can actually prove knowing possession, intent, and admissibility, not just whether an arrest report alleges those elements.',
-        'Kernal & Associates builds drug-charge strategy around constitutional suppression opportunities, possession-attribution challenges, and evidentiary reliability pressure. Negotiation is part of the process, but leverage comes from technical preparation that can hold up in court.',
+        'Many Oklahoma drug cases begin with a traffic stop, a search of a home, or the use of a search warrant. The legal basis for that search and the steps officers took can affect whether the evidence may be used.',
+        'The State must also connect the alleged substance to the accused person and prove any required intent. That can be disputed when several people use the same vehicle, room, or home, or when intent is inferred from surrounding items.',
+        'Kernal & Associates reviews the search, police reports, video, lab records, and chain of custody. The next step depends on that review and may include a suppression motion, negotiations, or trial.',
       ]}
-      focusTitle="Core Defense Angles in Drug Cases"
+      focusTitle="Questions We Review in a Drug Case"
       focusItems={[
         {
           title: 'Search and Seizure Challenges',
           description:
-            'Whether allegations arise from a traffic stop, residence search, or warrant execution, constitutional legality must be reviewed stage by stage before evidence assumptions are accepted.',
+            'For a traffic stop, home search, or warrant search, the legal basis and scope should be checked against what officers actually did.',
           bullets: [
             'Warrant and affidavit sufficiency',
             'Consent validity and scope',
             'Probable cause timeline analysis',
-            'Suppression motion opportunities',
+            'Possible grounds to suppress evidence',
             'Scope and overreach examination',
             'Stop-to-search escalation review',
           ],
@@ -77,20 +77,20 @@ export default function DrugChargesPage() {
         {
           title: 'Possession and Intent Disputes',
           description:
-            'The State must prove knowledge and control, and in enhanced allegations must prove intent elements that are often inferred from circumstantial facts.',
+            'The State must prove knowledge and control. For more serious allegations, it may also need to prove intent from facts such as packaging, quantity, messages, or other surrounding evidence.',
           bullets: [
             'Constructive possession challenges',
             'Shared-space attribution issues',
-            'Intent inference attacks',
-            'Alternative explanation development',
-            'Co-occupant responsibility analysis',
+            'Evidence used to infer intent',
+            'Other explanations for the evidence',
+            'Access by other occupants',
             'Knowledge-element fact testing',
           ],
         },
         {
           title: 'Evidence Integrity Review',
           description:
-            'Forensic results require reliable collection, handling, and reporting. We audit each link in the evidence chain for admissibility and credibility concerns.',
+            'Laboratory results depend on proper collection, handling, testing, and reporting. Missing or inconsistent records may raise questions about reliability or admissibility.',
           bullets: [
             'Chain-of-custody completeness',
             'Lab protocol compliance',
@@ -101,47 +101,47 @@ export default function DrugChargesPage() {
           ],
         },
       ]}
-      processTitle="Drug Charge Defense Process"
-      processSubtitle="Systematic constitutional review and targeted motion practice drive case leverage."
+      processTitle="What Happens After You Hire Counsel"
+      processSubtitle="The review covers the charge, the search, the connection to the accused, and the laboratory records."
       processSteps={[
         {
           step: '01',
-          title: 'Intake, Exposure Mapping, and Document Control',
+          title: 'Charge and Records Review',
           description:
-            'We map charge exposure, collateral risk, and immediate discovery priorities so strategy starts with accurate facts and timeline control.',
+            'We review the charge, prior history, bond terms, available paperwork, and the records that should be requested first.',
         },
         {
           step: '02',
           title: 'Constitutional and Suppression Analysis',
           description:
-            'Search legality, seizure scope, and warrant process are reviewed for exclusion arguments with practical litigation sequencing.',
+            'We review the legal basis and scope of the search and decide whether the facts support a motion to exclude evidence.',
         },
         {
           step: '03',
           title: 'Possession, Intent, and Forensic Challenge',
           description:
-            'We test possession attribution, intent assumptions, and forensic process integrity to identify trial or negotiation leverage.',
+            'We compare the possession and intent allegations with the physical evidence, witness accounts, and laboratory records.',
         },
         {
           step: '04',
-          title: 'Resolution Strategy',
+          title: 'Negotiation, Motions, or Trial',
           description:
-            'We negotiate from a litigation-ready posture and pursue court-based resolution when offers fail to reflect real evidentiary risk.',
+            'The case may proceed through negotiations, a motion asking the court to exclude evidence, or trial, depending on the facts and available options.',
         },
       ]}
-      relatedTitle="Related Defense and Strategy Pages"
+      relatedTitle="Related Criminal Defense Pages"
       relatedSubtitle="Explore connected topics that often overlap in Oklahoma drug prosecutions."
       relatedLinks={[
         {
           href: '/criminal-defense',
           title: 'Criminal Defense Hub',
-          description: 'Broader criminal defense strategy and service scope across charge types.',
+          description: 'An overview of criminal charges handled by Kernal & Associates.',
           ctaName: 'drug_related_criminal_hub',
         },
         {
           href: '/criminal-defense/dui-dwi',
           title: 'DUI / DWI Defense',
-          description: 'Cross-over strategy for cases involving both impairment and controlled substances.',
+          description: 'Related issues when an impaired-driving allegation involves a controlled substance.',
           ctaName: 'drug_related_dui',
         },
         {
@@ -153,7 +153,7 @@ export default function DrugChargesPage() {
         {
           href: '/criminal-defense/assault-battery',
           title: 'Assault and Battery Defense',
-          description: 'Related strategy when arrest events involve overlapping allegation categories.',
+          description: 'Defense for assault and battery allegations arising from the same incident.',
           ctaName: 'drug_related_assault',
         },
         {
@@ -165,13 +165,13 @@ export default function DrugChargesPage() {
         {
           href: '/norman/criminal-defense',
           title: 'Norman Criminal Defense',
-          description: 'Cleveland County defense strategy for south-metro drug allegations.',
+          description: 'Criminal defense for cases filed in Norman and Cleveland County.',
           ctaName: 'drug_related_norman_criminal',
         },
         {
           href: '/resources/what-to-do-after-arrest-oklahoma',
           title: 'Post-Arrest Guide',
-          description: 'Immediate rights-protection checklist while your defense strategy is being built.',
+          description: 'Practical steps to take after an Oklahoma arrest.',
           ctaName: 'drug_related_arrest_guide',
         },
       ]}
@@ -182,10 +182,10 @@ export default function DrugChargesPage() {
         'Preserve all paperwork, bond terms, and any search-related documents immediately.',
         'Write down where you were and who controlled the location before details fade.',
         'Do not discuss case facts with police, investigators, or codefendants without counsel.',
-        'Start legal review early so suppression and discovery strategy is not delayed.',
+        'Ask for early review of the search and the records that need to be requested.',
       ]}
-      ctaTitle="Start Building a Drug Charge Defense Now"
-      ctaDescription="Early legal intervention can preserve suppression opportunities and strengthen your negotiation or trial posture."
+      ctaTitle="Talk With an Oklahoma Drug Charges Lawyer"
+      ctaDescription="A prompt review can identify search, possession, and evidence issues before the case moves forward."
       ctaLabel="Start Drug Charge Defense"
       ctaName="drug_bottom_cta"
     />

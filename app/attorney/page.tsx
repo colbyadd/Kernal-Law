@@ -6,26 +6,26 @@ import { PageHero } from '../components/PageHero'
 export const metadata: Metadata = {
   title: 'Todd Kernal | Attorney Profile',
   description:
-    'Todd Kernal is an Oklahoma criminal defense and personal injury attorney with 25+ years of courtroom-focused practice.',
+    'Todd Kernal is an Oklahoma criminal defense lawyer with nearly 26 years of experience who also represents people with serious injury claims.',
   alternates: { canonical: '/attorney' },
   openGraph: {
     title: 'Todd Kernal Attorney Profile | Kernal & Associates',
     description:
-      'Review Todd Kernal\'s courtroom-focused background, legal standards, and practice approach for criminal defense and injury matters.',
+      'Read about Oklahoma attorney Todd Kernal\'s background in criminal defense and personal injury law.',
     url: 'https://kernallaw.com/attorney',
   },
 }
 
 const attorneySchema = {
   '@context': 'https://schema.org',
-  '@type': 'Attorney',
+  '@type': 'Person',
   '@id': 'https://kernallaw.com/attorney/#person',
   name: 'Todd Kernal',
   givenName: 'Todd',
   familyName: 'Kernal',
   jobTitle: 'Criminal Defense & Personal Injury Attorney',
   description:
-    'Todd Kernal has worked as a criminal defense and personal injury lawyer for over 25 years across Oklahoma.',
+    'Todd Kernal has nearly 26 years of Oklahoma criminal defense experience and also represents people with serious injury claims.',
   image: 'https://kernallaw.com/images/todd-kernal-lhl.jpg',
   url: 'https://kernallaw.com/attorney',
   telephone: '+1-405-364-0601',
@@ -94,7 +94,7 @@ const attorneySchema = {
 }
 
 const credentialItems = [
-  '25+ Years of Courtroom-Focused Representation',
+  'Nearly 26 Years in Criminal Defense',
   'J.D., University of Oklahoma College of Law',
   'Member, Oklahoma Bar Association',
   'Member, Seminole Nation of Oklahoma',
@@ -102,19 +102,19 @@ const credentialItems = [
 
 const representationStandards = [
   {
-    title: 'Direct Risk Analysis',
+    title: 'Straight Answers',
     description:
-      'Every case starts with honest assessment of legal exposure, deadlines, and the most important next decisions.',
+      'Clients need an honest assessment of the risks, deadlines, and available options.',
   },
   {
-    title: 'Preparation Before Pressure',
+    title: 'Careful Preparation',
     description:
-      'Cases are built with evidentiary discipline so negotiation posture reflects real courtroom readiness.',
+      'Todd researches the law, reviews the evidence, and prepares each matter for the next hearing or trial.',
   },
   {
-    title: 'Client Communication Discipline',
+    title: 'Clear Communication',
     description:
-      'Clients receive practical updates and clear explanation of options, tradeoffs, and timing across each phase.',
+      'Options and tradeoffs are explained in plain language so clients can make informed decisions.',
   },
 ]
 
@@ -139,7 +139,7 @@ export default function AttorneyPage() {
 
       <PageHero
         title="Todd Kernal"
-        subtitle="Criminal Defense and Personal Injury | 25+ years of Oklahoma courtroom-focused practice"
+        subtitle="Oklahoma criminal defense and personal injury attorney"
         variant="bio"
       />
 
@@ -196,40 +196,38 @@ export default function AttorneyPage() {
 
                   <div className="lg:col-span-8 space-y-8 text-lg text-silver-400 leading-relaxed">
                     <p>
-                      Todd Kernal focuses on high-stakes criminal defense and severe personal-injury matters across Oklahoma.
-                      His practice emphasizes early risk control, disciplined evidence strategy, and courtroom readiness when
-                      negotiated outcomes are not reasonable.
+                      Todd Kernal has worked as a criminal defense lawyer for nearly 26 years. He has extensive
+                      experience helping clients through the civil and criminal issues surrounding a DUI arrest,
+                      along with drug charges, sex offenses, and other felony cases.
                     </p>
                     <p>
-                      The approach is practical and direct: identify exposure quickly, protect legal position early, and build
-                      each case with enough rigor to withstand adversarial scrutiny. Clients are informed clearly about options,
-                      tradeoffs, and timing at each stage.
+                      His interest in law began in college, after a landlord unfairly refused to return his damage
+                      deposit. Todd found the law library, researched the issue, and wrote the landlord a letter.
+                      The deposit was returned two days later. He decided to go to law school.
                     </p>
 
                     <blockquote className="border-l-2 border-accent-gold pl-8 italic text-xl text-white/90">
-                      &quot;When the government or an insurer applies pressure, preparation is the equalizer. Good outcomes are built,
-                      not hoped for.&quot;
+                      &quot;If I don&apos;t stand up for my clients and protect their constitutional rights, then everyone loses.&quot;
                     </blockquote>
 
                     <h3 className="text-2xl font-serif text-white">Practice Focus</h3>
                     <p>
-                      Criminal defense work includes DUI, drug allegations, warrants, probation issues, assault-related filings,
-                      and other felony or misdemeanor exposure. Personal injury work includes severe collision litigation,
-                      catastrophic injury valuation, and wrongful-death accountability claims.
+                      While in law school, Todd interned with a criminal law practice and knew it was the right fit.
+                      He enjoys courtroom work and believes every person accused of a crime deserves the full protection
+                      of the United States and Oklahoma Constitutions.
                     </p>
 
-                    <h3 className="text-2xl font-serif text-white">Professional Background</h3>
+                    <h3 className="text-2xl font-serif text-white">Personal Injury Work</h3>
                     <p>
-                      Todd is a graduate of the University of Oklahoma College of Law and has spent more than two decades in
-                      courtroom-driven legal practice. His legal career began from direct exposure to an unfair dispute and a
-                      commitment to learning the law well enough to challenge it effectively.
+                      Todd also represents people with serious injury claims. An oil field accident gave him a personal
+                      view of how an injury can affect work, family, and daily life.
                     </p>
                   </div>
                 </div>
               </section>
 
               <section id="profile-standards" className="scroll-mt-28 bg-iron-900 border border-silver-500/10 p-6 md:p-8">
-                <h2 className="font-serif text-3xl md:text-4xl text-white mb-8">Representation Standards</h2>
+                <h2 className="font-serif text-3xl md:text-4xl text-white mb-8">What Clients Can Expect</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                   {representationStandards.map((item) => (
                     <article
@@ -244,7 +242,7 @@ export default function AttorneyPage() {
               </section>
 
               <section id="profile-proof" className="scroll-mt-28 bg-iron-900 border border-silver-500/10 p-6 md:p-8">
-                <h2 className="font-serif text-3xl md:text-4xl text-white mb-8">Review Additional Proof</h2>
+                <h2 className="font-serif text-3xl md:text-4xl text-white mb-8">Learn More</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                   <Link
                     href="/case-results"
@@ -252,7 +250,7 @@ export default function AttorneyPage() {
                     className="border border-silver-500/20 p-6 text-silver-300 hover:text-white hover:border-accent-gold/45 transition-colors"
                   >
                     <h3 className="font-serif text-2xl mb-2">Case Results</h3>
-                    <p className="text-sm text-silver-400">Representative outcomes with risk and strategy context.</p>
+                    <p className="text-sm text-silver-400">Anonymized examples of criminal defense and injury matters.</p>
                   </Link>
                   <Link
                     href="/client-reviews"
@@ -260,7 +258,7 @@ export default function AttorneyPage() {
                     className="border border-silver-500/20 p-6 text-silver-300 hover:text-white hover:border-accent-gold/45 transition-colors"
                   >
                     <h3 className="font-serif text-2xl mb-2">Client Reviews</h3>
-                    <p className="text-sm text-silver-400">Client feedback themes on communication and execution quality.</p>
+                    <p className="text-sm text-silver-400">Selected feedback from Todd Kernal&apos;s Google Business Profile.</p>
                   </Link>
                   <Link
                     href="/contact"

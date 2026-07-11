@@ -32,8 +32,8 @@ export default function PrivacyPage() {
                 <h2 className="text-2xl text-white font-serif">2. Use of Information</h2>
                 <p>
                     We use the information we collect to respond to your inquiries, evaluate your potential case,
-                    communicate with you regarding your legal matters, and improve our services. We may contact you
-                    by phone, email, or text message at the number or address you provide to us.
+                    communicate with you regarding your legal matters, and improve our services. For an initial form
+                    response, we use the phone, text, or email method you select.
                 </p>
 
                 <h2 className="text-2xl text-white font-serif">3. How We Share Information</h2>
@@ -51,13 +51,13 @@ export default function PrivacyPage() {
 
                 <h2 className="text-2xl text-white font-serif">4. Communications &amp; Text Messaging</h2>
                 <p>
-                    By submitting a contact form on our website or otherwise providing your phone number, you
-                    expressly consent to receive communications from Kernal &amp; Associates, including:
+                    When you submit the contact form, you consent to a response through the preferred method you
+                    select. Depending on that selection, the response may be:
                 </p>
                 <ul className="list-disc pl-6 space-y-2">
-                    <li>Phone calls, including calls made using automated dialing technology</li>
-                    <li>Text messages (SMS and MMS) related to your inquiry or legal matter</li>
-                    <li>Emails at the email address you provide</li>
+                    <li>A phone call to the number you provide</li>
+                    <li>A text message (SMS or MMS) related to your inquiry</li>
+                    <li>An email to the address you provide</li>
                 </ul>
                 <p>
                     <strong className="text-white">Message frequency:</strong> Message frequency varies based on
@@ -81,8 +81,8 @@ export default function PrivacyPage() {
                     <a href="tel:4053640601" className="text-accent-gold hover:underline">405.364.0601</a>.
                 </p>
                 <p>
-                    Consent to receive communications is not a condition of purchasing any goods or services from
-                    our firm. You may contact us by other means if you prefer not to be contacted by phone or text.
+                    Consent to a response is not a condition of hiring the firm. You may call or email the office
+                    directly instead of using the form.
                 </p>
                 <p>
                     Carriers are not liable for delayed or undelivered messages. We process opt-out requests

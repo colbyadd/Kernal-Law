@@ -4,12 +4,12 @@ import { ServiceDetailPage } from '../../components/ServiceDetailPage'
 export const metadata: Metadata = {
   title: 'Oklahoma Warrants Defense Lawyer',
   description:
-    'Defense strategy for active Oklahoma warrants with controlled surrender planning, bond preparation, and transition into full criminal-case defense.',
+    'Help with active Oklahoma warrants, including status review, planned surrender, bond preparation, and the underlying criminal case.',
   alternates: { canonical: '/criminal-defense/warrants' },
   openGraph: {
     title: 'Oklahoma Warrants Defense | Kernal & Associates',
     description:
-      'Resolve active Oklahoma warrants using planned court-entry strategy, risk control, and trial-aware criminal defense planning.',
+      'Legal help with active Oklahoma warrants, planned court appearances, bond issues, and the underlying charge.',
     url: 'https://kernallaw.com/criminal-defense/warrants',
   },
 }
@@ -18,32 +18,32 @@ const warrantsFaqs = [
   {
     question: 'What should I do if I think I have an active warrant?',
     answer:
-      'Do not ignore it or rely on assumptions. Confirm status through counsel and build a controlled response plan. Unplanned law-enforcement contact can increase custody exposure and reduce strategic options.',
+      'Do not ignore it or rely on secondhand information. Counsel can confirm the court, case, warrant type, and available next steps. An unexpected arrest can cause more disruption than a planned response.',
   },
   {
     question: 'Can I be arrested at work or home for an active warrant?',
     answer:
-      'Potentially yes. Active warrants can be enforced during traffic stops, at home, at work, or in routine contact. Early planning improves timing control and reduces avoidable disruption.',
+      'Potentially yes. Active warrants can be enforced during traffic stops, at home, at work, or during routine contact. Confirming the warrant and planning the response may reduce avoidable disruption.',
   },
   {
     question: 'Is safe surrender better than waiting?',
     answer:
-      'Often, yes. Planned surrender can improve bond presentation, reduce unnecessary custody time, and create a more controlled legal entry than an unexpected arrest event.',
+      'Often, yes. A planned appearance can provide time to prepare bond information and practical arrangements that are not possible during an unexpected arrest. It does not guarantee release or a shorter time in custody.',
   },
   {
     question: 'Can warrants be cleared without jail?',
     answer:
-      'Sometimes. Outcomes depend on warrant type, underlying charges, prior history, and court posture. Counsel can evaluate realistic pathways before appearance so expectations and risk are clear.',
+      'Sometimes. It depends on the warrant type, underlying charge, prior history, bond, and the court. Counsel can review those facts before an appearance, but no one should promise that custody can be avoided.',
   },
   {
     question: 'What if the warrant came from a missed court date?',
     answer:
-      'Failure-to-appear warrants are common and often manageable with structured response. Prompt action improves flexibility for bond conditions, scheduling, and overall case posture.',
+      'A failure-to-appear warrant should be addressed promptly. The court may consider why the date was missed, prior appearance history, the underlying charge, and whether new notice and bond conditions are appropriate.',
   },
   {
     question: 'Should I call the court myself?',
     answer:
-      'In most cases, counsel should coordinate communication so appearance strategy, risk messaging, and procedural steps are controlled and legally informed.',
+      'It is often better to speak with counsel first. A lawyer can confirm the case and ask the court clerk about procedure without making a statement about the underlying facts on your behalf.',
   },
 ]
 
@@ -51,86 +51,86 @@ export default function WarrantsPage() {
   return (
     <ServiceDetailPage
       heroTitle="Warrants Defense"
-      heroSubtitle="Controlled legal strategy for active warrants, missed appearance risk, and urgent court-entry planning."
+      heroSubtitle="Help confirming an active warrant and planning the next court appearance."
       heroVariant="criminal"
-      introTitle="Active warrants should be handled with a controlled legal plan, not guesswork."
+      introTitle="An active warrant does not become easier by waiting."
       introParagraphs={[
-        'Warrant situations are often where avoidable damage happens. People wait too long, rely on incomplete information, or make unplanned contact with law enforcement that creates unnecessary custody and operational disruption.',
-        'A strong warrant strategy starts with accurate status verification, then moves into planned court entry, bond preparation, and next-stage defense planning. Clearing the warrant is critical, but it is usually only the first move in a larger criminal case.',
-        'Kernal & Associates develops warrant-response strategy designed to reduce uncertainty, control timing where possible, and position the underlying case for effective defense from the first court appearance.',
+        'A person with an active warrant can be arrested during a traffic stop, at home, or at work. Before taking action, it helps to know which court issued the warrant, why it was issued, and whether a bond has been set.',
+        'A planned appearance may allow time to gather bond information, arrange transportation, notify family or work, and prepare documents the court may consider. It cannot guarantee that custody will be avoided.',
+        'Kernal & Associates confirms the warrant and underlying case, explains the likely procedure, and prepares for the appearance. Once the warrant is addressed, Todd Kernal turns to the charge or missed-hearing issue that caused it.',
       ]}
-      focusTitle="Warrant Resolution Priorities"
+      focusTitle="What We Confirm Before an Appearance"
       focusItems={[
         {
-          title: 'Status Verification and Exposure Mapping',
+          title: 'Warrant and Case Information',
           description:
-            'A precise read of warrant type, source case, and current docket posture is the first requirement for informed decision-making.',
+            'The first step is confirming the warrant type, source case, court, bond information, and current docket entries.',
           bullets: [
             'Warrant source and type verification',
             'Linked charge and docket review',
-            'Custody and bond risk analysis',
-            'Timeline and jurisdiction planning',
+            'Custody and bond information',
+            'Court and timing considerations',
             'Failure-to-appear context review',
-            'Collateral exposure mapping',
+            'Related charge and probation issues',
           ],
         },
         {
-          title: 'Safe Surrender Strategy',
+          title: 'Planned Court Appearance',
           description:
-            'Planned court entry can improve predictability and lower avoidable disruption compared with reactive arrest scenarios.',
+            'A planned appearance can provide more predictability than an unexpected arrest, although the court and law enforcement control what happens.',
           bullets: [
             'Appearance logistics planning',
-            'Bond readiness package',
+            'Bond information and documents',
             'Documentation and support preparation',
-            'Court presentation sequencing',
-            'Custody-time minimization strategy',
+            'Court procedure review',
+            'Possible custody planning',
             'Family and work disruption planning',
           ],
         },
         {
           title: 'Post-Resolution Defense Planning',
           description:
-            'Clearing the warrant usually opens the next stage of charge defense, where early missteps can still affect long-term outcome.',
+            'Clearing the warrant usually returns the underlying charge or missed appearance to the court’s active schedule.',
           bullets: [
             'Next-hearing preparation',
-            'Charge-defense transition plan',
-            'Compliance and date-tracking controls',
-            'Long-term record-risk management',
+            'Review of the underlying charge',
+            'Compliance and date tracking',
+            'Future record consequences',
             'Evidence request sequencing',
-            'Negotiation versus litigation planning',
+            'Negotiation, motions, or trial',
           ],
         },
       ]}
-      processTitle="Warrants Defense Workflow"
-      processSubtitle="A structured workflow improves court control, timing visibility, and downstream defense posture."
+      processTitle="From Warrant Check to the Next Court Date"
+      processSubtitle="The work starts by confirming the warrant and then preparing for the court procedure that applies."
       processSteps={[
         {
           step: '01',
-          title: 'Warrant Confirmation and Strategic Intake',
+          title: 'Warrant Confirmation and Intake',
           description:
-            'We confirm active status, source case, and immediate risk factors, then set legal communication boundaries for controlled next steps.',
+            'We confirm the warrant, source case, court, and available bond information, then explain the next procedural steps.',
         },
         {
           step: '02',
           title: 'Surrender and Bond Planning',
           description:
-            'We design the safest practical court-entry approach with bond-position preparation and documentation aligned to your case posture.',
+            'We prepare for the court appearance, including documents relevant to bond and practical plans for possible custody.',
         },
         {
           step: '03',
           title: 'Court Appearance and Warrant Resolution',
           description:
-            'During initial proceedings, we advocate for the strongest available bond and condition outcomes while protecting downstream defense options.',
+            'At the appearance, we address the warrant, bond, release conditions, and the next date in the underlying case.',
         },
         {
           step: '04',
-          title: 'Forward Defense Strategy',
+          title: 'Underlying Case Review',
           description:
-            'After the warrant is addressed, we transition directly into full charge-defense strategy, including evidence planning and hearing preparation.',
+            'After the warrant is addressed, we review the charge, evidence, deadlines, and upcoming hearings.',
         },
       ]}
       relatedTitle="Related Criminal Defense Pages"
-      relatedSubtitle="Use these pages for connected post-warrant legal strategy and charge defense."
+      relatedSubtitle="Read about common charges and supervision issues connected with active warrants."
       relatedLinks={[
         {
           href: '/criminal-defense',
@@ -147,7 +147,7 @@ export default function WarrantsPage() {
         {
           href: '/criminal-defense/dui-dwi',
           title: 'DUI / DWI Defense',
-          description: 'Related strategy when warrant exposure overlaps with impaired-driving allegations.',
+          description: 'Related representation when the underlying charge involves impaired driving.',
           ctaName: 'warrants_related_dui',
         },
         {
@@ -159,13 +159,13 @@ export default function WarrantsPage() {
         {
           href: '/oklahoma-city/criminal-defense',
           title: 'Oklahoma City Criminal Defense',
-          description: 'Metro venue-specific strategy for high-volume Oklahoma County warrant matters.',
+          description: 'Criminal defense for cases filed in Oklahoma City and Oklahoma County.',
           ctaName: 'warrants_related_okc_criminal',
         },
         {
           href: '/norman/criminal-defense',
           title: 'Norman Criminal Defense',
-          description: 'Cleveland County defense strategy for south-metro warrant and missed-hearing risk.',
+          description: 'Criminal defense for cases filed in Norman and Cleveland County.',
           ctaName: 'warrants_related_norman_criminal',
         },
         {
@@ -182,10 +182,10 @@ export default function WarrantsPage() {
         'Confirm warrant status through counsel before taking any independent action.',
         'Gather case paperwork, court notices, and prior appearance records in one file.',
         'Do not discuss case facts with police or investigators without legal representation.',
-        'Start controlled surrender and bond planning before unplanned contact occurs.',
+        'Discuss a planned appearance and bond information before an unexpected arrest occurs.',
       ]}
-      ctaTitle="Resolve Warrant Risk with a Controlled Plan"
-      ctaDescription="Strategic early action can reduce disruption, improve bond posture, and protect the underlying case."
+      ctaTitle="Ask About an Active Oklahoma Warrant"
+      ctaDescription="Confirm the warrant and understand the likely court procedure before taking action."
       ctaLabel="Start Warrant Defense"
       ctaName="warrants_bottom_cta"
     />

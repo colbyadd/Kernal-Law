@@ -4,12 +4,12 @@ import { ServiceDetailPage } from '../../components/ServiceDetailPage'
 export const metadata: Metadata = {
   title: 'Oklahoma Sex Crimes Defense Lawyer',
   description:
-    'Defense for Oklahoma sex offense allegations with confidentiality-focused strategy, evidence analysis, and trial-ready representation.',
+    'Confidential defense for Oklahoma sex offense allegations involving statements, digital evidence, forensic records, and trial proceedings.',
   alternates: { canonical: '/criminal-defense/sex-crimes' },
   openGraph: {
     title: 'Oklahoma Sex Crimes Defense | Kernal & Associates',
     description:
-      'Strategic defense for high-stakes sex offense allegations in Oklahoma courts.',
+      'Confidential defense for Oklahoma sex offense allegations and related investigations.',
     url: 'https://kernallaw.com/criminal-defense/sex-crimes',
   },
 }
@@ -23,12 +23,12 @@ const sexCrimesFaqs = [
   {
     question: 'Can a case proceed even with little physical evidence?',
     answer:
-      'Yes. Some prosecutions rely heavily on statement credibility and timeline interpretation. Defense strategy focuses on inconsistencies, motive, reliability, and evidentiary standards.',
+      'Yes. Some cases rely heavily on statements and the sequence of events. The review may include whether accounts are consistent, what other records corroborate them, and whether the evidence is admissible and reliable.',
   },
   {
     question: 'How quickly should defense counsel be involved?',
     answer:
-      'Immediately. Early intervention can preserve exculpatory evidence, control communication risk, and shape pre-charge or early-charge strategy.',
+      'As soon as possible, especially before speaking with investigators. Early involvement can help preserve messages, location data, video, and other records that may later be difficult to obtain.',
   },
   {
     question: 'Do these charges have long-term consequences beyond court penalties?',
@@ -43,7 +43,7 @@ const sexCrimesFaqs = [
   {
     question: 'Do sex offense allegations always go to trial?',
     answer:
-      'Not always, but trial readiness is critical. Many outcomes improve when prosecution knows the defense is prepared to litigate aggressively.',
+      'No. Some cases are declined, dismissed, or resolved without trial, while others are contested before a jury. The likely path cannot be assessed until the charge and evidence are reviewed.',
   },
 ]
 
@@ -51,22 +51,22 @@ export default function SexCrimesPage() {
   return (
     <ServiceDetailPage
       heroTitle="Sex Crimes Defense"
-      heroSubtitle="Confidential, trial-ready defense for high-stakes allegations."
+      heroSubtitle="Confidential representation for sex offense investigations and criminal charges."
       heroVariant="criminal"
-      introTitle="These allegations require immediate, disciplined defense control."
+      introTitle="Get legal advice before answering questions or sharing evidence."
       introParagraphs={[
-        'Sex offense allegations move quickly and often carry severe legal and personal consequences. Defense requires precise evidence work, communication control, and strategic courtroom preparation from the first contact.',
-        'Kernal & Associates handles sex offense defense with confidentiality, rigorous factual testing, and a trial-ready posture designed to challenge weak, assumption-driven prosecutions.',
+        'A sex offense investigation can begin before an arrest or formal charge. Statements made during that period may become evidence, and digital records can be lost, overwritten, or taken out of context.',
+        'Kernal & Associates handles these matters privately. Todd Kernal reviews the allegation, timeline, witness statements, digital records, and forensic evidence, then advises the client about the investigation, court proceedings, and possible trial.',
       ]}
-      focusTitle="Core Defense Priorities"
+      focusTitle="What We Review"
       focusItems={[
         {
-          title: 'Communication and Investigation Control',
+          title: 'Contact from Police or Investigators',
           description:
-            'Early communication mistakes can irreversibly narrow defense options.',
+            'Before speaking with police or an investigator, a person should understand the allegation and the risks of making a statement.',
           bullets: [
-            'Counsel-led communication protocol',
-            'Investigator contact shielding',
+            'Advice before making any statement',
+            'Response to investigator contact',
             'Pre-charge risk assessment',
             'Immediate evidence-preservation planning',
           ],
@@ -76,71 +76,71 @@ export default function SexCrimesPage() {
           description:
             'Case outcomes often hinge on timeline detail and statement reliability.',
           bullets: [
-            'Inconsistency mapping',
+            'Comparison of inconsistent accounts',
             'Digital context reconstruction',
             'Witness motive and bias review',
             'Forensic reliability challenge',
           ],
         },
         {
-          title: 'High-Stakes Trial Preparation',
+          title: 'Court and Trial Preparation',
           description:
-            'Strong trial preparation improves both litigation outcomes and negotiation leverage.',
+            'Preparation includes the legal elements, admissibility questions, witness examination, and the possible consequences of each available path.',
           bullets: [
             'Legal-element burden analysis',
-            'Cross-examination framework',
-            'Expert consultation strategy',
-            'Collateral consequence minimization',
+            'Witness and cross-examination preparation',
+            'Expert consultation when appropriate',
+            'Registration and other collateral consequences',
           ],
         },
       ]}
-      processTitle="Sex Crimes Defense Workflow"
-      processSubtitle="A controlled legal process is essential when allegations carry extreme reputational and legal risk."
+      processTitle="From Investigation Through Trial"
+      processSubtitle="The work begins with confidential advice, preservation of records, and a careful review of the allegation."
       processSteps={[
         {
           step: '01',
-          title: 'Emergency Intake and Communication Lockdown',
+          title: 'Confidential Intake and Communication Advice',
           description:
-            'We establish immediate communication boundaries and gather initial timeline facts.',
+            'We discuss investigator contact, court restrictions, and the events that led to the allegation.',
         },
         {
           step: '02',
-          title: 'Evidence and Statement Audit',
+          title: 'Evidence and Statement Review',
           description:
-            'We test reliability of allegations, digital records, and investigative methods.',
+            'We compare statements, digital records, forensic reports, and investigative methods for gaps or inconsistencies.',
         },
         {
           step: '03',
-          title: 'Pretrial Motion and Strategy Build',
+          title: 'Pretrial Motions and Preparation',
           description:
-            'We challenge evidence admissibility and position the case for maximum defense leverage.',
+            'We identify admissibility issues, prepare appropriate motions, and organize the evidence for hearings or trial.',
         },
         {
           step: '04',
           title: 'Resolution or Trial',
           description:
-            'We negotiate where justified and proceed to full trial litigation when necessary.',
+            'We discuss any negotiated option with the client and prepare for trial when the allegation is contested.',
         },
       ]}
       relatedTitle="Related Criminal Defense Pages"
-      relatedSubtitle="Use these pages to review connected charge categories and defense frameworks."
+      relatedSubtitle="Read about related charges, warrants, and requesting a confidential consultation."
       relatedLinks={[
         {
           href: '/criminal-defense',
           title: 'Criminal Defense Hub',
-          description: 'Full defense service map for serious Oklahoma charges.',
+          description: 'An overview of criminal charges handled by Kernal & Associates.',
           ctaName: 'sex_related_criminal_hub',
         },
         {
           href: '/criminal-defense/assault-battery',
           title: 'Assault and Battery Defense',
-          description: 'Defense strategy for allegation-driven violent offense claims.',
+          description: 'Defense for allegations involving threatened force, contact, or injury.',
           ctaName: 'sex_related_assault',
         },
         {
           href: '/criminal-defense/warrants',
           title: 'Warrants Defense',
-          description: 'Handling active warrants and safe surrender strategy.',
+          description: 'Help with an active warrant or a planned court appearance.',
           ctaName: 'sex_related_warrants',
         },
         {
@@ -153,8 +153,8 @@ export default function SexCrimesPage() {
       faqSubtitle="Answers to common questions after sex offense allegations in Oklahoma."
       faqs={sexCrimesFaqs}
       practiceArea="sex-crimes"
-      ctaTitle="Get Immediate Confidential Defense Guidance"
-      ctaDescription="Early strategy can materially change exposure and outcome options."
+      ctaTitle="Request a Confidential Case Review"
+      ctaDescription="Talk with a lawyer before speaking with investigators or making decisions about the case."
       ctaLabel="Start Confidential Defense Review"
       ctaName="sex_bottom_cta"
     />

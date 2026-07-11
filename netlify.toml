@@ -1,6 +1,9 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
+[functions]
+  directory = "netlify/functions"
+
 [[redirects]]
   from = "http://www.kernallaw.com/*"
   to = "https://kernallaw.com/:splat"

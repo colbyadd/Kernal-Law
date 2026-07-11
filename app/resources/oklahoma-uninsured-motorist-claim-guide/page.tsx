@@ -2,14 +2,14 @@ import { Metadata } from 'next'
 import { ResourceGuidePage } from '../../components/ResourceGuidePage'
 
 export const metadata: Metadata = {
-  title: 'Oklahoma Uninsured Motorist Claim Guide',
+  title: 'Oklahoma Uninsured Motorist Guide',
   description:
-    'A practical guide to Oklahoma UM/UIM claims, including policy notices, coverage analysis, liability proof, and settlement strategy.',
+    'A practical guide to Oklahoma uninsured and underinsured motorist claims, including policies, notice, proof of loss, and settlement releases.',
   alternates: { canonical: '/resources/oklahoma-uninsured-motorist-claim-guide' },
   openGraph: {
     title: 'Oklahoma Uninsured Motorist Claim Guide | Kernal & Associates',
     description:
-      'Learn how to protect UM/UIM claims with policy-aware evidence and valuation strategy after an Oklahoma crash.',
+      'Learn how policy language, notice, liability evidence, medical records, and releases may affect an Oklahoma UM/UIM claim.',
     url: 'https://kernallaw.com/resources/oklahoma-uninsured-motorist-claim-guide',
   },
 }
@@ -21,14 +21,26 @@ export default function UninsuredMotoristClaimGuidePage() {
       title="Oklahoma Uninsured Motorist Claim Guide"
       subtitle="How to protect UM/UIM recovery when the at-fault driver lacks enough insurance."
       intro={[
-        'UM/UIM claims are often misunderstood as simple claims against your own insurer. In reality, many are actively contested on fault, causation, valuation, and policy-interpretation grounds.',
-        'This guide explains the workflow for Oklahoma uninsured and underinsured motorist matters, including the notice phase, evidence build, and settlement decision points.',
-        'Use it to reduce early mistakes and move quickly into a structured coverage-plus-damages strategy.',
+        'Uninsured motorist and underinsured motorist claims are made under an insurance policy, but the claimant still may need to prove fault, causation, and damages.',
+        'Begin with the declarations page, complete policy, claim notices, and all available information about the other driver\'s insurance. Policy language and facts control the available coverage.',
       ]}
       authorName="Kernal Law Editorial Team"
       reviewedBy="Todd Kernal"
       reviewedTitle="Founding Attorney"
-      lastUpdated="2026-02-18"
+      datePublished="2026-02-18"
+      lastUpdated="2026-07-11"
+      officialSources={[
+        {
+          label: 'Oklahoma Statutes, Title 36, Section 3636',
+          href: 'https://www.oscn.net/applications/oscn/DeliverDocument.asp?CiteID=87144',
+          description: 'The current Oklahoma statute governing uninsured motorist coverage.',
+        },
+        {
+          label: 'Oklahoma Insurance Department: Uninsured Motorist Coverage',
+          href: 'https://www.oid.ok.gov/uninsured-motorist/',
+          description: 'State consumer information explaining uninsured and underinsured motorist coverage in Oklahoma.',
+        },
+      ]}
       immediateActionsTitle="Immediate UM/UIM Claim Actions"
       immediateActions={[
         {
@@ -47,7 +59,7 @@ export default function UninsuredMotoristClaimGuidePage() {
           label: 'Step 3',
           title: 'Control Notice and Communication Timing',
           detail:
-            'Provide required notices, but avoid speculative statements on fault and long-term injuries before strategy is in place.',
+            'Give required notice promptly, keep a copy, and do not guess about fault, recovery time, or future medical care.',
         },
         {
           label: 'Step 4',
@@ -65,16 +77,16 @@ export default function UninsuredMotoristClaimGuidePage() {
           label: 'Step 6',
           title: 'Escalate Early on Coverage Disputes',
           detail:
-            'If coverage, offsets, or valuation are contested, attorney-led strategy usually improves leverage and clarity.',
+            'Seek legal review if the insurer disputes coverage, applies an offset you do not understand, or requests a release.',
         },
       ]}
       takeaways={[
         'UM/UIM claims still require full liability and damages proof.',
         'Policy language and claim sequencing can materially affect recovery.',
         'Early notice and communication discipline prevents avoidable disputes.',
-        'First-party insurers may still challenge fault and valuation aggressively.',
+        'An insurer may still dispute fault, coverage, causation, or the amount of the claimed loss.',
         'Do not assume policy limits equal expected recovery without analysis.',
-        'Comprehensive damages documentation increases negotiation leverage.',
+        'Medical, wage, and out-of-pocket records are central to evaluating the claim.',
         'Serious injuries often require future-loss valuation planning.',
         'Early legal review is valuable when coverage issues appear.',
       ]}
@@ -83,7 +95,7 @@ export default function UninsuredMotoristClaimGuidePage() {
           title: 'UM vs UIM: Understanding the Difference',
           paragraphs: [
             'UM generally applies when the at-fault driver has no insurance. UIM generally applies when the at-fault policy exists but is insufficient for full losses. Both depend on specific policy wording and factual context.',
-            'Practical strategy starts by identifying available coverages and then mapping how liability and damages proof will support each path.',
+            'Start by identifying each potentially applicable policy and then determine what proof the policy and Oklahoma law require.',
           ],
           bullets: [
             'Confirm uninsured versus underinsured status',
@@ -95,7 +107,7 @@ export default function UninsuredMotoristClaimGuidePage() {
         {
           title: 'Notice Requirements and Early Communication Risks',
           paragraphs: [
-            'Many UM/UIM disputes begin with avoidable notice or communication problems. Timely notice matters, but so does avoiding premature statements that narrow claim framing.',
+            'Many disputes begin with notice or communication problems. Give timely notice, save proof of delivery, and keep communications accurate.',
             'Keep communications factual and documented. Do not estimate long-term injury impact before treatment progression is clear.',
           ],
           bullets: [
@@ -145,15 +157,15 @@ export default function UninsuredMotoristClaimGuidePage() {
           ],
         },
         {
-          title: 'When UM/UIM Claims Require Litigation Pressure',
+          title: 'When a Coverage or Value Dispute Continues',
           paragraphs: [
-            'If coverage is denied or valuation remains unreasonably low despite documented losses, litigation posture may be necessary to rebalance leverage.',
-            'Early trial-aware preparation often improves outcomes, even if final resolution occurs before courtroom proceedings conclude.',
+            'If coverage is denied or the parties cannot agree on the value of a documented loss, litigation may be one available option. The policy, denial letter, evidence, and applicable deadlines should be reviewed first.',
+            'Continue preserving correspondence, claim submissions, medical records, and the insurer\'s stated reasons for its position.',
           ],
           bullets: [
-            'Coverage-dispute issue framing',
+            'Coverage language and the stated basis for denial',
             'Evidence package readiness for formal proceedings',
-            'Negotiation strategy anchored to documented losses',
+            'Settlement position supported by documented losses',
             'Escalation timeline that preserves claim options',
           ],
         },
@@ -183,7 +195,7 @@ export default function UninsuredMotoristClaimGuidePage() {
         {
           question: 'Should I settle with the at-fault insurer first?',
           answer:
-            'Possibly, but settlement sequence can affect UM/UIM strategy. Review policy implications before finalizing releases.',
+            'Possibly, but the release and notice provisions may affect a later claim under your own policy. Have the policy implications reviewed before signing.',
         },
         {
           question: 'When should I request legal review for a UM/UIM claim?',
@@ -191,8 +203,8 @@ export default function UninsuredMotoristClaimGuidePage() {
             'Early, especially when injuries are significant, coverage is disputed, or insurer valuations remain unreasonably low.',
         },
       ]}
-      relatedTitle="Related UM/UIM, Accident, and Injury Strategy Pages"
-      relatedSubtitle="Use these pages for claim sequencing, evidence control, and injury valuation planning."
+      relatedTitle="Related Uninsured Motorist and Accident Pages"
+      relatedSubtitle="Use these pages for coverage, evidence, and injury-claim information."
       relatedLinks={[
         {
           href: '/personal-injury/uninsured-motorist',
@@ -203,13 +215,13 @@ export default function UninsuredMotoristClaimGuidePage() {
         {
           href: '/resources/what-to-do-after-car-accident-oklahoma',
           title: 'Post-Accident Guide',
-          description: 'First-48-hours evidence and treatment strategy after a crash.',
+          description: 'First-48-hours evidence and medical checklist after a crash.',
           ctaName: 'guide_um_related_post_accident',
         },
         {
           href: '/personal-injury/car-accidents',
           title: 'Car Accident Claims',
-          description: 'Liability and damages strategy where fault and valuation are disputed.',
+          description: 'Information about disputed fault, medical losses, and insurance claims.',
           ctaName: 'guide_um_related_car_claims',
         },
         {
@@ -221,17 +233,17 @@ export default function UninsuredMotoristClaimGuidePage() {
         {
           href: '/personal-injury',
           title: 'Personal Injury Hub',
-          description: 'Full injury-service architecture and conversion paths.',
+          description: 'Personal injury services and related claim information.',
           ctaName: 'guide_um_related_injury_hub',
         },
         {
           href: '/contact',
           title: 'Request UM/UIM Claim Review',
-          description: 'Get policy and damages strategy before coverage disputes escalate.',
+          description: 'Have the policy, notices, and loss records reviewed when coverage is disputed.',
           ctaName: 'guide_um_related_contact',
         },
       ]}
-      ctaTitle="Need a Policy-Aware UM/UIM Strategy?"
+      ctaTitle="Need Help With a UM/UIM Claim?"
       ctaDescription="Early coordination of coverage, liability, and damages evidence can protect recovery potential."
       ctaLabel="Start UM/UIM Case Review"
       ctaName="guide_um_bottom_cta"

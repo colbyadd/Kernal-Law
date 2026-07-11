@@ -1,15 +1,14 @@
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 import { LocationServicePage } from '../components/LocationServicePage'
 
 export const metadata: Metadata = {
-  title: 'Moore Criminal Defense and Personal Injury Attorney',
+  title: 'Moore Criminal & Injury Lawyer',
   description:
-    'Kernal & Associates serves Moore, Oklahoma with criminal defense and personal injury representation in Cleveland County and surrounding metro courts.',
+    'Criminal defense and personal injury help for Moore matters involving Cleveland County, I-35, and south-metro travel.',
   alternates: { canonical: '/moore' },
   openGraph: {
-    title: 'Moore Criminal Defense and Injury Attorney | Kernal & Associates',
-    description:
-      'Local legal representation for Moore residents facing criminal charges or serious injury claims.',
+    title: 'Moore Criminal & Injury Lawyer',
+    description: 'Legal help for Moore criminal cases and south-metro injury claims.',
     url: 'https://kernallaw.com/moore',
   },
 }
@@ -19,105 +18,131 @@ export default function MoorePage() {
     <LocationServicePage
       canonicalPath="/moore"
       locationName="Moore"
-      subtitle="Criminal defense and personal injury representation for Moore and south metro communities."
-      introTitle="Legal representation built for urgent decisions in Moore."
+      subtitle="Help for Cleveland County criminal filings and injury claims affecting Moore and the south metro."
+      introTitle="Use the paperwork to find the first required step"
       introParagraphs={[
-        'Whether you are facing criminal charges or managing the aftermath of a serious injury, early legal strategy matters. Moore residents often need counsel that can move quickly across both Cleveland County and nearby metro courts.',
-        'Kernal & Associates provides trial-ready criminal defense and high-discipline injury representation designed to protect your record, finances, and future options.',
+        'For a Moore criminal matter, begin with the citation or charging document, the release paperwork, and the next listed appearance. Those records show which Cleveland County case needs attention and whether a separate warrant or compliance issue exists.',
+        'A crash on I-35 can generate a report, photographs, towing records, repair estimates, medical visits, and several insurance contacts. Keep each item even if it seems repetitive; the date and source can matter later.',
+        'South-metro events sometimes touch more than one community. Organizing records by agency, provider, or insurer makes it easier to see what is missing without guessing where the matter belongs.',
       ]}
-      countyFocus="Cleveland County and South Metro Court Coverage"
+      countyFocus="Moore, Cleveland County, and I-35 documentation"
       localHighlights={[
-        'Office consultations available at 1332 SW 89th Street in south Oklahoma City, with phone and text intake for urgent matters.',
-        'Rapid response for arrest and bond-risk situations impacting Moore residents.',
-        'Representation for crash and injury claims along I-35 and heavily traveled metro corridors.',
-        'Coordinated legal strategy when criminal and injury exposure overlap from the same event.',
-        'Court-ready approach for contested hearings, negotiations, and trial settings.',
-        'Direct attorney communication on deadlines, evidence, and procedural risk.',
-        'Focused case planning for both immediate relief and long-term record protection.',
+        'The charging paper identifies the filed allegation and case number.',
+        'Bond paperwork may list requirements that apply before court.',
+        'A missed appearance can create a warrant issue separate from the original charge.',
+        'I-35 collision evidence may include traffic, vehicle, and commercial records.',
+        'Photographs should be saved in their original files when possible.',
+        'Medical paperwork can show when symptoms, referrals, and treatment occurred.',
+        'Repair estimates and total-loss notices belong with the claim file.',
+        'Keep a dated list of calls with agencies, providers, and insurance companies.',
       ]}
       serviceLinks={[
         {
           href: '/moore/criminal-defense',
           title: 'Moore Criminal Defense',
-          description: 'Local criminal defense strategy for Moore charges and court exposure.',
+          description: 'Help understanding Cleveland County filings, dates, and release obligations.',
           ctaName: 'moore_service_criminal_defense',
         },
         {
           href: '/criminal-defense/dui-dwi',
           title: 'DUI / DWI Defense',
-          description: 'Defense strategy for DUI charges and administrative license risk.',
-          ctaName: 'moore_service_dui',
+          description: 'Review of roadside contact, testing, video, and driver-license concerns.',
+          ctaName: 'moore_service_dui_dwi',
+        },
+        {
+          href: '/criminal-defense/warrants',
+          title: 'Warrants Defense',
+          description: 'Finding the underlying case and determining the required court appearance.',
+          ctaName: 'moore_service_warrants',
         },
         {
           href: '/moore/personal-injury',
           title: 'Moore Personal Injury',
-          description: 'Local injury-claim strategy for serious crash and negligence losses.',
-          ctaName: 'moore_service_injury',
+          description: 'Claims involving south-metro families, collisions, and other negligence events.',
+          ctaName: 'moore_service_personal_injury',
         },
         {
           href: '/personal-injury/car-accidents',
           title: 'Car Accident Claims',
-          description: 'Fault and damages strategy after serious vehicle collisions.',
+          description: 'Review of fault records, medical care, vehicle damage, and financial loss.',
           ctaName: 'moore_service_car_accidents',
         },
         {
           href: '/personal-injury/uninsured-motorist',
           title: 'Uninsured Motorist Claims',
-          description: 'Coverage-focused UM/UIM recovery planning.',
+          description: 'Identifying coverage under the available household and vehicle policies.',
           ctaName: 'moore_service_uninsured_motorist',
         },
         {
-          href: '/criminal-defense/warrants',
-          title: 'Warrants Defense',
-          description: 'Controlled safe-surrender and warrant-resolution strategy.',
-          ctaName: 'moore_service_warrants',
+          href: '/criminal-defense/drug-charges',
+          title: 'Drug Charges Defense',
+          description: 'Checking the search, custody, test results, and alleged connection to the substance.',
+          ctaName: 'moore_service_drug_charges',
+        },
+        {
+          href: '/personal-injury/truck-accidents',
+          title: 'Truck Accident Claims',
+          description: 'Review of commercial driver, carrier, equipment, and coverage material.',
+          ctaName: 'moore_service_truck_accidents',
         },
       ]}
       relatedLocationLinks={[
         {
-          href: '/norman',
-          title: 'Norman',
-          description: 'Local representation for Cleveland County court matters.',
-          ctaName: 'moore_related_norman',
+          href: '/norman/criminal-defense',
+          title: 'Norman Criminal Defense',
+          description: 'Cleveland County defense information for matters connected to nearby Norman.',
+          ctaName: 'moore_related_nearby_a',
         },
         {
-          href: '/oklahoma-city',
-          title: 'Oklahoma City',
-          description: 'Metro-area legal services and immediate intake support.',
-          ctaName: 'moore_related_oklahoma_city',
+          href: '/oklahoma-city/personal-injury',
+          title: 'Oklahoma City Personal Injury',
+          description: 'Information for serious injury matters extending into the wider metro.',
+          ctaName: 'moore_related_nearby_b',
         },
         {
-          href: '/resources/what-to-do-after-arrest-oklahoma',
-          title: 'Post-Arrest Guide',
-          description: 'Critical first-48-hours rights-protection checklist.',
-          ctaName: 'moore_related_arrest_guide',
+          href: '/locations',
+          title: 'Cities and Counties Served',
+          description: 'Check the site page for another Oklahoma community or county.',
+          ctaName: 'moore_related_locations_hub',
+        },
+        {
+          href: '/resources',
+          title: 'Legal Information Library',
+          description: 'Browse guides on criminal cases, collisions, medical records, and coverage.',
+          ctaName: 'moore_related_resources_hub',
+        },
+        {
+          href: '/resources/oklahoma-dui-process',
+          title: 'Oklahoma DUI Process',
+          description: 'An outline of the court and driving issues that may follow an arrest.',
+          ctaName: 'moore_related_local_guide',
         },
       ]}
-      faqSubtitle="Answers to common criminal defense and injury questions from Moore clients."
+      faqSubtitle="Practical answers for Moore court matters and collision records."
       faqs={[
         {
-          question: 'How quickly should I contact a lawyer after an arrest in Moore?',
+          question: 'Which papers matter most after a Moore arrest?',
           answer:
-            'Immediately. Early legal involvement can affect statements, bond strategy, and evidence preservation before the case position hardens.',
+            'Keep the citation or charge, bond paperwork, release instructions, property receipt, and every notice showing a date or case number.',
         },
         {
-          question: 'Do you handle both criminal and injury cases for Moore residents?',
+          question: 'What if the paperwork shows a warrant?',
           answer:
-            'Yes. We represent Moore clients in criminal defense and personal injury matters, including cases where both exposures arise from the same incident.',
+            'Do not rely on a rumor or an old online entry. The warrant and originating case should be confirmed before deciding the next step.',
         },
         {
-          question: 'What should I bring to a consultation for a Moore case?',
+          question: 'How should I organize an I-35 crash file?',
           answer:
-            'Bring every document you have, including citations, bond paperwork, insurance correspondence, medical records, photos, and witness contact details.',
+            'Separate scene and vehicle material from medical records, bills, wage documents, and insurer correspondence, then arrange each group by date.',
         },
         {
-          question: 'Can you help if my case is filed outside Moore?',
+          question: 'Does it matter if treatment happened outside Moore?',
           answer:
-            'Yes. We routinely handle cases across Cleveland County and surrounding metro courts and can advise on venue-specific strategy.',
+            'The location of care does not make the records less important. Keep documents from every provider so the treatment chronology is complete.',
         },
       ]}
-      ctaTitle="Need Counsel in Moore Right Now?"
-      ctaDescription="Request a confidential consultation to map immediate risk and next legal steps."
+      ctaTitle="Bring Your Moore Papers and Dates"
+      ctaDescription="A short review can identify the court, claim, or record that needs attention first."
       ctaName="moore"
     />
   )

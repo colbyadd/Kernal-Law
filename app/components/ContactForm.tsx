@@ -3,6 +3,10 @@
 import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { derivePageType, trackEvent } from '@/lib/analytics'
+import {
+    CONTACT_CONSENT_VERSION,
+    recordConfirmedFormSubmission,
+} from '@/lib/contact'
 import { getEmptyAttribution, loadLeadAttribution } from '@/lib/lead-attribution'
 
 interface LeadFieldValues {
@@ -25,46 +29,64 @@ interface LeadFieldValues {
     fbclid: string
 }
 
+type FieldName =
+    | 'name'
+    | 'phone'
+    | 'email'
+    | 'case_type'
+    | 'urgency'
+    | 'preferred_contact_method'
+    | 'message'
+    | 'consent'
+
+type FieldErrors = Partial<Record<FieldName, string>>
+
+function digits(value: string) {
+    return value.replace(/\D/g, '')
+}
+
+function isValidEmail(value: string) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+}
+
+function errorClass(hasError: boolean) {
+    return hasError ? 'border-red-400' : 'border-silver-500/20'
+}
+
 export function ContactForm() {
     const router = useRouter()
     const [status, setStatus] = useState<'idle' | 'submitting' | 'error'>('idle')
-    const [errorMessage, setErrorMessage] = useState<string>('')
-    const formStartedAtRef = useRef<number>(Date.now())
-    const [leadFields, setLeadFields] = useState<LeadFieldValues>({
+    const [errorMessage, setErrorMessage] = useState('')
+    const [fieldErrors, setFieldErrors] = useState<FieldErrors>({})
+    const [preferredContactMethod, setPreferredContactMethod] = useState('call')
+    const formStartedAtRef = useRef<number | null>(null)
+    const leadFields: LeadFieldValues = {
         ...getEmptyAttribution(),
         page_path: '/contact',
         page_type: 'contact',
-    })
+    }
 
     useEffect(() => {
-        const pagePath = window.location.pathname
-        const pageType = derivePageType(pagePath)
-        const attribution = loadLeadAttribution()
-
-        setLeadFields({
-            page_path: pagePath,
-            page_type: pageType,
-            landing_page: attribution?.landing_page || pagePath,
-            referrer: attribution?.referrer || document.referrer || '',
-            lead_source: attribution?.lead_source || 'direct',
-            phone_variant: attribution?.phone_variant || 'default',
-            cta_variant: attribution?.cta_variant || 'control',
-            utm_source: attribution?.utm_source || '',
-            utm_medium: attribution?.utm_medium || '',
-            utm_campaign: attribution?.utm_campaign || '',
-            utm_term: attribution?.utm_term || '',
-            utm_content: attribution?.utm_content || '',
-            gclid: attribution?.gclid || '',
-            gbraid: attribution?.gbraid || '',
-            wbraid: attribution?.wbraid || '',
-            msclkid: attribution?.msclkid || '',
-            fbclid: attribution?.fbclid || '',
-        })
+        formStartedAtRef.current = Date.now()
     }, [])
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
+    const focusFirstError = (form: HTMLFormElement, errors: FieldErrors) => {
+        const firstName = Object.keys(errors)[0]
+        if (!firstName) return
+
+        window.requestAnimationFrame(() => {
+            const field = form.elements.namedItem(firstName)
+            if (field instanceof HTMLElement) field.focus()
+        })
+    }
+
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
         setErrorMessage('')
+        setFieldErrors({})
+
+        const form = event.currentTarget
+        const formData = new FormData(form)
         const pagePath = window.location.pathname
         const pageType = derivePageType(pagePath)
         const attribution = loadLeadAttribution()
@@ -88,96 +110,50 @@ export function ContactForm() {
             fbclid: attribution?.fbclid || leadFields.fbclid || '',
         }
 
-        const form = e.currentTarget
-        const formData = new FormData(form)
+        const name = String(formData.get('name') || '').trim()
+        const phone = String(formData.get('phone') || '').trim()
+        const email = String(formData.get('email') || '').trim()
         const caseType = String(formData.get('case_type') || '')
         const urgency = String(formData.get('urgency') || '')
-        const preferredContactMethod = String(formData.get('preferred_contact_method') || '')
-        const honeypotValue = String(formData.get('bot-field') || '').trim()
+        const contactMethod = String(formData.get('preferred_contact_method') || '')
         const message = String(formData.get('message') || '').trim()
-        const phone = String(formData.get('phone') || '').trim()
-        const phoneDigits = phone.replace(/\D/g, '')
-        const consent = String(formData.get('consent') || '').trim()
-        const elapsedMs = Date.now() - formStartedAtRef.current
+        const consent = String(formData.get('consent') || '')
+        const errors: FieldErrors = {}
+
+        if (name.length < 2) errors.name = 'Please enter your full name.'
+        if (!caseType) errors.case_type = 'Please choose a case type.'
+        if (!urgency) errors.urgency = 'Please choose an urgency level.'
+        if (!contactMethod) errors.preferred_contact_method = 'Please choose how you want us to respond.'
+        if (phone && (digits(phone).length < 10 || digits(phone).length > 15)) {
+            errors.phone = 'Please enter a valid phone number.'
+        }
+        if ((contactMethod === 'call' || contactMethod === 'text') && digits(phone).length < 10) {
+            errors.phone = 'A phone number is required for calls or texts.'
+        }
+        if (email && !isValidEmail(email)) errors.email = 'Please enter a valid email address.'
+        if (contactMethod === 'email' && !isValidEmail(email)) {
+            errors.email = 'An email address is required when email is selected.'
+        }
+        if (message.length > 1500) errors.message = 'Please keep the overview to 1,500 characters or fewer.'
+        if (consent !== 'yes') errors.consent = 'Please confirm the communication and website terms.'
+
+        if (Object.keys(errors).length) {
+            setFieldErrors(errors)
+            setStatus('error')
+            setErrorMessage('Please review the highlighted fields and try again.')
+            focusFirstError(form, errors)
+            trackEvent('form_submit_blocked', {
+                form_name: 'contact',
+                page_path: pagePath,
+                page_type: pageType,
+                reason: 'client_validation',
+            })
+            return
+        }
+
         const params = new URLSearchParams()
-
-        if (honeypotValue) {
-            trackEvent('form_submit_blocked', {
-                form_name: 'contact',
-                page_path: pagePath,
-                page_type: pageType,
-                reason: 'honeypot',
-            })
-            return
-        }
-
-        if (elapsedMs < 1500) {
-            setStatus('error')
-            setErrorMessage('Please wait a moment and submit again.')
-            trackEvent('form_submit_blocked', {
-                form_name: 'contact',
-                page_path: pagePath,
-                page_type: pageType,
-                reason: 'submit_too_fast',
-            })
-            return
-        }
-
-        if (phoneDigits.length < 10) {
-            setStatus('error')
-            setErrorMessage('Please enter a valid phone number so we can reach you.')
-            trackEvent('form_submit_blocked', {
-                form_name: 'contact',
-                page_path: pagePath,
-                page_type: pageType,
-                reason: 'invalid_phone',
-            })
-            return
-        }
-
-        if (!consent) {
-            setStatus('error')
-            setErrorMessage('Consent is required before sending your request.')
-            trackEvent('form_submit_blocked', {
-                form_name: 'contact',
-                page_path: pagePath,
-                page_type: pageType,
-                reason: 'missing_consent',
-            })
-            return
-        }
-
-        if (message.length > 3000) {
-            setStatus('error')
-            setErrorMessage('Please shorten your message to 3000 characters or fewer.')
-            trackEvent('form_submit_blocked', {
-                form_name: 'contact',
-                page_path: pagePath,
-                page_type: pageType,
-                reason: 'message_too_long',
-            })
-            return
-        }
-
-        trackEvent('form_submit_start', {
-            form_name: 'contact',
-            page_path: pagePath,
-            page_type: pageType,
-            case_type: caseType || 'unknown',
-            urgency: urgency || 'unknown',
-            preferred_contact_method: preferredContactMethod || 'unspecified',
-            lead_source: mergedLead.lead_source,
-            phone_variant: mergedLead.phone_variant,
-            cta_variant: mergedLead.cta_variant,
-            utm_source: mergedLead.utm_source,
-            utm_medium: mergedLead.utm_medium,
-            utm_campaign: mergedLead.utm_campaign,
-        })
-        setStatus('submitting')
-
-        // Explicitly convert FormData to URLSearchParams
-        for (const [key, value] of formData.entries()) {
-            params.append(key, value as string)
+        for (const [key, entryValue] of formData.entries()) {
+            params.append(key, String(entryValue))
         }
         params.set('page_path', mergedLead.page_path)
         params.set('page_type', mergedLead.page_type)
@@ -196,53 +172,91 @@ export function ContactForm() {
         params.set('wbraid', mergedLead.wbraid)
         params.set('msclkid', mergedLead.msclkid)
         params.set('fbclid', mergedLead.fbclid)
-        params.set('form_started_at', new Date(formStartedAtRef.current).toISOString())
+        params.set('form_started_at', new Date(formStartedAtRef.current ?? Date.now()).toISOString())
         params.set('js_enabled', 'true')
+        params.set('consent_version', CONTACT_CONSENT_VERSION)
+
+        trackEvent('form_submit_start', {
+            form_name: 'contact',
+            page_path: pagePath,
+            page_type: pageType,
+            case_type: caseType,
+            urgency,
+            preferred_contact_method: contactMethod,
+            lead_source: mergedLead.lead_source,
+            cta_variant: mergedLead.cta_variant,
+        })
+        setStatus('submitting')
 
         try {
-            const response = await fetch('/form-setup.html', {
+            const response = await fetch('/api/contact', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-Requested-With': 'XMLHttpRequest',
+                },
                 body: params.toString(),
             })
+            const result = await response.json().catch(() => null) as {
+                ok?: boolean
+                ignored?: boolean
+                error?: string
+                fields?: FieldName[]
+            } | null
 
-            if (response.ok) {
-                trackEvent('form_submit_success', {
-                    form_name: 'contact',
-                    page_path: pagePath,
-                    page_type: pageType,
-                    case_type: caseType || 'unknown',
-                    urgency: urgency || 'unknown',
-                    preferred_contact_method: preferredContactMethod || 'unspecified',
-                    lead_source: mergedLead.lead_source,
-                    phone_variant: mergedLead.phone_variant,
-                    cta_variant: mergedLead.cta_variant,
-                    utm_source: mergedLead.utm_source,
-                    utm_medium: mergedLead.utm_medium,
-                    utm_campaign: mergedLead.utm_campaign,
-                })
-                router.push('/success')
-            } else {
-                throw new Error('Form submission failed')
+            if (!response.ok || !result?.ok) {
+                const serverErrors = (result?.fields || []).reduce<FieldErrors>((acc, field) => {
+                    acc[field] = 'Please review this field.'
+                    return acc
+                }, {})
+                setFieldErrors(serverErrors)
+                setStatus('error')
+                setErrorMessage(
+                    response.status === 429
+                        ? 'Too many requests were sent. Please wait a minute or call the office.'
+                        : result?.error || 'Sorry, there was a problem sending your request. Please call the office.',
+                )
+                focusFirstError(form, serverErrors)
+                return
             }
-        } catch (error) {
-            console.error(error)
+
+            if (result.ignored) {
+                setStatus('idle')
+                return
+            }
+
+            recordConfirmedFormSubmission()
+            trackEvent('form_submit_success', {
+                form_name: 'contact',
+                page_path: pagePath,
+                page_type: pageType,
+                case_type: caseType,
+                urgency,
+                preferred_contact_method: contactMethod,
+                lead_source: mergedLead.lead_source,
+                cta_variant: mergedLead.cta_variant,
+            })
+            router.push('/success')
+        } catch {
             setStatus('error')
-            setErrorMessage('Sorry, there was a problem sending your message. Please call us directly.')
+            setErrorMessage('Sorry, there was a problem sending your request. Please call the office.')
         }
     }
 
     return (
-        <div className="bg-iron-900 p-6 md:p-12 border border-silver-500/10">
-            <h3 className="font-serif text-3xl text-white mb-2">Case Evaluation</h3>
-            <p className="text-silver-400 text-sm mb-8">
-                2-minute intake. Share only essentials and we will follow up quickly.
+        <div className="bg-iron-900 p-6 md:p-10 border border-silver-500/10">
+            <h2 className="font-serif text-3xl text-white mb-2">Request a Consultation</h2>
+            <p className="text-silver-400 text-sm mb-7">
+                Share the basics and the safest way to reach you. For an urgent arrest, warrant, or deadline, call instead.
             </p>
+
             <form
                 name="contact"
                 method="POST"
+                action="/api/contact"
                 data-netlify="true"
                 netlify-honeypot="bot-field"
+                noValidate
                 onSubmit={handleSubmit}
                 className="space-y-5"
             >
@@ -265,9 +279,9 @@ export function ContactForm() {
                 <input type="hidden" name="wbraid" value={leadFields.wbraid} />
                 <input type="hidden" name="msclkid" value={leadFields.msclkid} />
                 <input type="hidden" name="fbclid" value={leadFields.fbclid} />
-                <input type="hidden" name="form_started_at" value={new Date(formStartedAtRef.current).toISOString()} />
-                <input type="hidden" name="js_enabled" value="true" />
-                {/* Honeypot field for spam protection - hidden from users */}
+                <input type="hidden" name="form_started_at" value="" />
+                <input type="hidden" name="consent_version" value={CONTACT_CONSENT_VERSION} />
+
                 <p className="hidden">
                     <label>
                         Don&apos;t fill this out if you&apos;re human: <input name="bot-field" tabIndex={-1} autoComplete="off" />
@@ -276,108 +290,141 @@ export function ContactForm() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label htmlFor="case_type" className="block text-silver-500 text-xs uppercase tracking-widest mb-2">Case Type</label>
+                        <label htmlFor="case_type" className="block text-silver-400 text-xs uppercase tracking-widest mb-2">Case Type</label>
                         <select
                             name="case_type"
                             id="case_type"
                             required
                             defaultValue=""
-                            className="w-full bg-iron-950 border border-silver-500/20 p-4 text-white focus:border-accent-gold focus:outline-none transition-colors"
+                            aria-invalid={Boolean(fieldErrors.case_type)}
+                            aria-describedby={fieldErrors.case_type ? 'case_type_error' : undefined}
+                            className={`w-full bg-iron-950 border p-4 text-white focus:border-accent-gold focus:outline-none ${errorClass(Boolean(fieldErrors.case_type))}`}
                         >
                             <option value="" disabled>Select one</option>
                             <option value="criminal-defense">Criminal Defense</option>
                             <option value="personal-injury">Personal Injury</option>
                             <option value="other">Other / Not Sure</option>
                         </select>
+                        {fieldErrors.case_type ? <p id="case_type_error" className="text-red-300 text-xs mt-2">{fieldErrors.case_type}</p> : null}
                     </div>
                     <div>
-                        <label htmlFor="urgency" className="block text-silver-500 text-xs uppercase tracking-widest mb-2">Urgency</label>
+                        <label htmlFor="urgency" className="block text-silver-400 text-xs uppercase tracking-widest mb-2">Urgency</label>
                         <select
                             name="urgency"
                             id="urgency"
                             required
                             defaultValue=""
-                            className="w-full bg-iron-950 border border-silver-500/20 p-4 text-white focus:border-accent-gold focus:outline-none transition-colors"
+                            aria-invalid={Boolean(fieldErrors.urgency)}
+                            aria-describedby={fieldErrors.urgency ? 'urgency_error' : undefined}
+                            className={`w-full bg-iron-950 border p-4 text-white focus:border-accent-gold focus:outline-none ${errorClass(Boolean(fieldErrors.urgency))}`}
                         >
                             <option value="" disabled>Select one</option>
                             <option value="immediate">Immediate (today)</option>
                             <option value="soon">This week</option>
                             <option value="planning">Planning ahead</option>
                         </select>
+                        {fieldErrors.urgency ? <p id="urgency_error" className="text-red-300 text-xs mt-2">{fieldErrors.urgency}</p> : null}
                     </div>
                 </div>
 
-                <fieldset>
-                    <legend className="block text-silver-500 text-xs uppercase tracking-widest mb-3">Preferred Response Method</legend>
+                <fieldset aria-describedby={fieldErrors.preferred_contact_method ? 'preferred_contact_method_error' : undefined}>
+                    <legend className="block text-silver-400 text-xs uppercase tracking-widest mb-3">Preferred Response</legend>
                     <div className="grid grid-cols-3 gap-3">
-                        <label className="bg-iron-950 border border-silver-500/20 p-3 text-silver-300 text-sm flex items-center gap-2">
-                            <input type="radio" name="preferred_contact_method" value="call" defaultChecked className="accent-accent-gold" />
-                            Call
-                        </label>
-                        <label className="bg-iron-950 border border-silver-500/20 p-3 text-silver-300 text-sm flex items-center gap-2">
-                            <input type="radio" name="preferred_contact_method" value="text" className="accent-accent-gold" />
-                            Text
-                        </label>
-                        <label className="bg-iron-950 border border-silver-500/20 p-3 text-silver-300 text-sm flex items-center gap-2">
-                            <input type="radio" name="preferred_contact_method" value="email" className="accent-accent-gold" />
-                            Email
-                        </label>
+                        {['call', 'text', 'email'].map((method) => (
+                            <label key={method} className="bg-iron-950 border border-silver-500/20 p-3 text-silver-300 text-sm flex items-center gap-2">
+                                <input
+                                    type="radio"
+                                    name="preferred_contact_method"
+                                    value={method}
+                                    checked={preferredContactMethod === method}
+                                    onChange={() => setPreferredContactMethod(method)}
+                                    className="accent-accent-gold"
+                                />
+                                {method.charAt(0).toUpperCase() + method.slice(1)}
+                            </label>
+                        ))}
                     </div>
+                    {fieldErrors.preferred_contact_method ? <p id="preferred_contact_method_error" className="text-red-300 text-xs mt-2">{fieldErrors.preferred_contact_method}</p> : null}
                 </fieldset>
+
+                <div>
+                    <label htmlFor="name" className="block text-silver-400 text-xs uppercase tracking-widest mb-2">Full Name</label>
+                    <input
+                        type="text"
+                        name="name"
+                        id="name"
+                        required
+                        minLength={2}
+                        maxLength={120}
+                        autoComplete="name"
+                        placeholder="Your full name"
+                        aria-invalid={Boolean(fieldErrors.name)}
+                        aria-describedby={fieldErrors.name ? 'name_error' : undefined}
+                        className={`w-full bg-iron-950 border p-4 text-white focus:border-accent-gold focus:outline-none ${errorClass(Boolean(fieldErrors.name))}`}
+                    />
+                    {fieldErrors.name ? <p id="name_error" className="text-red-300 text-xs mt-2">{fieldErrors.name}</p> : null}
+                </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <label htmlFor="name" className="block text-silver-500 text-xs uppercase tracking-widest mb-2">Full Name</label>
-                        <input
-                            type="text"
-                            name="name"
-                            id="name"
-                            required
-                            minLength={2}
-                            maxLength={120}
-                            autoComplete="name"
-                            placeholder="Your full name"
-                            className="w-full bg-iron-950 border border-silver-500/20 p-4 text-white focus:border-accent-gold focus:outline-none transition-colors"
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="phone" className="block text-silver-500 text-xs uppercase tracking-widest mb-2">Phone Number</label>
+                        <label htmlFor="phone" className="block text-silver-400 text-xs uppercase tracking-widest mb-2">Phone Number</label>
                         <input
                             type="tel"
                             name="phone"
                             id="phone"
-                            required
                             autoComplete="tel"
                             inputMode="tel"
-                            pattern="[0-9()+\\-.\\s]{10,20}"
+                            aria-required={preferredContactMethod === 'call' || preferredContactMethod === 'text'}
+                            pattern="[0-9()+\-.\s]{10,20}"
                             placeholder="(405) 364-0601"
-                            className="w-full bg-iron-950 border border-silver-500/20 p-4 text-white focus:border-accent-gold focus:outline-none transition-colors"
+                            aria-invalid={Boolean(fieldErrors.phone)}
+                            aria-describedby={fieldErrors.phone ? 'phone_help phone_error' : 'phone_help'}
+                            className={`w-full bg-iron-950 border p-4 text-white focus:border-accent-gold focus:outline-none ${errorClass(Boolean(fieldErrors.phone))}`}
                         />
+                        <p id="phone_help" className="text-silver-500 text-xs mt-2">Required if you prefer a call or text.</p>
+                        {fieldErrors.phone ? <p id="phone_error" className="text-red-300 text-xs mt-2">{fieldErrors.phone}</p> : null}
+                    </div>
+                    <div>
+                        <label htmlFor="email" className="block text-silver-400 text-xs uppercase tracking-widest mb-2">Email Address</label>
+                        <input
+                            type="email"
+                            name="email"
+                            id="email"
+                            autoComplete="email"
+                            maxLength={254}
+                            aria-required={preferredContactMethod === 'email'}
+                            placeholder="you@example.com"
+                            aria-invalid={Boolean(fieldErrors.email)}
+                            aria-describedby={fieldErrors.email ? 'email_help email_error' : 'email_help'}
+                            className={`w-full bg-iron-950 border p-4 text-white focus:border-accent-gold focus:outline-none ${errorClass(Boolean(fieldErrors.email))}`}
+                        />
+                        <p id="email_help" className="text-silver-500 text-xs mt-2">Required if you prefer email.</p>
+                        {fieldErrors.email ? <p id="email_error" className="text-red-300 text-xs mt-2">{fieldErrors.email}</p> : null}
                     </div>
                 </div>
 
-                <div>
-                    <label htmlFor="email" className="block text-silver-500 text-xs uppercase tracking-widest mb-2">Email Address (Optional)</label>
-                    <input
-                        type="email"
-                        name="email"
-                        id="email"
-                        autoComplete="email"
-                        placeholder="you@example.com"
-                        className="w-full bg-iron-950 border border-silver-500/20 p-4 text-white focus:border-accent-gold focus:outline-none transition-colors"
-                    />
+                <div className="border border-accent-gold/25 bg-accent-gold/5 p-4 text-sm text-silver-300" role="note">
+                    <p className="font-semibold text-white mb-1">Before you write</p>
+                    <p>
+                        This form does not create an attorney-client relationship. Give only a general overview, key dates,
+                        and any immediate deadline. Do not include confidential, privileged, medical, or highly sensitive details.
+                    </p>
                 </div>
 
                 <div>
-                    <label htmlFor="message" className="block text-silver-500 text-xs uppercase tracking-widest mb-2">Brief details (optional but helpful)</label>
+                    <label htmlFor="message" className="block text-silver-400 text-xs uppercase tracking-widest mb-2">Brief Overview (Optional)</label>
                     <textarea
                         name="message"
                         id="message"
                         rows={3}
-                        maxLength={3000}
-                        placeholder="What happened, when, and your biggest concern right now."
-                        className="w-full bg-iron-950 border border-silver-500/20 p-4 text-white focus:border-accent-gold focus:outline-none transition-colors"
-                    ></textarea>
+                        maxLength={1500}
+                        placeholder="General matter type, key date, and your immediate concern."
+                        aria-invalid={Boolean(fieldErrors.message)}
+                        aria-describedby={fieldErrors.message ? 'message_help message_error' : 'message_help'}
+                        className={`w-full bg-iron-950 border p-4 text-white focus:border-accent-gold focus:outline-none ${errorClass(Boolean(fieldErrors.message))}`}
+                    />
+                    <p id="message_help" className="text-silver-500 text-xs mt-2">Please do not send documents or detailed evidence through this form.</p>
+                    {fieldErrors.message ? <p id="message_error" className="text-red-300 text-xs mt-2">{fieldErrors.message}</p> : null}
                 </div>
 
                 <div className="flex items-start gap-3">
@@ -385,46 +432,53 @@ export function ContactForm() {
                         type="checkbox"
                         name="consent"
                         id="consent"
+                        value="yes"
                         required
+                        aria-invalid={Boolean(fieldErrors.consent)}
+                        aria-describedby={fieldErrors.consent ? 'consent_error' : undefined}
                         className="mt-1 h-4 w-4 shrink-0 accent-accent-gold bg-iron-950 border border-silver-500/20"
                     />
-                    <label htmlFor="consent" className="text-xs text-silver-500 leading-relaxed">
-                        By submitting this form, I consent to communications from Kernal &amp; Associates by
-                        phone, email, and text message (including automated technology where permitted by law).
-                        Message frequency varies. Message &amp; data rates may apply. Reply STOP to opt out or HELP
-                        for help. Consent is not required to hire the firm. I agree to the{' '}
-                        <a href="/terms" className="text-accent-gold hover:underline" target="_blank" rel="noopener noreferrer">
+                    <label htmlFor="consent" className="text-xs text-silver-400 leading-relaxed">
+                        I consent to Kernal &amp; Associates responding to this request using the contact information
+                        and preferred response method I selected above. If I selected text, message and data rates may
+                        apply and I can reply STOP to opt out. Consent is not required to hire the firm.
+                        I agree to the{' '}
+                        <a href="/terms" className="text-accent-gold underline underline-offset-2" target="_blank" rel="noopener noreferrer">
                             Terms of Service
                         </a>{' '}and{' '}
-                        <a href="/privacy" className="text-accent-gold hover:underline" target="_blank" rel="noopener noreferrer">
+                        <a href="/privacy" className="text-accent-gold underline underline-offset-2" target="_blank" rel="noopener noreferrer">
                             Privacy Policy
                         </a>.
                     </label>
                 </div>
+                {fieldErrors.consent ? <p id="consent_error" className="text-red-300 text-xs">{fieldErrors.consent}</p> : null}
+
+                {status === 'error' ? (
+                    <p className="text-red-300 text-sm text-center" role="alert" aria-live="assertive">
+                        {errorMessage || 'Please review the form and try again.'}
+                    </p>
+                ) : null}
+
+                <p
+                    id="form-error"
+                    tabIndex={-1}
+                    className="hidden target:block text-red-300 text-sm text-center"
+                    role="alert"
+                >
+                    We could not send that request. Please review the form or call the office.
+                </p>
 
                 <button
                     type="submit"
-                    data-cta={`contact_form_submit_${leadFields.cta_variant || 'control'}`}
+                    data-cta="contact_form_submit"
                     disabled={status === 'submitting'}
                     className="w-full bg-white text-iron-950 py-4 font-bold uppercase tracking-widest hover:bg-silver-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                    {status === 'submitting'
-                        ? 'Sending...'
-                        : leadFields.cta_variant === 'challenger'
-                          ? 'Request Rapid Callback'
-                          : 'Send Message'}
+                    {status === 'submitting' ? 'Sending...' : 'Send Request'}
                 </button>
 
-                <p className="text-xs text-silver-500 text-center">
-                    During business hours, most intake requests receive an initial response within about 15 minutes.
-                </p>
-
-                {status === 'error' && (
-                    <p className="text-red-500 text-sm text-center">{errorMessage || 'Sorry, there was a problem sending your message. Please call us directly.'}</p>
-                )}
-
-                <p className="text-xs text-silver-500 text-center pt-4">
-                    Do not send highly sensitive or time-critical information through this form.
+                <p className="text-xs text-silver-400 text-center">
+                    Need immediate help? Call <a href="tel:4053640601" className="text-white underline underline-offset-2">(405) 364-0601</a>.
                 </p>
             </form>
         </div>

@@ -14,10 +14,10 @@ export function PageHero({ title, subtitle, variant = 'default' }: PageHeroProps
         switch (variant) {
             case 'criminal':
                 return (
-                    <div className="absolute inset-0 z-0">
+                    <div className="absolute inset-0 z-0" aria-hidden="true">
                         <Image
                             src="/images/hero-criminal.webp"
-                            alt="Gavel in courtroom shadow"
+                            alt=""
                             fill
                             sizes="100vw"
                             className="object-cover opacity-50"
@@ -30,10 +30,10 @@ export function PageHero({ title, subtitle, variant = 'default' }: PageHeroProps
                 )
             case 'injury':
                 return (
-                    <div className="absolute inset-0 z-0">
+                    <div className="absolute inset-0 z-0" aria-hidden="true">
                         <Image
                             src="/images/hero-injury.webp"
-                            alt="Rainy highway at night"
+                            alt=""
                             fill
                             sizes="100vw"
                             className="object-cover opacity-50"
@@ -47,10 +47,10 @@ export function PageHero({ title, subtitle, variant = 'default' }: PageHeroProps
             case 'bio':
             default:
                 return (
-                    <div className="absolute inset-0 z-0 bg-iron-900">
+                    <div className="absolute inset-0 z-0 bg-iron-900" aria-hidden="true">
                         <Image
                             src="/images/hero-abstract.webp"
-                            alt="Iron texture"
+                            alt=""
                             fill
                             sizes="100vw"
                             className="object-cover opacity-30"

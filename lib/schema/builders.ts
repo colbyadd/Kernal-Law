@@ -185,6 +185,44 @@ const OKLAHOMA_AREA = {
   name: 'Oklahoma',
 } as const
 
+export function getToddKernalPersonId(baseUrl: string) {
+  return `${baseUrl}/attorney/#person`
+}
+
+export function buildToddKernalPersonSchema(baseUrl: string) {
+  return {
+    '@type': 'Person',
+    '@id': getToddKernalPersonId(baseUrl),
+    name: 'Todd Kernal',
+    givenName: 'Todd',
+    familyName: 'Kernal',
+    jobTitle: 'Criminal Defense and Personal Injury Attorney',
+    description:
+      'Oklahoma criminal defense and personal injury attorney with nearly 26 years of experience.',
+    image: `${baseUrl}/images/todd-kernal-lhl.jpg`,
+    url: `${baseUrl}/attorney`,
+    telephone: '+1-405-364-0601',
+    email: CONTACT_EMAIL,
+    alumniOf: {
+      '@type': 'CollegeOrUniversity',
+      name: 'University of Oklahoma College of Law',
+    },
+    memberOf: {
+      '@type': 'Organization',
+      name: 'Oklahoma Bar Association',
+    },
+    worksFor: { '@id': `${baseUrl}/#organization` },
+    knowsAbout: [
+      'Criminal Defense',
+      'DUI Defense',
+      'Drug Charges',
+      'Personal Injury',
+      'Oklahoma Criminal Law',
+      'Trial Advocacy',
+    ],
+  }
+}
+
 const SERVICE_TYPE_OVERRIDES: Record<string, string> = {
   'criminal-defense': 'Criminal Defense',
   'personal-injury': 'Personal Injury',
@@ -318,20 +356,21 @@ function getServiceType(pathname: string, variant: 'criminal' | 'injury') {
 }
 
 export function buildOrganizationSchema(baseUrl: string) {
+  const founder = buildToddKernalPersonSchema(baseUrl)
+
   return {
     '@context': 'https://schema.org',
-    '@type': ['Attorney', 'LegalService'],
+    '@type': 'LegalService',
     '@id': `${baseUrl}/#organization`,
     name: 'Kernal & Associates',
     legalName: 'Kernal & Associates',
     description:
-      'Oklahoma criminal defense and personal injury law firm with 25+ years of trial experience handling DUI, drug charges, warrants, car accidents, truck accidents, oil field injuries, and wrongful death claims.',
+      'Oklahoma criminal defense and personal injury law firm handling DUI, drug charges, warrants, car accidents, truck accidents, oil field injuries, and wrongful death claims.',
     image: `${baseUrl}/images/todd-kernal-lhl.jpg`,
     url: baseUrl,
     telephone: '+1-405-364-0601',
     email: CONTACT_EMAIL,
     contactPoint: buildContactPointSchema(),
-    foundingDate: '1999',
     address: {
       '@type': 'PostalAddress',
       streetAddress: '1332 SW 89th Street',
@@ -342,8 +381,8 @@ export function buildOrganizationSchema(baseUrl: string) {
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: 35.37153,
-      longitude: -97.62229,
+      latitude: 35.3770577,
+      longitude: -97.5393859,
     },
     areaServed: [
       {
@@ -375,8 +414,6 @@ export function buildOrganizationSchema(baseUrl: string) {
         name: 'Oklahoma',
       },
     ],
-    currenciesAccepted: 'USD',
-    paymentAccepted: 'Cash, Check, Credit Card',
     openingHoursSpecification: [
       {
         '@type': 'OpeningHoursSpecification',
@@ -385,17 +422,8 @@ export function buildOrganizationSchema(baseUrl: string) {
         closes: '17:30',
       },
     ],
-    founder: {
-      '@type': 'Person',
-      '@id': `${baseUrl}/#founder`,
-      name: 'Todd Kernal',
-      jobTitle: 'Attorney at Law',
-      description: '25+ year veteran criminal defense and personal injury attorney in Oklahoma City',
-      alumniOf: {
-        '@type': 'EducationalOrganization',
-        name: 'University of Oklahoma College of Law',
-      },
-    },
+    founder,
+    employee: { '@id': getToddKernalPersonId(baseUrl) },
     knowsAbout: [
       'Criminal Defense',
       'Personal Injury',
@@ -421,7 +449,7 @@ export function buildOrganizationSchema(baseUrl: string) {
         ...buildServiceCatalog(baseUrl, 'injury').itemListElement,
       ],
     },
-    sameAs: ['https://www.facebook.com/kernallaw', 'https://maps.app.goo.gl/2mfQkJVZkpGrdVXP6'],
+    sameAs: ['https://www.facebook.com/kernallaw'],
   }
 }
 
@@ -449,7 +477,13 @@ export function buildWebPageSchema(pathname: string, baseUrl: string) {
     url: currentUrl,
     name: getPageName(pathname),
     isPartOf: { '@id': `${baseUrl}/#website` },
-    about: { '@id': `${baseUrl}/#organization` },
+    about:
+      pathname === '/attorney'
+        ? { '@id': getToddKernalPersonId(baseUrl) }
+        : { '@id': `${baseUrl}/#organization` },
+    ...(pathname === '/attorney'
+      ? { mainEntity: { '@id': getToddKernalPersonId(baseUrl) } }
+      : {}),
     inLanguage: 'en-US',
   }
 }

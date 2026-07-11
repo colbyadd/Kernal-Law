@@ -1,15 +1,14 @@
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 import { LocationServicePage } from '../components/LocationServicePage'
 
 export const metadata: Metadata = {
-  title: 'Del City Criminal Defense and Personal Injury Attorney',
+  title: 'Del City Criminal & Injury Lawyer',
   description:
-    'Kernal & Associates serves Del City with criminal defense and personal injury representation for Oklahoma County and nearby metro legal matters.',
+    'Criminal defense and injury help for Del City matters in southeast Oklahoma County, including claims tied to SE 29th Street and I-40.',
   alternates: { canonical: '/del-city' },
   openGraph: {
-    title: 'Del City Criminal Defense and Injury Attorney | Kernal & Associates',
-    description:
-      'Local legal representation for Del City criminal charges and serious injury claims.',
+    title: 'Del City Criminal & Injury Lawyer',
+    description: 'Help with southeast Oklahoma County court matters and Del City injury claims.',
     url: 'https://kernallaw.com/del-city',
   },
 }
@@ -19,105 +18,131 @@ export default function DelCityPage() {
     <LocationServicePage
       canonicalPath="/del-city"
       locationName="Del City"
-      subtitle="Criminal defense and injury representation for Del City and southeast metro Oklahoma County."
-      introTitle="When legal pressure rises in Del City, speed and strategy matter."
+      subtitle="Legal help for southeast Oklahoma County charges, bond questions, collisions, and premises claims."
+      introTitle="Write down what happened before accounts drift"
       introParagraphs={[
-        'Del City residents dealing with criminal allegations or severe injury claims often face immediate deadlines and high-pressure communications from prosecutors or insurers.',
-        'Kernal & Associates provides disciplined defense and injury representation focused on evidence control, courtroom leverage, and durable long-term outcomes.',
+        'Del City criminal filings may depend heavily on competing accounts of an event. Save messages, photographs, and court papers, and make a private chronology while names, times, and locations are still fresh. Do not fill gaps with assumptions.',
+        'A bond issue can require attention before the full evidence arrives. The release order, next appearance, and any contact instruction should be read first so a misunderstanding does not become another alleged violation.',
+        'For a collision or premises injury near SE 29th Street or an I-40 connector, note the exact place and preserve photographs, witness information, treatment records, bills, and insurance correspondence.',
       ]}
-      countyFocus="Oklahoma County Southeast Metro Strategy"
+      countyFocus="Southeast metro accounts, bond terms, and site evidence"
       localHighlights={[
-        'Office consultations available at 1332 SW 89th Street in south Oklahoma City, with phone and text intake for urgent matters.',
-        'Rapid intake for arrest and warrant-risk situations requiring immediate action.',
-        'Collision and injury claim representation for high-traffic metro corridors.',
-        'Cross-track strategy where criminal charges and injury recovery overlap.',
-        'Structured evidentiary preparation for hearings, negotiations, and trial settings.',
-        'Focused handling of insurer delay tactics and undervaluation pressure.',
-        'Direct attorney-led planning through each stage of case progression.',
+        'Write a private chronology with names, times, and exact locations.',
+        'Keep original messages and photographs rather than edited copies.',
+        'The release order controls any bond-related contact or reporting term.',
+        'A witness list should distinguish what each person actually observed.',
+        'SE 29th Street incidents may involve nearby businesses or roadway witnesses.',
+        'I-40 connector crashes can generate records from more than one source.',
+        'Premises photographs should show the condition and surrounding area.',
+        'Save medical instructions and bills from every provider visited.',
       ]}
       serviceLinks={[
         {
           href: '/del-city/criminal-defense',
           title: 'Del City Criminal Defense',
-          description: 'Local defense strategy for Del City criminal exposure.',
+          description: 'Review of allegation-driven filings, witness accounts, and court requirements.',
           ctaName: 'del_city_service_criminal_defense',
         },
         {
-          href: '/criminal-defense/domestic-violence',
-          title: 'Domestic Violence Defense',
-          description: 'Defense for allegation-driven cases with no-contact constraints.',
-          ctaName: 'del_city_service_domestic',
+          href: '/criminal-defense/dui-dwi',
+          title: 'DUI / DWI Defense',
+          description: 'Checking the traffic contact, observations, tests, recordings, and notices.',
+          ctaName: 'del_city_service_dui_dwi',
         },
         {
-          href: '/criminal-defense/assault-battery',
-          title: 'Assault and Battery Defense',
-          description: 'Evidence-focused strategy for violent offense allegations.',
-          ctaName: 'del_city_service_assault',
+          href: '/criminal-defense/warrants',
+          title: 'Warrants Defense',
+          description: 'Finding the case number, warrant status, and next required court action.',
+          ctaName: 'del_city_service_warrants',
         },
         {
           href: '/del-city/personal-injury',
           title: 'Del City Personal Injury',
-          description: 'Local injury-claim strategy for crash and negligence losses.',
-          ctaName: 'del_city_service_injury',
+          description: 'Claims arising from southeast-metro collisions and unsafe premises.',
+          ctaName: 'del_city_service_personal_injury',
         },
         {
-          href: '/personal-injury/slip-and-fall',
-          title: 'Slip and Fall Claims',
-          description: 'Premises liability strategy for unsafe-property injuries.',
-          ctaName: 'del_city_service_slip_fall',
+          href: '/personal-injury/car-accidents',
+          title: 'Car Accident Claims',
+          description: 'Preserving scene, witness, vehicle, treatment, and insurance information.',
+          ctaName: 'del_city_service_car_accidents',
         },
         {
           href: '/personal-injury/uninsured-motorist',
           title: 'Uninsured Motorist Claims',
-          description: 'UM/UIM strategy for contested first-party coverage recovery.',
-          ctaName: 'del_city_service_um',
+          description: 'Checking first-party coverage after inadequate liability insurance is found.',
+          ctaName: 'del_city_service_uninsured_motorist',
+        },
+        {
+          href: '/criminal-defense/drug-charges',
+          title: 'Drug Charges Defense',
+          description: 'Examining the basis for contact, search, possession claim, and testing.',
+          ctaName: 'del_city_service_drug_charges',
+        },
+        {
+          href: '/personal-injury/truck-accidents',
+          title: 'Truck Accident Claims',
+          description: 'Claims requiring records from a commercial driver, owner, or carrier.',
+          ctaName: 'del_city_service_truck_accidents',
         },
       ]}
       relatedLocationLinks={[
         {
-          href: '/oklahoma-city',
-          title: 'Oklahoma City',
-          description: 'Primary metro hub for county-wide representation.',
-          ctaName: 'del_city_related_oklahoma_city',
+          href: '/midwest-city/criminal-defense',
+          title: 'Midwest City Criminal Defense',
+          description: 'Information for neighboring east-metro criminal proceedings.',
+          ctaName: 'del_city_related_nearby_a',
         },
         {
-          href: '/midwest-city',
-          title: 'Midwest City',
-          description: 'Nearby local page for east metro legal context.',
-          ctaName: 'del_city_related_midwest_city',
+          href: '/choctaw/personal-injury',
+          title: 'Choctaw Personal Injury',
+          description: 'Claim information for injuries on eastern Oklahoma County routes.',
+          ctaName: 'del_city_related_nearby_b',
         },
         {
-          href: '/resources/what-to-do-after-car-accident-oklahoma',
-          title: 'Post-Accident Guide',
-          description: 'Immediate claim-protection checklist after a crash.',
-          ctaName: 'del_city_related_accident_guide',
+          href: '/locations',
+          title: 'Location Page Index',
+          description: 'Find local information for another Oklahoma city or county.',
+          ctaName: 'del_city_related_locations_hub',
+        },
+        {
+          href: '/resources',
+          title: 'Oklahoma Guide Collection',
+          description: 'Read checklists about arrests, court instructions, crashes, and insurance.',
+          ctaName: 'del_city_related_resources_hub',
+        },
+        {
+          href: '/resources/what-to-do-after-arrest-oklahoma',
+          title: 'First Steps After Arrest',
+          description: 'A guide to documents, release terms, police contact, and upcoming appearances.',
+          ctaName: 'del_city_related_local_guide',
         },
       ]}
-      faqSubtitle="Short answers to the questions Del City clients ask most often."
+      faqSubtitle="Del City questions about bond papers, disputed accounts, and injury proof."
       faqs={[
         {
-          question: 'What should I do first after being charged in Del City?',
+          question: 'What should go in my event chronology?',
           answer:
-            'Avoid discussing facts publicly, preserve all paperwork, and get legal counsel involved immediately to control early case decisions.',
+            'Record the date, time, place, people present, sequence you remember, and the source of any message or photograph. Mark uncertainty honestly.',
         },
         {
-          question: 'Can you help if an accident case in Del City has disputed fault?',
+          question: 'What if the release order limits contact?',
           answer:
-            'Yes. We build an evidence-first liability strategy using reports, photos, witness statements, medical documentation, and damages analysis.',
+            'Follow the written term unless the court changes it. Bring the full order to a consultation instead of relying on a verbal summary.',
         },
         {
-          question: 'Do you represent Del City clients in warrant matters?',
+          question: 'What helps document a premises injury?',
           answer:
-            'Yes. We handle active warrant exposure with controlled resolution planning and court-entry strategy focused on minimizing risk.',
+            'Photographs of the condition and surrounding area, witness information, incident reports, medical papers, and clothing or footwear may be relevant.',
         },
         {
-          question: 'How do I start a confidential consultation?',
+          question: 'Should I respond to an insurer before I have the report?',
           answer:
-            'Use the contact form or call our office. We will quickly review urgency, deadlines, and the next best legal step for your matter.',
+            'Keep the request and note any deadline. A response should be based on known facts and available documents, not an incomplete recollection.',
         },
       ]}
-      ctaTitle="Need Immediate Counsel in Del City?"
-      ctaDescription="Request a confidential consultation to stabilize risk and plan the next legal steps."
+      ctaTitle="Discuss a Del City Charge or Claim"
+      ctaDescription="Bring the release order, event chronology, and any photographs or insurance papers."
       ctaName="del_city"
     />
   )

@@ -21,7 +21,10 @@ const dedicatedMarketPages = new Set<MarketSlug>([
 
 const dynamicMarketSlugs = getAllMarketSlugs().filter((slug) => !dedicatedMarketPages.has(slug))
 
-export const dynamicParams = false
+// Let unknown top-level slugs reach the explicit notFound() checks below.
+// Next.js logs an internal NoFallbackError when dynamicParams is false even
+// though it ultimately returns the correct 404 response.
+export const dynamicParams = true
 
 function resolveMarketSlug(rawSlug: string): MarketSlug | null {
   if (!isMarketSlug(rawSlug)) {

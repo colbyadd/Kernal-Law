@@ -4,12 +4,12 @@ import { ResourceGuidePage } from '../../components/ResourceGuidePage'
 export const metadata: Metadata = {
   title: 'Oklahoma Truck Accident Evidence Guide',
   description:
-    'A practical guide to truck accident evidence in Oklahoma, including carrier records, electronic data, liability analysis, and damages strategy.',
+    'Oklahoma truck-crash evidence guide covering electronic logs, dispatch records, maintenance files, inspections, video, and preservation steps.',
   alternates: { canonical: '/resources/oklahoma-truck-accident-evidence-guide' },
   openGraph: {
     title: 'Oklahoma Truck Accident Evidence Guide | Kernal & Associates',
     description:
-      'Learn what records matter most after a commercial truck crash and how early evidence strategy affects case value.',
+      'Learn what records may matter after a commercial truck crash and why they should be identified promptly.',
     url: 'https://kernallaw.com/resources/oklahoma-truck-accident-evidence-guide',
   },
 }
@@ -21,14 +21,26 @@ export default function TruckAccidentEvidenceGuidePage() {
       title="Oklahoma Truck Accident Evidence Guide"
       subtitle="What evidence matters most after a commercial crash and how to protect it before it disappears."
       intro={[
-        'Truck-accident claims are evidence-intensive. Liability may involve the driver, the carrier, maintenance vendors, logistics brokers, and other parties with separate records and defenses.',
-        'The first weeks after a commercial crash are often the most important period for preserving electronic data, operational records, and scene evidence that can shape claim value.',
-        'This guide provides a practical evidence workflow for Oklahoma truck-crash matters, from first response through litigation posture.',
+        'A commercial crash may involve the driver, motor carrier, vehicle owner, maintenance providers, or other parties with separate records.',
+        'Electronic logging data, dispatch communications, inspection records, maintenance files, and video may be retained for different periods. Identify the parties and records promptly.',
       ]}
       authorName="Kernal Law Editorial Team"
       reviewedBy="Todd Kernal"
       reviewedTitle="Founding Attorney"
-      lastUpdated="2026-02-18"
+      datePublished="2026-02-18"
+      lastUpdated="2026-07-11"
+      officialSources={[
+        {
+          label: 'Federal Motor Carrier Safety Administration: Electronic Logging Devices',
+          href: 'https://www.fmcsa.dot.gov/hours-service/elds/electronic-logging-devices',
+          description: 'Federal agency information explaining electronic logging devices and records of duty status.',
+        },
+        {
+          label: 'Electronic Code of Federal Regulations: 49 C.F.R. Part 395',
+          href: 'https://www.ecfr.gov/current/title-49/subtitle-B/chapter-III/subchapter-B/part-395',
+          description: 'Current federal hours-of-service rules for interstate motor carriers and drivers.',
+        },
+      ]}
       immediateActionsTitle="Immediate Truck-Crash Evidence Actions"
       immediateActions={[
         {
@@ -65,37 +77,37 @@ export default function TruckAccidentEvidenceGuidePage() {
           label: 'Action 6',
           title: 'Escalate Early for Commercial Evidence Control',
           detail:
-            'Carrier records, electronic logs, and maintenance documents are time-sensitive and strategically important.',
+            'Carrier records, electronic logs, video, and maintenance documents may be overwritten or discarded under different retention schedules.',
         },
       ]}
       takeaways={[
         'Truck cases involve multiple liability targets and record systems.',
         'Electronic and operational data can be time-sensitive.',
-        'Early party identification improves evidence access and claim leverage.',
+        'Identifying the carrier and vehicle owner helps locate the right records.',
         'Scene evidence quality often determines liability dispute strength.',
         'Medical and wage-loss documentation must stay consistent over time.',
-        'Commercial defense teams begin case framing quickly after crashes.',
-        'Structured evidence plans support stronger settlement and trial posture.',
+        'Photographs, witness information, and medical records should be preserved from the start.',
+        'Do not alter electronic files or repair a vehicle before documenting its condition.',
         'High-value truck claims usually require early legal coordination.',
       ]}
       sections={[
         {
           title: 'Why Truck Cases Are Different From Standard Auto Claims',
           paragraphs: [
-            'Commercial crash cases often involve layered liability questions that do not exist in ordinary two-vehicle collisions. Driver actions, company supervision, maintenance quality, and operational pressure may all matter.',
+            'Commercial crash cases can involve questions about the driver, company supervision, maintenance, loading, routing, and hours of service.',
             'Because more parties and records are involved, evidence planning must be broader and faster to preserve a complete liability picture.',
           ],
           bullets: [
             'Multiple potential defendants and insurance layers',
             'Operational records beyond police reports',
             'Higher-severity injury and damages exposure',
-            'Faster defense-side evidence framing by carriers',
+            'Separate records held by the driver, carrier, and vendors',
           ],
         },
         {
           title: 'Core Records to Preserve in Truck-Crash Cases',
           paragraphs: [
-            'Key records can include driver logs, dispatch records, route pressure communications, maintenance files, inspection reports, and electronic operating data. These materials often shape liability allocation.',
+            'Key records can include driver logs, dispatch communications, maintenance files, inspection reports, and electronic vehicle data. The available records depend on the equipment, carrier, route, and facts of the crash.',
             'Requesting and preserving records early helps prevent data loss and narrows disputes about what happened before impact.',
           ],
           bullets: [
@@ -106,7 +118,7 @@ export default function TruckAccidentEvidenceGuidePage() {
           ],
         },
         {
-          title: 'Scene and Reconstruction Evidence Strategy',
+          title: 'Scene and Reconstruction Evidence',
           paragraphs: [
             'Commercial crashes often require detailed reconstruction using impact locations, debris patterns, roadway geometry, and damage transfer analysis. Early scene control strengthens reliability.',
             'Photographic and mapping discipline in the first days can materially improve expert reconstruction quality later.',
@@ -132,23 +144,23 @@ export default function TruckAccidentEvidenceGuidePage() {
           ],
         },
         {
-          title: 'Liability Defense Patterns to Anticipate',
+          title: 'Common Liability Disputes',
           paragraphs: [
-            'Commercial defendants often focus on comparative fault, causation limits, and record-interpretation disputes. Early preparation should assume these arguments and build objective counter-evidence.',
-            'A proactive strategy reduces vulnerability to low-value framing and positions the case for stronger negotiation outcomes.',
+            'The parties may dispute fault, medical causation, or the meaning of electronic and operational records. Objective scene evidence and complete medical records help those issues be evaluated.',
+            'Preserve the original files and note who obtained each item, when it was obtained, and from where.',
           ],
           bullets: [
             'Comparative-fault arguments and response evidence',
             'Causation disputes tied to preexisting conditions',
             'Data-interpretation conflicts over event records',
-            'Rapid-response narrative control by defense teams',
+            'Differences between early reports and later testimony',
           ],
         },
         {
-          title: 'Settlement Timing vs Litigation Leverage',
+          title: 'Settlement Timing and Incomplete Losses',
           paragraphs: [
-            'Truck claims should not be rushed to closure before the evidence and damages model are mature. Early offers may undervalue long-term losses in serious-injury cases.',
-            'Trial-aware preparation increases negotiation pressure and improves the quality of resolution options when carriers resist full value.',
+            'A release generally ends the claim. Before settling, the available liability evidence, insurance information, medical course, wage loss, and expected future care should be understood as fully as possible.',
+            'A serious-injury claim may not be ready for evaluation while treatment and work restrictions are still changing.',
           ],
           bullets: [
             'Readiness threshold before demand package launch',
@@ -158,7 +170,7 @@ export default function TruckAccidentEvidenceGuidePage() {
           ],
         },
       ]}
-      faqSubtitle="Common questions about evidence and strategy after Oklahoma truck crashes."
+      faqSubtitle="Common questions about evidence after an Oklahoma truck crash."
       faqs={[
         {
           question: 'What records are most important after a truck crash?',
@@ -191,48 +203,48 @@ export default function TruckAccidentEvidenceGuidePage() {
             'As soon as possible, especially in severe injury matters or where liability and evidence complexity are high.',
         },
       ]}
-      relatedTitle="Related Truck and Injury Strategy Pages"
-      relatedSubtitle="Use these linked pages to move from evidence control to full claim representation."
+      relatedTitle="Related Truck and Injury Pages"
+      relatedSubtitle="Use these pages for immediate crash steps, serious injuries, and insurance coverage."
       relatedLinks={[
         {
           href: '/personal-injury/truck-accidents',
           title: 'Truck Accident Litigation',
-          description: 'Commercial-crash representation for severe injury and high-stakes liability disputes.',
+          description: 'Commercial-crash representation involving serious injuries and disputed liability.',
           ctaName: 'guide_truck_evidence_related_service_page',
         },
         {
           href: '/resources/what-to-do-after-car-accident-oklahoma',
           title: 'Post-Accident Guide',
-          description: 'Immediate crash-response workflow for evidence and treatment protection.',
+          description: 'Immediate crash-response checklist for evidence and medical care.',
           ctaName: 'guide_truck_evidence_related_post_accident',
         },
         {
           href: '/personal-injury/catastrophic-injury',
           title: 'Catastrophic Injury Claims',
-          description: 'Long-horizon damages strategy for life-changing injuries.',
+          description: 'Information about medical, wage, and future losses after a life-changing injury.',
           ctaName: 'guide_truck_evidence_related_catastrophic',
         },
         {
           href: '/resources/oklahoma-uninsured-motorist-claim-guide',
           title: 'Uninsured Motorist Claim Guide',
-          description: 'Coverage-aware strategy when commercial or multi-policy complications appear.',
+          description: 'Coverage information when an uninsured driver or several policies are involved.',
           ctaName: 'guide_truck_evidence_related_um_guide',
         },
         {
           href: '/personal-injury',
           title: 'Personal Injury Hub',
-          description: 'Complete injury-service architecture and case-intake pathways.',
+          description: 'Personal injury services and related claim information.',
           ctaName: 'guide_truck_evidence_related_injury_hub',
         },
         {
           href: '/contact',
           title: 'Request Truck Crash Case Review',
-          description: 'Get immediate legal guidance on evidence preservation and claim strategy.',
+          description: 'Have carrier information, preservation needs, and available evidence reviewed.',
           ctaName: 'guide_truck_evidence_related_contact',
         },
       ]}
-      ctaTitle="Need a Commercial-Crash Evidence Strategy Now?"
-      ctaDescription="Early record control and structured damages planning can materially change truck-case outcomes."
+      ctaTitle="Need Help Preserving Commercial-Crash Evidence?"
+      ctaDescription="Bring the crash report, carrier information, photographs, and medical records for review."
       ctaLabel="Start Truck Crash Review"
       ctaName="guide_truck_evidence_bottom_cta"
     />

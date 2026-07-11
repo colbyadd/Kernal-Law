@@ -35,6 +35,15 @@
   body {
     @apply bg-iron-950 text-silver-100 font-sans antialiased selection:bg-silver-100 selection:text-iron-950;
   }
+
+  :where(a, button, input, select, textarea, summary):focus-visible {
+    outline: 2px solid var(--color-accent-gold);
+    outline-offset: 4px;
+  }
+
+  #main-content:focus {
+    outline: none;
+  }
   
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif tracking-tight text-white;
@@ -51,9 +60,32 @@
     box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7);
   }
 
+  .text-link {
+    text-decoration-line: underline;
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.22em;
+  }
+
   html[data-mobile-menu="open"] .mobile-contact-fab {
     opacity: 0;
     pointer-events: none;
     transform: translateY(1rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-delay: 0ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
   }
 }

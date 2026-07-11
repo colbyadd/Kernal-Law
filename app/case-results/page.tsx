@@ -1,22 +1,18 @@
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { BreadcrumbTrail } from '../components/BreadcrumbTrail'
 import { FaqSection } from '../components/FaqSection'
-import { PageHero } from '../components/PageHero'
 import { LinkGridSection } from '../components/LinkGridSection'
 import { MobileConversionBar } from '../components/MobileConversionBar'
-import { QuickPathSection } from '../components/QuickPathSection'
-import { TrustProofSection } from '../components/TrustProofSection'
+import { PageHero } from '../components/PageHero'
 
 export const metadata: Metadata = {
   title: 'Case Results',
-  description:
-    'Representative criminal defense and personal injury outcomes from Kernal & Associates in Oklahoma with context on risk, strategy, and resolution posture.',
+  description: 'Anonymized examples of criminal defense and personal injury matters handled by Kernal & Associates.',
   alternates: { canonical: '/case-results' },
   openGraph: {
     title: 'Case Results | Kernal & Associates',
-    description:
-      'Review representative criminal defense and injury outcomes with strategic context and legal-safe result framing.',
+    description: 'Anonymized examples of Oklahoma criminal defense and personal injury matters.',
     url: 'https://kernallaw.com/case-results',
   },
 }
@@ -24,262 +20,152 @@ export const metadata: Metadata = {
 const representativeResults = [
   {
     category: 'Criminal Defense',
-    headline: 'Felony Allegation Resolved Below Initial Exposure',
-    atRisk:
-      'Client faced high-penalty felony exposure with major long-term record and employment consequences.',
-    strategy: [
-      'Immediate evidence and statement review',
-      'Procedural and constitutional challenge development',
-      'Trial-ready negotiation posture',
+    headline: 'Felony Charge Resolved With Reduced Consequences',
+    atRisk: 'The client faced a felony charge with possible long-term record and employment consequences.',
+    work: [
+      'Reviewed statements and available evidence',
+      'Identified procedural and constitutional issues',
+      'Prepared the case for negotiation and court',
     ],
-    outcome:
-      'Resolution materially reduced original charge impact compared with initial prosecutorial positioning.',
+    outcome: 'The final resolution reduced the consequences associated with the original felony allegation.',
     notes: 'Oklahoma County district-court matter.',
   },
   {
     category: 'Criminal Defense',
-    headline: 'DUI Matter Resolved with Controlled License and Court Impact',
-    atRisk:
-      'Dual exposure across criminal penalties and administrative license consequences.',
-    strategy: [
-      'Stop and testing-procedure audit',
-      'Integrated court and license-track planning',
-      'Risk-based negotiation strategy',
+    headline: 'DUI Matter Addressed in Court and License Proceedings',
+    atRisk: 'The arrest created both criminal-court and driver-license consequences.',
+    work: [
+      'Reviewed the stop and testing procedures',
+      'Tracked the court case and separate license matter',
+      'Prepared for a negotiated or contested resolution',
     ],
-    outcome:
-      'Outcome reduced long-term impact relative to initial allegation and default penalty risk.',
-    notes: 'Included coordinated court and DPS strategy.',
+    outcome: 'The resolution reduced the combined long-term effect described when the matter began.',
+    notes: 'Included both court and Department of Public Safety proceedings.',
   },
   {
     category: 'Criminal Defense',
-    headline: 'Warrant and Underlying Charge Stabilized Through Planned Court Entry',
-    atRisk:
-      'Unplanned arrest exposure and adverse bond posture tied to active warrant status.',
-    strategy: [
-      'Warrant-status confirmation and risk mapping',
-      'Controlled surrender and bond preparation',
-      'Immediate transition into full charge-defense planning',
+    headline: 'Active Warrant Addressed Through a Planned Court Appearance',
+    atRisk: 'The client faced an unexpected arrest and possible bond consequences from an active warrant.',
+    work: [
+      'Confirmed the warrant and underlying case',
+      'Prepared for surrender and bond',
+      'Began work on the underlying charge',
     ],
-    outcome:
-      'Case stabilized early with improved procedural control versus unplanned arrest pathway.',
-    notes: 'Structured warrant-response framework applied.',
+    outcome: 'The warrant was addressed through a planned appearance instead of an unplanned arrest.',
+    notes: 'The underlying criminal matter continued after the warrant was addressed.',
   },
   {
     category: 'Personal Injury',
-    headline: 'Serious Collision Claim Resolved with Full-Treatment Consideration',
-    atRisk:
-      'Insurer attempted early valuation before medical progression and wage-impact record were complete.',
-    strategy: [
-      'Liability reconstruction and dispute pressure',
-      'Comprehensive medical and economic documentation',
-      'Litigation-ready negotiation sequencing',
+    headline: 'Collision Claim Resolved After Treatment Records Were Complete',
+    atRisk: 'The insurer evaluated the claim before treatment and wage-loss records were complete.',
+    work: [
+      'Developed the evidence concerning fault',
+      'Collected medical and wage-loss records',
+      'Evaluated the claim after the losses were documented',
     ],
-    outcome:
-      'Resolution accounted for treatment progression and broader losses beyond initial insurer framing.',
-    notes: 'Multi-phase negotiation before litigation escalation.',
+    outcome: 'The resolution considered the completed treatment record and losses not included in the early evaluation.',
+    notes: 'Resolved after more than one round of negotiations.',
   },
   {
     category: 'Personal Injury',
-    headline: 'Commercial Truck Injury Claim Advanced After Disputed Fault Position',
-    atRisk:
-      'Carrier-side liability resistance and undervaluation pressure in a severe-loss context.',
-    strategy: [
-      'Commercial-record and liability development',
-      'Future-loss and earnings-impact buildout',
-      'Trial-capable escalation posture',
+    headline: 'Commercial Truck Claim Developed After Fault Was Disputed',
+    atRisk: 'The carrier disputed fault and challenged the extent of the claimed losses.',
+    work: [
+      'Obtained commercial records bearing on fault',
+      'Documented future losses and reduced earnings',
+      'Prepared the disputed issues for litigation if needed',
     ],
-    outcome:
-      'Case advanced to materially stronger valuation range than initial pre-suit position.',
+    outcome: 'The documented claim was valued above the carrier’s initial pre-suit position.',
     notes: 'Included layered liability and damages analysis.',
   },
   {
     category: 'Personal Injury',
-    headline: 'High-Severity Injury Matter Structured for Long-Horizon Recovery',
-    atRisk:
-      'Early settlement pressure threatened to understate future care and lifetime economic impact.',
-    strategy: [
-      'Medical trajectory and care-needs documentation',
-      'Economic and vocational-loss modeling',
-      'Demand strategy built for trial scrutiny',
+    headline: 'Serious Injury Claim Documented for Future Care and Losses',
+    atRisk: 'An early settlement would not have addressed the claimed future care and economic losses.',
+    work: [
+      'Documented the expected medical course and care needs',
+      'Evaluated economic and vocational losses',
+      'Prepared a demand supported by the available records',
     ],
-    outcome:
-      'Claim posture shifted toward long-term value rather than short-term closeout pressure.',
-    notes: 'Catastrophic-loss valuation framework applied.',
+    outcome: 'The claim evaluation included future needs rather than only the losses known at the outset.',
+    notes: 'Serious-injury matter involving claimed long-term losses.',
   },
   {
     category: 'Criminal Defense',
-    headline: 'Probation-Violation Exposure Reduced Through Compliance Reconstruction',
-    atRisk:
-      'Client faced significant custody risk and compounding penalties tied to alleged release-condition violations.',
-    strategy: [
-      'Timeline reconstruction and condition-by-condition audit',
-      'Documented mitigation package and hearing preparation',
-      'Trial-ready posture to strengthen negotiated alternatives',
+    headline: 'Probation Violation Matter Resolved With Reduced Revocation Risk',
+    atRisk: 'The client faced possible custody and additional penalties for alleged violations.',
+    work: [
+      'Reconstructed the timeline and reviewed each condition',
+      'Collected compliance and mitigation records',
+      'Prepared for the violation hearing',
     ],
-    outcome:
-      'Resolution reduced revocation exposure relative to default sanction trajectory at intake.',
-    notes: 'Focused on procedural clarity and compliance narrative correction.',
+    outcome: 'The resolution reduced the revocation consequences the client initially faced.',
+    notes: 'Focused on the actual conditions, timeline, and compliance records.',
   },
   {
     category: 'Personal Injury',
-    headline: 'Uninsured-Motorist Claim Reframed After Initial Coverage Resistance',
+    headline: 'Uninsured Motorist Claim Reconsidered After an Initial Dispute',
     atRisk:
       'Carrier framed recovery narrowly despite documented treatment and wage disruption in an underinsured-loss setting.',
-    strategy: [
-      'Policy language and coverage pathway analysis',
-      'Medical chronology and economic-loss clarification',
-      'Escalation posture structured for litigation if needed',
+    work: [
+      'Reviewed the policy and available coverage',
+      'Organized the medical and wage-loss timeline',
+      'Prepared disputed coverage and damages issues for litigation if needed',
     ],
     outcome:
       'Claim value moved beyond initial low-range position after stronger liability and damages presentation.',
-    notes: 'UM/UIM-focused strategy with staged escalation.',
+    notes: 'Uninsured and underinsured motorist coverage matter.',
   },
-]
-
-const methodology = [
-  {
-    title: 'Risk Context First',
-    description:
-      'Each result is framed by what was at risk at intake, not just by end-state labels.',
-  },
-  {
-    title: 'Strategy Before Outcome',
-    description:
-      'The legal process and pressure points matter. We show core strategic moves that drove leverage.',
-  },
-  {
-    title: 'Legal-Safe Reporting',
-    description:
-      'Summaries are representative and anonymized. They are not promises and not predictive guarantees.',
-  },
-]
-
-const processSteps = [
-  {
-    step: 'Step 1',
-    title: 'Initial Exposure Assessment',
-    description:
-      'We define what was at risk at intake, including charge severity, sentencing ranges, fault disputes, and financial downside.',
-  },
-  {
-    step: 'Step 2',
-    title: 'Strategy and Leverage Build',
-    description:
-      'Each matter is framed around evidence pressure, procedural opportunities, negotiation posture, and trial-readiness.',
-  },
-  {
-    step: 'Step 3',
-    title: 'Outcome Context Reporting',
-    description:
-      'Results are presented with legal-safe context so readers understand process quality without guarantee language.',
-  },
-]
-
-const takeaways = [
-  'Outcomes are strongest when strategy starts early and remains trial-capable.',
-  'Result quality depends on facts, law, venue, and execution discipline in each case.',
-  'Representative matters are educational, not predictive guarantees for future results.',
-  'Legal process context matters as much as end labels when evaluating counsel.',
 ]
 
 const relatedLinks = [
   {
     href: '/criminal-defense',
-    title: 'Criminal Defense Services',
-    description: 'Review charge-specific defense pages and litigation process guidance.',
+    title: 'Criminal Defense',
+    description: 'Oklahoma criminal defense services and charge-specific information.',
     ctaName: 'case_results_related_criminal',
   },
   {
     href: '/personal-injury',
-    title: 'Personal Injury Services',
-    description: 'Explore high-value injury categories and damages strategy pathways.',
+    title: 'Personal Injury',
+    description: 'Oklahoma personal injury services and practical claim information.',
     ctaName: 'case_results_related_injury',
   },
   {
     href: '/client-reviews',
     title: 'Client Reviews',
-    description: 'Read verified client feedback themes alongside representative outcomes.',
+    description: 'Selected feedback sourced from Todd Kernal\'s Google Business Profile.',
     ctaName: 'case_results_related_reviews',
   },
 ]
 
 const caseResultsFaqs = [
   {
-    question: 'Are these case outcomes guarantees of similar results?',
+    question: 'Do these results guarantee a similar outcome?',
     answer:
-      'No. They are representative summaries. Every case depends on its own evidence, procedural posture, legal issues, and venue.',
+      'No. Every matter depends on its own facts, evidence, parties, insurance, law, court, and timing. Past results do not predict future results.',
   },
   {
-    question: 'Why do you show strategy context with outcomes?',
+    question: 'Why are names and case numbers not included?',
     answer:
-      'Strategy context helps clients evaluate process quality, not just final labels. Early leverage and evidence planning often shape final results.',
+      'The summaries are anonymized to protect client confidentiality. They provide a general description rather than a public case file.',
   },
   {
-    question: 'Can you review whether my case has similar risk factors?',
+    question: 'Why are dollar amounts not listed?',
     answer:
-      'Yes. A consultation can identify your specific exposure, likely pressure points, and immediate steps to protect leverage.',
+      'A number without the injuries, insurance limits, expenses, fault evidence, and other facts can be misleading. The summaries focus on the issue presented and the reported resolution.',
   },
   {
-    question: 'Do you handle both criminal and serious injury matters?',
+    question: 'Can the firm tell me whether my matter is similar?',
     answer:
-      'Yes. The firm handles high-stakes criminal defense and personal injury cases, including matters requiring trial-ready strategy.',
+      'A consultation can compare your facts and documents with the issues described here, but it cannot guarantee the same outcome.',
   },
-  {
-    question: 'Why are results presented as representative summaries?',
-    answer:
-      'Representative summaries protect confidentiality while still showing practical risk, strategy, and resolution context useful for prospective clients.',
-  },
-  {
-    question: 'What is the best way to compare these outcomes to my situation?',
-    answer:
-      'Compare risk profile, evidence complexity, and timing pressure, then request direct evaluation so strategy reflects your exact facts and venue.',
-  },
-  {
-    question: 'Can early strategy change likely case trajectory?',
-    answer:
-      'Often yes. Early evidence control, messaging discipline, and procedural planning frequently affect negotiation and litigation outcomes.',
-  },
-  {
-    question: 'Are financial figures intentionally limited on this page?',
-    answer:
-      'Yes. The emphasis is on decision quality and process leverage rather than isolated numbers without legal and factual context.',
-  },
-]
-
-const selectionCriteria = [
-  {
-    title: 'Material Risk at Intake',
-    description:
-      'Only matters with meaningful legal or financial exposure are included so examples remain relevant for high-stakes decision-making.',
-  },
-  {
-    title: 'Strategy Visibility',
-    description:
-      'Each summary highlights pressure points and strategic actions, not just outcomes, because process quality is a key predictor of representation value.',
-  },
-  {
-    title: 'Legal-Safe Context',
-    description:
-      'Language is intentionally structured to avoid guarantee implications and preserve realistic understanding of case-by-case variability.',
-  },
-  {
-    title: 'Client Decision Utility',
-    description:
-      'Examples are selected to help prospective clients evaluate fit, urgency, and likely strategy pathways before consultation.',
-  },
-]
-
-const resultReviewChecklist = [
-  'Identify what was at risk before legal strategy began.',
-  'Compare strategy moves to your current pressure points.',
-  'Assess whether timeline control changed negotiation posture.',
-  'Use consultation to validate whether your facts match similar contexts.',
 ]
 
 const criminalResults = representativeResults.filter((result) => result.category === 'Criminal Defense')
 const injuryResults = representativeResults.filter((result) => result.category === 'Personal Injury')
 
-function renderResults(items: typeof representativeResults) {
+function ResultsGrid({ items }: { items: typeof representativeResults }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       {items.map((result) => (
@@ -288,24 +174,20 @@ function renderResults(items: typeof representativeResults) {
           className="bg-iron-900 border border-silver-500/10 p-7 hover:border-accent-gold/40 transition-colors"
         >
           <p className="text-accent-gold text-xs uppercase tracking-widest mb-3">{result.category}</p>
-          <h3 className="font-serif text-2xl text-white mb-4">{result.headline}</h3>
-          <div className="space-y-4 text-sm leading-relaxed">
+          <h3 className="font-serif text-2xl text-white mb-5">{result.headline}</h3>
+          <div className="space-y-5 text-sm leading-relaxed">
             <div>
-              <p className="text-silver-500 uppercase tracking-[0.18em] text-[11px] mb-2">What Was At Risk</p>
+              <p className="text-silver-500 uppercase tracking-[0.18em] text-[11px] mb-2">Issue Presented</p>
               <p className="text-silver-300">{result.atRisk}</p>
             </div>
             <div>
-              <p className="text-silver-500 uppercase tracking-[0.18em] text-[11px] mb-2">Key Strategy Moves</p>
-              <ul className="space-y-2">
-                {result.strategy.map((step) => (
-                  <li key={step} className="text-silver-400">
-                    {step}
-                  </li>
-                ))}
+              <p className="text-silver-500 uppercase tracking-[0.18em] text-[11px] mb-2">Work Described</p>
+              <ul className="list-disc pl-5 space-y-2 text-silver-400">
+                {result.work.map((step) => <li key={step}>{step}</li>)}
               </ul>
             </div>
             <div>
-              <p className="text-silver-500 uppercase tracking-[0.18em] text-[11px] mb-2">Outcome Context</p>
+              <p className="text-silver-500 uppercase tracking-[0.18em] text-[11px] mb-2">Reported Result</p>
               <p className="text-silver-300">{result.outcome}</p>
             </div>
           </div>
@@ -319,191 +201,59 @@ function renderResults(items: typeof representativeResults) {
 export default function CaseResultsPage() {
   return (
     <main className="bg-iron-950 min-h-screen">
-      <PageHero
-        title="Case Results"
-        subtitle="Representative criminal defense and personal injury outcomes with strategic context."
-      />
-      <MobileConversionBar
-        context="case_results"
-        primaryHref="/contact"
-        primaryLabel="Request Review"
-      />
-      <BreadcrumbTrail
-        items={[
-          { label: 'Home', href: '/' },
-          { label: 'Case Results' },
-        ]}
-      />
-
-      <QuickPathSection
-        title="Choose Your Review Path"
-        subtitle="Start with the category that matches your legal issue, then request a case-specific strategy consultation."
-        items={[
-          {
-            badge: 'Defense',
-            title: 'Criminal Results',
-            description: 'Review representative defense outcomes and context.',
-            href: '#criminal-outcomes',
-            ctaName: 'case_results_quick_path_criminal',
-          },
-          {
-            badge: 'Injury',
-            title: 'Injury Results',
-            description: 'Review severe-loss claim outcomes and strategic framing.',
-            href: '#injury-outcomes',
-            ctaName: 'case_results_quick_path_injury',
-          },
-          {
-            badge: 'Action',
-            title: 'Request Case Review',
-            description: 'Get immediate guidance tailored to your current legal exposure.',
-            href: '/contact',
-            ctaName: 'case_results_quick_path_contact',
-          },
-        ]}
-      />
+      <PageHero title="Case Results" subtitle="Anonymized examples from criminal defense and personal injury matters." />
+      <MobileConversionBar context="case_results" primaryHref="/contact" primaryLabel="Request Consultation" />
+      <BreadcrumbTrail items={[{ label: 'Home', href: '/' }, { label: 'Case Results' }]} />
 
       <section className="py-10 md:py-14 border-b border-silver-500/10">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto bg-iron-900 border border-silver-500/20 p-6 md:p-8">
-            <p className="text-accent-gold text-xs uppercase tracking-widest mb-3">Important Disclaimer</p>
+            <p className="text-accent-gold text-xs uppercase tracking-widest mb-3">Important Context</p>
             <p className="text-silver-300 leading-relaxed">
-              These are representative summaries, not guarantees. Every case depends on its own facts,
-              evidence, venue, and applicable law. <strong>Past outcomes do not predict future results.</strong>
+              These summaries are anonymized and do not include every fact or legal issue. Every case is different.
+              Past results do not guarantee or predict a future result.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="py-12 md:py-16 border-b border-silver-500/10 bg-iron-900/40">
+      <section id="criminal-outcomes" className="py-14 md:py-20 scroll-mt-32">
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl text-white mb-8">How to Read These Results</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-              {methodology.map((item) => (
-                <article
-                  key={item.title}
-                  className="bg-iron-900 border border-silver-500/15 p-6 hover:border-accent-gold/35 transition-colors"
-                >
-                  <h3 className="font-serif text-2xl text-white mb-3">{item.title}</h3>
-                  <p className="text-silver-400 leading-relaxed">{item.description}</p>
-                </article>
-              ))}
-            </div>
+            <h2 className="font-serif text-3xl md:text-4xl text-white mb-8">Criminal Defense Matters</h2>
+            <ResultsGrid items={criminalResults} />
           </div>
         </div>
       </section>
 
-      <section className="py-12 md:py-16 border-b border-silver-500/10">
+      <section id="injury-outcomes" className="py-14 md:py-20 border-y border-silver-500/10 bg-iron-900/40 scroll-mt-32">
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl text-white mb-3">Outcome Evaluation Process</h2>
-            <p className="text-silver-400 mb-8 max-w-3xl">
-              This framework explains how representative results are curated for legal-safe, useful comparison.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-              {processSteps.map((item) => (
-                <article
-                  key={item.title}
-                  className="bg-iron-900 border border-silver-500/15 p-6 hover:border-accent-gold/35 transition-colors"
-                >
-                  <p className="text-accent-gold text-[11px] uppercase tracking-[0.2em] mb-2">{item.step}</p>
-                  <h3 className="font-serif text-2xl text-white mb-3">{item.title}</h3>
-                  <p className="text-silver-400 leading-relaxed">{item.description}</p>
-                </article>
-              ))}
-            </div>
-            <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-              {takeaways.map((item) => (
-                <div
-                  key={item}
-                  className="bg-iron-900/70 border border-silver-500/10 p-4 text-silver-300 text-sm leading-relaxed"
-                >
-                  {item}
-                </div>
-              ))}
-            </div>
+            <h2 className="font-serif text-3xl md:text-4xl text-white mb-8">Personal Injury Matters</h2>
+            <ResultsGrid items={injuryResults} />
           </div>
         </div>
       </section>
-
-      <section className="py-12 md:py-16 border-b border-silver-500/10 bg-iron-900/30">
-        <div className="container mx-auto px-6">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl text-white mb-3">How Matters Are Selected for Publication</h2>
-            <p className="text-silver-400 mb-8 max-w-3xl">
-              Selection criteria are designed to provide useful decision context while preserving confidentiality and legal-safe communication standards.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
-              {selectionCriteria.map((item) => (
-                <article
-                  key={item.title}
-                  className="bg-iron-900 border border-silver-500/15 p-6 hover:border-accent-gold/35 transition-colors"
-                >
-                  <h3 className="font-serif text-2xl text-white mb-3">{item.title}</h3>
-                  <p className="text-silver-400 leading-relaxed">{item.description}</p>
-                </article>
-              ))}
-            </div>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {resultReviewChecklist.map((item) => (
-                <li
-                  key={item}
-                  className="bg-iron-900/70 border border-silver-500/10 p-4 text-silver-300 text-sm leading-relaxed"
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section id="criminal-outcomes" className="py-16 md:py-24 scroll-mt-32">
-        <div className="container mx-auto px-6">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl text-white mb-8">Criminal Defense Outcomes</h2>
-            {renderResults(criminalResults)}
-          </div>
-        </div>
-      </section>
-
-      <section id="injury-outcomes" className="py-16 md:py-24 border-y border-silver-500/10 bg-iron-900/40 scroll-mt-32">
-        <div className="container mx-auto px-6">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl text-white mb-8">Personal Injury Outcomes</h2>
-            {renderResults(injuryResults)}
-          </div>
-        </div>
-      </section>
-
-      <TrustProofSection
-        ctaPrefix="case_results"
-        title="Use Outcomes Alongside Trust Signals"
-        subtitle="Case context is strongest when reviewed together with client feedback and attorney background."
-      />
 
       <LinkGridSection
         title="Related Pages"
-        subtitle="Use these pages to review strategy, trust proof, and request case-specific guidance."
+        subtitle="Practice information, verified Google reviews, and consultation options."
         columns="three"
         items={relatedLinks}
       />
 
       <FaqSection
         title="Case Results FAQs"
-        subtitle="Important context before using representative outcomes to evaluate your own matter."
+        subtitle="How to understand the anonymized summaries on this page."
         faqs={caseResultsFaqs}
         practiceArea="case-results"
       />
 
-      <section className="py-16 md:py-24">
+      <section className="py-14 md:py-20">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto bg-accent-gold/10 border border-accent-gold/20 p-10 md:p-12 text-center">
-            <h2 className="font-serif text-3xl text-accent-gold mb-4">Need Case-Specific Guidance?</h2>
-            <p className="text-silver-400 mb-8">
-              We can assess your legal exposure, evidence posture, and likely next steps in a confidential consultation.
-            </p>
+            <h2 className="font-serif text-3xl text-accent-gold mb-4">Discuss Your Matter</h2>
+            <p className="text-silver-400 mb-8">A consultation can address the facts, documents, and deadlines in your case.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/contact"

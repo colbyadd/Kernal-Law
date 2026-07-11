@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kernal & Associates website
 
-## Getting Started
+Next.js 16 website for Kernal & Associates, deployed through Netlify.
 
-First, run the development server:
+## Local development
+
+Requirements:
+
+- Node.js 24 (see `.nvmrc`)
+- npm
+
+Install and start the Next.js site:
 
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). This is enough for page and browser review. To exercise Netlify routing and Functions locally, use `netlify dev` from the Netlify CLI.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Copy `.env.example` to `.env.local` for local-only values. Do not commit `.env.local` or credentials.
 
-## Learn More
+- `NEXT_PUBLIC_SITE_URL` — canonical production origin.
+- `NEXT_PUBLIC_CONTACT_EMAIL` — displayed contact email.
+- `NEXT_PUBLIC_PRIMARY_PHONE_E164` — displayed and tracked phone number.
+- `NEXT_PUBLIC_GA_MEASUREMENT_ID` — Google Analytics 4 measurement ID. Leave blank until the production property is ready.
+- `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` and `NEXT_PUBLIC_BING_SITE_VERIFICATION` — optional webmaster-verification tokens.
 
-To learn more about Next.js, take a look at the following resources:
+## Contact form
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The public form posts to `/api/contact`, implemented by `netlify/functions/contact.ts`. The Function validates and sanitizes the request, checks the consent version, enforces the chosen reply method, blocks malformed and cross-origin requests, and applies Netlify rate limiting before forwarding the accepted fields to the hidden Netlify Forms blueprint at `public/__forms.html`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Keep the React form, server Function, and static blueprint field names aligned. `npm run qa:conversion` checks that contract. Netlify notification recipients are configured in the Netlify site settings, not in this repository.
 
-## Deploy on Vercel
+Do not use real client facts for form testing. Submit a clearly labeled test lead on a deploy preview only after the recipient has authorized it, then confirm both the Netlify submission and notification delivery.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Treat Netlify form entries as intake records containing personal information. Periodically remove test, spam, and stale submissions under the firm’s approved retention policy, and limit dashboard access to people who need it.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Verification
+
+Run the same release gate used by continuous integration:
+
+```bash
+npm run verify
+npm audit --omit=dev --audit-level=high
+```
+
+The verification command runs linting, TypeScript checks, contact-Function tests, content and search-engine optimization checks, a production build, and rendered-route checks covering sitemap, canonical, metadata, social image, and location-page integrity.
+
+## Deployment
+
+Production deploys are Git-based through Netlify and should follow a reviewed pull request or an explicitly approved direct push. Before publishing:
+
+1. Run the verification commands above.
+2. Review the Netlify deploy preview on desktop and mobile.
+3. Confirm `/robots.txt`, `/sitemap.xml`, canonical URLs, social previews, redirects, and security headers.
+4. If analytics is enabled, verify call, text, form-start, form-success, and thank-you attribution with test traffic only.
+5. Confirm the Netlify form notification with an authorized test submission.
+
+In Google Analytics 4, mark only the guarded `thank_you_view` event as the lead key event. Do not mark ordinary `/success` page views or `form_submit_success` as additional lead key events, or one inquiry can be counted twice.
+
+If production regresses, restore the last known-good Netlify deploy first, then diagnose and fix forward in the repository.

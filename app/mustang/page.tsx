@@ -1,15 +1,14 @@
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 import { LocationServicePage } from '../components/LocationServicePage'
 
 export const metadata: Metadata = {
-  title: 'Mustang Criminal Defense and Personal Injury Attorney',
+  title: 'Mustang Criminal & Injury Lawyer',
   description:
-    'Kernal & Associates serves Mustang with criminal defense and personal injury representation for Canadian County and surrounding legal matters.',
+    'Legal help for Mustang criminal cases and serious injury claims involving Canadian County, SH-152, and west-south metro travel.',
   alternates: { canonical: '/mustang' },
   openGraph: {
-    title: 'Mustang Criminal Defense and Injury Attorney | Kernal & Associates',
-    description:
-      'Local legal representation for Mustang residents facing criminal charges and serious injuries.',
+    title: 'Mustang Criminal & Injury Lawyer',
+    description: 'Help with Canadian County court matters and Mustang-area injury claims.',
     url: 'https://kernallaw.com/mustang',
   },
 }
@@ -19,105 +18,131 @@ export default function MustangPage() {
     <LocationServicePage
       canonicalPath="/mustang"
       locationName="Mustang"
-      subtitle="Strategic criminal defense and injury representation for Mustang and nearby communities."
-      introTitle="Legal exposure in Mustang needs fast, focused response."
+      subtitle="Help for Canadian County charges, warrants, and serious injury claims along Mustang-area routes."
+      introTitle="A case can outlast the moment that started it"
       introParagraphs={[
-        'Mustang cases often involve urgent criminal deadlines or injury claim decisions that become harder to fix over time. Prompt legal control improves both defense and recovery options.',
-        'Kernal & Associates provides disciplined representation for criminal and personal injury matters with strong courtroom preparation and practical risk management.',
+        'A Mustang charge or warrant can affect work, travel, and ordinary plans long after the original incident. Start with the Canadian County case number, the charging or warrant information, every notice, and a list of dates that may have been missed.',
+        'A serious collision near SH-152 may leave lasting medical and financial records. Keep the scene material, vehicle papers, care instructions, bills, wage information, and insurance correspondence even when treatment continues over time.',
+        'The useful question at intake is not whether every document is already available. It is whether the next court requirement is known and whether the main sources of injury proof have been identified.',
       ]}
-      countyFocus="Canadian County and West-South Metro Representation"
+      countyFocus="Mustang court obligations and SH-152 claim records"
       localHighlights={[
-        'Office consultations available at 1332 SW 89th Street in south Oklahoma City, with phone and text intake for urgent matters.',
-        'Urgent defense support for arrest and warrant-related situations.',
-        'Injury claim strategy for collision and negligence events with serious losses.',
-        'Case planning for overlapping criminal and civil exposure from a single incident.',
-        'Evidence preservation protocols for high-dispute liability matters.',
-        'Direct legal communication and clear timeline management.',
-        'Long-term record and financial-risk strategy integrated from intake.',
+        'A warrant should be tied to its court file and original allegation.',
+        'Old notices may explain a missed date or unresolved requirement.',
+        'Canadian County papers should be matched by case number, not appearance alone.',
+        'SH-152 collisions may involve daily commuters and cross-metro travel.',
+        'Original image files retain date and location information that copies may lose.',
+        'Ongoing treatment records can show how symptoms and restrictions changed.',
+        'Wage records help document the financial effect of missed work.',
+        'Keep a list of open questions beside the documents already collected.',
       ]}
       serviceLinks={[
         {
           href: '/mustang/criminal-defense',
           title: 'Mustang Criminal Defense',
-          description: 'Local defense strategy for Mustang criminal allegations.',
+          description: 'Help matching Canadian County allegations, notices, and court obligations.',
           ctaName: 'mustang_service_criminal_defense',
+        },
+        {
+          href: '/criminal-defense/dui-dwi',
+          title: 'DUI / DWI Defense',
+          description: 'Review of the stop, observations, tests, driving documents, and filing.',
+          ctaName: 'mustang_service_dui_dwi',
         },
         {
           href: '/criminal-defense/warrants',
           title: 'Warrants Defense',
-          description: 'Controlled warrant resolution and court-entry planning.',
+          description: 'Identifying the unresolved case and arranging the appropriate court response.',
           ctaName: 'mustang_service_warrants',
-        },
-        {
-          href: '/criminal-defense/expungement',
-          title: 'Expungement Services',
-          description: 'Record-sealing strategy for eligible prior case outcomes.',
-          ctaName: 'mustang_service_expungement',
         },
         {
           href: '/mustang/personal-injury',
           title: 'Mustang Personal Injury',
-          description: 'Local claim strategy for severe injury and negligence losses.',
-          ctaName: 'mustang_service_injury',
+          description: 'Claims involving serious harm to west-south metro residents and families.',
+          ctaName: 'mustang_service_personal_injury',
         },
         {
-          href: '/personal-injury/motorcycle-accidents',
-          title: 'Motorcycle Accident Claims',
-          description: 'Rider-focused strategy for severe injury and fault disputes.',
-          ctaName: 'mustang_service_motorcycle',
+          href: '/personal-injury/car-accidents',
+          title: 'Car Accident Claims',
+          description: 'Organizing scene material, health care, vehicle damage, and work loss.',
+          ctaName: 'mustang_service_car_accidents',
         },
         {
-          href: '/personal-injury/wrongful-death',
-          title: 'Wrongful Death Claims',
-          description: 'Family-focused representation after fatal negligence incidents.',
-          ctaName: 'mustang_service_wrongful_death',
+          href: '/personal-injury/uninsured-motorist',
+          title: 'Uninsured Motorist Claims',
+          description: 'Finding available benefits when the responsible policy is missing or limited.',
+          ctaName: 'mustang_service_uninsured_motorist',
+        },
+        {
+          href: '/criminal-defense/drug-charges',
+          title: 'Drug Charges Defense',
+          description: 'Review of the search, alleged control, evidence handling, and laboratory record.',
+          ctaName: 'mustang_service_drug_charges',
+        },
+        {
+          href: '/personal-injury/truck-accidents',
+          title: 'Truck Accident Claims',
+          description: 'Commercial claims involving company records beyond the ordinary collision report.',
+          ctaName: 'mustang_service_truck_accidents',
         },
       ]}
       relatedLocationLinks={[
         {
-          href: '/yukon',
-          title: 'Yukon',
-          description: 'Nearby service area for west metro criminal and injury issues.',
-          ctaName: 'mustang_related_yukon',
+          href: '/newcastle/criminal-defense',
+          title: 'Newcastle Criminal Defense',
+          description: 'Criminal-defense information for a connected southbound market.',
+          ctaName: 'mustang_related_nearby_a',
         },
         {
-          href: '/moore',
-          title: 'Moore',
-          description: 'South metro page for related county and roadway claim context.',
-          ctaName: 'mustang_related_moore',
+          href: '/moore/personal-injury',
+          title: 'Moore Personal Injury',
+          description: 'Injury information for nearby south-metro commuting routes.',
+          ctaName: 'mustang_related_nearby_b',
         },
         {
-          href: '/resources/what-to-do-after-arrest-oklahoma',
-          title: 'Post-Arrest Guide',
-          description: 'Immediate checklist to protect rights after arrest.',
-          ctaName: 'mustang_related_arrest_guide',
+          href: '/locations',
+          title: 'Explore Nearby Markets',
+          description: 'Move to another city or county page based on the event location.',
+          ctaName: 'mustang_related_locations_hub',
+        },
+        {
+          href: '/resources',
+          title: 'Read an Oklahoma Guide',
+          description: 'Use the resource page to learn which papers and dates may matter.',
+          ctaName: 'mustang_related_resources_hub',
+        },
+        {
+          href: '/resources/oklahoma-dui-process',
+          title: 'DUI Court and License Guide',
+          description: 'A plain overview of the separate issues that may follow a DUI arrest.',
+          ctaName: 'mustang_related_local_guide',
         },
       ]}
-      faqSubtitle="Frequently asked questions from Mustang residents about legal timelines and strategy."
+      faqSubtitle="Mustang questions about unresolved court files and long-term injury records."
       faqs={[
         {
-          question: 'How quickly should I act after an arrest in Mustang?',
+          question: 'What information helps confirm a Mustang warrant?',
           answer:
-            'Immediately. Early decisions about statements, bond, and compliance can change the trajectory of your defense.',
+            'A full name, date of birth, case number if known, old citation, and prior court notice can help identify the correct file.',
         },
         {
-          question: 'Do you handle both warrants and expungements for Mustang clients?',
+          question: 'Should I keep papers from an older court date?',
           answer:
-            'Yes. We handle active warrant resolution and record-sealing strategy when expungement eligibility is available.',
+            'Yes. An older notice may show the court, allegation, case number, and requirement that led to the present warrant question.',
         },
         {
-          question: 'Can you help with severe motorcycle or wrongful death claims?',
+          question: 'How long should I save records after a serious SH-152 crash?',
           answer:
-            'Yes. We represent families and injured clients in high-severity claims with a full-value damages and liability approach.',
+            'Keep the full file while treatment and the claim remain open, including later referrals, bills, work records, and policy correspondence.',
         },
         {
-          question: 'What does the first consultation cover?',
+          question: 'What can I do if some injury records are missing?',
           answer:
-            'We review urgent deadlines, current risk, key evidence needs, and an initial strategy roadmap for your specific legal issue.',
+            'List each provider, employer, insurer, and agency involved. That source list makes it easier to request a complete copy.',
         },
       ]}
-      ctaTitle="Need Representation in Mustang?"
-      ctaDescription="Request immediate legal guidance on defense strategy or injury claim protection."
+      ctaTitle="Talk About a Mustang Matter"
+      ctaDescription="Bring the old and current court papers or the injury records collected to date."
       ctaName="mustang"
     />
   )

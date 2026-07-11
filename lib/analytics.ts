@@ -13,6 +13,7 @@ type AnalyticsEventName =
   | "scroll_90";
 
 type AnalyticsParams = Record<string, string | number | boolean | null | undefined>;
+const analyticsEnabled = Boolean(process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID);
 
 declare global {
   interface Window {
@@ -37,12 +38,17 @@ function sanitizeParams(params: AnalyticsParams) {
 }
 
 export function trackEvent(eventName: AnalyticsEventName, params: AnalyticsParams = {}) {
-  if (typeof window === "undefined") {
+  if (typeof window === "undefined" || !analyticsEnabled) {
     return;
   }
 
   if (typeof window.gtag !== "function") {
-    return;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function queuedGtag() {
+      // Match Google's queueing snippet, which intentionally stores the function arguments object.
+      // eslint-disable-next-line prefer-rest-params
+      window.dataLayer?.push(arguments);
+    };
   }
 
   window.gtag("event", eventName, sanitizeParams(params));

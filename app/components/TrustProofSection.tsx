@@ -17,12 +17,12 @@ interface TrustItem {
 const trustItemsByContext: Record<TrustContext, [TrustItem, TrustItem, TrustItem]> = {
   general: [
     {
-      title: '25+ Years of High-Stakes Representation',
-      description: 'Long-term Oklahoma courtroom and negotiation experience across criminal and injury matters.',
+      title: 'Nearly 26 Years of Experience',
+      description: 'Oklahoma courtroom experience in criminal defense and serious injury matters.',
     },
     {
-      title: 'Direct Strategy, Not Generic Intake',
-      description: 'Every matter is handled with clear risk analysis, practical next steps, and trial-aware planning.',
+      title: 'Direct Answers From Todd',
+      description: 'You receive a plain explanation of the immediate risks, options, and next steps.',
     },
     {
       title: 'Proof You Can Review',
@@ -31,30 +31,30 @@ const trustItemsByContext: Record<TrustContext, [TrustItem, TrustItem, TrustItem
   ],
   criminal: [
     {
-      title: 'Constitution-Focused Defense',
-      description: 'Stop, search, interview, and evidence procedures are audited for suppression opportunities.',
+      title: 'Constitutional Issues Reviewed',
+      description: 'Stops, searches, questioning, and evidence handling are examined for legal problems.',
     },
     {
-      title: 'Trial Leverage from Day One',
-      description: 'Cases are prepared for litigation early so negotiations happen from a position of strength.',
+      title: 'Prepared for Court',
+      description: 'The evidence and legal issues are developed for motions, hearings, negotiations, and trial.',
     },
     {
-      title: 'Urgent-Response Case Control',
-      description: 'Early decisions around bond, statements, and deadlines are managed to reduce avoidable risk.',
+      title: 'Early Deadline Review',
+      description: 'Bond terms, statements, court dates, and other immediate obligations are addressed first.',
     },
   ],
   injury: [
     {
-      title: 'Evidence-First Claim Strategy',
-      description: 'Liability and damages are documented early to protect claim value before insurer framing hardens.',
+      title: 'Evidence and Records',
+      description: 'Fault, medical treatment, expenses, lost income, and future needs are documented carefully.',
     },
     {
-      title: 'Full-Value Recovery Pressure',
-      description: 'Negotiation strategy is built around medical, economic, and long-term loss proof.',
+      title: 'Complete Loss Review',
+      description: 'A claim should account for supported medical, financial, and long-term losses.',
     },
     {
-      title: 'Litigation-Ready Posture',
-      description: 'When offers are not reasonable, escalation is prepared with trial-level discipline.',
+      title: 'Ready to File Suit',
+      description: 'When a fair resolution is not available, the matter can be prepared for litigation.',
     },
   ],
 }
@@ -62,8 +62,8 @@ const trustItemsByContext: Record<TrustContext, [TrustItem, TrustItem, TrustItem
 export function TrustProofSection({
   ctaPrefix,
   context = 'general',
-  title = 'Why Clients Move Quickly with Kernal & Associates',
-  subtitle = 'You should be able to validate credibility before making legal decisions under pressure.',
+  title = 'What You Can Review Before You Call',
+  subtitle = 'Learn about Todd’s background, client feedback, and representative matters before deciding whether to contact the firm.',
 }: TrustProofSectionProps) {
   const items = trustItemsByContext[context]
 

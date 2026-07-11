@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Oklahoma Motorcycle Accident Attorney | Kernal & Associates',
     description:
-      'Strategic motorcycle injury representation focused on liability proof and full-value recovery.',
+      'Help with disputed fault, serious injuries, and insurance claims after an Oklahoma motorcycle crash.',
     url: 'https://kernallaw.com/personal-injury/motorcycle-accidents',
   },
 }
@@ -18,7 +18,7 @@ const motorcycleFaqs = [
   {
     question: 'Are motorcycle claims harder than standard car crash claims?',
     answer:
-      'Often yes. Riders frequently face bias-based fault assumptions. Strong evidence strategy is required to counter unfair narratives and preserve claim value.',
+      'They can be. An insurer may assume the rider was speeding or taking a risk before reviewing the evidence. Photos, witnesses, video, vehicle damage, and road conditions can help test those assumptions.',
   },
   {
     question: 'What evidence matters most in a motorcycle crash case?',
@@ -28,12 +28,12 @@ const motorcycleFaqs = [
   {
     question: 'Can severe injury increase claim complexity?',
     answer:
-      'Yes. High-severity injuries require long-term medical and economic valuation, often including future-care and earning-capacity analysis.',
+      'Yes. A serious injury may require evidence of future medical care, permanent limitations, time away from work, and reduced earning ability.',
   },
   {
     question: 'What if the insurer says I was speeding or reckless?',
     answer:
-      'Fault assertions should be tested against objective evidence. Defense narratives often overstate rider fault to reduce settlement value.',
+      'The allegation should be compared with the physical evidence, witness accounts, video, roadway conditions, and any available vehicle data. An accusation alone does not decide fault.',
   },
   {
     question: 'Do helmet issues end a motorcycle claim?',
@@ -43,7 +43,7 @@ const motorcycleFaqs = [
   {
     question: 'How soon should I start legal review after a motorcycle wreck?',
     answer:
-      'Immediately. Early evidence preservation and communication strategy are critical in high-dispute rider claims.',
+      'As soon as practical. Roadway conditions change, video may be erased, and witnesses become harder to locate. Early advice can also help before an insurer requests a statement or release.',
   },
 ]
 
@@ -51,75 +51,75 @@ export default function MotorcycleAccidentsPage() {
   return (
     <ServiceDetailPage
       heroTitle="Motorcycle Accident Claims"
-      heroSubtitle="Strategic rider representation for severe-injury and disputed-fault cases."
+      heroSubtitle="Representation for Oklahoma riders facing serious injuries and disputed fault."
       heroVariant="injury"
-      introTitle="Motorcycle claims require fast evidence control and bias-aware strategy."
+      introTitle="Motorcycle claims should be decided by the evidence, not assumptions about riders."
       introParagraphs={[
-        'Motorcycle crash claims are often undervalued when insurers frame the rider as inherently at fault. Countering that narrative requires objective evidence and disciplined liability analysis.',
-        'Kernal & Associates handles motorcycle claims with a focus on severe-injury valuation, fault reconstruction, and trial-ready pressure where settlement positions are unfair.',
+        'A driver or insurer may blame the rider before the scene evidence has been reviewed. Photos, witness accounts, video, vehicle damage, and roadway conditions can show whether that version is accurate.',
+        'Kernal & Associates investigates how the crash occurred, documents the medical and financial losses, handles insurance communications, and files suit when a claim cannot be resolved fairly.',
       ]}
       focusTitle="How We Build Motorcycle Claims"
       focusItems={[
         {
-          title: 'Rider-Fault Narrative Challenge',
+          title: 'Fault and Crash Evidence',
           description:
-            'Bias-based assumptions are addressed with objective reconstruction and witness evidence.',
+            'We compare allegations about the rider with the scene, vehicle, witness, and roadway evidence.',
           bullets: [
-            'Fault narrative deconstruction',
+            'Driver and rider accounts',
             'Scene and line-of-sight analysis',
-            'Witness sequence validation',
-            'Comparative-fault defense control',
+            'Witness and video review',
+            'Comparative-fault allegations',
           ],
         },
         {
           title: 'Severe Injury Documentation',
           description:
-            'Motorcycle injuries often involve high-impact medical and long-term wage consequences.',
+            'Motorcycle injuries may lead to surgery, rehabilitation, missed work, and lasting physical limitations.',
           bullets: [
-            'Trauma and surgical record structuring',
+            'Trauma and surgical records',
             'Future care projections',
-            'Disability and function-loss evidence',
-            'Economic damage modeling',
+            'Disability and functional limitations',
+            'Lost income and reduced earning ability',
           ],
         },
         {
-          title: 'Negotiation and Litigation Pressure',
+          title: 'Insurance Claim and Litigation',
           description:
-            'We escalate quickly when insurer positions rely on unsupported rider-blame assumptions.',
+            'We present the supporting records, respond to unsupported fault allegations, and discuss filing suit when needed.',
           bullets: [
-            'Demand package sequencing',
+            'Medical and liability demand records',
             'Coverage and policy-limit analysis',
-            'Litigation-readiness development',
-            'Trial posture leverage',
+            'Review of settlement offers',
+            'Court preparation if suit is filed',
           ],
         },
       ]}
       processTitle="Motorcycle Claim Workflow"
-      processSubtitle="A structured process helps preserve evidence and maximize full-value recovery opportunities."
+      processSubtitle="The work moves from preserving crash evidence to documenting injuries and addressing insurance disputes."
       processSteps={[
         {
           step: '01',
           title: 'Immediate Case Intake',
           description:
-            'We secure crash records, timeline details, and key evidence before deterioration.',
+            'We gather crash records, photos, witness information, and available video before those materials disappear.',
         },
         {
           step: '02',
           title: 'Liability and Injury Development',
           description:
-            'Fault reconstruction and medical documentation are developed in parallel.',
+            'We investigate fault while collecting medical, wage, and other records of the losses caused by the crash.',
         },
         {
           step: '03',
           title: 'Demand and Negotiation',
           description:
-            'We present a full-value claim strategy backed by objective liability and damages proof.',
+            'We submit the supporting evidence and respond to disputes about fault, treatment, or the extent of the losses.',
         },
         {
           step: '04',
-          title: 'Litigation Escalation',
+          title: 'Lawsuit When Needed',
           description:
-            'Where offers are inadequate, we proceed with structured litigation and trial preparation.',
+            'When an insurer will not make a reasonable offer, a lawsuit may be needed to obtain records, question witnesses, and present the case in court.',
         },
       ]}
       relatedTitle="Related Injury Pages"
@@ -134,27 +134,27 @@ export default function MotorcycleAccidentsPage() {
         {
           href: '/personal-injury/car-accidents',
           title: 'Car Accident Claims',
-          description: 'Related strategy for non-commercial vehicle collision claims.',
+          description: 'Fault, injury, and insurance issues after a passenger vehicle collision.',
           ctaName: 'motorcycle_related_car',
         },
         {
           href: '/personal-injury/catastrophic-injury',
           title: 'Catastrophic Injury Claims',
-          description: 'Long-horizon damages strategy for life-altering trauma.',
+          description: 'Claims addressing permanent harm and the future cost of care after a severe crash.',
           ctaName: 'motorcycle_related_catastrophic',
         },
         {
           href: '/contact',
           title: 'Request Rider Case Review',
-          description: 'Get immediate legal evaluation of liability and injury exposure.',
+          description: 'Ask about the fault evidence, insurance coverage, and deadlines in your case.',
           ctaName: 'motorcycle_related_contact',
         },
       ]}
       faqSubtitle="Answers to common motorcycle crash claim questions in Oklahoma."
       faqs={motorcycleFaqs}
       practiceArea="motorcycle-accidents"
-      ctaTitle="Protect Your Motorcycle Claim from Early Undervaluation"
-      ctaDescription="Evidence and communication strategy in the first weeks can define long-term outcomes."
+      ctaTitle="Talk Through Your Motorcycle Accident Claim"
+      ctaDescription="A review can help preserve scene evidence and answer questions about insurance and deadlines."
       ctaLabel="Start Motorcycle Case Review"
       ctaName="motorcycle_bottom_cta"
     />

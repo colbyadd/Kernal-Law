@@ -74,6 +74,125 @@ function validateMarketTemplateContracts() {
   }
 }
 
+function toWordShingles(value, size = 2) {
+  const words = value
+    .toLowerCase()
+    .replace(/[^a-z0-9 ]/g, ' ')
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+  const shingles = new Set()
+
+  for (let index = 0; index <= words.length - size; index += 1) {
+    shingles.add(words.slice(index, index + size).join(' '))
+  }
+
+  return shingles
+}
+
+function getJaccardSimilarity(left, right) {
+  let intersectionSize = 0
+  for (const value of left) {
+    if (right.has(value)) {
+      intersectionSize += 1
+    }
+  }
+
+  const unionSize = left.size + right.size - intersectionSize
+  return unionSize === 0 ? 0 : intersectionSize / unionSize
+}
+
+function validateMarketCopyQuality() {
+  const citySource = readFile('lib/content/city-subpillars.ts')
+  const overviewSource = readFile('lib/content/location-market-page-specs.ts')
+  const marketSlugs = [
+    ...parseStringArrayFromConst(citySource, 'CORE_CITY_SUBPILLAR_MARKETS'),
+    ...parseStringArrayFromConst(citySource, 'REGIONAL_CITY_SUBPILLAR_MARKETS'),
+    ...parseStringArrayFromConst(citySource, 'COUNTY_SUBPILLAR_MARKETS'),
+  ]
+  const contextNames = ['countyContext', 'criminalCourtContext', 'injuryContext', 'corridorContext']
+  const contextValues = new Map(contextNames.map((name) => [name, []]))
+  const contextPattern = /\n\s{4}(countyContext|criminalCourtContext|injuryContext|corridorContext): '([^']+)'/g
+
+  for (const match of citySource.matchAll(contextPattern)) {
+    contextValues.get(match[1])?.push(match[2])
+  }
+
+  for (const contextName of contextNames) {
+    const values = contextValues.get(contextName) ?? []
+    if (values.length !== marketSlugs.length) {
+      errors.push(
+        `${contextName} should provide one local fact for every market. Expected ${marketSlugs.length}; received ${values.length}.`,
+      )
+      continue
+    }
+
+    if (new Set(values).size !== values.length) {
+      errors.push(`${contextName} contains duplicated market copy. Each market needs its own local fact.`)
+    }
+  }
+
+  const profiles = marketSlugs.map((slug, index) => ({
+    slug,
+    text: contextNames.map((name) => contextValues.get(name)?.[index] ?? '').join(' '),
+  }))
+  let closestPair = { left: '', right: '', similarity: 0 }
+
+  for (let leftIndex = 0; leftIndex < profiles.length; leftIndex += 1) {
+    for (let rightIndex = leftIndex + 1; rightIndex < profiles.length; rightIndex += 1) {
+      const similarity = getJaccardSimilarity(
+        toWordShingles(profiles[leftIndex].text),
+        toWordShingles(profiles[rightIndex].text),
+      )
+      if (similarity > closestPair.similarity) {
+        closestPair = {
+          left: profiles[leftIndex].slug,
+          right: profiles[rightIndex].slug,
+          similarity,
+        }
+      }
+    }
+  }
+
+  if (closestPair.similarity > 0.42) {
+    errors.push(
+      `Market fact bundles are too similar: ${closestPair.left} and ${closestPair.right} share ${(closestPair.similarity * 100).toFixed(1)}% normalized bigram overlap.`,
+    )
+  }
+
+  const artificialCopyPatterns = [
+    /\bstrategy\b/i,
+    /\bstrategic\b/i,
+    /\bposture\b/i,
+    /\bleverage\b/i,
+    /\bpressure\b/i,
+    /\bexecution\b/i,
+    /\bframework\b/i,
+    /\bframing\b/i,
+    /\barchitecture\b/i,
+  ]
+
+  for (const [file, source] of [
+    ['lib/content/city-subpillars.ts', citySource],
+    ['lib/content/location-market-page-specs.ts', overviewSource],
+  ]) {
+    for (const pattern of artificialCopyPatterns) {
+      const match = source.match(pattern)
+      if (match && typeof match.index === 'number') {
+        errors.push(`Artificial marketing phrase in ${file}:${toLineNumber(source, match.index)} (${pattern}).`)
+      }
+    }
+  }
+
+  const serviceLinksSource = overviewSource.slice(
+    overviewSource.indexOf('function buildServiceLinks'),
+    overviewSource.indexOf('function buildRelatedLocationLinks'),
+  )
+  if (/href:\s*['\"]\/resources\//.test(serviceLinksSource)) {
+    errors.push('Location serviceLinks must not include resource guides that structured data will describe as services.')
+  }
+}
+
 function validateServiceTemplateContract() {
   const source = readFile('app/components/ServiceDetailPage.tsx')
   const requiredSnippets = [
@@ -143,6 +262,31 @@ function validateLegalSafetyCopy() {
   }
 }
 
+function validateAudienceFacingCopy() {
+  const bannedPatterns = [
+    /rankings and conversions/i,
+    /\bsearch intent\b/i,
+    /conversion to counsel/i,
+    /legal-safe framing/i,
+    /ongoing qa governance/i,
+    /content governance/i,
+    /conversion architecture/i,
+  ]
+  const sourceFiles = [...collectSourceFiles('app'), ...collectSourceFiles('lib/content')]
+
+  for (const file of sourceFiles) {
+    const source = readFile(file)
+    for (const pattern of bannedPatterns) {
+      const match = source.match(pattern)
+      if (!match || typeof match.index !== 'number') {
+        continue
+      }
+      const lineNumber = toLineNumber(source, match.index)
+      errors.push(`Audience-facing SEO/production language in ${file}:${lineNumber} (${match[0]}).`)
+    }
+  }
+}
+
 function validateTopPageStructure() {
   const pageRequirements = [
     {
@@ -159,7 +303,7 @@ function validateTopPageStructure() {
     },
     {
       file: 'app/contact/page.tsx',
-      snippets: ['ContactForm', 'Fastest Ways to Reach the Firm'],
+      snippets: ['ContactForm', 'What Happens Next'],
     },
   ]
 
@@ -174,8 +318,10 @@ function validateTopPageStructure() {
 }
 
 validateMarketTemplateContracts()
+validateMarketCopyQuality()
 validateServiceTemplateContract()
 validateLegalSafetyCopy()
+validateAudienceFacingCopy()
 validateTopPageStructure()
 
 if (warnings.length > 0) {

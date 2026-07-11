@@ -6,7 +6,7 @@ const errors = []
 const warnings = []
 
 const BASE_URL = 'https://kernallaw.com'
-const NOINDEX_ROUTES = new Set(['/privacy', '/terms', '/success', '/locations'])
+const NOINDEX_ROUTES = new Set(['/privacy', '/terms', '/success'])
 const OG_UNIQUENESS_ROUTES = ['/practice', '/attorney', '/contact', '/case-results', '/client-reviews', '/fees']
 const MARKET_SERVICE_REGEX = /^\/([^/]+)\/(criminal-defense|personal-injury)$/
 
@@ -28,6 +28,16 @@ function parseLocUrls(sitemapXml) {
   return Array.from(sitemapXml.matchAll(/<loc>(.*?)<\/loc>/g), (match) => match[1])
 }
 
+function parseSitemapEntries(sitemapXml) {
+  return Array.from(sitemapXml.matchAll(/<url>([\s\S]*?)<\/url>/g), (match) => {
+    const block = match[1]
+    return {
+      loc: block.match(/<loc>(.*?)<\/loc>/)?.[1] ?? '',
+      lastmod: block.match(/<lastmod>(.*?)<\/lastmod>/)?.[1] ?? '',
+    }
+  })
+}
+
 function normalizeRoute(route) {
   if (!route || route === '/') {
     return '/'
@@ -45,6 +55,15 @@ function routeToHtmlPath(route) {
 function extractMeta(html, pattern) {
   const match = html.match(pattern)
   return match?.[1] ?? ''
+}
+
+function decodeHtmlEntities(value) {
+  return value
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#x27;|&#39;/g, "'")
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
 }
 
 function normalizeCanonical(value) {
@@ -153,6 +172,7 @@ function validateSitemapIntegrity() {
 
   const sitemapXml = readFile(sitemapPath)
   const locUrls = parseLocUrls(sitemapXml)
+  const sitemapEntries = parseSitemapEntries(sitemapXml)
 
   if (locUrls.length === 0) {
     errors.push('Rendered sitemap has zero URLs.')
@@ -166,6 +186,16 @@ function validateSitemapIntegrity() {
   }
 
   const routes = [...uniqueUrls].map((url) => normalizeRoute(new URL(url).pathname))
+
+  const missingLastmod = sitemapEntries.filter((entry) => !entry.lastmod).map((entry) => entry.loc)
+  if (missingLastmod.length > 0) {
+    errors.push(`Sitemap entries missing lastmod: ${missingLastmod.join(', ')}`)
+  }
+
+  const distinctLastmodValues = new Set(sitemapEntries.map((entry) => entry.lastmod).filter(Boolean))
+  if (sitemapEntries.length > 1 && distinctLastmodValues.size < 3) {
+    errors.push('Sitemap lastmod values should reflect editorial update groups, not one deployment timestamp.')
+  }
 
   for (const route of routes) {
     if (NOINDEX_ROUTES.has(route)) {
@@ -193,6 +223,32 @@ function validateSitemapIntegrity() {
     const robots = extractMeta(html, /<meta[^>]+name="robots"[^>]+content="([^"]+)"/i)
     if (/noindex/i.test(robots)) {
       errors.push(`Sitemap route unexpectedly rendered as noindex: ${route} (${robots})`)
+    }
+
+    const title = decodeHtmlEntities(extractMeta(html, /<title>(.*?)<\/title>/i))
+    const description = decodeHtmlEntities(
+      extractMeta(html, /<meta[^>]+name="description"[^>]+content="([^"]+)"/i),
+    )
+    const ogImage = extractMeta(html, /<meta[^>]+property="og:image"[^>]+content="([^"]+)"/i)
+
+    if (!title) {
+      errors.push(`Missing title in rendered HTML for ${route}`)
+    } else if (title.length > 65) {
+      errors.push(`Rendered title is longer than 65 characters (${title.length}) for ${route}: ${title}`)
+    } else if (title.length > 60) {
+      warnings.push(`Rendered title is slightly long (${title.length}) for ${route}: ${title}`)
+    }
+
+    if (!description) {
+      errors.push(`Missing meta description in rendered HTML for ${route}`)
+    } else if (description.length > 170) {
+      errors.push(`Rendered description is longer than 170 characters (${description.length}) for ${route}`)
+    } else if (description.length > 160) {
+      warnings.push(`Rendered description is slightly long (${description.length}) for ${route}`)
+    }
+
+    if (!ogImage) {
+      errors.push(`Missing og:image in rendered HTML for ${route}`)
     }
   }
 

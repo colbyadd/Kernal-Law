@@ -28,6 +28,10 @@ export function ContactFab() {
         }
     }, [isHome])
 
+    if (pathname === '/contact') {
+        return null
+    }
+
     const isVisible = !isHome || homeScrolled
 
     return (

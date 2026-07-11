@@ -4,7 +4,7 @@ import { ServiceDetailPage } from '../../components/ServiceDetailPage'
 export const metadata: Metadata = {
   title: 'Oklahoma Expungement Lawyer',
   description:
-    'Oklahoma expungement representation for eligible records, including case eligibility review, filing strategy, and court process guidance.',
+    'Oklahoma expungement representation for eligible records, including eligibility review, petition preparation, notice, and court hearings.',
   alternates: { canonical: '/criminal-defense/expungement' },
   openGraph: {
     title: 'Oklahoma Expungement Services | Kernal & Associates',
@@ -33,7 +33,7 @@ const expungementFaqs = [
   {
     question: 'Can I file expungement myself?',
     answer:
-      'You can, but filing errors and incomplete documentation can cause delay or denial. Counsel helps ensure statutory alignment and stronger hearing posture.',
+      'You can. However, an incorrect eligibility analysis, missing record, or incomplete notice may cause delay or denial. Counsel can review the statute, prepare the filing, and address objections or a hearing if one occurs.',
   },
   {
     question: 'Will expungement remove everything from every database?',
@@ -51,14 +51,14 @@ export default function ExpungementPage() {
   return (
     <ServiceDetailPage
       heroTitle="Expungement Services"
-      heroSubtitle="Record-sealing strategy for eligible Oklahoma cases."
+      heroSubtitle="Eligibility review and court filings to seal qualifying Oklahoma records."
       heroVariant="criminal"
-      introTitle="A clean record can unlock major opportunities."
+      introTitle="An old case can continue to appear on background checks."
       introParagraphs={[
-        'Even old cases can continue to affect hiring, housing, and licensing decisions. Expungement can reduce that burden when legal eligibility exists.',
-        'Kernal & Associates handles expungement matters through careful eligibility screening, complete filing preparation, and courtroom representation where required.',
+        'Even a dismissed case can affect hiring, housing, or licensing when it remains publicly visible. Oklahoma law allows some records to be sealed, but eligibility depends on the charge, outcome, later history, and any required waiting period.',
+        'Kernal & Associates reviews the full record before filing. When a case qualifies, the firm prepares the petition and notices, responds to objections, appears at a required hearing, and follows the order through the next steps.',
       ]}
-      focusTitle="How We Approach Expungement"
+      focusTitle="What an Expungement Review Covers"
       focusItems={[
         {
           title: 'Eligibility and Risk Screening',
@@ -68,18 +68,18 @@ export default function ExpungementPage() {
             'Case-type and disposition review',
             'Waiting-period analysis',
             'Disqualifier identification',
-            'Best-path filing strategy',
+            'Available statutory path',
           ],
         },
         {
           title: 'Document and Filing Precision',
           description:
-            'Complete, accurate filings reduce delay and improve hearing posture.',
+            'A complete petition and correct notice help avoid unnecessary delay in the court process.',
           bullets: [
             'Record collection and verification',
             'Petition drafting and support',
             'Agency notice coordination',
-            'Court submission quality control',
+            'Final review before filing',
           ],
         },
         {
@@ -90,39 +90,39 @@ export default function ExpungementPage() {
             'Court hearing representation',
             'Order-entry tracking',
             'Post-order verification planning',
-            'Future record-strategy guidance',
+            'Guidance on future record questions',
           ],
         },
       ]}
-      processTitle="Expungement Process"
-      processSubtitle="Structured filing and court strategy improve speed and reliability."
+      processTitle="How an Oklahoma Expungement Proceeds"
+      processSubtitle="The process starts with eligibility, then moves through filing, notice, any hearing, and the final order."
       processSteps={[
         {
           step: '01',
           title: 'Case Record Review',
           description:
-            'We evaluate complete history to identify eligible pathways and likely issues.',
+            'We review the charge, outcome, dates, and later history to identify whether the record appears eligible.',
         },
         {
           step: '02',
           title: 'Petition and Filing Preparation',
           description:
-            'We prepare statutory-compliant filings and supporting documentation.',
+            'We prepare the petition, supporting information, and required court filing.',
         },
         {
           step: '03',
           title: 'Notice and Court Processing',
           description:
-            'Agency notice, hearing preparation, and court scheduling are managed end-to-end.',
+            'We provide required notice, monitor responses, and prepare for a hearing if the court sets one.',
         },
         {
           step: '04',
           title: 'Order and Follow-Through',
           description:
-            'We track order completion and provide guidance on post-expungement best practices.',
+            'We track entry of the order and explain the practical follow-up after the court grants relief.',
         },
       ]}
-      relatedTitle="Related Defense and Record Strategy Pages"
+      relatedTitle="Related Criminal Defense Pages"
       relatedSubtitle="Review connected pages for ongoing criminal defense and compliance needs."
       relatedLinks={[
         {
@@ -146,15 +146,15 @@ export default function ExpungementPage() {
         {
           href: '/contact',
           title: 'Request Eligibility Review',
-          description: 'Get a case-specific expungement screening and filing strategy.',
+          description: 'Ask for a review of the record and the possible statutory path.',
           ctaName: 'expungement_related_contact',
         },
       ]}
       faqSubtitle="Answers to common Oklahoma expungement questions."
       faqs={expungementFaqs}
       practiceArea="expungement"
-      ctaTitle="Find Out if Your Record Is Eligible"
-      ctaDescription="A structured eligibility review is the fastest way to identify realistic expungement options."
+      ctaTitle="Find Out Whether Your Record May Qualify"
+      ctaDescription="Eligibility depends on the full court record, final outcome, dates, and later history."
       ctaLabel="Start Expungement Review"
       ctaName="expungement_bottom_cta"
     />

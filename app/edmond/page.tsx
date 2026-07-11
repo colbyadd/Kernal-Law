@@ -1,15 +1,14 @@
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 import { LocationServicePage } from '../components/LocationServicePage'
 
 export const metadata: Metadata = {
-  title: 'Edmond Criminal Defense and Personal Injury Attorney',
+  title: 'Edmond Criminal & Injury Lawyer',
   description:
-    'Kernal & Associates serves Edmond, Oklahoma with criminal defense and personal injury representation across Oklahoma County and metro courts.',
+    'Criminal defense and personal injury help for Edmond matters in north Oklahoma County and along I-35, Broadway Extension, and Memorial.',
   alternates: { canonical: '/edmond' },
   openGraph: {
-    title: 'Edmond Criminal Defense and Injury Attorney | Kernal & Associates',
-    description:
-      'Local legal representation for Edmond residents facing criminal charges and serious injury claims.',
+    title: 'Edmond Criminal & Injury Lawyer',
+    description: 'Help with north Oklahoma County charges and serious Edmond-area injury claims.',
     url: 'https://kernallaw.com/edmond',
   },
 }
@@ -19,105 +18,131 @@ export default function EdmondPage() {
     <LocationServicePage
       canonicalPath="/edmond"
       locationName="Edmond"
-      subtitle="Strategic criminal defense and injury representation for Edmond and north Oklahoma County."
-      introTitle="High-stakes legal issues in Edmond need immediate strategy."
+      subtitle="Legal help for north Oklahoma County criminal filings and serious losses on Edmond-area routes."
+      introTitle="Test an allegation or claim against its records"
       introParagraphs={[
-        'Edmond cases often involve fast-moving criminal and insurance processes where early legal mistakes can shape long-term outcomes. Prompt counsel helps stabilize both courtroom and claim strategy.',
-        'Kernal & Associates represents Edmond clients with trial-ready criminal defense and evidence-driven injury advocacy focused on full-value outcomes.',
+        'An allegation-heavy criminal filing can read as though every disputed fact has already been decided. It has not. The charging paper should be compared with reports, recordings, witness accounts, and any documents that place the event in time.',
+        'For an Edmond injury matter, early medical records and the way a crash was documented can shape later insurance questions. Preserve the original photographs, report information, care instructions, bills, and wage material instead of relying on a later summary.',
+        'I-35, Broadway Extension, and Memorial carry different traffic patterns, but the same basic task applies: identify who created each record and obtain a complete copy while the event is still recent.',
       ]}
-      countyFocus="Oklahoma County and North Metro Court Strategy"
+      countyFocus="North Oklahoma County facts, files, and roadways"
       localHighlights={[
-        'Office consultations available at 1332 SW 89th Street in south Oklahoma City, with phone and text intake for urgent matters.',
-        'Rapid legal response for arrest, warrant, and bond-related risk events.',
-        'Serious injury claim representation for major roadway and multi-vehicle collisions.',
-        'Discipline-driven defense strategy for DUI, violent, and allegation-heavy cases.',
-        'Long-horizon valuation approach for catastrophic and high-loss injury claims.',
-        'Coordinated planning where licensing, employment, and record consequences overlap.',
-        'Direct attorney-guided case sequencing from intake through trial posture.',
+        'A filed charge should be checked against the underlying reports and recordings.',
+        'Release papers can contain instructions that apply outside the courtroom.',
+        'Witness accounts are easier to evaluate when time and location are documented.',
+        'I-35 incidents may involve interstate traffic and commercial vehicles.',
+        'Broadway Extension records can help establish lane, direction, and travel sequence.',
+        'Memorial corridor crashes may involve several vehicles or insurance policies.',
+        'Serious-loss claims require complete medical and employment documentation.',
+        'Do not discard a notice merely because the same information appears elsewhere.',
       ]}
       serviceLinks={[
         {
           href: '/edmond/criminal-defense',
           title: 'Edmond Criminal Defense',
-          description: 'Local defense strategy for Edmond criminal allegations.',
+          description: 'Comparison of north Oklahoma County allegations with the available evidence.',
           ctaName: 'edmond_service_criminal_defense',
         },
         {
-          href: '/criminal-defense/sex-crimes',
-          title: 'Sex Crimes Defense',
-          description: 'Confidential defense for high-exposure allegation-driven cases.',
-          ctaName: 'edmond_service_sex_crimes',
+          href: '/criminal-defense/dui-dwi',
+          title: 'DUI / DWI Defense',
+          description: 'Review of the encounter, field testing, chemical testing, and court documents.',
+          ctaName: 'edmond_service_dui_dwi',
         },
         {
-          href: '/criminal-defense/theft-fraud',
-          title: 'Theft and Fraud Defense',
-          description: 'Intent-focused strategy for property and financial allegations.',
-          ctaName: 'edmond_service_theft_fraud',
+          href: '/criminal-defense/warrants',
+          title: 'Warrants Defense',
+          description: 'Checking warrant status and the court file before arranging an appearance.',
+          ctaName: 'edmond_service_warrants',
         },
         {
           href: '/edmond/personal-injury',
           title: 'Edmond Personal Injury',
-          description: 'Local claim strategy for serious injury and liability disputes.',
-          ctaName: 'edmond_service_injury',
+          description: 'Claims involving serious crashes, lasting harm, and north-metro travel.',
+          ctaName: 'edmond_service_personal_injury',
         },
         {
-          href: '/personal-injury/catastrophic-injury',
-          title: 'Catastrophic Injury Claims',
-          description: 'Long-term damages planning for life-changing injuries.',
-          ctaName: 'edmond_service_catastrophic',
+          href: '/personal-injury/car-accidents',
+          title: 'Car Accident Claims',
+          description: 'Documenting roadway events, treatment, time away from work, and vehicle loss.',
+          ctaName: 'edmond_service_car_accidents',
+        },
+        {
+          href: '/personal-injury/uninsured-motorist',
+          title: 'Uninsured Motorist Claims',
+          description: 'Reading policy terms and notices when the responsible driver lacks coverage.',
+          ctaName: 'edmond_service_uninsured_motorist',
+        },
+        {
+          href: '/criminal-defense/drug-charges',
+          title: 'Drug Charges Defense',
+          description: 'Checking how evidence was found, handled, tested, and attributed.',
+          ctaName: 'edmond_service_drug_charges',
         },
         {
           href: '/personal-injury/truck-accidents',
-          title: 'Truck Accident Litigation',
-          description: 'Commercial collision claims with layered liability strategy.',
-          ctaName: 'edmond_service_truck',
+          title: 'Truck Accident Claims',
+          description: 'Preserving commercial records that may not exist in an ordinary car claim.',
+          ctaName: 'edmond_service_truck_accidents',
         },
       ]}
       relatedLocationLinks={[
         {
-          href: '/oklahoma-city',
-          title: 'Oklahoma City',
-          description: 'Metro hub for broader Oklahoma County representation.',
-          ctaName: 'edmond_related_oklahoma_city',
+          href: '/oklahoma-city/criminal-defense',
+          title: 'Oklahoma City Criminal Defense',
+          description: 'County-wide criminal information for matters extending beyond north OKC.',
+          ctaName: 'edmond_related_nearby_a',
         },
         {
-          href: '/midwest-city',
-          title: 'Midwest City',
-          description: 'Nearby local page for east metro court and injury issues.',
-          ctaName: 'edmond_related_midwest_city',
+          href: '/stillwater/personal-injury',
+          title: 'Stillwater Personal Injury',
+          description: 'Injury information for events on connected routes north of Edmond.',
+          ctaName: 'edmond_related_nearby_b',
         },
         {
-          href: '/resources/what-to-do-after-car-accident-oklahoma',
-          title: 'Post-Accident Guide',
-          description: 'Claim-protection checklist after serious collisions.',
-          ctaName: 'edmond_related_accident_guide',
+          href: '/locations',
+          title: 'Oklahoma Service Areas',
+          description: 'Choose a city or county page that matches the matter location.',
+          ctaName: 'edmond_related_locations_hub',
+        },
+        {
+          href: '/resources',
+          title: 'Court and Claim Resources',
+          description: 'Read focused guides before gathering documents for a consultation.',
+          ctaName: 'edmond_related_resources_hub',
+        },
+        {
+          href: '/resources/oklahoma-bond-and-release-conditions',
+          title: 'Bond and Release Conditions',
+          description: 'A guide to the instructions that can follow release from custody.',
+          ctaName: 'edmond_related_local_guide',
         },
       ]}
-      faqSubtitle="Common legal questions we hear from Edmond clients and families."
+      faqSubtitle="Edmond questions about allegations, serious injuries, and record collection."
       faqs={[
         {
-          question: 'How soon should I get legal help after a DUI or felony arrest in Edmond?',
+          question: 'Is the charging paper the complete criminal record?',
           answer:
-            'As soon as possible. Early legal action helps protect procedural rights, preserve evidence, and reduce avoidable case damage.',
+            'No. It identifies the filed allegation, but reports, recordings, testing, and witness information may add, contradict, or clarify facts.',
         },
         {
-          question: 'Do you handle high-value injury claims in Edmond?',
+          question: 'What should I save after a serious north-metro crash?',
           answer:
-            'Yes. We handle serious injury matters, including catastrophic losses and truck collisions, with a litigation-ready damages strategy.',
+            'Keep original photographs, report details, medical instructions, bills, wage documents, vehicle records, and every insurance letter or email.',
         },
         {
-          question: 'Will I work directly with an attorney on my Edmond case?',
+          question: 'Why does the exact Edmond roadway matter?',
           answer:
-            'Yes. Your strategy is attorney-led, with direct guidance on hearings, deadlines, insurer communications, and evidence decisions.',
+            'Road, direction, lane, timing, and responding agency can point to different witnesses, recordings, traffic material, and reports.',
         },
         {
-          question: 'Can you represent me if my matter spans multiple counties?',
+          question: 'What if I do not have all the records yet?',
           answer:
-            'Yes. We regularly coordinate strategy for cases that involve Oklahoma County plus neighboring jurisdictions.',
+            'Bring what you have and a list of missing items. The source of each missing record can be identified during the first review.',
         },
       ]}
-      ctaTitle="Need Representation in Edmond?"
-      ctaDescription="Get immediate case guidance on criminal exposure, injury recovery, and next legal steps."
+      ctaTitle="Review an Edmond Charge or Injury File"
+      ctaDescription="Bring the documents you have and a list of records that have not arrived."
       ctaName="edmond"
     />
   )

@@ -2,9 +2,9 @@ import { Metadata } from 'next'
 import { ResourceGuidePage } from '../../components/ResourceGuidePage'
 
 export const metadata: Metadata = {
-  title: 'What to Do After a Car Accident in Oklahoma',
+  title: 'What to Do: Oklahoma Car Accident',
   description:
-    'A practical Oklahoma crash checklist covering medical steps, evidence preservation, insurer communication, and claim protection strategy.',
+    'A practical Oklahoma crash checklist covering medical care, scene evidence, collision reports, insurance communication, and expense records.',
   alternates: { canonical: '/resources/what-to-do-after-car-accident-oklahoma' },
   openGraph: {
     title: 'What to Do After a Car Accident in Oklahoma | Legal Guide',
@@ -19,16 +19,28 @@ export default function AfterCarAccidentGuidePage() {
     <ResourceGuidePage
       canonicalPath="/resources/what-to-do-after-car-accident-oklahoma"
       title="What to Do After a Car Accident in Oklahoma"
-      subtitle="A staged response checklist for protecting health, evidence, and claim value from day one."
+      subtitle="A practical checklist for medical care, evidence, and insurance calls after a crash."
       intro={[
-        'Injury claims are often won or weakened in the first days after a crash. Early insurer contact, treatment gaps, and missing evidence can reduce recoverable value before full damages are understood.',
-        'This guide gives a practical timeline for the first 24 hours, first week, and first month after an Oklahoma collision. It focuses on decisions that materially affect liability position and compensation leverage.',
-        'If your crash involves severe injuries, uninsured drivers, or commercial vehicles, use the related guides linked below for deeper strategy.',
+        'After a crash, deal with medical needs first. Then preserve the photographs, names, reports, bills, and insurance communications that may be difficult to replace later.',
+        'This guide covers the first 24 hours, first week, and first month. Serious injuries, disputed fault, uninsured drivers, and commercial vehicles may require additional steps.',
       ]}
       authorName="Kernal Law Editorial Team"
       reviewedBy="Todd Kernal"
       reviewedTitle="Founding Attorney"
-      lastUpdated="2026-02-18"
+      datePublished="2026-02-18"
+      lastUpdated="2026-07-11"
+      officialSources={[
+        {
+          label: 'Service Oklahoma: Collision Report Forms',
+          href: 'https://oklahoma.gov/service/all-pages/form.html',
+          description: 'Official forms for requesting an Oklahoma collision report and related motor-vehicle records.',
+        },
+        {
+          label: 'Oklahoma Insurance Department: Automobile Insurance',
+          href: 'https://www.oid.ok.gov/consumers/insurance-basics/choosing-your-automobile-insurance-policy/',
+          description: 'State consumer information about automobile policies, coverages, claims, and declarations pages.',
+        },
+      ]}
       immediateActionsTitle="Immediate Crash Response Steps"
       immediateActions={[
         {
@@ -53,7 +65,7 @@ export default function AfterCarAccidentGuidePage() {
           label: 'Step 4',
           title: 'Control Insurance Communications',
           detail:
-            'Report the crash, but avoid detailed recorded statements on fault, injury duration, or treatment prognosis before legal strategy review.',
+            'Report the crash and provide required information, but do not guess about fault, recovery time, or future treatment.',
         },
         {
           label: 'Step 5',
@@ -65,18 +77,18 @@ export default function AfterCarAccidentGuidePage() {
           label: 'Step 6',
           title: 'Escalate Early for Serious or Disputed Claims',
           detail:
-            'High-severity injuries, fault disputes, or low early offers usually require attorney-led evidence and negotiation strategy.',
+            'Consider legal review when injuries are serious, fault is disputed, several insurers are involved, or a release is offered early.',
         },
       ]}
       takeaways={[
         'Early medical records are often central to causation and valuation.',
         'Scene evidence degrades quickly without immediate preservation.',
-        'Recorded insurer statements can lock in harmful claim framing.',
+        'A recorded statement can be compared with later medical records and testimony.',
         'Treatment gaps are frequently used to reduce settlement value.',
         'Do not settle before future losses are reasonably documented.',
         'Comparative-fault disputes are evidence-driven, not assumption-driven.',
-        'Commercial and uninsured-driver crashes require specialized strategy.',
-        'A structured first-month plan improves negotiation leverage.',
+        'Commercial and uninsured-driver crashes can involve additional records and policies.',
+        'Keep medical, wage, and out-of-pocket records together from the beginning.',
       ]}
       sections={[
         {
@@ -93,7 +105,7 @@ export default function AfterCarAccidentGuidePage() {
           ],
         },
         {
-          title: 'First Week: Treatment Consistency and Claim Framing',
+          title: 'First Week: Follow-Up Care and Records',
           paragraphs: [
             'Week one is where insurers begin evaluating exposure. Consistent treatment and complete documentation help prevent early under-valuation narratives.',
             'If providers change your treatment plan, maintain written records so progression is clear and causation arguments remain strong.',
@@ -106,9 +118,9 @@ export default function AfterCarAccidentGuidePage() {
           ],
         },
         {
-          title: 'How to Handle Insurance Calls Strategically',
+          title: 'How to Handle Insurance Calls',
           paragraphs: [
-            'Adjusters are trained to gather statements that narrow liability and damages. You can cooperate with claim process requirements while limiting speculative or premature detail.',
+            'An adjuster may ask for a recorded statement, medical authorization, or early settlement. Understand what is being requested before agreeing.',
             'Stick to verified facts, avoid fault admissions, and do not estimate long-term injury impact before clinical progression is known.',
           ],
           bullets: [
@@ -119,10 +131,10 @@ export default function AfterCarAccidentGuidePage() {
           ],
         },
         {
-          title: 'Damages Model: What Should Be Documented',
+          title: 'Losses and Expenses to Document',
           paragraphs: [
             'Comprehensive damages include more than immediate emergency bills. Claims may involve future treatment costs, lost earnings, reduced earning capacity, and quality-of-life impact.',
-            'A defensible damages model is built through organized records over time, not assembled at the end of treatment.',
+            'Keep these records as they are created instead of trying to reconstruct them at the end of treatment.',
           ],
           bullets: [
             'Past and projected medical expenses',
@@ -135,7 +147,7 @@ export default function AfterCarAccidentGuidePage() {
           title: 'Comparative Fault and Liability Disputes',
           paragraphs: [
             'Many Oklahoma claims involve shared-fault arguments. Liability outcomes often turn on objective evidence such as scene geometry, witness consistency, vehicle data, and timing reconstruction.',
-            'Do not assume a police report or informal account fully resolves fault. Liability strategy should be built from complete evidence review.',
+            'A police report can be important, but it may not include every witness, recording, or piece of physical evidence.',
           ],
           bullets: [
             'Preserve dashcam and nearby surveillance sources',
@@ -145,10 +157,10 @@ export default function AfterCarAccidentGuidePage() {
           ],
         },
         {
-          title: 'When to Escalate to Legal Representation',
+          title: 'When to Speak With a Lawyer',
           paragraphs: [
-            'Escalation is usually needed when liability is disputed, injuries are significant, multiple insurers are involved, or settlement pressure begins before damages stabilize.',
-            'Early legal strategy can materially improve evidence preservation, demand framing, and negotiation posture before claim narratives harden against you.',
+            'Legal review may be useful when fault is disputed, injuries are significant, several insurers are involved, or an insurer asks for a broad release before treatment is complete.',
+            'A lawyer can identify records to preserve, review available coverage, and explain the effect of a proposed settlement or release.',
           ],
           bullets: [
             'Serious or long-term injury exposure',
@@ -163,7 +175,7 @@ export default function AfterCarAccidentGuidePage() {
         {
           question: 'Should I give a recorded statement right away?',
           answer:
-            'You can report the crash, but detailed recorded statements should usually wait until claim strategy is clear.',
+            'Report the crash promptly, but ask what information is required and understand the purpose of any recorded statement before agreeing.',
         },
         {
           question: 'Do I need medical care if symptoms seem minor?',
@@ -183,7 +195,7 @@ export default function AfterCarAccidentGuidePage() {
         {
           question: 'What if the other driver has little or no insurance?',
           answer:
-            'You may still have recovery options through UM/UIM coverage. Strategy should coordinate liability and policy analysis early.',
+            'Your own policy may include uninsured or underinsured motorist coverage. Review the declarations page and policy terms before signing a release.',
         },
         {
           question: 'When should I involve an injury lawyer?',
@@ -192,12 +204,12 @@ export default function AfterCarAccidentGuidePage() {
         },
       ]}
       relatedTitle="Related Injury and Resource Pages"
-      relatedSubtitle="Move from immediate crash response to full claim strategy with these pages."
+      relatedSubtitle="Use these pages for the coverage or vehicle issues involved in your crash."
       relatedLinks={[
         {
           href: '/personal-injury/car-accidents',
           title: 'Car Accident Claims',
-          description: 'Case strategy for disputed fault, medical damages, and insurer pressure.',
+          description: 'Information about disputed fault, medical losses, and insurance claims.',
           ctaName: 'guide_after_accident_related_car_claims',
         },
         {
@@ -209,13 +221,13 @@ export default function AfterCarAccidentGuidePage() {
         {
           href: '/resources/oklahoma-uninsured-motorist-claim-guide',
           title: 'Uninsured Motorist Claim Guide',
-          description: 'Policy and damages strategy where at-fault coverage is insufficient.',
+          description: 'Coverage and claim issues when the at-fault driver has too little insurance.',
           ctaName: 'guide_after_accident_related_um_guide',
         },
         {
           href: '/personal-injury/truck-accidents',
           title: 'Truck Accident Litigation',
-          description: 'Commercial carrier strategy for severe injury and disputed liability.',
+          description: 'Commercial-carrier records and liability issues after a serious truck crash.',
           ctaName: 'guide_after_accident_related_truck',
         },
         {
@@ -232,7 +244,7 @@ export default function AfterCarAccidentGuidePage() {
         },
       ]}
       ctaTitle="Protect Claim Value Before You Settle"
-      ctaDescription="Early evidence control and communication strategy can materially improve outcome quality."
+      ctaDescription="Have the available reports, insurance information, and medical records reviewed before signing a release."
       ctaLabel="Start Injury Case Review"
       ctaName="guide_after_accident_bottom_cta"
     />

@@ -75,68 +75,50 @@ export type MarketSlug = (typeof ALL_STANDARD_SUBPILLAR_MARKETS)[number]
 const CRIMINAL_TIER_CONTEXT: Record<
   MarketTier,
   {
-    docketProfile: string
-    pressurePattern: string
-    hearingPosture: string
+    calendarNote: string
+    firstReview: string
+    hearingNote: string
   }
 > = {
   'core-city': {
-    docketProfile:
-      'metro-core filing volatility, specialty-docket turnover, and multi-agency allegation reporting',
-    pressurePattern:
-      'fast prosecutor screening cycles, compact hearing calendars, and early narrative lock-in risk',
-    hearingPosture:
-      'high-volume urban calendars where preparation sequence and evidentiary framing must be trial-ready early',
+    calendarNote: 'busy metro dockets and short intervals between early court settings',
+    firstReview: 'release terms, charging papers, available video, dispatch records, and any testing',
+    hearingNote: 'urban court calendars that reward early preparation and a complete evidence review',
   },
   'regional-city': {
-    docketProfile:
-      'regional-city filings with county-seat scheduling constraints, travel-linked witness issues, and tighter reset windows',
-    pressurePattern:
-      'mixed local and highway enforcement patterns that can shift allegation posture between hearings',
-    hearingPosture:
-      'regional calendars where delay strategy is limited, so motion sequencing and mitigation timing have to be deliberate',
+    calendarNote: 'county-seat scheduling, travel for witnesses, and limited time between settings',
+    firstReview: 'the citation or charging papers, release terms, reports, recordings, and witness information',
+    hearingNote: 'regional court calendars where motions and supporting records should be ready on time',
   },
   county: {
-    docketProfile:
-      'county-wide venue management with district-calendar spacing, township officer variance, and broader geography',
-    pressurePattern:
-      'cross-jurisdiction reporting differences that can distort timelines unless records are reconciled early',
-    hearingPosture:
-      'county district settings where venue posture, officer credibility, and timeline precision drive negotiation leverage',
+    calendarNote: 'district-court settings, longer travel distances, and records from different agencies',
+    firstReview: 'the filed charge, release terms, agency reports, recordings, testing, and the event timeline',
+    hearingNote: 'county settings where accurate dates, complete records, and witness reliability matter',
   },
 }
 
 const INJURY_TIER_CONTEXT: Record<
   MarketTier,
   {
-    claimProfile: string
-    documentationRisk: string
-    valuationPressure: string
+    collisionNote: string
+    recordConcern: string
+    insurerNote: string
   }
 > = {
   'core-city': {
-    claimProfile:
-      'urban intersection collisions, commercial-fleet involvement, and multi-policy exposure in dense metro traffic',
-    documentationRisk:
-      'rapid treatment transitions and high-volume provider handoffs that can create chronology gaps',
-    valuationPressure:
-      'large-carrier negotiation pressure where early liability framing and damages proof must be litigation-capable',
+    collisionNote: 'urban intersections, commercial vehicles, and more than one available insurance policy',
+    recordConcern: 'treatment at several facilities or with several providers can leave gaps in the medical timeline',
+    insurerNote: 'larger insurers often ask for close proof of fault, treatment, lost income, and future needs',
   },
   'regional-city': {
-    claimProfile:
-      'regional-route crashes with mixed passenger, commercial, and agricultural traffic exposure',
-    documentationRisk:
-      'treatment-access lag and referral timing issues that can understate injury progression if not organized quickly',
-    valuationPressure:
-      'carrier discount pressure on regional claims that requires disciplined evidence packaging and escalation planning',
+    collisionNote: 'regional roads shared by passenger, commercial, and agricultural traffic',
+    recordConcern: 'travel for treatment and later referrals can leave the medical record looking incomplete',
+    insurerNote: 'insurers may dispute a claim when treatment, work loss, or the crash timeline is not well documented',
   },
   county: {
-    claimProfile:
-      'county-wide roadway incidents with long-distance travel patterns and layered venue considerations',
-    documentationRisk:
-      'transport-time, provider-distance, and county-line treatment movement that can fragment medical narratives',
-    valuationPressure:
-      'venue-sensitive mediation and litigation valuation where causation and future-loss proof must be explicit',
+    collisionNote: 'county roads, longer trips, and crashes that may involve several towns or jurisdictions',
+    recordConcern: 'ambulance transport and treatment across county lines can split records among several providers',
+    insurerNote: 'fault, medical cause, and future losses need clear records before meaningful settlement talks',
   },
 }
 
@@ -168,7 +150,7 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
     marketName: 'Oklahoma City',
     marketType: 'city',
     countyContext: 'Oklahoma County district court venues and metro injury claim settings',
-    criminalCourtContext: 'high-volume Oklahoma County criminal dockets with rapid bond, warrant, and allegation pressure',
+    criminalCourtContext: 'high-volume Oklahoma County criminal dockets with urgent bond, warrant, and charging issues',
     injuryContext: 'major metro collision and negligence claims across dense urban and interstate corridors',
     corridorContext: 'I-35, I-40, I-44, and Kilpatrick Turnpike high-volume crash corridors',
     hubLink: createHubLink(
@@ -180,12 +162,12 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
       createHubLink(
         '/edmond/criminal-defense',
         'Edmond Criminal Defense',
-        'North-metro defense strategy for overlapping Oklahoma County filings.',
+        'Criminal defense help for north-metro Oklahoma County filings.',
       ),
       createHubLink(
         '/moore/personal-injury',
         'Moore Personal Injury',
-        'South-metro injury strategy for connected commuter and interstate claims.',
+        'Injury claim information for south-metro commuter and interstate crashes.',
       ),
     ],
   },
@@ -202,12 +184,12 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
       createHubLink(
         '/moore/criminal-defense',
         'Moore Criminal Defense',
-        'Cleveland County and south-metro defense strategy for nearby cases.',
+        'Criminal defense help for nearby Cleveland County and south-metro cases.',
       ),
       createHubLink(
         '/oklahoma-city/personal-injury',
         'Oklahoma City Personal Injury',
-        'Metro injury strategy for higher-value negligence and transport-corridor claims.',
+        'Injury claim information for serious negligence and transport-corridor matters.',
       ),
     ],
   },
@@ -224,12 +206,12 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
       createHubLink(
         '/norman/criminal-defense',
         'Norman Criminal Defense',
-        'Cleveland County defense strategy for nearby Norman cases.',
+        'Criminal defense help for nearby Norman and Cleveland County cases.',
       ),
       createHubLink(
         '/oklahoma-city/personal-injury',
         'Oklahoma City Personal Injury',
-        'Metro injury strategy for larger-value negligence claims.',
+        'Injury claim information for serious metro negligence matters.',
       ),
     ],
   },
@@ -246,12 +228,12 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
       createHubLink(
         '/oklahoma-city/criminal-defense',
         'Oklahoma City Criminal Defense',
-        'County-wide defense strategy for overlapping metro matters.',
+        'Criminal defense help for Oklahoma County and overlapping metro matters.',
       ),
       createHubLink(
         '/stillwater/personal-injury',
         'Stillwater Personal Injury',
-        'Regional northbound claim strategy for severe injury matters.',
+        'Injury claim information for serious losses on northbound routes.',
       ),
     ],
   },
@@ -277,7 +259,7 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
       createHubLink(
         '/shawnee/personal-injury',
         'Shawnee Personal Injury',
-        'Regional eastbound injury claim strategy.',
+        'Injury claim information for crashes on eastbound regional routes.',
       ),
     ],
   },
@@ -298,12 +280,12 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
       createHubLink(
         '/midwest-city/criminal-defense',
         'Midwest City Criminal Defense',
-        'East metro defense strategy for neighboring court activity.',
+        'Criminal defense help for neighboring east-metro court matters.',
       ),
       createHubLink(
         '/choctaw/personal-injury',
         'Choctaw Personal Injury',
-        'Nearby injury strategy for eastern Oklahoma County routes.',
+        'Injury claim information for eastern Oklahoma County routes.',
       ),
     ],
   },
@@ -320,12 +302,12 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
       createHubLink(
         '/el-reno/criminal-defense',
         'El Reno Criminal Defense',
-        'Canadian County defense strategy for western-county exposure.',
+        'Criminal defense help for western Canadian County matters.',
       ),
       createHubLink(
         '/mustang/personal-injury',
         'Mustang Personal Injury',
-        'Nearby west-south metro injury claim strategy.',
+        'Injury claim information for nearby west-south metro routes.',
       ),
     ],
   },
@@ -334,7 +316,7 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
     marketName: 'Mustang',
     marketType: 'city',
     countyContext: 'Canadian County and west-south metro legal venues',
-    criminalCourtContext: 'southwest-metro warrant and charge pressure with Canadian County implications',
+    criminalCourtContext: 'southwest-metro warrant and charge issues with Canadian County implications',
     injuryContext: 'high-severity collision and negligence claims affecting west-south metro families',
     corridorContext: 'SH-152 and Mustang-area commuter corridors',
     hubLink: createHubLink(
@@ -351,7 +333,7 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
       createHubLink(
         '/moore/personal-injury',
         'Moore Personal Injury',
-        'South metro injury strategy for connected commuter routes.',
+        'Injury claim information for connected south-metro commuter routes.',
       ),
     ],
   },
@@ -366,7 +348,7 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
     hubLink: locationsHubLink,
     nearbyLinks: [
       createHubLink('/payne-county/criminal-defense', 'Payne County Criminal Defense', 'County-level defense coverage for Payne County markets.'),
-      createHubLink('/guthrie/personal-injury', 'Guthrie Personal Injury', 'Nearby I-35 corridor injury strategy south of Stillwater.'),
+      createHubLink('/guthrie/personal-injury', 'Guthrie Personal Injury', 'Injury claim information for the I-35 corridor south of Stillwater.'),
     ],
   },
   shawnee: {
@@ -379,8 +361,8 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
     corridorContext: 'I-40 east and US-177 traffic corridors between Shawnee and metro OKC',
     hubLink: locationsHubLink,
     nearbyLinks: [
-      createHubLink('/pottawatomie-county/criminal-defense', 'Pottawatomie County Criminal Defense', 'County-level criminal strategy for Shawnee-area matters.'),
-      createHubLink('/midwest-city/personal-injury', 'Midwest City Personal Injury', 'East metro injury strategy for connected I-40 claims.'),
+      createHubLink('/pottawatomie-county/criminal-defense', 'Pottawatomie County Criminal Defense', 'Criminal defense help for Shawnee-area county matters.'),
+      createHubLink('/midwest-city/personal-injury', 'Midwest City Personal Injury', 'Injury claim information for connected east-metro I-40 crashes.'),
     ],
   },
   'el-reno': {
@@ -393,7 +375,7 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
     corridorContext: 'I-40 west and US-81 corridors with heavy commercial traffic activity',
     hubLink: locationsHubLink,
     nearbyLinks: [
-      createHubLink('/canadian-county/criminal-defense', 'Canadian County Criminal Defense', 'County-level defense framework for Canadian County filings.'),
+      createHubLink('/canadian-county/criminal-defense', 'Canadian County Criminal Defense', 'Criminal defense help for Canadian County filings.'),
       createHubLink('/yukon/personal-injury', 'Yukon Personal Injury', 'West metro injury page for adjacent high-volume routes.'),
     ],
   },
@@ -407,8 +389,8 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
     corridorContext: 'I-44 and US-81 traffic routes connecting Chickasha to metro markets',
     hubLink: locationsHubLink,
     nearbyLinks: [
-      createHubLink('/grady-county/criminal-defense', 'Grady County Criminal Defense', 'County-level defense strategy for Grady County courts.'),
-      createHubLink('/mustang/personal-injury', 'Mustang Personal Injury', 'Nearby injury strategy for west-south metro and Grady commuters.'),
+      createHubLink('/grady-county/criminal-defense', 'Grady County Criminal Defense', 'Criminal defense help for Grady County court matters.'),
+      createHubLink('/mustang/personal-injury', 'Mustang Personal Injury', 'Injury claim information for west-south metro and Grady commuters.'),
     ],
   },
   guthrie: {
@@ -421,8 +403,8 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
     corridorContext: 'I-35 north and SH-33 commuter and commercial traffic corridors',
     hubLink: locationsHubLink,
     nearbyLinks: [
-      createHubLink('/logan-county/criminal-defense', 'Logan County Criminal Defense', 'County-level defense strategy for Logan County matters.'),
-      createHubLink('/edmond/personal-injury', 'Edmond Personal Injury', 'North metro injury strategy for connected corridor claims.'),
+      createHubLink('/logan-county/criminal-defense', 'Logan County Criminal Defense', 'Criminal defense help for Logan County matters.'),
+      createHubLink('/edmond/personal-injury', 'Edmond Personal Injury', 'Injury claim information for connected north-metro routes.'),
     ],
   },
   enid: {
@@ -435,8 +417,8 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
     corridorContext: 'US-81 and US-412 commercial corridors with heavy transport traffic',
     hubLink: locationsHubLink,
     nearbyLinks: [
-      createHubLink('/garfield-county/criminal-defense', 'Garfield County Criminal Defense', 'County-level defense strategy for Garfield County charges.'),
-      createHubLink('/stillwater/personal-injury', 'Stillwater Personal Injury', 'Nearby regional injury strategy for north-central claims.'),
+      createHubLink('/garfield-county/criminal-defense', 'Garfield County Criminal Defense', 'Criminal defense help for Garfield County charges.'),
+      createHubLink('/stillwater/personal-injury', 'Stillwater Personal Injury', 'Injury claim information for nearby north-central routes.'),
     ],
   },
   lawton: {
@@ -444,13 +426,13 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
     marketName: 'Lawton',
     marketType: 'city',
     countyContext: 'Comanche County and southwest Oklahoma legal venues',
-    criminalCourtContext: 'Comanche County criminal filings with high-stakes allegation and warrant exposure',
+    criminalCourtContext: 'Comanche County criminal filings involving serious allegations and active warrants',
     injuryContext: 'major crash and negligence claims involving southwest corridor travel and industrial activity',
     corridorContext: 'I-44 southwest and US-62 transportation corridors',
     hubLink: locationsHubLink,
     nearbyLinks: [
-      createHubLink('/comanche-county/criminal-defense', 'Comanche County Criminal Defense', 'County-level defense strategy for Lawton-area filings.'),
-      createHubLink('/chickasha/personal-injury', 'Chickasha Personal Injury', 'Regional injury strategy for connected southwest routes.'),
+      createHubLink('/comanche-county/criminal-defense', 'Comanche County Criminal Defense', 'Criminal defense help for Lawton-area filings.'),
+      createHubLink('/chickasha/personal-injury', 'Chickasha Personal Injury', 'Injury claim information for connected southwest routes.'),
     ],
   },
   ada: {
@@ -463,8 +445,8 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
     corridorContext: 'SH-3 and SH-19 corridors linking Ada to metro and regional routes',
     hubLink: locationsHubLink,
     nearbyLinks: [
-      createHubLink('/cleveland-county/criminal-defense', 'Cleveland County Criminal Defense', 'Nearby county-level defense strategy for southbound markets.'),
-      createHubLink('/shawnee/personal-injury', 'Shawnee Personal Injury', 'Eastbound injury strategy for related corridor claims.'),
+      createHubLink('/cleveland-county/criminal-defense', 'Cleveland County Criminal Defense', 'Criminal defense help for nearby southbound county matters.'),
+      createHubLink('/shawnee/personal-injury', 'Shawnee Personal Injury', 'Injury claim information for related eastbound routes.'),
     ],
   },
   choctaw: {
@@ -477,8 +459,8 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
     corridorContext: 'NE 23rd Street and eastbound metro connector corridors',
     hubLink: locationsHubLink,
     nearbyLinks: [
-      createHubLink('/oklahoma-county/criminal-defense', 'Oklahoma County Criminal Defense', 'County-level criminal strategy for metro filings.'),
-      createHubLink('/midwest-city/personal-injury', 'Midwest City Personal Injury', 'East metro injury strategy for neighboring claims.'),
+      createHubLink('/oklahoma-county/criminal-defense', 'Oklahoma County Criminal Defense', 'Criminal defense help for metro filings.'),
+      createHubLink('/midwest-city/personal-injury', 'Midwest City Personal Injury', 'Injury claim information for neighboring east-metro routes.'),
     ],
   },
   bethany: {
@@ -491,8 +473,8 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
     corridorContext: 'NW Expressway and west metro arterial traffic corridors',
     hubLink: locationsHubLink,
     nearbyLinks: [
-      createHubLink('/oklahoma-county/criminal-defense', 'Oklahoma County Criminal Defense', 'County strategy for Oklahoma County criminal dockets.'),
-      createHubLink('/yukon/personal-injury', 'Yukon Personal Injury', 'Westward injury strategy for connected high-volume routes.'),
+      createHubLink('/oklahoma-county/criminal-defense', 'Oklahoma County Criminal Defense', 'Oklahoma County criminal docket and defense information.'),
+      createHubLink('/yukon/personal-injury', 'Yukon Personal Injury', 'Injury claim information for connected westbound routes.'),
     ],
   },
   newcastle: {
@@ -505,8 +487,8 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
     corridorContext: 'I-44 south and SH-9 corridor traffic between Newcastle and metro OKC',
     hubLink: locationsHubLink,
     nearbyLinks: [
-      createHubLink('/mclain-county/criminal-defense', 'McClain County Criminal Defense', 'County-level defense strategy for Newcastle-area matters.'),
-      createHubLink('/moore/personal-injury', 'Moore Personal Injury', 'Nearby injury strategy for south metro commuters.'),
+      createHubLink('/mclain-county/criminal-defense', 'McClain County Criminal Defense', 'Criminal defense help for Newcastle-area county matters.'),
+      createHubLink('/moore/personal-injury', 'Moore Personal Injury', 'Injury claim information for nearby south-metro commuters.'),
     ],
   },
   blanchard: {
@@ -519,8 +501,8 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
     corridorContext: 'US-62 and SH-76 traffic corridors linking Blanchard to metro markets',
     hubLink: locationsHubLink,
     nearbyLinks: [
-      createHubLink('/mclain-county/criminal-defense', 'McClain County Criminal Defense', 'County-level defense strategy for McClain filings.'),
-      createHubLink('/chickasha/personal-injury', 'Chickasha Personal Injury', 'Regional injury strategy for nearby Grady/McClain traffic routes.'),
+      createHubLink('/mclain-county/criminal-defense', 'McClain County Criminal Defense', 'Criminal defense help for McClain County filings.'),
+      createHubLink('/chickasha/personal-injury', 'Chickasha Personal Injury', 'Injury claim information for nearby Grady and McClain routes.'),
     ],
   },
   'oklahoma-county': {
@@ -533,18 +515,18 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
     corridorContext: 'I-35, I-40, I-44, and Kilpatrick Turnpike corridor activity',
     injuryNarrativeAddendum: [
       'Oklahoma County claims often require early evidence mapping around Downtown interchange zones, including I-235 connectors, Broadway Extension merges, and NW Expressway bottlenecks where liability narratives can shift quickly.',
-      'We also evaluate commercial-vehicle and delivery-route exposure tied to Bricktown, the medical district, and airport-bound freight movement, because these patterns frequently affect both causation disputes and policy-limit strategy.',
+      'Commercial-vehicle and delivery records tied to Bricktown, the medical district, and airport-bound freight movement may help identify responsible parties and available insurance.',
     ],
     injuryDifferentiators: [
-      'Downtown OKC interchange collision sequencing (I-235, I-40, and I-44 connectors) is analyzed early for fault-allocation disputes.',
+      'Downtown Oklahoma City interchange collisions involving I-235, I-40, and I-44 connectors are reviewed closely when drivers dispute fault.',
       'Medical district record timing and care-transition chronology are audited to prevent avoidable gaps in catastrophic-injury valuation.',
       'Commercial fleet and rideshare evidence holds are issued quickly for Bricktown, Midtown, and airport-corridor incident patterns.',
-      'Venue preparation accounts for Oklahoma County jury-value exposure and mediation leverage in high-severity urban crash claims.',
+      'Oklahoma County filing and mediation issues are reviewed when a serious urban crash claim cannot be resolved with the insurer.',
     ],
     hubLink: locationsHubLink,
     nearbyLinks: [
-      createHubLink('/oklahoma-city/criminal-defense', 'Oklahoma City Criminal Defense', 'City-level defense strategy for Oklahoma County matters.'),
-      createHubLink('/edmond/personal-injury', 'Edmond Personal Injury', 'North county injury strategy for severe claims.'),
+      createHubLink('/oklahoma-city/criminal-defense', 'Oklahoma City Criminal Defense', 'Criminal defense help for Oklahoma County city matters.'),
+      createHubLink('/edmond/personal-injury', 'Edmond Personal Injury', 'Injury claim information for serious north-county losses.'),
     ],
   },
   'cleveland-county': {
@@ -557,8 +539,8 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
     corridorContext: 'I-35 south, SH-9, and Cleveland County commuter corridors',
     hubLink: locationsHubLink,
     nearbyLinks: [
-      createHubLink('/norman/criminal-defense', 'Norman Criminal Defense', 'City-level defense strategy for Cleveland County charges.'),
-      createHubLink('/moore/personal-injury', 'Moore Personal Injury', 'South county injury strategy for major roadway crashes.'),
+      createHubLink('/norman/criminal-defense', 'Norman Criminal Defense', 'Criminal defense help for Cleveland County charges.'),
+      createHubLink('/moore/personal-injury', 'Moore Personal Injury', 'Injury claim information for major south-county roadway crashes.'),
     ],
   },
   'canadian-county': {
@@ -571,8 +553,8 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
     corridorContext: 'I-40 west, SH-66, and US-81 transport corridors',
     hubLink: locationsHubLink,
     nearbyLinks: [
-      createHubLink('/yukon/criminal-defense', 'Yukon Criminal Defense', 'City-level defense strategy for Canadian County matters.'),
-      createHubLink('/el-reno/personal-injury', 'El Reno Personal Injury', 'Western county injury strategy for regional collision claims.'),
+      createHubLink('/yukon/criminal-defense', 'Yukon Criminal Defense', 'Criminal defense help for Canadian County matters.'),
+      createHubLink('/el-reno/personal-injury', 'El Reno Personal Injury', 'Injury claim information for western county collisions.'),
     ],
   },
   'logan-county': {
@@ -585,8 +567,8 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
     corridorContext: 'I-35 north and SH-33 corridor incident patterns',
     hubLink: locationsHubLink,
     nearbyLinks: [
-      createHubLink('/guthrie/criminal-defense', 'Guthrie Criminal Defense', 'City-level Logan County defense strategy.'),
-      createHubLink('/stillwater/personal-injury', 'Stillwater Personal Injury', 'Nearby regional injury strategy north of OKC.'),
+      createHubLink('/guthrie/criminal-defense', 'Guthrie Criminal Defense', 'Criminal defense help for Logan County matters.'),
+      createHubLink('/stillwater/personal-injury', 'Stillwater Personal Injury', 'Injury claim information for regional routes north of Oklahoma City.'),
     ],
   },
   'payne-county': {
@@ -599,8 +581,8 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
     corridorContext: 'US-177 and SH-51 routes connecting Payne County to metro areas',
     hubLink: locationsHubLink,
     nearbyLinks: [
-      createHubLink('/stillwater/criminal-defense', 'Stillwater Criminal Defense', 'City-level defense strategy for Payne County cases.'),
-      createHubLink('/guthrie/personal-injury', 'Guthrie Personal Injury', 'Connected northbound injury claim strategy.'),
+      createHubLink('/stillwater/criminal-defense', 'Stillwater Criminal Defense', 'Criminal defense help for Payne County cases.'),
+      createHubLink('/guthrie/personal-injury', 'Guthrie Personal Injury', 'Injury claim information for connected northbound routes.'),
     ],
   },
   'pottawatomie-county': {
@@ -613,8 +595,8 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
     corridorContext: 'I-40 east and US-177 county connector corridors',
     hubLink: locationsHubLink,
     nearbyLinks: [
-      createHubLink('/shawnee/criminal-defense', 'Shawnee Criminal Defense', 'City-level defense strategy for Pottawatomie County charges.'),
-      createHubLink('/midwest-city/personal-injury', 'Midwest City Personal Injury', 'Eastbound injury strategy for connected metro routes.'),
+      createHubLink('/shawnee/criminal-defense', 'Shawnee Criminal Defense', 'Criminal defense help for Pottawatomie County charges.'),
+      createHubLink('/midwest-city/personal-injury', 'Midwest City Personal Injury', 'Injury claim information for connected eastbound metro routes.'),
     ],
   },
   'grady-county': {
@@ -627,8 +609,8 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
     corridorContext: 'I-44 and US-81 traffic corridors through Grady County',
     hubLink: locationsHubLink,
     nearbyLinks: [
-      createHubLink('/chickasha/criminal-defense', 'Chickasha Criminal Defense', 'City-level defense strategy for Grady County matters.'),
-      createHubLink('/mustang/personal-injury', 'Mustang Personal Injury', 'Nearby injury strategy for connected west-south routes.'),
+      createHubLink('/chickasha/criminal-defense', 'Chickasha Criminal Defense', 'Criminal defense help for Grady County matters.'),
+      createHubLink('/mustang/personal-injury', 'Mustang Personal Injury', 'Injury claim information for connected west-south routes.'),
     ],
   },
   'mclain-county': {
@@ -636,13 +618,13 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
     marketName: 'McClain County',
     marketType: 'county',
     countyContext: 'McClain County district and south metro county-line venues',
-    criminalCourtContext: 'McClain County criminal filings with county-line venue strategy issues',
+    criminalCourtContext: 'McClain County criminal filings with county-line venue questions',
     injuryContext: 'south-corridor collision and negligence claims across McClain commuter routes',
     corridorContext: 'I-44 south and US-77 county connector corridors',
     hubLink: locationsHubLink,
     nearbyLinks: [
-      createHubLink('/newcastle/criminal-defense', 'Newcastle Criminal Defense', 'City-level defense strategy for McClain-area allegations.'),
-      createHubLink('/moore/personal-injury', 'Moore Personal Injury', 'Nearby injury strategy for south metro claims.'),
+      createHubLink('/newcastle/criminal-defense', 'Newcastle Criminal Defense', 'Criminal defense help for McClain-area allegations.'),
+      createHubLink('/moore/personal-injury', 'Moore Personal Injury', 'Injury claim information for nearby south-metro routes.'),
     ],
   },
   'lincoln-county': {
@@ -655,8 +637,8 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
     corridorContext: 'I-44 northeast and SH-66 county connector corridors',
     hubLink: locationsHubLink,
     nearbyLinks: [
-      createHubLink('/choctaw/criminal-defense', 'Choctaw Criminal Defense', 'Nearby defense strategy for eastern county-line matters.'),
-      createHubLink('/shawnee/personal-injury', 'Shawnee Personal Injury', 'Regional injury strategy for eastbound county claims.'),
+      createHubLink('/choctaw/criminal-defense', 'Choctaw Criminal Defense', 'Criminal defense help for eastern county-line matters.'),
+      createHubLink('/shawnee/personal-injury', 'Shawnee Personal Injury', 'Injury claim information for eastbound county routes.'),
     ],
   },
   'comanche-county': {
@@ -664,13 +646,13 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
     marketName: 'Comanche County',
     marketType: 'county',
     countyContext: 'Comanche County district court and southwest Oklahoma venues',
-    criminalCourtContext: 'Comanche County criminal dockets with high-stakes felony and warrant exposure',
+    criminalCourtContext: 'Comanche County criminal dockets involving felony charges and active warrants',
     injuryContext: 'southwest-corridor crash and negligence claims tied to major transport routes',
     corridorContext: 'I-44 southwest and US-62 county transport routes',
     hubLink: locationsHubLink,
     nearbyLinks: [
-      createHubLink('/lawton/criminal-defense', 'Lawton Criminal Defense', 'City-level defense strategy for Comanche County charges.'),
-      createHubLink('/chickasha/personal-injury', 'Chickasha Personal Injury', 'Nearby regional injury strategy for connected southwest routes.'),
+      createHubLink('/lawton/criminal-defense', 'Lawton Criminal Defense', 'Criminal defense help for Comanche County charges.'),
+      createHubLink('/chickasha/personal-injury', 'Chickasha Personal Injury', 'Injury claim information for connected southwest routes.'),
     ],
   },
   'garfield-county': {
@@ -683,200 +665,279 @@ const marketProfiles: Record<MarketSlug, MarketProfile> = {
     corridorContext: 'US-81 and US-412 high-volume transport routes',
     hubLink: locationsHubLink,
     nearbyLinks: [
-      createHubLink('/enid/criminal-defense', 'Enid Criminal Defense', 'City-level defense strategy for Garfield County proceedings.'),
-      createHubLink('/stillwater/personal-injury', 'Stillwater Personal Injury', 'North-central injury strategy for connected regional claims.'),
+      createHubLink('/enid/criminal-defense', 'Enid Criminal Defense', 'Criminal defense help for Garfield County proceedings.'),
+      createHubLink('/stillwater/personal-injury', 'Stillwater Personal Injury', 'Injury claim information for connected north-central routes.'),
     ],
   },
 }
 
+type CopyVariant = 0 | 1 | 2 | 3 | 4
+
+function getCopyVariant(profile: MarketProfile): CopyVariant {
+  const marketIndex = ALL_STANDARD_SUBPILLAR_MARKETS.indexOf(profile.slug)
+  return (marketIndex % 5) as CopyVariant
+}
+
+function buildCriminalIntro(
+  profile: MarketProfile,
+  tierContext: (typeof CRIMINAL_TIER_CONTEXT)[MarketTier],
+  variant: CopyVariant,
+): string[] {
+  const variants: Record<CopyVariant, string[]> = {
+    0: [
+      `If you were arrested or charged in ${profile.marketName}, start with the court papers, release terms, and every known date. Missing an early requirement can create a separate problem before the evidence is reviewed.`,
+      `The local setting matters because ${profile.criminalCourtContext}. Todd Kernal first reviews ${tierContext.firstReview} and explains what must happen before the next setting.`,
+      `For an incident connected to ${profile.corridorContext}, reports, recordings, testing records, and witness accounts may answer different parts of the same question. Those materials should be gathered before a plea decision is made.`,
+    ],
+    1: [
+      `A criminal charge in ${profile.marketName} brings immediate questions about court, bond, driving privileges, work, and family. The first job is to identify the next deadline and avoid a preventable violation.`,
+      `${profile.criminalCourtContext} may involve ${tierContext.calendarNote}. The defense begins with the filed allegations and the records that show what actually happened.`,
+      `When the allegation arose near ${profile.corridorContext}, Todd examines the reason for the stop or contact, the event timeline, and whether the written report matches available audio or video.`,
+    ],
+    2: [
+      `Court papers can be difficult to sort out after an arrest in ${profile.marketName}. Bring the citation, bond paperwork, release instructions, and any notice that lists a hearing or appearance date.`,
+      `Cases tied to ${profile.countyContext} should be reviewed with local deadlines in mind. That includes ${tierContext.firstReview}, along with any information that contradicts the accusation.`,
+      `${profile.corridorContext} may be relevant when a case began with a traffic stop, crash, or roadside investigation. Location, timing, and recorded evidence can change how the allegation is evaluated.`,
+    ],
+    3: [
+      `Do not assume the first version of a ${profile.marketName} criminal case is the complete one. Police reports, video, lab records, and witness accounts often arrive at different times.`,
+      `Because ${profile.criminalCourtContext}, Todd checks the next court setting and release requirements before turning to motions, plea options, or trial preparation.`,
+      `A case involving ${profile.corridorContext} may require close review of the stop, the officer's observations, testing, and the time shown on each record. That review should begin while evidence is still available.`,
+    ],
+    4: [
+      `After an arrest in ${profile.marketName}, protect yourself by following release terms, saving every document, and avoiding public discussion of the facts. Those simple steps preserve choices while the case is investigated.`,
+      `${profile.countyContext} can involve ${tierContext.hearingNote}. Todd compares the filed charge with reports, recordings, testing, and witness information before recommending a response.`,
+      `If the event occurred along ${profile.corridorContext}, the location and timeline may matter to search, testing, or identification issues. A careful record review is more useful than guessing from the charge alone.`,
+    ],
+  }
+
+  return variants[variant]
+}
+
+function buildCriminalProcessCopy(
+  profile: MarketProfile,
+  tierContext: (typeof CRIMINAL_TIER_CONTEXT)[MarketTier],
+  variant: CopyVariant,
+): [string, string, string, string] {
+  const firstStep = [
+    `We read the papers from ${profile.countyContext}, confirm the next date, and review release terms before discussing the facts in detail.`,
+    `Todd begins by confirming the charge, court date, and release requirements for the ${profile.marketName} matter, then identifies records that need prompt attention.`,
+    `The first review covers deadlines, contact restrictions, driving issues, and other instructions connected to ${profile.criminalCourtContext}.`,
+    `We organize the citation or charging papers, bond information, and upcoming settings so the client knows what is required now.`,
+    `For a ${profile.marketName} case, intake starts with the next court obligation and any condition that could cause a new violation if misunderstood.`,
+  ][variant]
+  const secondStep = [
+    `We request reports, recordings, testing, and witness information connected to ${profile.corridorContext}, then compare each source to the event timeline.`,
+    `Evidence review tests whether reports, video, dispatch records, statements, and test results support the allegation filed in ${profile.countyContext}.`,
+    `Todd reviews ${tierContext.firstReview}, paying particular attention to contradictions and missing records from the incident.`,
+    `The file is checked for search, interview, identification, testing, and record-preservation issues tied to ${profile.marketName}.`,
+    `Records from ${profile.corridorContext} are gathered and compared before conclusions are drawn from a single report or statement.`,
+  ][variant]
+  const thirdStep = [
+    `Once the evidence is understood, Todd explains available motions, plea terms, and the consequences of each choice in ${profile.countyContext}.`,
+    `The client receives a plain comparison of dismissal arguments, charge changes, plea choices, and trial issues based on the actual record.`,
+    `Any motion or proposal is evaluated against the evidence, the client's priorities, and ${tierContext.hearingNote}.`,
+    `Todd discusses what can be challenged, what can be documented about the client, and what any proposed resolution would mean later.`,
+    `After review, the next step may be a motion, a negotiated result, or continued trial preparation for the ${profile.marketName} charge.`,
+  ][variant]
+  const fourthStep = [
+    `If the matter does not resolve fairly, the defense is prepared for hearing or trial with a clear account of the evidence and witnesses.`,
+    `A final decision is made with the client after the likely benefits, limits, and lasting effects of each option are explained.`,
+    `Todd prepares for the next contested hearing or trial when the evidence and available proposal do not support an acceptable result.`,
+    `The case proceeds toward a final agreement, dismissal, hearing, or trial with the client informed at each decision point.`,
+    `Resolution means more than closing the file; the client should understand the court result, remaining obligations, and possible record consequences.`,
+  ][variant]
+
+  return [firstStep, secondStep, thirdStep, fourthStep]
+}
+
+function buildInjuryIntro(
+  profile: MarketProfile,
+  tierContext: (typeof INJURY_TIER_CONTEXT)[MarketTier],
+  variant: CopyVariant,
+): string[] {
+  const variants: Record<CopyVariant, string[]> = {
+    0: [
+      `After a serious crash or injury in ${profile.marketName}, medical care comes first. As soon as practical, save photographs, reports, witness information, bills, and every message from an insurer.`,
+      `${profile.corridorContext} can involve ${tierContext.collisionNote}. Todd Kernal reviews how the event happened, which insurance may apply, and what records are still missing.`,
+      `Claims connected to ${profile.countyContext} should reflect the full course of treatment and the ways the injury affects work and daily life, not just the first medical visit.`,
+    ],
+    1: [
+      `An insurer may call soon after a ${profile.marketName} collision, before the injuries or available coverage are fully understood. You can ask for time and avoid guessing about facts or symptoms.`,
+      `For losses involving ${profile.injuryContext}, the useful record includes scene evidence, medical care, wage loss, and the policy information for every potentially responsible party.`,
+      `${profile.corridorContext} matters because road, vehicle, and travel details can help explain fault. ${tierContext.recordConcern}, so records should be collected from every provider.`,
+    ],
+    2: [
+      `A personal injury claim in ${profile.marketName} is built from ordinary records: photographs, reports, medical notes, bills, work-loss documents, and insurer correspondence. Keeping them together makes the facts easier to prove.`,
+      `${profile.injuryContext} may involve more than one driver, company, property owner, or insurance policy. Todd checks those possibilities before a demand is prepared.`,
+      `When treatment occurs in or around ${profile.countyContext}, ${tierContext.recordConcern}. A complete timeline helps show both the injury and its day-to-day effect.`,
+    ],
+    3: [
+      `Do not measure a ${profile.marketName} injury claim by the first repair estimate or medical bill. The lasting effect may not be clear until treatment, work restrictions, and recovery are documented.`,
+      `Events along ${profile.corridorContext} can raise questions about speed, visibility, commercial traffic, or more than one source of insurance. Available reports and scene evidence should be preserved early.`,
+      `${profile.countyContext} claims are reviewed for fault, medical cause, insurance coverage, and financial loss. ${tierContext.insurerNote}.`,
+    ],
+    4: [
+      `If you were hurt in ${profile.marketName}, follow the treatment plan and keep a simple file for bills, photographs, missed work, and insurer messages. Those records make later questions easier to answer.`,
+      `${profile.injuryContext} can produce disputes about who was responsible or whether treatment relates to the event. Todd compares the reports, medical timeline, and available coverage.`,
+      `A loss connected to ${profile.corridorContext} may also involve ${tierContext.collisionNote}. The claim should account for every responsible party and every documented effect of the injury.`,
+    ],
+  }
+
+  return variants[variant]
+}
+
+function buildInjuryProcessCopy(
+  profile: MarketProfile,
+  tierContext: (typeof INJURY_TIER_CONTEXT)[MarketTier],
+  variant: CopyVariant,
+): [string, string, string, string] {
+  const firstStep = [
+    `We collect the report, photographs, witness details, insurance information, and other records tied to ${profile.corridorContext}.`,
+    `Todd begins with how the ${profile.marketName} event happened, what evidence still exists, and which people or companies may be responsible.`,
+    `The initial review covers scene proof, available policies, medical care, and urgent communications connected to ${profile.injuryContext}.`,
+    `We identify missing evidence from the ${profile.marketName} incident and ask that important records be preserved before they disappear.`,
+    `The claim begins with a fact timeline and a list of reports, photographs, witnesses, vehicles, property, and insurance that may matter.`,
+  ][variant]
+  const secondStep = [
+    `Medical records, bills, work restrictions, and out-of-pocket costs are organized across ${profile.countyContext} as treatment continues.`,
+    `We follow treatment and collect records that show diagnosis, progress, limitations, missed work, and expected future care.`,
+    `${tierContext.recordConcern}, so each provider's records and charges are placed into one clear timeline.`,
+    `Todd tracks treatment, expenses, lost income, and daily limitations instead of relying on a single bill or appointment.`,
+    `Records from every treating provider are compared for dates, symptoms, restrictions, and recommendations related to the injury.`,
+  ][variant]
+  const thirdStep = [
+    `When the medical picture is sufficiently clear, the insurer receives supporting records for fault, treatment, income loss, and other damages.`,
+    `A demand is prepared from the reports, medical timeline, expenses, work loss, and the documented effect on the client's life.`,
+    `Todd answers fault or medical-cause disputes with the records from ${profile.injuryContext}, rather than unsupported estimates.`,
+    `${tierContext.insurerNote}; the written claim should make each part easy to verify.`,
+    `Settlement discussions begin with the available proof and a clear explanation of unresolved treatment, coverage, or future-loss issues.`,
+  ][variant]
+  const fourthStep = [
+    `If the insurer will not offer a fair result, Todd discusses filing suit and what additional proof will be needed in ${profile.countyContext}.`,
+    `The client decides whether to settle or proceed after fees, costs, liens, delay, and the likely range of outcomes are explained.`,
+    `When negotiation does not fairly account for the evidence, the claim can move into litigation and formal discovery.`,
+    `A lawsuit may be filed when responsibility, medical cause, or damages remain disputed despite a complete supporting record.`,
+    `Before any final decision, Todd explains the offer, known liens and costs, remaining uncertainty, and the option of litigation.`,
+  ][variant]
+
+  return [firstStep, secondStep, thirdStep, fourthStep]
+}
+
 function buildCriminalSubpillar(profile: MarketProfile): SubpillarSpec {
   const slugPrefix = `${profile.slug}_criminal_defense`
-  const marketTier = getMarketTier(profile)
-  const tierContext = CRIMINAL_TIER_CONTEXT[marketTier]
+  const tierContext = CRIMINAL_TIER_CONTEXT[getMarketTier(profile)]
+  const variant = getCopyVariant(profile)
+  const processCopy = buildCriminalProcessCopy(profile, tierContext, variant)
 
   return createSubpillarSpec({
     metadata: {
-      title: `${profile.marketName} Criminal Defense Lawyer`,
-      description: `Criminal defense representation for ${profile.marketName} matters in ${profile.countyContext}, including DUI, felony, warrant, and probation exposure.`,
+      title: `${profile.marketName} Criminal Lawyer`,
+      description: `Criminal defense lawyer serving ${profile.marketName} for DUI, felony, warrant, and probation matters.`,
       alternates: { canonical: `/${profile.slug}/criminal-defense` },
       openGraph: {
         title: `${profile.marketName} Criminal Defense Lawyer | Kernal & Associates`,
-        description: `Local criminal defense strategy for ${profile.marketName} charges with trial-ready representation.`,
+        description: `Criminal defense help for charges connected to ${profile.countyContext}.`,
         url: `https://kernallaw.com/${profile.slug}/criminal-defense`,
       },
     },
     pageProps: {
       heroTitle: `${profile.marketName} Criminal Defense Lawyer`,
-      heroSubtitle: `Defense strategy for ${profile.countyContext}.`,
+      heroSubtitle: `Defense counsel for cases connected to ${profile.countyContext}.`,
       heroVariant: 'criminal',
-      introTitle: `Criminal cases in ${profile.marketName} require immediate legal control.`,
-      introParagraphs: [
-        `${profile.marketName} criminal allegations often move through first-appearance, bond, and condition stages faster than most clients expect. Early legal decisions influence admissibility disputes, negotiation posture, and long-term record risk before full case facts are even organized.`,
-        `Our defense workflow is built for ${profile.criminalCourtContext}, where charging pressure and procedural timelines can change quickly. We begin by identifying immediate control points, communication risks, and hearing preparation tasks tied to your exact filing profile. In ${profile.marketName}, that frequently includes ${tierContext.docketProfile}.`,
-        `${profile.countyContext} often requires coordinated strategy across court requirements, compliance obligations, and evidence development. Defense planning is sequenced to protect rights while preserving practical options for dismissal, reduction, or trial-readiness.`,
-        `Because many matters in ${profile.marketName} intersect with ${profile.corridorContext}, we evaluate traffic-stop procedure, witness quality, and timeline accuracy early so avoidable narrative gaps do not reduce leverage later in the case. This is especially important where ${tierContext.pressurePattern}.`,
-      ],
-      focusTitle: `What We Focus On in ${profile.marketName} Criminal Defense`,
+      introTitle: `What to do after a criminal charge in ${profile.marketName}`,
+      introParagraphs: buildCriminalIntro(profile, tierContext, variant),
+      focusTitle: `What Todd Reviews in a ${profile.marketName} Criminal Case`,
       focusItems: [
         {
-          title: 'Immediate Case Stabilization',
-          description:
-            `Early legal controls are used to reduce avoidable exposure before prosecution framing hardens. We prioritize release-condition compliance, hearing posture, and communication discipline specific to ${profile.marketName} allegations so the case begins in a defensible position. Intake strategy is calibrated for ${tierContext.docketProfile}.`,
+          title: 'Court Dates and Release Terms',
+          description: `${profile.criminalCourtContext} can move quickly. Todd confirms the next setting, explains release requirements, and identifies any immediate filing or driving issue.`,
           bullets: [
-            `Bond and release-condition analysis tied to ${profile.countyContext}`,
-            'No-contact and compliance planning for day-one risk reduction',
-            'Urgent filing, appearance, and deadline control checklist',
-            `Local timeline triage for ${profile.criminalCourtContext}`,
-            `Risk-screening for incident patterns around ${profile.corridorContext}`,
-            `Coordination with nearby venue strategy from ${profile.nearbyLinks[0].title}`,
+            `Court and bond papers from ${profile.countyContext}`,
+            'No-contact, testing, travel, and reporting requirements',
+            `Upcoming settings for the ${profile.marketName} charge`,
+            'Driver-license notices or separate administrative dates',
+            `Calendar concerns such as ${tierContext.calendarNote}`,
+            `Related court information from ${profile.nearbyLinks[0].title}`,
           ],
         },
         {
-          title: 'Evidence and Procedure Challenges',
-          description:
-            `Many defense gains come from disciplined review of search, seizure, testing, and documentation process. We stress-test how evidence was collected and preserved so procedural errors in ${profile.marketName} matters can be surfaced before negotiation positions harden.`,
+          title: 'Reports, Recordings, and Testing',
+          description: `For an event around ${profile.corridorContext}, the written report should be checked against video, dispatch records, test results, and witness accounts.`,
           bullets: [
-            `Stop-and-search legality review for ${profile.corridorContext} encounter patterns`,
-            'Officer report versus audio/video inconsistency checks',
-            'Interview, testing, and chain-of-custody process analysis',
-            'Suppression-motion sequencing with deadline discipline',
-            `Witness-timeline reconstruction for ${profile.marketName} venue expectations`,
-            'Case-file contradiction mapping for negotiation leverage',
+            `Reason for the stop or police contact near ${profile.corridorContext}`,
+            'Body-camera, dash-camera, dispatch, and booking records',
+            'Search, interview, identification, and testing procedures',
+            `Timeline details for the ${profile.marketName} incident`,
+            'Differences between reports, recordings, and statements',
+            'Missing evidence and record-preservation questions',
           ],
         },
         {
-          title: 'Negotiation Backed by Trial Readiness',
-          description:
-            `We prepare each case for courtroom scrutiny so negotiations reflect real litigation risk, not default pressure. This approach helps align plea decisions, mitigation strategy, and long-range consequences with what is actually defensible in ${profile.marketName}.`,
+          title: 'Motions, Plea Choices, and Trial',
+          description: `Once the records are reviewed, Todd compares available motions, proposed plea terms, and trial issues with the client's priorities and lasting consequences.`,
           bullets: [
-            'Case-theory and mitigation planning aligned to filed allegations',
-            'Resolution-path risk modeling across plea and trial branches',
-            'Plea versus trial decision support with documented tradeoffs',
-            `${profile.marketName} venue-specific preparation and hearing sequencing`,
-            `Coordination with broader market strategy through ${profile.hubLink.title}`,
-            `Transition planning when exposure overlaps nearby courts such as ${profile.nearbyLinks[0].title}`,
+            'Defenses supported by the known facts and law',
+            'Suppression or other motions supported by the record',
+            'Possible effects on employment, licensing, driving, and record history',
+            `Hearing preparation suited to ${profile.countyContext}`,
+            'Written comparison of important plea terms and trial issues',
+            `Planning for ${tierContext.hearingNote}`,
           ],
         },
       ],
-      processTitle: `${profile.marketName} Criminal Defense Process`,
-      processSubtitle: 'A consistent defense framework from intake through final resolution.',
+      processTitle: `How a ${profile.marketName} Defense Moves Forward`,
+      processSubtitle: 'Four practical stages, from the first court papers through a final result.',
       processSteps: [
-        {
-          step: '01',
-          title: 'Urgent Intake and Case Controls',
-          description:
-            `We map immediate risks, condition obligations, and communication boundaries at intake so early mistakes do not compound exposure in ${profile.marketName} proceedings.`,
-        },
-        {
-          step: '02',
-          title: 'Evidence Collection and Review',
-          description:
-            `We gather filings, reports, media, and timeline records, then test procedural reliability to identify leverage for dismissal motions, charge reduction strategy, or trial defense.`,
-        },
-        {
-          step: '03',
-          title: 'Motion and Negotiation Strategy',
-          description:
-            `We apply evidentiary pressure while building realistic resolution pathways that reflect venue dynamics, long-term consequences, and client priorities in ${profile.countyContext}. This phase is structured for ${tierContext.hearingPosture}.`,
-        },
-        {
-          step: '04',
-          title: 'Trial or Final Resolution',
-          description:
-            `If negotiated outcomes remain unreasonable, we advance into trial-ready litigation with a clear defense theory, witness plan, and evidentiary challenge framework.`,
-        },
+        { step: '01', title: 'Deadlines and Release Terms', description: processCopy[0] },
+        { step: '02', title: 'Records and Evidence', description: processCopy[1] },
+        { step: '03', title: 'Motions and Available Options', description: processCopy[2] },
+        { step: '04', title: 'Hearing, Trial, or Agreement', description: processCopy[3] },
       ],
-      localContextTitle: `${profile.marketName} Criminal Case Pressure Points`,
-      localContextSubtitle:
-        'Local enforcement, venue, and timeline dynamics that commonly shape defense strategy in this market.',
+      localContextTitle: `${profile.marketName} Court and Evidence Details`,
+      localContextSubtitle: 'The local court setting and incident location can affect which records deserve attention first.',
       localContextNarrative: [
-        `${profile.marketName} criminal matters frequently require rapid adjustment between courtroom deadlines and investigation pacing. For ${profile.criminalCourtContext}, we prioritize sequence control so evidence review, mitigation development, and court communication move in the right order. Local planning also accounts for ${tierContext.docketProfile}.`,
-        `When allegations arise around ${profile.corridorContext}, early record collection is critical. Dispatch detail, body-cam timing, and witness positioning often determine whether procedural issues can be raised effectively before adverse narratives are treated as settled.`,
-        `Cases connected to ${profile.countyContext} are managed with long-horizon planning, not short-term reaction. The objective is to protect immediate liberty and long-term record outcomes at the same time while maintaining credible trial posture under ${tierContext.hearingPosture}.`,
+        `${profile.criminalCourtContext} means the first review should cover the filed charge, the next setting, and every release requirement. ${tierContext.calendarNote} may affect how soon records or motions need attention.`,
+        `When the allegation involves ${profile.corridorContext}, location and timing can matter. Citations, dispatch information, video, testing records, and witness accounts should be compared rather than read in isolation.`,
+        `${profile.countyContext} may also involve travel, scheduling, or records from more than one agency. Todd organizes those materials so the client can make decisions from the full file.`,
       ],
       localContextPoints: [
-        `Venue risk analysis is calibrated to ${profile.criminalCourtContext} rather than generic statewide assumptions.`,
-        `Timeline control includes first-appearance preparation, condition compliance planning, and documented communication safeguards.`,
-        `Defense investigation scope is prioritized around ${profile.corridorContext} where stop procedure and witness geometry often matter.`,
-        `Mitigation strategy is sequenced so it supports, rather than weakens, suppression and negotiation leverage.`,
-        `Nearby market comparison through ${profile.nearbyLinks[0].title} is used when venue overlap affects filing or negotiation posture.`,
-        `Court-facing decisions are benchmarked against long-term impacts on record, employment, licensing, and financial risk.`,
-        `Operational assumptions are pressure-tested against ${tierContext.pressurePattern}, not just generic docket timelines.`,
+        `The court setting is tied to ${profile.criminalCourtContext}.`,
+        `The first evidence review includes ${tierContext.firstReview}.`,
+        `Stops and roadside investigations are examined in light of ${profile.corridorContext}.`,
+        'Release terms and court dates are confirmed from the actual papers.',
+        `Nearby court information is available through ${profile.nearbyLinks[0].title}.`,
+        'Reports are compared with recordings, testing, and witness information.',
+        'Any proposed result is reviewed for immediate duties and longer-term consequences.',
       ],
       relatedTitle: `Related ${profile.marketName} Criminal Defense Pages`,
-      relatedSubtitle: 'Use these pages to compare local-market and charge-specific strategy options.',
+      relatedSubtitle: 'Read about the local court area, common charges, and the steps after an arrest.',
       relatedLinks: [
-        {
-          href: profile.hubLink.href,
-          title: profile.hubLink.title,
-          description: profile.hubLink.description,
-          ctaName: `${slugPrefix}_related_hub`,
-        },
-        {
-          href: '/resources/what-to-do-after-arrest-oklahoma',
-          title: 'Post-Arrest Guide',
-          description: 'First-48-hours checklist for rights protection and case-control decisions.',
-          ctaName: `${slugPrefix}_related_after_arrest_guide`,
-        },
-        {
-          href: '/criminal-defense/dui-dwi',
-          title: 'DUI / DWI Defense',
-          description: 'Charge-specific strategy for DUI allegations and license exposure.',
-          ctaName: `${slugPrefix}_related_dui`,
-        },
-        {
-          href: '/resources/oklahoma-felony-case-timeline',
-          title: 'Felony Case Timeline Guide',
-          description: 'Stage-by-stage felony process map from filing through trial-readiness.',
-          ctaName: `${slugPrefix}_related_felony_timeline_guide`,
-        },
-        {
-          href: profile.nearbyLinks[0].href,
-          title: profile.nearbyLinks[0].title,
-          description: profile.nearbyLinks[0].description,
-          ctaName: `${slugPrefix}_related_nearby_a`,
-        },
-        {
-          href: '/contact',
-          title: 'Request Defense Consultation',
-          description: `Confidential legal review for urgent ${profile.marketName} criminal matters and deadline-driven filings.`,
-          ctaName: `${slugPrefix}_related_contact`,
-        },
+        { href: profile.hubLink.href, title: profile.hubLink.title, description: profile.hubLink.description, ctaName: `${slugPrefix}_related_hub` },
+        { href: '/resources/what-to-do-after-arrest-oklahoma', title: 'Post-Arrest Guide', description: 'A first-48-hours checklist for court papers, release terms, and communications.', ctaName: `${slugPrefix}_related_after_arrest_guide` },
+        { href: '/criminal-defense/dui-dwi', title: 'DUI / DWI Defense', description: 'Court and driver-license issues that can follow a DUI arrest.', ctaName: `${slugPrefix}_related_dui` },
+        { href: '/resources/oklahoma-felony-case-timeline', title: 'Felony Case Timeline Guide', description: 'A stage-by-stage look at an Oklahoma felony case from filing through trial.', ctaName: `${slugPrefix}_related_felony_timeline_guide` },
+        { href: profile.nearbyLinks[0].href, title: profile.nearbyLinks[0].title, description: profile.nearbyLinks[0].description, ctaName: `${slugPrefix}_related_nearby_a` },
+        { href: '/contact', title: 'Request a Defense Consultation', description: `Talk with Todd Kernal about a ${profile.marketName} criminal charge and the next known deadline.`, ctaName: `${slugPrefix}_related_contact` },
       ],
       faqTitle: `${profile.marketName} Criminal Defense FAQ`,
-      faqSubtitle: `Common criminal-defense questions from ${profile.marketName} clients.`,
+      faqSubtitle: `Practical questions about criminal cases connected to ${profile.marketName}.`,
       faqs: [
-        {
-          question: `How quickly should I call a lawyer after an arrest in ${profile.marketName}?`,
-          answer:
-            `Immediately. Early legal strategy can materially affect condition compliance, evidentiary posture, and negotiation leverage for ${profile.marketName} criminal filings.`,
-        },
-        {
-          question: `Do you handle felony and misdemeanor matters in ${profile.countyContext}?`,
-          answer:
-            `Yes. We represent clients across misdemeanor and felony categories, including DUI, violent allegations, theft, warrant exposure, and probation-risk proceedings tied to ${profile.countyContext}.`,
-        },
-        {
-          question: 'Can a case still be defended after I already gave a statement?',
-          answer:
-            `Often yes. Defense strategy depends on full context, procedure, and how statements were obtained, recorded, and interpreted in relation to the rest of the evidence file.`,
-        },
-        {
-          question: 'What should I bring to the first consultation?',
-          answer:
-            `Bring all court and release documents, citations, timeline notes, witness details, and communication records so strategy can be aligned quickly to ${profile.marketName} deadlines.`,
-        },
+        { question: `When should I call a lawyer after an arrest in ${profile.marketName}?`, answer: 'As soon as practical, especially before a court date, police interview, recorded call, or decision about a proposed plea.' },
+        { question: `Do you handle felony and misdemeanor matters connected to ${profile.countyContext}?`, answer: 'Yes. The firm handles misdemeanor and felony charges, including DUI, warrants, probation allegations, theft, drug charges, and violent-crime allegations.' },
+        { question: 'Can a case still be defended after I gave a statement?', answer: 'Often, yes. Todd reviews how the statement was obtained, what was actually said, and how it compares with the remaining evidence.' },
+        { question: 'What should I bring to the first consultation?', answer: `Bring court and release papers, citations, hearing notices, a short timeline, witness details, and any messages or records connected to the ${profile.marketName} matter.` },
       ],
       practiceArea: slugPrefix,
-      ctaTitle: `Need Criminal Defense in ${profile.marketName}?`,
-      ctaDescription: `Get immediate guidance on risk, deadlines, and the next best strategic move for ${profile.countyContext}.`,
-      ctaLabel: 'Start Defense Review',
+      ctaTitle: `Talk With a Criminal Defense Lawyer About a ${profile.marketName} Case`,
+      ctaDescription: `Bring the court papers and known deadlines for a direct review of the next steps in ${profile.countyContext}.`,
+      ctaLabel: 'Request a Defense Consultation',
       ctaName: `${slugPrefix}_bottom_cta`,
       actionChecklist: [
-        `Confirm hearing dates and release conditions for ${profile.countyContext} before making any new statements.`,
-        `Preserve all records tied to ${profile.corridorContext}, including citations, media, and witness contacts.`,
-        `Avoid broad case discussions outside privileged attorney communication channels.`,
-        `Schedule a strategy review early so dismissal, reduction, and trial options are evaluated in sequence for ${tierContext.hearingPosture}.`,
+        `Confirm every court date and release requirement connected to ${profile.countyContext}.`,
+        `Save citations, reports, photographs, video, and witness information from ${profile.corridorContext}.`,
+        'Do not discuss the facts on social media or in messages that others may share.',
+        `Have the papers and evidence reviewed before choosing a plea or giving another statement in the ${profile.marketName} case.`,
       ],
     },
   })
@@ -884,194 +945,120 @@ function buildCriminalSubpillar(profile: MarketProfile): SubpillarSpec {
 
 function buildInjurySubpillar(profile: MarketProfile): SubpillarSpec {
   const slugPrefix = `${profile.slug}_personal_injury`
-  const marketTier = getMarketTier(profile)
-  const tierContext = INJURY_TIER_CONTEXT[marketTier]
+  const tierContext = INJURY_TIER_CONTEXT[getMarketTier(profile)]
+  const variant = getCopyVariant(profile)
+  const processCopy = buildInjuryProcessCopy(profile, tierContext, variant)
 
   return createSubpillarSpec({
     metadata: {
-      title: `${profile.marketName} Personal Injury Lawyer`,
-      description: `Personal injury representation for ${profile.marketName} claims in ${profile.countyContext}, including car and truck crashes, catastrophic injuries, and wrongful death.`,
+      title: `${profile.marketName} Injury Lawyer`,
+      description: `Personal injury lawyer serving ${profile.marketName} for car crashes, truck crashes, serious injuries, and wrongful death claims.`,
       alternates: { canonical: `/${profile.slug}/personal-injury` },
       openGraph: {
         title: `${profile.marketName} Personal Injury Lawyer | Kernal & Associates`,
-        description: `Evidence-driven injury claim strategy for ${profile.marketName} crash and negligence cases.`,
+        description: `Personal injury help for crashes and other negligence claims connected to ${profile.marketName}.`,
         url: `https://kernallaw.com/${profile.slug}/personal-injury`,
       },
     },
     pageProps: {
       heroTitle: `${profile.marketName} Personal Injury Lawyer`,
-      heroSubtitle: `Claim strategy for ${profile.injuryContext}.`,
+      heroSubtitle: `Legal help for ${profile.injuryContext}.`,
       heroVariant: 'injury',
-      introTitle: `Injury claims in ${profile.marketName} are won on evidence depth and timing.`,
-      introParagraphs: [
-        `${profile.corridorContext} generate serious collision and negligence matters where early claim mistakes can reduce recoverable value before treatment and damages are fully documented. In ${profile.marketName}, this usually reflects ${tierContext.claimProfile}.`,
-        `Kernal & Associates represents ${profile.marketName} clients using an evidence-first framework for liability proof, medical chronology, and insurer-pressure response from intake through resolution.`,
-        `In ${profile.countyContext}, we structure claims around provable facts and timeline discipline so adjuster narratives do not outrun the actual evidence record. Documentation design also addresses ${tierContext.documentationRisk}.`,
-        `Because high-severity matters in ${profile.marketName} often involve overlapping medical, employment, and policy issues, strategy is built to protect both near-term stability and long-horizon recovery value.`,
-      ],
-      focusTitle: `How We Build ${profile.marketName} Injury Cases`,
+      introTitle: `What to save after an injury in ${profile.marketName}`,
+      introParagraphs: buildInjuryIntro(profile, tierContext, variant),
+      focusTitle: `What Todd Reviews in a ${profile.marketName} Injury Claim`,
       focusItems: [
         {
-          title: 'Liability Proof Development',
-          description:
-            `We construct fault narratives from records, vehicle data, and timeline evidence instead of relying on insurer assumptions. The goal is to present a defensible liability story that holds under negotiation and litigation scrutiny.`,
+          title: 'How the Injury Happened',
+          description: `For an event involving ${profile.corridorContext}, Todd looks for reports, photographs, video, vehicle information, witnesses, and other proof of responsibility.`,
           bullets: [
-            `Scene and timeline documentation tied to ${profile.corridorContext}`,
-            'Witness, report, and media reconciliation',
-            'Third-party and commercial liability mapping when applicable',
-            `${profile.marketName} route-risk context analysis`,
-            `Venue and incident framing aligned to ${profile.countyContext}`,
-            `Comparative market pattern checks using ${profile.nearbyLinks[1].title}`,
+            `Scene and timeline records from ${profile.corridorContext}`,
+            'Police, incident, employer, or property records that may apply',
+            'Photographs, video, vehicle data, and physical evidence',
+            `Witness information connected to the ${profile.marketName} event`,
+            'Possible responsibility of a driver, company, or property owner',
+            `Related roadway information from ${profile.nearbyLinks[1].title}`,
           ],
         },
         {
-          title: 'Damages and Medical Documentation',
-          description:
-            `Claim value depends on complete proof of treatment progression, economic loss, and long-term functional impact. We organize records so damages are substantiated rather than implied.`,
+          title: 'Treatment, Work Loss, and Daily Life',
+          description: `Because ${tierContext.recordConcern}, the claim file should include every provider, bill, restriction, missed work period, and documented change in daily activity.`,
           bullets: [
-            'Medical chronology and consistency tracking',
-            'Wage-loss and earning-impact records',
-            'Future care, impairment, and treatment planning',
-            'Out-of-pocket and daily-impact evidence',
-            `Provider communication alignment for ${profile.marketName} claim timing`,
-            'Documentation controls before recorded insurer statements',
+            `Medical care received for injuries from ${profile.injuryContext}`,
+            'Bills, health-insurance statements, and out-of-pocket costs',
+            'Work restrictions, missed time, and income records',
+            'Symptoms, limitations, and changes in ordinary activities',
+            `Provider records from ${profile.countyContext}`,
+            'Expected follow-up care and any lasting impairment',
           ],
         },
         {
-          title: 'Negotiation Strength and Litigation Readiness',
-          description:
-            `We negotiate from a trial-capable posture so carriers must value real litigation risk, not assumed settlement pressure. This helps protect recovery potential when liability, causation, or policy limits are disputed. Positioning is built for ${tierContext.valuationPressure}.`,
+          title: 'Insurance and the Available Recovery',
+          description: `${tierContext.insurerNote}. Todd reviews the known policies, responsibility disputes, medical proof, liens, and costs before discussing settlement.`,
           bullets: [
-            'Demand package structure with liability and damages integration',
-            'Delay and undervaluation response strategy',
-            'Settlement-risk benchmarking against litigation posture',
-            `${profile.countyContext} litigation path planning`,
-            `Escalation triggers tied to ${profile.injuryContext}`,
-            `Case sequencing that preserves leverage in ${profile.marketName} negotiations`,
+            'Liability, uninsured motorist, and other available coverage',
+            'Commercial or employer coverage when a company is involved',
+            'Insurer questions about fault or medical cause',
+            `Documented losses arising from ${profile.injuryContext}`,
+            'Medical liens, case costs, and likely net recovery',
+            `Filing considerations connected to ${profile.countyContext}`,
           ],
         },
       ],
-      processTitle: `${profile.marketName} Injury Claim Process`,
-      processSubtitle: 'A consistent claim framework that protects value from first contact through resolution.',
+      processTitle: `How a ${profile.marketName} Injury Claim Moves Forward`,
+      processSubtitle: 'Four practical stages, from preserving evidence through settlement or litigation.',
       processSteps: [
-        {
-          step: '01',
-          title: 'Case Intake and Evidence Safeguards',
-          description:
-            `We secure records, set communication boundaries, and preserve proof before insurer narratives lock in around incomplete or misleading assumptions.`,
-        },
-        {
-          step: '02',
-          title: 'Treatment and Damages Development',
-          description:
-            `We align treatment progression, provider records, and financial-loss documentation so claim valuation reflects full injury impact rather than partial snapshots.`,
-        },
-        {
-          step: '03',
-          title: 'Demand and Negotiation Phase',
-          description:
-            `We present a comprehensive evidence package and negotiate from a litigation-capable position that accounts for disputed fault, policy issues, and recovery timing. The demand sequence is tuned to ${tierContext.valuationPressure}.`,
-        },
-        {
-          step: '04',
-          title: 'Litigation When Necessary',
-          description:
-            `If pre-suit outcomes remain unreasonable, we transition to litigation to pursue full and fair recovery based on documented liability and damages proof.`,
-        },
+        { step: '01', title: 'Preserve the Facts', description: processCopy[0] },
+        { step: '02', title: 'Document Treatment and Losses', description: processCopy[1] },
+        { step: '03', title: 'Present the Claim', description: processCopy[2] },
+        { step: '04', title: 'Settle or File Suit', description: processCopy[3] },
       ],
-      localContextTitle: `${profile.marketName} Injury Claim Pressure Points`,
-      localContextSubtitle:
-        'Local roadway, insurer, and documentation dynamics that commonly shape injury claim outcomes.',
+      localContextTitle: `${profile.marketName} Roadway and Medical Records`,
+      localContextSubtitle: 'The incident location and treatment history help show what happened and what the injury changed.',
       localContextNarrative: [
-        `${profile.marketName} injury claims are usually won or lost on documentation quality in the first stages. We focus on sequencing records, treatment evidence, and communications so liability and damages development stays credible as the claim matures.`,
-        `Where losses involve ${profile.corridorContext}, collision mechanics and timeline proof are often central. We map incident facts to record support early so adjuster framing does not outrun available evidence.`,
-        `In ${profile.countyContext}, claim strategy is built to protect long-range recovery value. That includes policy analysis, medical progression tracking, and escalation planning when negotiation pressure conflicts with provable case value in markets facing ${tierContext.claimProfile}.`,
+        `${profile.injuryContext} can raise separate questions about fault, medical cause, insurance, and damages. The claim file should answer each question with records rather than assumptions.`,
+        `For a crash or injury along ${profile.corridorContext}, scene photographs, reports, vehicle information, and witness accounts may be especially useful. Those materials can become harder to obtain as time passes.`,
+        `Treatment connected to ${profile.countyContext} should be placed in one timeline. ${tierContext.recordConcern}, and an incomplete file may not show the full course of recovery.`,
         ...(profile.injuryNarrativeAddendum ?? []),
       ],
       localContextPoints: [
-        `Liability and causation framing is adapted to incident patterns in ${profile.marketName}, not generic claim templates.`,
-        `Medical and damages buildout is staged to support negotiation, mediation, and litigation transitions without narrative gaps.`,
-        `Policy-limit and coverage pathways are reviewed early when losses involve underinsured or multi-party exposure.`,
-        `Communication controls are used to reduce avoidable misstatements during active insurer pressure windows.`,
-        `Evidence strategy is cross-checked with nearby market behavior through ${profile.nearbyLinks[1].title}.`,
-        `Resolution planning keeps short-term cash pressure from undermining long-term recovery outcomes.`,
-        `Claim architecture explicitly addresses ${tierContext.documentationRisk} to avoid undervaluation based on fragmented records.`,
+        `The local injury setting includes ${profile.injuryContext}.`,
+        `The roadway review centers on ${profile.corridorContext}.`,
+        `The medical file accounts for the fact that ${tierContext.recordConcern}.`,
+        'Available insurance is checked before settlement discussions begin.',
+        `Nearby roadway information is available through ${profile.nearbyLinks[1].title}.`,
+        'Bills, lost income, daily limitations, and future care are documented separately.',
+        'Any final offer is reviewed with known liens, expenses, fees, and remaining uncertainty.',
         ...(profile.injuryDifferentiators ?? []),
       ],
       relatedTitle: `Related ${profile.marketName} Injury Pages`,
-      relatedSubtitle: 'Use these pages to compare local-market and injury-category strategy.',
+      relatedSubtitle: 'Read about nearby service areas, crash claims, and steps to take after an injury.',
       relatedLinks: [
-        {
-          href: profile.hubLink.href,
-          title: profile.hubLink.title,
-          description: profile.hubLink.description,
-          ctaName: `${slugPrefix}_related_hub`,
-        },
-        {
-          href: '/resources/what-to-do-after-car-accident-oklahoma',
-          title: 'Post-Accident Guide',
-          description: 'Immediate crash-response checklist for preserving evidence and claim value.',
-          ctaName: `${slugPrefix}_related_post_accident_guide`,
-        },
-        {
-          href: '/personal-injury/car-accidents',
-          title: 'Car Accident Claims',
-          description: 'Fault and damages strategy for severe vehicle collisions.',
-          ctaName: `${slugPrefix}_related_car`,
-        },
-        {
-          href: '/resources/oklahoma-uninsured-motorist-claim-guide',
-          title: 'Uninsured Motorist Claim Guide',
-          description: 'UM/UIM coverage strategy when at-fault insurance is limited.',
-          ctaName: `${slugPrefix}_related_um_uim_guide`,
-        },
-        {
-          href: profile.nearbyLinks[1].href,
-          title: profile.nearbyLinks[1].title,
-          description: profile.nearbyLinks[1].description,
-          ctaName: `${slugPrefix}_related_nearby_b`,
-        },
-        {
-          href: '/contact',
-          title: 'Request Injury Consultation',
-          description: `Confidential claim review for urgent ${profile.marketName} injury matters and insurer-pressure timelines.`,
-          ctaName: `${slugPrefix}_related_contact`,
-        },
+        { href: profile.hubLink.href, title: profile.hubLink.title, description: profile.hubLink.description, ctaName: `${slugPrefix}_related_hub` },
+        { href: '/resources/what-to-do-after-car-accident-oklahoma', title: 'Post-Accident Guide', description: 'A checklist for medical care, scene evidence, insurance calls, and record keeping.', ctaName: `${slugPrefix}_related_post_accident_guide` },
+        { href: '/personal-injury/car-accidents', title: 'Car Accident Claims', description: 'How fault, treatment, insurance, and damages are documented after a serious crash.', ctaName: `${slugPrefix}_related_car` },
+        { href: '/resources/oklahoma-uninsured-motorist-claim-guide', title: 'Uninsured Motorist Claim Guide', description: 'How uninsured and underinsured motorist coverage may apply when other insurance is limited.', ctaName: `${slugPrefix}_related_um_uim_guide` },
+        { href: profile.nearbyLinks[1].href, title: profile.nearbyLinks[1].title, description: profile.nearbyLinks[1].description, ctaName: `${slugPrefix}_related_nearby_b` },
+        { href: '/contact', title: 'Request an Injury Consultation', description: `Talk with Todd Kernal about records, insurance, and next steps after a ${profile.marketName} injury.`, ctaName: `${slugPrefix}_related_contact` },
       ],
       faqTitle: `${profile.marketName} Personal Injury FAQ`,
-      faqSubtitle: `Frequent injury-claim questions from ${profile.marketName} clients.`,
+      faqSubtitle: `Practical questions about injury claims connected to ${profile.marketName}.`,
       faqs: [
-        {
-          question: `How soon should I call a lawyer after an accident in ${profile.marketName}?`,
-          answer:
-            `Immediately when possible. Early legal guidance helps preserve evidence, control insurer communications, and protect claim value in ${profile.marketName} matters.`,
-        },
-        {
-          question: `Can you handle disputed-fault claims in ${profile.countyContext}?`,
-          answer:
-            `Yes. We handle contested liability using structured evidence development, medical chronology control, and litigation-ready claim framing for ${profile.countyContext}.`,
-        },
-        {
-          question: 'What records should I keep after a serious injury event?',
-          answer:
-            'Keep medical records, bills, wage-loss proof, photos, repair estimates, and all insurer communications so liability and damages can be documented clearly.',
-        },
-        {
-          question: 'Do you handle catastrophic and wrongful death matters?',
-          answer:
-            `Yes. We represent high-severity injury and fatal-loss cases with long-horizon damages strategy and litigation-capable case development.`,
-        },
+        { question: `When should I call a lawyer after an accident in ${profile.marketName}?`, answer: 'As soon as practical if injuries are serious, fault is disputed, evidence may disappear, or an insurer is asking for a recorded statement.' },
+        { question: `Can the firm handle a disputed-fault claim connected to ${profile.countyContext}?`, answer: 'Yes. Todd can compare reports, photographs, video, witness accounts, vehicle information, and medical records when fault or medical cause is disputed.' },
+        { question: 'What records should I keep after a serious injury?', answer: 'Keep reports, photographs, medical records, bills, health-insurance statements, wage-loss proof, repair estimates, receipts, and every insurer message or letter.' },
+        { question: 'Do you handle catastrophic injury and wrongful death matters?', answer: 'Yes. The firm handles serious injury and fatal-loss claims that require careful documentation of medical, financial, and family losses.' },
       ],
       practiceArea: slugPrefix,
-      ctaTitle: `Need Injury Representation in ${profile.marketName}?`,
-      ctaDescription: `Start with a focused legal review before insurer pressure narrows your options in ${profile.countyContext}.`,
-      ctaLabel: 'Start Injury Case Review',
+      ctaTitle: `Talk With a Personal Injury Lawyer About a ${profile.marketName} Claim`,
+      ctaDescription: `Bring the available records for a direct review of fault, insurance, treatment, and next steps in ${profile.countyContext}.`,
+      ctaLabel: 'Request an Injury Consultation',
       ctaName: `${slugPrefix}_bottom_cta`,
       actionChecklist: [
-        `Preserve records tied to ${profile.corridorContext}, including reports, photos, witness contacts, and timeline notes.`,
-        'Follow treatment plans consistently and keep all provider documentation in one chronology.',
-        'Avoid recorded insurer narratives until legal strategy and evidence sequencing are defined.',
-        `Request claim review early so valuation planning reflects full damages exposure in ${profile.marketName} under ${tierContext.valuationPressure}.`,
+        `Save reports, photographs, video, and witness information from ${profile.corridorContext}.`,
+        'Follow medical instructions and keep records from every treating provider.',
+        'Keep insurer communications, bills, receipts, and documents showing missed work.',
+        `Have the available coverage and filing options reviewed before signing a release for the ${profile.marketName} claim.`,
       ],
     },
   })

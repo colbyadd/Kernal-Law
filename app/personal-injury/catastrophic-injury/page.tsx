@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Oklahoma Catastrophic Injury Attorney | Kernal & Associates',
     description:
-      'Trial-ready representation for life-altering injury claims requiring long-horizon medical and economic damages strategy.',
+      'Representation for Oklahoma injury claims involving permanent limitations, future care, and lost earning ability.',
     url: 'https://kernallaw.com/personal-injury/catastrophic-injury',
   },
 }
@@ -23,22 +23,22 @@ const catastrophicFaqs = [
   {
     question: 'Why are catastrophic injury cases handled differently?',
     answer:
-      'These cases require future-care planning, vocational and economic modeling, and long-term loss proof beyond immediate medical bills. Underdeveloped valuation can significantly understate real damages.',
+      'The losses often extend well beyond the first hospital bills. The claim may need to address future treatment, rehabilitation, home or vehicle changes, lost earning ability, and help with daily activities.',
   },
   {
     question: 'Do these claims usually involve experts?',
     answer:
-      'Yes. Medical, rehabilitation, and economic experts are commonly required to document long-term impact and support damages against insurer challenge.',
+      'Often. Treating providers and qualified medical, rehabilitation, vocational, or economic professionals may be needed to explain future care and the lasting effect on work and daily life.',
   },
   {
     question: 'Can a catastrophic injury case settle without trial?',
     answer:
-      'Some do, but trial readiness is often essential to obtaining fair offers. High-value catastrophic cases are heavily contested and require strong litigation posture.',
+      'Some do. Others require a lawsuit when fault or future losses are disputed. Whether a case settles or reaches trial depends on the evidence and the parties’ positions.',
   },
   {
     question: 'How long do catastrophic injury claims take?',
     answer:
-      'Complexity, treatment progression, and liability disputes can extend timelines. A disciplined process is necessary to protect full-value long-term recovery.',
+      'Treatment, the need for expert review, fault disputes, and court scheduling can all affect timing. It may take time before doctors can reliably describe future care and permanent limitations.',
   },
   {
     question: 'What damages are usually at issue?',
@@ -51,82 +51,82 @@ export default function CatastrophicInjuryPage() {
   return (
     <ServiceDetailPage
       heroTitle="Catastrophic Injury Claims"
-      heroSubtitle="Long-horizon legal strategy for life-altering injuries, permanent limitations, and future-care needs."
+      heroSubtitle="Representation for life-altering injuries, permanent limitations, and future-care needs."
       heroVariant="injury"
-      introTitle="Catastrophic injury cases must be valued for a lifetime, not a quarter."
+      introTitle="A life-altering injury claim must account for what comes next, not only the first bills."
       introParagraphs={[
-        'Severe injuries can create decades of medical, vocational, and quality-of-life impact. Claims focused only on immediate bills often miss the largest categories of recoverable loss.',
-        'Catastrophic cases are usually defended aggressively because long-term damages are substantial. Without structured expert-supported development, insurers may discount future care, earning loss, and life-impact categories.',
-        'Kernal & Associates develops catastrophic injury claims with comprehensive future-loss modeling, expert-supported valuation, and litigation-first readiness.',
+        'A brain injury, spinal injury, amputation, or other permanent harm can change medical needs, work, housing, transportation, and family responsibilities for years. Those changes may not be clear during the first months of treatment.',
+        'The record should explain the current injury and the likely future needs. Treating providers and other qualified professionals may be necessary when an insurer disputes care costs, earning loss, or daily limitations.',
+        'Kernal & Associates gathers the liability evidence, medical records, and financial information needed to present those long-term losses and files suit when the claim cannot be resolved fairly.',
       ]}
-      focusTitle="High-Stakes Claim Priorities"
+      focusTitle="What a Catastrophic Injury Claim May Need"
       focusItems={[
         {
           title: 'Medical and Functional Impact Development',
           description:
-            'The claim record must reflect current condition and projected long-term limitations with precision.',
+            'Medical records should explain the diagnosis, current limitations, expected treatment, and future care needs.',
           bullets: [
             'Diagnosis and prognosis integration',
             'Rehabilitation and function-loss analysis',
             'Future procedure and care planning',
             'Daily-life impact documentation',
-            'Adaptive-needs forecasting',
-            'Long-term treatment continuity strategy',
+            'Home, vehicle, and equipment needs',
+            'Long-term treatment plan',
           ],
         },
         {
-          title: 'Economic and Vocational Valuation',
+          title: 'Economic and Vocational Losses',
           description:
-            'Catastrophic losses require rigorous earnings and life-care modeling to prevent major undervaluation.',
+            'The claim may need to account for missed work, reduced earning ability, care expenses, and lost household services.',
           bullets: [
-            'Earnings trajectory analysis',
-            'Capacity-loss projections',
-            'Life-care cost frameworks',
-            'Household support impact modeling',
-            'Benefit-loss and retirement-impact review',
-            'Inflation-adjusted future-cost planning',
+            'Employment and earnings history',
+            'Reduced earning capacity',
+            'Future care costs',
+            'Lost household services',
+            'Lost benefits and retirement contributions',
+            'Changes in future costs',
           ],
         },
         {
-          title: 'Litigation and Negotiation Leverage',
+          title: 'Disputed Fault and Future Losses',
           description:
-            'High-value claims need credible trial exposure to produce meaningful settlement movement.',
+            'We address disputes about who was responsible, what care will be needed, and how the injury affects work and daily life.',
           bullets: [
-            'Defendant exposure mapping',
-            'Expert-report sequencing',
-            'Demand leverage development',
-            'Trial calendar readiness',
-            'Settlement-offer stress testing',
-            'Cross-examination preparation framework',
+            'Identification of responsible parties',
+            'Medical and professional reports',
+            'Demand supported by records',
+            'Discovery and court deadlines',
+            'Review of settlement offers',
+            'Witness and trial preparation',
           ],
         },
       ]}
       processTitle="Catastrophic Injury Case Workflow"
-      processSubtitle="Comprehensive evidence development is central to fair long-term recovery."
+      processSubtitle="The work begins with preserving liability evidence and continues as future medical and work needs become clearer."
       processSteps={[
         {
           step: '01',
           title: 'Immediate Intake and Evidence Preservation',
           description:
-            'We secure liability evidence and establish documentation structure before early treatment and incident details fragment.',
+            'We preserve incident evidence and organize early treatment records, expenses, and information about the parties involved.',
         },
         {
           step: '02',
           title: 'Future-Loss and Care-Needs Development',
           description:
-            'Medical, care, and vocational impacts are structured into long-horizon damages analysis with expert support.',
+            'We gather evidence about future treatment, rehabilitation, equipment, home assistance, work limits, and lost income.',
         },
         {
           step: '03',
-          title: 'Demand and Defense-Position Testing',
+          title: 'Demand and Response to Disputes',
           description:
-            'We present full-value demands and challenge insurer attempts to narrow future-loss and life-impact categories.',
+            'We present the supporting records and respond when an insurer disputes future care, earning loss, or daily limitations.',
         },
         {
           step: '04',
           title: 'Litigation and Trial Preparation',
           description:
-            'Where necessary, we advance to full litigation to protect total long-term claim value.',
+            'When fault or long-term losses remain disputed, a lawsuit allows the parties to exchange evidence and prepare for trial.',
         },
       ]}
       relatedTitle="Related Severe Injury Pages"
@@ -153,19 +153,19 @@ export default function CatastrophicInjuryPage() {
         {
           href: '/personal-injury/oil-field-injuries',
           title: 'Oil Field Injury Claims',
-          description: 'Industrial injury strategy for severe trauma and multi-party liability events.',
+          description: 'Industrial incidents involving contractors, equipment, and more than one responsible company.',
           ctaName: 'catastrophic_related_oil_field',
         },
         {
           href: '/oklahoma-city/personal-injury',
           title: 'Oklahoma City Personal Injury',
-          description: 'Metro strategy for high-severity negligence and catastrophic-damages claims.',
+          description: 'Representation for serious injury claims in Oklahoma City and nearby communities.',
           ctaName: 'catastrophic_related_okc_injury',
         },
         {
           href: '/norman/personal-injury',
           title: 'Norman Personal Injury',
-          description: 'Cleveland County claim strategy for major trauma and long-term loss cases.',
+          description: 'Representation for serious injury claims in Norman and Cleveland County.',
           ctaName: 'catastrophic_related_norman_injury',
         },
         {
@@ -181,11 +181,11 @@ export default function CatastrophicInjuryPage() {
       actionChecklist={[
         'Preserve all treatment records, referrals, and expense documentation from the first visit.',
         'Track how injuries affect work capacity, daily function, and household needs over time.',
-        'Avoid insurer statements or settlement decisions before long-term valuation is reviewed.',
-        'Start legal strategy early so future-care and economic-loss proof is built correctly.',
+        'Avoid insurer statements or settlement decisions before long-term losses are reviewed.',
+        'Seek legal advice early so time-sensitive evidence and deadlines can be addressed.',
       ]}
-      ctaTitle="Build a Full-Value Catastrophic Injury Case"
-      ctaDescription="These cases demand long-horizon planning and expert-backed valuation from the first legal steps."
+      ctaTitle="Talk Through a Catastrophic Injury Claim"
+      ctaDescription="A review can focus on liability proof, future-care records, available insurance, and filing deadlines."
       ctaLabel="Start Catastrophic Injury Review"
       ctaName="catastrophic_bottom_cta"
     />

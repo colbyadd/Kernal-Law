@@ -2,14 +2,14 @@ import { Metadata } from 'next'
 import { ServiceDetailPage } from '../../components/ServiceDetailPage'
 
 export const metadata: Metadata = {
-  title: 'Oklahoma Assault and Battery Defense Lawyer',
+  title: 'Oklahoma Assault & Battery Lawyer',
   description:
-    'Defense for Oklahoma assault and battery allegations with focus on incident reconstruction, intent analysis, lawful self-defense, and trial-ready representation.',
+    'Defense for Oklahoma assault and battery allegations involving incident evidence, intent, self-defense, and misdemeanor or felony charges.',
   alternates: { canonical: '/criminal-defense/assault-battery' },
   openGraph: {
     title: 'Oklahoma Assault and Battery Defense | Kernal & Associates',
     description:
-      'Strategic defense for misdemeanor and felony assault allegations in Oklahoma with evidence-driven legal framing.',
+      'Defense for Oklahoma assault and battery allegations involving intent, self-defense, witnesses, and physical evidence.',
     url: 'https://kernallaw.com/criminal-defense/assault-battery',
   },
 }
@@ -33,17 +33,17 @@ const assaultBatteryFaqs = [
   {
     question: 'Will an assault conviction affect employment and licensing?',
     answer:
-      'Potentially. A conviction can affect background checks, professional licensing, and long-term reputation. Strategy should account for both immediate penalties and record consequences.',
+      'Potentially. A conviction can affect background checks, professional licenses, and employment. Those possible consequences should be considered along with the court penalties before any resolution is accepted.',
   },
   {
     question: 'Can assault charges be reduced before trial?',
     answer:
-      'Often yes, depending on evidence quality and legal defenses. Early reconstruction work, witness challenges, and targeted motion practice can improve negotiation posture.',
+      'Sometimes. The answer depends on the charge, witness accounts, physical evidence, and any legal defense such as self-defense. No reduction can be promised, but those issues may affect negotiations or a motion before trial.',
   },
   {
     question: 'How quickly should I hire counsel after being charged?',
     answer:
-      'Immediately. Early legal involvement helps preserve favorable evidence, prevent avoidable statement errors, and control compliance risks from the beginning.',
+      'As soon as practical. Early legal involvement can help preserve favorable evidence, prevent avoidable statement errors, and clarify bond or no-contact conditions from the beginning.',
   },
 ]
 
@@ -51,23 +51,23 @@ export default function AssaultBatteryPage() {
   return (
     <ServiceDetailPage
       heroTitle="Assault and Battery Defense"
-      heroSubtitle="Defense for misdemeanor and felony violence allegations with trial-ready legal strategy."
+      heroSubtitle="Defense for misdemeanor and felony allegations involving force, injury, or self-defense."
       heroVariant="criminal"
-      introTitle="Assault allegations are decided by legal elements and evidence quality, not accusation labels."
+      introTitle="The police report may not tell the whole story of an alleged assault."
       introParagraphs={[
-        'Assault and battery prosecutions often begin with fast charging decisions built on incomplete context. Police reports may capture only one version of events, while timeline gaps, witness inconsistency, or missing context can materially change legal interpretation.',
-        'These cases frequently involve disputed intent, self-defense questions, and credibility conflicts. Effective defense requires disciplined incident reconstruction and evidence testing, not reactive acceptance of the initial narrative.',
-        'Kernal & Associates builds assault defenses around legal-element analysis, witness reliability review, and trial-ready case framing so negotiations are driven by provable risk rather than allegation intensity.',
+        'Assault and battery charges often follow a fast-moving event. An initial report may rely on one account and leave out video, other witnesses, what happened before the contact, or facts bearing on self-defense.',
+        'The legal questions may include intent, who initiated the encounter, whether force was lawful, and whether an alleged injury can be connected to the event. Those questions should be tested against the evidence, not assumed from the charge name.',
+        'Kernal & Associates compares witness accounts, available media, medical records, and the legal elements. The case may then proceed through negotiations, pretrial motions, or trial depending on what that review shows.',
       ]}
-      focusTitle="How We Defend Assault and Battery Charges"
+      focusTitle="Evidence and Legal Issues We Review"
       focusItems={[
         {
           title: 'Incident Reconstruction',
           description:
-            'Accurate sequence and situational context are central to contested violence allegations where the initial narrative may be incomplete.',
+            'The order of events and the surrounding circumstances matter when witnesses give different accounts of the same incident.',
           bullets: [
             'Timeline reconstruction',
-            'Witness statement conflict mapping',
+            'Comparison of conflicting witness statements',
             'Scene and physical-evidence review',
             'Medical record consistency checks',
             'Video and digital media integration',
@@ -77,32 +77,32 @@ export default function AssaultBatteryPage() {
         {
           title: 'Intent and Lawful Force Analysis',
           description:
-            'The State must prove each legal element beyond reasonable doubt, including intent and unlawful conduct under the circumstances.',
+            'The State must prove every required element beyond a reasonable doubt. The evidence may also raise self-defense or another lawful-use-of-force issue.',
           bullets: [
             'Self-defense evaluation',
             'Mutual combat context review',
-            'Intent element challenge strategy',
+            'Disputed intent evidence',
             'Force proportionality analysis',
             'Threat-perception context review',
             'Causation and injury linkage testing',
           ],
         },
         {
-          title: 'Courtroom Positioning',
+          title: 'Court and Record Consequences',
           description:
-            'Case posture improves when evidentiary weaknesses and legal defenses are developed early and presented clearly.',
+            'Preparation should account for the immediate charge, possible motions and trial issues, and any effect on work or a professional license.',
           bullets: [
-            'Motion and evidentiary challenge planning',
-            'Negotiation leverage development',
-            'Jury-trial preparation workflow',
-            'Collateral consequence minimization',
-            'Sentencing-exposure modeling',
-            'Record-impact strategy planning',
+            'Evidence and motion issues',
+            'Negotiation options',
+            'Jury-trial preparation',
+            'Employment and licensing concerns',
+            'Possible sentencing exposure',
+            'Future record consequences',
           ],
         },
       ]}
-      processTitle="Assault Defense Workflow"
-      processSubtitle="Fast evidence control and clear legal framing improve negotiation and trial options."
+      processTitle="From the First Review to Resolution or Trial"
+      processSubtitle="We begin with release terms and evidence, then prepare the issues that may matter in negotiations, motions, or trial."
       processSteps={[
         {
           step: '01',
@@ -118,15 +118,15 @@ export default function AssaultBatteryPage() {
         },
         {
           step: '03',
-          title: 'Legal Defense Framing',
+          title: 'Legal Issues and Motions',
           description:
-            'Self-defense, intent disputes, and admissibility issues are integrated into a coherent pretrial strategy and motion sequence.',
+            'We identify how self-defense, disputed intent, or admissibility issues should be raised before or during trial.',
         },
         {
           step: '04',
           title: 'Resolution or Trial',
           description:
-            'We negotiate from litigation strength and proceed to trial when facts and law justify full contest of the allegations.',
+            'We discuss negotiated options and prepare for trial when the client chooses to contest the allegation.',
         },
       ]}
       relatedTitle="Related Criminal Defense Pages"
@@ -135,7 +135,7 @@ export default function AssaultBatteryPage() {
         {
           href: '/criminal-defense',
           title: 'Criminal Defense Hub',
-          description: 'Full criminal defense scope and strategic framework.',
+          description: 'An overview of criminal charges handled by Kernal & Associates.',
           ctaName: 'assault_related_criminal_hub',
         },
         {
@@ -147,13 +147,13 @@ export default function AssaultBatteryPage() {
         {
           href: '/criminal-defense/warrants',
           title: 'Warrants Defense',
-          description: 'Resolution strategy for active warrants and missed-appearance complications.',
+          description: 'Help with an active warrant or a missed court appearance.',
           ctaName: 'assault_related_warrants',
         },
         {
           href: '/criminal-defense/probation-violation',
           title: 'Probation Violation Defense',
-          description: 'Related strategy where supervision terms overlap with new allegations.',
+          description: 'Related representation when a new charge affects existing supervision.',
           ctaName: 'assault_related_probation',
         },
         {
@@ -165,13 +165,13 @@ export default function AssaultBatteryPage() {
         {
           href: '/oklahoma-city/criminal-defense',
           title: 'Oklahoma City Criminal Defense',
-          description: 'Metro venue strategy for Oklahoma County assault and battery filings.',
+          description: 'Criminal defense for cases filed in Oklahoma City and Oklahoma County.',
           ctaName: 'assault_related_okc_criminal',
         },
         {
           href: '/norman/criminal-defense',
           title: 'Norman Criminal Defense',
-          description: 'Cleveland County defense strategy for south-metro assault allegations.',
+          description: 'Criminal defense for cases filed in Norman and Cleveland County.',
           ctaName: 'assault_related_norman_criminal',
         },
       ]}
@@ -182,10 +182,10 @@ export default function AssaultBatteryPage() {
         'Preserve all court paperwork, release terms, and any media related to the incident.',
         'Create a private timeline while witness names and sequence details are still fresh.',
         'Avoid discussing case facts with law enforcement or third parties without counsel.',
-        'Start defense review early to protect evidence and pretrial strategy options.',
+        'Ask counsel to review evidence and release conditions before the next court date.',
       ]}
-      ctaTitle="Start Building the Defense Now"
-      ctaDescription="Early strategy improves leverage in negotiations and protects your trial-position options."
+      ctaTitle="Talk With an Oklahoma Assault Defense Lawyer"
+      ctaDescription="A prompt review can help preserve evidence and clarify the issues before the next court date."
       ctaLabel="Start Assault Defense"
       ctaName="assault_bottom_cta"
     />

@@ -4,7 +4,7 @@ import { ResourceGuidePage } from '../../components/ResourceGuidePage'
 export const metadata: Metadata = {
   title: 'Oklahoma Felony Case Timeline Guide',
   description:
-    'A stage-by-stage Oklahoma felony timeline covering filing, arraignment, discovery, negotiation, trial posture, and sentencing risk decisions.',
+    'A stage-by-stage Oklahoma felony timeline covering filing, arraignment, preliminary hearing, discovery, motions, trial, and sentencing.',
   alternates: { canonical: '/resources/oklahoma-felony-case-timeline' },
   openGraph: {
     title: 'Oklahoma Felony Case Timeline Guide | Kernal & Associates',
@@ -19,16 +19,28 @@ export default function FelonyCaseTimelineGuidePage() {
     <ResourceGuidePage
       canonicalPath="/resources/oklahoma-felony-case-timeline"
       title="Oklahoma Felony Case Timeline Guide"
-      subtitle="A practical stage-by-stage map from arrest through resolution for serious criminal exposure."
+      subtitle="A practical stage-by-stage map of an Oklahoma felony case."
       intro={[
-        'Felony cases move through predictable structural phases, but outcomes are shaped by decisions made inside each phase. Timing, evidence control, and procedural strategy usually matter as much as the allegations themselves.',
-        'This guide breaks down the felony process into actionable decision windows so you can understand what happens next and where early legal work creates leverage.',
-        'Use this page as a timeline framework, then move to the linked service pages for charge-specific defense strategy.',
+        'The exact sequence varies by court and case, but Oklahoma felony matters generally move from arrest or filing through initial appearances, preliminary proceedings, district-court arraignment, discovery, motions, and either a negotiated resolution or trial.',
+        'Use this overview to understand the usual stages. Your court notices and docket control your actual deadlines.',
       ]}
       authorName="Kernal Law Editorial Team"
       reviewedBy="Todd Kernal"
       reviewedTitle="Founding Attorney"
-      lastUpdated="2026-02-18"
+      datePublished="2026-02-18"
+      lastUpdated="2026-07-11"
+      officialSources={[
+        {
+          label: 'Oklahoma Statutes, Title 22: Criminal Procedure',
+          href: 'https://www.oscn.net/applications/oscn/Index.asp?ftdb=STOKST22&level=1',
+          description: 'The official Oklahoma Statutes index for criminal procedure, including filing, bail, preliminary proceedings, trial, and appeal.',
+        },
+        {
+          label: 'Oklahoma Statutes: Preliminary Examinations',
+          href: 'https://www.oscn.net/applications/OCISWeb/DeliverDocument.asp?CiteID=437009',
+          description: 'The Oklahoma State Courts Network collection of statutes governing preliminary examinations.',
+        },
+      ]}
       immediateActionsTitle="Immediate Felony-Case Priorities"
       immediateActions={[
         {
@@ -47,13 +59,13 @@ export default function FelonyCaseTimelineGuidePage() {
           label: 'Priority 3',
           title: 'Protect Bond Compliance',
           detail:
-            'Follow every release condition exactly. New violations can expand exposure and weaken negotiation posture.',
+            'Follow every release condition exactly. An alleged violation can create a separate problem before the original charge is resolved.',
         },
         {
           label: 'Priority 4',
           title: 'Preserve Time-Sensitive Evidence',
           detail:
-            'Witness memory, surveillance footage, and digital records degrade quickly. Early preservation supports suppression and trial strategy.',
+            'Witness memory, surveillance footage, and digital records can disappear quickly. Preserve what is available without altering or deleting it.',
         },
         {
           label: 'Priority 5',
@@ -65,25 +77,25 @@ export default function FelonyCaseTimelineGuidePage() {
           label: 'Priority 6',
           title: 'Build a Written Defense Timeline',
           detail:
-            'A structured timeline of events, contacts, and records helps counsel identify pressure points faster.',
+            'A dated timeline of events, contacts, and records helps counsel compare your account with the evidence.',
         },
       ]}
       takeaways={[
         'Felony outcomes are often determined by early procedural decisions.',
         'Bond-condition errors can create new legal exposure independent of the primary charge.',
-        'Discovery and motion practice drive leverage in negotiation and trial posture.',
+        'Discovery and motion practice often determine what evidence can be used.',
         'Trial readiness often improves pretrial resolution quality.',
-        'Collateral consequences should be planned with the same urgency as courtroom strategy.',
+        'Employment, licensing, immigration, and family consequences may require separate attention.',
         'Evidence preservation is strongest in the first days and weeks.',
         'Not every strong defense starts with a courtroom speech; many start with documentation discipline.',
-        'A phased strategy reduces panic and improves decision quality across the case lifecycle.',
+        'Knowing the next stage makes it easier to prepare and meet deadlines.',
       ]}
       sections={[
         {
           title: 'Phase 1: Arrest, Filing, and Initial Case Framing',
           paragraphs: [
             'The opening phase includes arrest events, booking records, probable-cause narratives, and early charging decisions. The prosecution narrative starts forming here, often before the defense has full discovery access.',
-            'Early legal intervention focuses on rights preservation, bond strategy, and evidence-control actions that prevent procedural disadvantages later.',
+            'Early legal work focuses on protecting rights, understanding release terms, and preserving evidence before it is lost.',
           ],
           bullets: [
             'Arrest and booking chronology mapping',
@@ -96,7 +108,7 @@ export default function FelonyCaseTimelineGuidePage() {
           title: 'Phase 2: Arraignment and Bond Conditions',
           paragraphs: [
             'At arraignment, charges are formally addressed and release terms are set or confirmed. Bond conditions can affect employment, travel, communications, and daily life.',
-            'A workable bond strategy protects compliance while positioning the case for effective motion and negotiation work in later stages.',
+            'If a release term is unworkable, counsel can determine whether to ask the court to modify it. Do not ignore the condition while a request is pending.',
           ],
           bullets: [
             'Condition-by-condition compliance planning',
@@ -109,7 +121,7 @@ export default function FelonyCaseTimelineGuidePage() {
           title: 'Phase 3: Discovery and Motion Development',
           paragraphs: [
             'Discovery phase is where case strength is tested. Reports, recordings, forensic materials, and witness statements are reviewed for legal and factual vulnerabilities.',
-            'Motion practice may target unlawful stops, searches, statements, identification procedures, and evidence handling defects. This phase heavily influences leverage.',
+            'Motions may address unlawful stops, searches, statements, identification procedures, or problems with how evidence was collected and handled.',
           ],
           bullets: [
             'Bodycam, dashcam, and dispatch record analysis',
@@ -119,10 +131,10 @@ export default function FelonyCaseTimelineGuidePage() {
           ],
         },
         {
-          title: 'Phase 4: Negotiation Windows and Strategic Resolution',
+          title: 'Phase 4: Negotiation and Resolution Decisions',
           paragraphs: [
-            'Negotiations often intensify after discovery and key motions, when both sides have clearer risk visibility. Strong defense posture can materially influence charge adjustments and sentencing outcomes.',
-            'Resolution decisions should compare certainty, collateral consequences, long-term record impact, and trial-risk profile rather than short-term pressure alone.',
+            'Discussions about resolution often become more informed after discovery and important motions. At that point both sides have a better view of the admissible evidence and trial risks.',
+            'Before accepting an agreement, compare the sentence, collateral consequences, long-term record effect, and risks of trial.',
           ],
           bullets: [
             'Evidence-strength and sentencing-risk matrix',
@@ -135,7 +147,7 @@ export default function FelonyCaseTimelineGuidePage() {
           title: 'Phase 5: Trial Preparation and Courtroom Readiness',
           paragraphs: [
             'Even when trial is not guaranteed, preparing for trial strengthens negotiation credibility. Trial-readiness includes witness preparation, evidentiary objections, and coherent theme development.',
-            'A disciplined trial posture prevents last-minute strategy shifts and increases pressure for fairer resolution proposals.',
+            'Preparing witnesses, exhibits, objections, and the defense theory early avoids rushed decisions as the trial date approaches.',
           ],
           bullets: [
             'Defense theme and fact-theory development',
@@ -145,10 +157,10 @@ export default function FelonyCaseTimelineGuidePage() {
           ],
         },
         {
-          title: 'Phase 6: Sentencing, Compliance, and Post-Case Strategy',
+          title: 'Phase 6: Sentencing, Compliance, and Record Issues',
           paragraphs: [
-            'If a case resolves by plea or verdict, post-resolution strategy still matters. Sentencing outcomes, compliance obligations, and future record options should be managed proactively.',
-            'Long-term planning can include probation-control strategy, violation-risk prevention, and eventual record-relief evaluation where legally available.',
+            'If a case ends by plea or verdict, the sentence and all reporting, payment, treatment, and supervision obligations must be tracked carefully.',
+            'Later record relief may be available in some matters. Eligibility depends on the disposition, time passed, criminal history, and current Oklahoma law.',
           ],
           bullets: [
             'Sentencing mitigation and compliance planning',
@@ -158,7 +170,7 @@ export default function FelonyCaseTimelineGuidePage() {
           ],
         },
       ]}
-      faqSubtitle="Common questions about the timeline and strategy in Oklahoma felony cases."
+      faqSubtitle="Common questions about the timeline of an Oklahoma felony case."
       faqs={[
         {
           question: 'How fast does a felony case move in Oklahoma?',
@@ -168,17 +180,17 @@ export default function FelonyCaseTimelineGuidePage() {
         {
           question: 'Can felony charges be reduced before trial?',
           answer:
-            'Sometimes. Discovery findings, motion outcomes, and trial posture can influence whether reduction or alternate resolution is available.',
+            'Sometimes. The evidence, motion rulings, criminal history, charging decisions, and prosecutor all affect the available options.',
         },
         {
           question: 'Is bond compliance really that important?',
           answer:
-            'Yes. Bond violations can create new exposure and reduce defense leverage, even before the core felony allegations are resolved.',
+            'Yes. A violation can lead to revocation, a new arrest, or stricter conditions before the original charge is resolved.',
         },
         {
           question: 'What phase usually has the most strategic impact?',
           answer:
-            'Discovery and motion development are often decisive because they shape evidence admissibility and negotiation leverage.',
+            'Discovery and motion practice are often important because they determine what evidence exists and what may be admitted.',
         },
         {
           question: 'Do all felony cases go to trial?',
@@ -192,24 +204,24 @@ export default function FelonyCaseTimelineGuidePage() {
         },
       ]}
       relatedTitle="Related Felony and Criminal Defense Pages"
-      relatedSubtitle="Use these links to move from timeline knowledge to charge-specific legal strategy."
+      relatedSubtitle="Use these links for charge-specific information and immediate next steps."
       relatedLinks={[
         {
           href: '/criminal-defense',
           title: 'Criminal Defense Hub',
-          description: 'Core defense services, process strategy, and rapid consultation access.',
+          description: 'Criminal defense services and direct consultation access.',
           ctaName: 'guide_felony_timeline_related_criminal_hub',
         },
         {
           href: '/criminal-defense/drug-charges',
           title: 'Drug Charges Defense',
-          description: 'Felony-level possession, trafficking, and search-based defense strategy.',
+          description: 'Felony possession, trafficking, and cases involving searches or warrants.',
           ctaName: 'guide_felony_timeline_related_drug',
         },
         {
           href: '/criminal-defense/assault-battery',
           title: 'Assault and Battery Defense',
-          description: 'Violent-charge strategy for allegation-heavy and witness-driven cases.',
+          description: 'Defense information for serious charges involving witnesses and disputed accounts.',
           ctaName: 'guide_felony_timeline_related_assault',
         },
         {
@@ -227,12 +239,12 @@ export default function FelonyCaseTimelineGuidePage() {
         {
           href: '/contact',
           title: 'Request Felony Case Review',
-          description: 'Get immediate strategy guidance before the case timeline hardens.',
+          description: 'Have the charge, court dates, and immediate deadlines reviewed.',
           ctaName: 'guide_felony_timeline_related_contact',
         },
       ]}
       ctaTitle="Need a Felony Defense Timeline Built for Your Case?"
-      ctaDescription="Early strategy, evidence control, and timeline discipline can materially improve felony outcomes."
+      ctaDescription="Bring your paperwork and court dates so the next stage can be reviewed."
       ctaLabel="Start Felony Case Review"
       ctaName="guide_felony_timeline_bottom_cta"
     />

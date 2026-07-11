@@ -38,6 +38,10 @@ function CinematicNavContent({ pathname }: { pathname: string }) {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
     const navRef = useRef<HTMLElement | null>(null)
+    const mobileMenuDialogRef = useRef<HTMLDivElement | null>(null)
+    const mobileMenuOpenButtonRef = useRef<HTMLButtonElement | null>(null)
+    const mobileMenuCloseButtonRef = useRef<HTMLButtonElement | null>(null)
+    const previouslyFocusedElementRef = useRef<HTMLElement | null>(null)
     const dropdownCloseTimeoutRef = useRef<number | null>(null)
 
     useEffect(() => {
@@ -46,16 +50,89 @@ function CinematicNavContent({ pathname }: { pathname: string }) {
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
-    // Close mobile menu on Escape key
     useEffect(() => {
         const handleEscape = (e: KeyboardEvent) => {
-            if (e.key === 'Escape') {
-                setMobileMenuOpen(false)
+            if (e.key === 'Escape' && !mobileMenuOpen) {
                 setActiveDropdown(null)
             }
         }
         document.addEventListener('keydown', handleEscape)
         return () => document.removeEventListener('keydown', handleEscape)
+    }, [mobileMenuOpen])
+
+    useEffect(() => {
+        if (!mobileMenuOpen) {
+            return
+        }
+
+        const dialog = mobileMenuDialogRef.current
+        const menuOpenButton = mobileMenuOpenButtonRef.current
+        const focusTimer = window.setTimeout(() => {
+            mobileMenuCloseButtonRef.current?.focus()
+        }, 0)
+
+        const handleDialogKeyDown = (event: KeyboardEvent) => {
+            if (event.key === 'Escape') {
+                event.preventDefault()
+                setMobileMenuOpen(false)
+                return
+            }
+
+            if (event.key !== 'Tab' || !dialog) {
+                return
+            }
+
+            const focusableElements = Array.from(
+                dialog.querySelectorAll<HTMLElement>(
+                    'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+                ),
+            ).filter((element) => !element.hasAttribute('hidden'))
+
+            if (focusableElements.length === 0) {
+                event.preventDefault()
+                return
+            }
+
+            const firstElement = focusableElements[0]
+            const lastElement = focusableElements[focusableElements.length - 1]
+
+            if (!(document.activeElement instanceof Node) || !dialog.contains(document.activeElement)) {
+                event.preventDefault()
+                firstElement.focus()
+                return
+            }
+
+            if (event.shiftKey && document.activeElement === firstElement) {
+                event.preventDefault()
+                lastElement.focus()
+            } else if (!event.shiftKey && document.activeElement === lastElement) {
+                event.preventDefault()
+                firstElement.focus()
+            }
+        }
+
+        document.addEventListener('keydown', handleDialogKeyDown)
+
+        return () => {
+            window.clearTimeout(focusTimer)
+            document.removeEventListener('keydown', handleDialogKeyDown)
+            const focusTarget = previouslyFocusedElementRef.current ?? menuOpenButton
+            if (focusTarget?.isConnected) {
+                focusTarget.focus()
+            }
+        }
+    }, [mobileMenuOpen])
+
+    useEffect(() => {
+        const desktopMediaQuery = window.matchMedia('(min-width: 1024px)')
+        const closeMobileMenuAtDesktopWidth = (event: MediaQueryListEvent) => {
+            if (event.matches) {
+                setMobileMenuOpen(false)
+            }
+        }
+
+        desktopMediaQuery.addEventListener('change', closeMobileMenuAtDesktopWidth)
+        return () => desktopMediaQuery.removeEventListener('change', closeMobileMenuAtDesktopWidth)
     }, [])
 
     useEffect(() => {
@@ -80,7 +157,6 @@ function CinematicNavContent({ pathname }: { pathname: string }) {
         document.documentElement.dataset.mobileMenu = mobileMenuOpen ? 'open' : 'closed'
 
         if (!mobileMenuOpen) {
-            document.body.style.overflow = ''
             return
         }
 
@@ -114,6 +190,7 @@ function CinematicNavContent({ pathname }: { pathname: string }) {
                 { name: 'Case Results', href: '/case-results', cta: 'nav_firm_case_results' },
                 { name: 'Client Reviews', href: '/client-reviews', cta: 'nav_firm_client_reviews' },
                 { name: 'Resources', href: '/resources', cta: 'nav_firm_resources' },
+                { name: 'Locations', href: '/locations', cta: 'nav_firm_locations' },
                 { name: 'Fees & Billing', href: '/fees', cta: 'nav_firm_fees' },
             ],
         },
@@ -143,6 +220,7 @@ function CinematicNavContent({ pathname }: { pathname: string }) {
                 { name: 'Case Results', href: '/case-results', cta: 'nav_mobile_firm_results' },
                 { name: 'Client Reviews', href: '/client-reviews', cta: 'nav_mobile_firm_reviews' },
                 { name: 'Resources', href: '/resources', cta: 'nav_mobile_firm_resources' },
+                { name: 'Locations', href: '/locations', cta: 'nav_mobile_firm_locations' },
                 { name: 'Fees & Billing', href: '/fees', cta: 'nav_mobile_firm_fees' },
             ],
         },
@@ -188,6 +266,14 @@ function CinematicNavContent({ pathname }: { pathname: string }) {
         setActiveDropdown((prev) => (prev === name ? null : name))
     }
 
+    const openMobileMenu = () => {
+        previouslyFocusedElementRef.current =
+            document.activeElement instanceof HTMLElement && document.activeElement !== document.body
+                ? document.activeElement
+                : mobileMenuOpenButtonRef.current
+        setMobileMenuOpen(true)
+    }
+
     return (
         <nav
             ref={navRef}
@@ -195,7 +281,11 @@ function CinematicNavContent({ pathname }: { pathname: string }) {
         >
             <div className="container mx-auto px-6 flex justify-between items-center">
                 {/* Brand */}
-                <Link href="/" className="group relative z-50 max-w-[70%]">
+                <Link
+                    href="/"
+                    prefetch={false}
+                    className={`group relative z-50 max-w-[70%] ${mobileMenuOpen ? 'invisible pointer-events-none lg:visible lg:pointer-events-auto' : ''}`}
+                >
                     <span className={`font-serif text-lg md:text-2xl tracking-tighter transition-colors duration-300 leading-tight block ${scrolled ? 'text-silver-100' : 'text-white'}`}>
                         KERNAL <span className="text-silver-500 text-xs md:text-sm align-middle italic">&</span> ASSOCIATES
                     </span>
@@ -213,7 +303,9 @@ function CinematicNavContent({ pathname }: { pathname: string }) {
                                 <Link
                                     key={item.href}
                                     href={item.href}
+                                    prefetch={false}
                                     data-cta={item.cta}
+                                    aria-current={isActiveLink(item.href) ? 'page' : undefined}
                                     onClick={() => {
                                         setActiveDropdown(null)
                                         setMobileMenuOpen(false)
@@ -263,6 +355,7 @@ function CinematicNavContent({ pathname }: { pathname: string }) {
                                     id={`desktop-nav-panel-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
                                     className={`absolute top-full left-0 w-80 pt-2 transition-all duration-200 ${open ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-1 pointer-events-none'}`}
                                     aria-label={`${item.name} submenu`}
+                                    aria-hidden={!open}
                                     onMouseEnter={() => openDropdown(item.name)}
                                 >
                                     <div className="border border-silver-500/20 bg-iron-900/95 backdrop-blur-md shadow-2xl p-2">
@@ -270,7 +363,10 @@ function CinematicNavContent({ pathname }: { pathname: string }) {
                                             <Link
                                                 key={child.href}
                                                 href={child.href}
+                                                prefetch={false}
                                                 data-cta={child.cta}
+                                                aria-current={isActiveLink(child.href) ? 'page' : undefined}
+                                                tabIndex={open ? undefined : -1}
                                                 onClick={() => {
                                                     setActiveDropdown(null)
                                                     setMobileMenuOpen(false)
@@ -300,25 +396,42 @@ function CinematicNavContent({ pathname }: { pathname: string }) {
 
                 {/* Mobile Toggle */}
                 <button
-                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                    className="lg:hidden z-50 p-2 space-y-1.5 group"
-                    aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+                    ref={mobileMenuOpenButtonRef}
+                    type="button"
+                    onClick={openMobileMenu}
+                    className={`lg:hidden z-50 p-2 space-y-1.5 group ${mobileMenuOpen ? 'invisible pointer-events-none' : ''}`}
+                    aria-label="Open menu"
                     aria-expanded={mobileMenuOpen}
                     aria-controls="mobile-menu"
                 >
-                    <span className={`block w-8 h-0.5 bg-white transition-transform duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-                    <span className={`block w-6 h-0.5 bg-silver-400 ml-auto transition-opacity duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
-                    <span className={`block w-8 h-0.5 bg-white transition-transform duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+                    <span className="block w-8 h-0.5 bg-white"></span>
+                    <span className="block w-6 h-0.5 bg-silver-400 ml-auto"></span>
+                    <span className="block w-8 h-0.5 bg-white"></span>
                 </button>
 
                 {/* Mobile Overlay */}
                 <div
+                    ref={mobileMenuDialogRef}
                     id="mobile-menu"
                     role="dialog"
                     aria-modal="true"
                     aria-label="Navigation menu"
-                    className={`fixed top-0 left-0 w-full h-[100dvh] z-40 bg-iron-950 transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] lg:hidden overflow-y-auto ${mobileMenuOpen ? 'translate-y-0 opacity-100 visible' : '-translate-y-full opacity-0 invisible'}`}
+                    aria-hidden={!mobileMenuOpen}
+                    className={`fixed top-0 left-0 w-full h-[100dvh] z-40 bg-iron-950 transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] lg:hidden overflow-y-auto ${mobileMenuOpen ? 'translate-y-0 opacity-100 visible' : '-translate-y-full opacity-0 invisible'}`}
                 >
+                    {mobileMenuOpen ? (
+                        <button
+                            ref={mobileMenuCloseButtonRef}
+                            type="button"
+                            autoFocus
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="absolute top-7 right-6 z-50 p-3"
+                            aria-label="Close menu"
+                        >
+                            <span className="block w-8 h-0.5 bg-white rotate-45 translate-y-px"></span>
+                            <span className="block w-8 h-0.5 bg-white -rotate-45"></span>
+                        </button>
+                    ) : null}
                     <div className="container mx-auto px-6 py-28 space-y-10">
                         {mobileSections.map((section) => (
                             <div key={section.heading}>
@@ -328,7 +441,9 @@ function CinematicNavContent({ pathname }: { pathname: string }) {
                                         <Link
                                             key={link.href}
                                             href={link.href}
+                                            prefetch={link.href === '/contact'}
                                             data-cta={link.cta}
+                                            aria-current={isActiveLink(link.href) ? 'page' : undefined}
                                             onClick={() => setMobileMenuOpen(false)}
                                             className={`block font-serif text-3xl leading-tight transition-colors ${isActiveLink(link.href) ? 'text-white' : 'text-silver-300 hover:text-white'}`}
                                         >

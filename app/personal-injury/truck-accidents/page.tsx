@@ -4,12 +4,12 @@ import { ServiceDetailPage } from '../../components/ServiceDetailPage'
 export const metadata: Metadata = {
   title: 'Oklahoma Truck Accident Lawyer',
   description:
-    'Truck accident representation for catastrophic injury and fatal-loss claims in Oklahoma, including carrier-liability analysis, regulatory evidence preservation, and litigation-ready damages strategy.',
+    'Oklahoma truck accident representation involving carrier liability, electronic and maintenance records, serious injuries, and wrongful death.',
   alternates: { canonical: '/personal-injury/truck-accidents' },
   openGraph: {
     title: 'Oklahoma Truck Accident Attorney | Kernal & Associates',
     description:
-      'Commercial trucking collision representation with immediate evidence-preservation and trial-ready strategy for severe-loss cases.',
+      'Help after an Oklahoma commercial truck crash involving serious injury or wrongful death.',
     url: 'https://kernallaw.com/personal-injury/truck-accidents',
   },
 }
@@ -18,7 +18,7 @@ const truckAccidentFaqs = [
   {
     question: 'Why are truck accident claims different from regular car crashes?',
     answer:
-      'Truck cases involve commercial carriers, layered insurance coverage, federal safety rules, and technical records such as electronic logs, maintenance files, and dispatch data. These factors materially increase complexity and potential value.',
+      'Truck cases can involve a commercial carrier, several insurance policies, federal safety rules, and records such as electronic logs, maintenance files, and dispatch data. Those additional parties and records make the investigation different from a typical car crash.',
   },
   {
     question: 'Who can be liable in a trucking collision?',
@@ -33,12 +33,12 @@ const truckAccidentFaqs = [
   {
     question: 'How quickly should I hire a lawyer after a truck crash?',
     answer:
-      'Immediately. Carriers and insurers launch defense response quickly, and key data can be difficult to access if preservation is delayed. Early representation improves evidence control and liability clarity.',
+      'As soon as practical. Some electronic and company records are kept for limited periods, so an early preservation request may prevent useful evidence from being lost.',
   },
   {
     question: 'Can truck accident claims go to trial?',
     answer:
-      'Yes. Severe-loss truck cases often require litigation when insurers undervalue long-term medical, economic, or wrongful-death damages. Trial readiness usually improves settlement quality.',
+      'Yes. A lawsuit may be necessary when fault is disputed or the parties cannot agree on the losses. Whether a case settles or reaches trial depends on its facts and the positions taken by the parties.',
   },
   {
     question: 'What damages are recoverable in a truck collision case?',
@@ -51,25 +51,25 @@ export default function TruckAccidentsPage() {
   return (
     <ServiceDetailPage
       heroTitle="Truck Accident Litigation"
-      heroSubtitle="Commercial-collision representation for catastrophic injury and fatal-loss claims across Oklahoma."
+      heroSubtitle="Representation after Oklahoma commercial truck crashes involving serious injury or wrongful death."
       heroVariant="injury"
-      introTitle="Truck cases demand early evidence control and aggressive litigation posture."
+      introTitle="Truck crashes involve company records that may not remain available for long."
       introParagraphs={[
-        'Commercial truck defendants typically launch immediate defense coordination after major collisions. If preservation steps are delayed, key electronic and operational records can become harder to obtain, reducing leverage before full liability analysis begins.',
-        'Truck litigation differs from standard collision claims because liability can extend beyond the driver to carriers, contractors, maintenance entities, and logistics actors. Full accountability requires methodical investigation across these layers.',
-        'Kernal & Associates handles truck-collision claims with immediate preservation strategy, regulatory compliance analysis, and trial-ready damages development. The objective is full accountability and full-value recovery, not quick discount settlement.',
+        'Driver logs, onboard data, dispatch messages, inspection reports, and maintenance files can help explain why a commercial truck crashed. Prompt preservation requests are often needed because companies do not keep every record indefinitely.',
+        'Responsibility may extend beyond the driver. The carrier, a maintenance company, a loading company, a broker, or a manufacturer may be involved depending on the cause of the collision and who controlled the work.',
+        'Kernal & Associates identifies the responsible parties, requests the relevant records, reviews safety and maintenance issues, and documents the medical, financial, and family losses caused by the crash.',
       ]}
       focusTitle="Critical Truck Accident Case Components"
       focusItems={[
         {
           title: 'Carrier and Driver Compliance Review',
           description:
-            'Commercial safety compliance analysis can reveal negligence patterns extending beyond the collision event itself.',
+            'Driver and company records may show whether fatigue, training, supervision, or operating practices contributed to the crash.',
           bullets: [
             'Hours-of-service and logbook review',
             'Driver qualification file analysis',
-            'Dispatch and route pressure records',
-            'FMCSA compliance indicators',
+            'Dispatch messages and route records',
+            'Federal Motor Carrier Safety Administration records',
             'Training and supervision review',
             'Policy-violation pattern analysis',
           ],
@@ -77,7 +77,7 @@ export default function TruckAccidentsPage() {
         {
           title: 'Mechanical and Operational Evidence',
           description:
-            'Mechanical issues, maintenance failures, and loading decisions often contribute directly to commercial-collision severity.',
+            'Inspection, repair, loading, and vehicle data can reveal problems that are not apparent from the crash report alone.',
           bullets: [
             'Inspection and maintenance history',
             'Brake/tire system failure analysis',
@@ -88,45 +88,45 @@ export default function TruckAccidentsPage() {
           ],
         },
         {
-          title: 'High-Value Damage Structuring',
+          title: 'Medical and Financial Losses',
           description:
-            'Truck-collision injuries often involve life-altering losses that must be valued with long-horizon precision and expert support.',
+            'Serious injuries may require evidence of future care, reduced earning ability, and changes in daily life.',
           bullets: [
             'Future care and life-care planning',
             'Vocational and earnings-loss evidence',
-            'Permanent disability impact modeling',
-            'Wrongful death damage framework',
-            'Household-service loss analysis',
-            'Long-term quality-of-life documentation',
+            'Permanent disability and daily limitations',
+            'Wrongful death loss documentation',
+            'Lost household services',
+            'Long-term effects on quality of life',
           ],
         },
       ]}
       processTitle="Truck Collision Case Process"
-      processSubtitle="Early preservation and expert-backed development are essential in commercial crash claims."
+      processSubtitle="The investigation begins with preserving carrier records and identifying every party that may be responsible."
       processSteps={[
         {
           step: '01',
-          title: 'Immediate Preservation and Intake Controls',
+          title: 'Initial Review and Record Preservation',
           description:
-            'We initiate preservation strategy for vehicle data, driver logs, and carrier records as early as possible.',
+            'We request that vehicle data, driver logs, dispatch records, and other relevant materials be preserved.',
         },
         {
           step: '02',
           title: 'Liability and Compliance Investigation',
           description:
-            'Driver conduct, carrier systems, maintenance history, and operational factors are analyzed to establish full liability structure.',
+            'We examine the driver’s conduct, the carrier’s practices, maintenance history, and the roles of other companies involved.',
         },
         {
           step: '03',
           title: 'Damages Development and Expert Integration',
           description:
-            'Medical, economic, and future-loss evidence is developed with expert support for full-value claim positioning.',
+            'We collect medical and wage records and, when needed, work with qualified professionals on future care or earning losses.',
         },
         {
           step: '04',
-          title: 'Negotiation and Trial Escalation',
+          title: 'Negotiation or Litigation',
           description:
-            'We negotiate from complete litigation readiness and proceed to trial when offers do not reflect true case value.',
+            'We negotiate with the carriers and other responsible parties. If they will not resolve the claim fairly, we can take the case to court.',
         },
       ]}
       relatedTitle="Related Injury Pages"
@@ -141,19 +141,19 @@ export default function TruckAccidentsPage() {
         {
           href: '/personal-injury',
           title: 'Personal Injury Hub',
-          description: 'Broader injury strategy, case types, and claim workflow overview.',
+          description: 'See other negligence and injury matters handled by the firm.',
           ctaName: 'truck_related_injury_hub',
         },
         {
           href: '/personal-injury/car-accidents',
           title: 'Car Accident Claims',
-          description: 'Passenger vehicle collision strategy for disputed fault and severe injuries.',
+          description: 'Passenger vehicle claims involving disputed fault and serious injuries.',
           ctaName: 'truck_related_car_accidents',
         },
         {
           href: '/personal-injury/wrongful-death',
           title: 'Wrongful Death Claims',
-          description: 'Accountability and damages strategy for fatal-loss negligence events.',
+          description: 'Legal and estate issues that arise when negligence causes a death.',
           ctaName: 'truck_related_wrongful_death',
         },
         {
@@ -171,13 +171,13 @@ export default function TruckAccidentsPage() {
         {
           href: '/oklahoma-city/personal-injury',
           title: 'Oklahoma City Personal Injury',
-          description: 'Metro strategy for high-volume transport-corridor crash claims.',
+          description: 'Help with commercial truck and other injury claims in the Oklahoma City area.',
           ctaName: 'truck_related_okc_injury',
         },
         {
           href: '/norman/personal-injury',
           title: 'Norman Personal Injury',
-          description: 'Cleveland County strategy for south-metro severe-collision claims.',
+          description: 'Commercial crash and other injury representation in Norman and Cleveland County.',
           ctaName: 'truck_related_norman_injury',
         },
       ]}
@@ -187,11 +187,11 @@ export default function TruckAccidentsPage() {
       actionChecklist={[
         'Get medical care and preserve every treatment and billing record from day one.',
         'Save crash photos, witness contacts, and all communications from insurers or carriers.',
-        'Do not provide recorded statements before legal and evidence-preservation strategy is in place.',
+        'Ask for legal advice before giving a recorded statement or signing a release.',
         'Start immediate legal review so key commercial records can be preserved early.',
       ]}
       ctaTitle="Secure Truck Crash Evidence Before It Is Lost"
-      ctaDescription="The first legal steps after a truck collision often determine liability leverage and recovery value."
+      ctaDescription="An early review can help preserve carrier records and identify every available source of insurance."
       ctaLabel="Start Truck Accident Review"
       ctaName="truck_bottom_cta"
     />

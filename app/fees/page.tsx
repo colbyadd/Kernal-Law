@@ -21,19 +21,18 @@ export default function FeesPage() {
     <main className="bg-iron-950 min-h-screen">
       <PageHero
         title="Fees and Billing"
-        subtitle="Clear fee structure guidance for criminal defense and injury representation."
+        subtitle="How criminal defense and personal injury fees are discussed before representation begins."
       />
 
       <section className="py-12 md:py-20 border-b border-silver-500/10">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto space-y-6 text-silver-400 text-lg leading-relaxed">
             <p>
-              Fee structure depends on case type, complexity, timeline, and expected litigation intensity.
-              During consultation, we explain scope, strategic workload, and how billing aligns with your matter.
+              Fees depend on the type of case, its complexity, the expected hearings or litigation, and the work involved.
+              The scope and billing terms are explained before representation begins.
             </p>
             <p>
-              Our objective is to provide clarity before representation begins so you can make an informed decision
-              without uncertainty around basic cost structure.
+              You will receive a written agreement describing the fee, the work covered, and how case expenses are handled.
             </p>
           </div>
         </div>
@@ -53,7 +52,7 @@ export default function FeesPage() {
                 <li>Charge severity and exposure level</li>
                 <li>Expected hearings and motion complexity</li>
                 <li>Investigation and expert support needs</li>
-                <li>Trial-readiness and timeline demands</li>
+                <li>Expected trial work and case timeline</li>
               </ul>
             </article>
 
@@ -82,7 +81,7 @@ export default function FeesPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {[
                 'Case scope and expected legal phases',
-                'Strategic priorities and timeline pressure points',
+                'Immediate deadlines and expected timeline',
                 'Likely motion, hearing, or trial workload',
                 'Billing model and agreement terms',
                 'Communication expectations and next steps',
@@ -111,13 +110,13 @@ export default function FeesPage() {
           {
             href: '/personal-injury',
             title: 'Personal Injury Services',
-            description: 'Injury case categories and claim strategy pages.',
+            description: 'Injury case categories and information about the claim process.',
             ctaName: 'fees_related_injury',
           },
           {
             href: '/case-results',
             title: 'Case Results',
-            description: 'Representative outcomes and required legal disclaimers.',
+            description: 'Anonymized examples of criminal defense and injury matters.',
             ctaName: 'fees_related_case_results',
           },
         ]}

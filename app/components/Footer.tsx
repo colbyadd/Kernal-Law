@@ -1,5 +1,9 @@
 import Link from 'next/link'
-import { CONTACT_EMAIL } from '@/lib/contact'
+import {
+    CONTACT_EMAIL,
+    PRIMARY_PHONE_DOT,
+    PRIMARY_PHONE_TEL_HREF,
+} from '@/lib/contact'
 
 export function Footer() {
     return (
@@ -23,13 +27,13 @@ export function Footer() {
                 <div>
                     <h3 className="text-white uppercase tracking-widest text-xs mb-4">Practice Areas</h3>
                     <p className="text-silver-500 text-sm mb-2"><Link href="/criminal-defense" prefetch={false} data-cta="footer_criminal_defense" className="text-link hover:text-white transition-colors">Criminal Defense</Link></p>
-                    <p className="text-silver-500 text-sm mb-2"><Link href="/personal-injury" prefetch={false} data-cta="footer_personal_injury" className="text-link hover:text-white transition-colors">Personal Injury</Link></p>
+                    <p className="text-silver-500 text-sm mb-2"><Link href="/personal-injury" prefetch={false} data-cta="footer_personal_injury" className="text-link hover:text-white transition-colors">Selected Serious-Injury Cases</Link></p>
                     <p className="text-silver-500 text-sm mb-2"><Link href="/resources" prefetch={false} data-cta="footer_resources" className="text-link hover:text-white transition-colors">Legal Resources</Link></p>
                     <p className="text-silver-500 text-sm mb-2"><Link href="/locations" prefetch={false} data-cta="footer_locations" className="text-link hover:text-white transition-colors">Locations</Link></p>
                 </div>
                 <div className="md:col-start-4">
                     <h3 className="text-white uppercase tracking-widest text-xs mb-4">Contact</h3>
-                    <p className="text-silver-500 text-sm mb-2"><a href="tel:4053640601" className="text-link hover:text-white">405.364.0601</a></p>
+                    <p className="text-silver-500 text-sm mb-2"><a href={PRIMARY_PHONE_TEL_HREF} className="text-link hover:text-white">{PRIMARY_PHONE_DOT}</a></p>
                     <p className="text-silver-500 text-sm"><a href={`mailto:${CONTACT_EMAIL}`} className="text-link hover:text-white">{CONTACT_EMAIL}</a></p>
                     <div className="text-silver-500 text-sm mt-3 flex flex-col items-center md:items-start">
                         <Link href="/oklahoma-city" prefetch={false} data-cta="footer_oklahoma_city" className="text-link hover:text-white block py-2">Oklahoma City</Link>

@@ -2,19 +2,21 @@
 
 import React, { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
+import {
+    PRIMARY_PHONE_DISPLAY,
+    PRIMARY_PHONE_SMS_HREF,
+    PRIMARY_PHONE_TEL_HREF,
+} from '@/lib/contact'
 
 export function ContactFab() {
     const pathname = usePathname()
-    const isHome = pathname === '/'
-    const [homeScrolled, setHomeScrolled] = useState(false)
+    const [pageScrolled, setPageScrolled] = useState(false)
+    const [nearContactStop, setNearContactStop] = useState(false)
 
     useEffect(() => {
-        if (!isHome) {
-            return
-        }
-
         const updateVisibility = () => {
-            setHomeScrolled(window.scrollY > Math.min(window.innerHeight * 0.72, 620))
+            const revealPoint = Math.min(Math.max(window.innerHeight * 0.9, 720), 900)
+            setPageScrolled(window.scrollY > revealPoint)
         }
 
         const frameId = window.requestAnimationFrame(updateVisibility)
@@ -26,34 +28,62 @@ export function ContactFab() {
             window.removeEventListener('scroll', updateVisibility)
             window.removeEventListener('resize', updateVisibility)
         }
-    }, [isHome])
+    }, [pathname])
 
-    if (pathname === '/contact') {
-        return null
-    }
+    useEffect(() => {
+        const intersectingStops = new Set<Element>()
+        const frameId = window.requestAnimationFrame(() => setNearContactStop(false))
+        const stops = document.querySelectorAll<HTMLElement>('#contact-form, footer')
 
-    const isVisible = !isHome || homeScrolled
+        const observer = new IntersectionObserver(
+            (entries) => {
+                for (const entry of entries) {
+                    if (entry.isIntersecting) {
+                        intersectingStops.add(entry.target)
+                    } else {
+                        intersectingStops.delete(entry.target)
+                    }
+                }
+                setNearContactStop(intersectingStops.size > 0)
+            },
+            { threshold: 0.01 },
+        )
+
+        stops.forEach((stop) => observer.observe(stop))
+
+        return () => {
+            window.cancelAnimationFrame(frameId)
+            observer.disconnect()
+        }
+    }, [pathname])
+
+    const isVisible = pageScrolled && !nearContactStop
 
     return (
         <div
-            className={`mobile-contact-fab fixed bottom-4 right-4 z-50 flex gap-2 md:hidden transition-all duration-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0 pointer-events-none'}`}
+            className={`mobile-contact-fab fixed inset-x-0 bottom-0 z-40 border-t border-silver-500/20 bg-iron-950/95 px-4 pt-2 pb-[calc(0.5rem+env(safe-area-inset-bottom))] backdrop-blur-md md:hidden transition-all duration-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0 pointer-events-none'}`}
+            aria-hidden={!isVisible}
         >
-            <a
-                href="sms:+14053640601"
-                data-cta="mobile_text_fab"
-                className="h-12 min-w-24 px-4 rounded-full bg-iron-900 border border-silver-500/30 text-silver-100 text-xs uppercase tracking-[0.16em] font-semibold flex items-center justify-center shadow-lg shadow-black/40 hover:border-accent-gold/50 hover:text-white transition-colors"
-                aria-label="Text the office"
-            >
-                Text
-            </a>
-            <a
-                href="tel:4053640601"
-                data-cta="mobile_call_fab"
-                className="h-12 min-w-28 px-5 rounded-full bg-accent-gold text-iron-950 text-xs uppercase tracking-[0.16em] font-bold flex items-center justify-center shadow-lg shadow-black/50 hover:bg-white transition-colors"
-                aria-label="Call now"
-            >
-                Call Now
-            </a>
+            <div className="mx-auto grid max-w-lg grid-cols-2 gap-3">
+                <a
+                    href={PRIMARY_PHONE_SMS_HREF}
+                    data-cta="mobile_text_fab"
+                    tabIndex={isVisible ? undefined : -1}
+                    className="flex h-11 items-center justify-center rounded-full border border-silver-500/35 bg-iron-900 text-xs font-semibold uppercase tracking-[0.16em] text-silver-100 transition-colors hover:border-accent-gold/60 hover:text-white"
+                    aria-label={`Text the office at ${PRIMARY_PHONE_DISPLAY}`}
+                >
+                    Text
+                </a>
+                <a
+                    href={PRIMARY_PHONE_TEL_HREF}
+                    data-cta="mobile_call_fab"
+                    tabIndex={isVisible ? undefined : -1}
+                    className="flex h-11 items-center justify-center rounded-full bg-accent-gold text-xs font-bold uppercase tracking-[0.16em] text-iron-950 transition-colors hover:bg-white"
+                    aria-label={`Call the office at ${PRIMARY_PHONE_DISPLAY}`}
+                >
+                    Call Now
+                </a>
+            </div>
         </div>
     )
 }

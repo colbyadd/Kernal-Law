@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import { PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_TEL_HREF } from '@/lib/contact'
 import { PageHero } from '../components/PageHero'
 import { LinkGridSection } from '../components/LinkGridSection'
 
@@ -138,11 +139,11 @@ export default function FeesPage() {
                 Request Consultation
               </Link>
               <a
-                href="tel:+14053640601"
+                href={PRIMARY_PHONE_TEL_HREF}
                 data-cta="fees_call"
                 className="inline-flex items-center justify-center px-10 py-4 border border-white text-white font-bold uppercase tracking-widest hover:bg-white/10 transition-colors"
               >
-                (405) 364-0601
+                {PRIMARY_PHONE_DISPLAY}
               </a>
             </div>
           </div>

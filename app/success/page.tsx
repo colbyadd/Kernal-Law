@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { PRIMARY_PHONE_DOT, PRIMARY_PHONE_TEL_HREF } from '@/lib/contact'
 import { SuccessAttribution } from '../components/SuccessAttribution'
 
 
@@ -45,11 +46,11 @@ export default function SuccessPage() {
                         Return Home
                     </Link>
                     <a
-                        href="tel:4053640601"
+                        href={PRIMARY_PHONE_TEL_HREF}
                         data-cta="success_call_now"
                         className="inline-flex items-center justify-center px-8 py-4 border border-silver-500/30 text-silver-100 text-sm uppercase tracking-widest hover:bg-white/5 transition-colors"
                     >
-                        Call 405.364.0601
+                        Call {PRIMARY_PHONE_DOT}
                     </a>
                 </div>
             </div>

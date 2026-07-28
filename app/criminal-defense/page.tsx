@@ -1,4 +1,9 @@
 import type { Metadata } from 'next'
+import {
+  getContactHref,
+  PRIMARY_PHONE_DISPLAY,
+  PRIMARY_PHONE_TEL_HREF,
+} from '@/lib/contact'
 import { BreadcrumbTrail } from '../components/BreadcrumbTrail'
 import { FaqSection } from '../components/FaqSection'
 import { LinkGridSection } from '../components/LinkGridSection'
@@ -142,15 +147,19 @@ export default function CriminalDefenseHubPage() {
       />
       <PageHero
         title="Criminal Defense"
-        subtitle="Experienced representation for Oklahoma misdemeanors and felonies."
+        subtitle="Defense for DUI, drug charges, warrants, probation cases, and other Oklahoma misdemeanors and felonies."
         variant="criminal"
       />
-      <MobileConversionBar context="criminal_hub" primaryHref="/contact" primaryLabel="Request Consultation" />
+      <MobileConversionBar
+        context="criminal_hub"
+        primaryHref={getContactHref('criminal-defense')}
+        primaryLabel="Request a Free Consultation"
+      />
       <BreadcrumbTrail items={[{ label: 'Home', href: '/' }, { label: 'Criminal Defense' }]} />
 
       <QuickPathSection
-        title="Start Here"
-        subtitle="Choose the option closest to your situation."
+        title="What Do You Need Right Now?"
+        subtitle="Use the arrest guide, go to the DUI page, or contact Todd about the charge."
         items={[
           {
             badge: 'Recent Arrest',
@@ -158,6 +167,7 @@ export default function CriminalDefenseHubPage() {
             description: 'Protect your right to remain silent, follow release terms, and preserve documents.',
             href: '/resources/what-to-do-after-arrest-oklahoma',
             ctaName: 'criminal_hub_quick_path_arrest',
+            ctaLabel: 'Read the Arrest Guide',
           },
           {
             badge: 'DUI',
@@ -165,13 +175,15 @@ export default function CriminalDefenseHubPage() {
             description: 'Understand the two proceedings that may follow an Oklahoma DUI arrest.',
             href: '/criminal-defense/dui-dwi',
             ctaName: 'criminal_hub_quick_path_dui',
+            ctaLabel: 'Go to the DUI Page',
           },
           {
             badge: 'Contact',
-            title: 'Speak With Defense Counsel',
-            description: 'Request a confidential consultation about the charge, court date, or investigation.',
-            href: '/contact',
+            title: 'Talk With Todd About the Charge',
+            description: 'Send a short consultation request about the charge, court date, or investigation.',
+            href: getContactHref('criminal-defense'),
             ctaName: 'criminal_hub_quick_path_contact',
+            ctaLabel: 'Contact Todd',
           },
         ]}
       />
@@ -179,16 +191,18 @@ export default function CriminalDefenseHubPage() {
       <section className="py-14 md:py-20 border-b border-silver-500/10">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl text-white mb-6">Your case deserves a careful, honest review</h2>
+            <h2 className="font-serif text-3xl md:text-4xl text-white mb-6">
+              Start with the charge, the paperwork, and the next court date.
+            </h2>
             <div className="space-y-5 text-silver-400 text-lg leading-relaxed">
               <p>
                 Todd Kernal has worked as a criminal defense lawyer for nearly 26 years. His practice includes
                 DUI, drug charges, sex offenses, and other felony and misdemeanor cases.
               </p>
               <p>
-                The work begins with the record: what was said, what was searched or seized, what the reports and
-                recordings show, and what deadlines are approaching. Todd prepares cases for court while giving
-                clients plain answers about their options and risks.
+                Todd starts with the record: what you said, what police searched or seized, what the reports and
+                recordings show, and what happens next. He prepares for court and tells clients plainly where the
+                risks are.
               </p>
             </div>
             <blockquote className="mt-8 border-l-2 border-accent-gold pl-6 text-xl text-white font-serif leading-relaxed">
@@ -197,16 +211,16 @@ export default function CriminalDefenseHubPage() {
             <div className="pt-8 flex flex-col sm:flex-row gap-4">
               <PrimaryConsultationCta
                 context="criminal_hub"
-                controlLabel="Request Consultation"
-                challengerLabel="Discuss Your Case"
+                label="Discuss Your Case"
+                href={getContactHref('criminal-defense')}
                 className="inline-flex items-center justify-center px-8 py-4 bg-white text-iron-950 font-bold uppercase tracking-widest hover:bg-silver-100 transition-colors"
               />
               <a
-                href="tel:+14053640601"
+                href={PRIMARY_PHONE_TEL_HREF}
                 data-cta="criminal_hub_call_now"
                 className="inline-flex items-center justify-center px-8 py-4 border border-silver-500/30 text-white font-bold uppercase tracking-widest hover:border-accent-gold transition-colors"
               >
-                Call (405) 364-0601
+                Call {PRIMARY_PHONE_DISPLAY}
               </a>
             </div>
           </div>

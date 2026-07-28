@@ -5,6 +5,11 @@ import { useRouter } from 'next/navigation'
 import { derivePageType, trackEvent } from '@/lib/analytics'
 import {
     CONTACT_CONSENT_VERSION,
+    ContactCaseType,
+    PRIMARY_PHONE_DISPLAY,
+    PRIMARY_PHONE_TEL_HREF,
+    inferContactCaseType,
+    normalizeContactCaseType,
     recordConfirmedFormSubmission,
 } from '@/lib/contact'
 import { getEmptyAttribution, loadLeadAttribution } from '@/lib/lead-attribution'
@@ -34,12 +39,14 @@ type FieldName =
     | 'phone'
     | 'email'
     | 'case_type'
-    | 'urgency'
     | 'preferred_contact_method'
     | 'message'
     | 'consent'
 
 type FieldErrors = Partial<Record<FieldName, string>>
+type PreferredContactMethod = 'call' | 'text' | 'email'
+
+const CONTACT_METHODS: PreferredContactMethod[] = ['call', 'text', 'email']
 
 function digits(value: string) {
     return value.replace(/\D/g, '')
@@ -58,7 +65,8 @@ export function ContactForm() {
     const [status, setStatus] = useState<'idle' | 'submitting' | 'error'>('idle')
     const [errorMessage, setErrorMessage] = useState('')
     const [fieldErrors, setFieldErrors] = useState<FieldErrors>({})
-    const [preferredContactMethod, setPreferredContactMethod] = useState('call')
+    const [caseType, setCaseType] = useState<ContactCaseType | ''>('')
+    const [preferredContactMethod, setPreferredContactMethod] = useState<PreferredContactMethod>('call')
     const formStartedAtRef = useRef<number | null>(null)
     const leadFields: LeadFieldValues = {
         ...getEmptyAttribution(),
@@ -68,15 +76,56 @@ export function ContactForm() {
 
     useEffect(() => {
         formStartedAtRef.current = Date.now()
+
+        const queryCaseType = normalizeContactCaseType(
+            new URLSearchParams(window.location.search).get('case'),
+        )
+        let referringCaseType: ContactCaseType | '' = ''
+
+        if (!queryCaseType && document.referrer) {
+            try {
+                const referrerUrl = new URL(document.referrer)
+                if (referrerUrl.origin === window.location.origin) {
+                    referringCaseType = inferContactCaseType(referrerUrl.pathname)
+                }
+            } catch {
+                // Ignore malformed or unavailable referrers and leave the choice open.
+            }
+        }
+
+        const prefilledCaseType = queryCaseType || referringCaseType
+        if (!prefilledCaseType) return
+
+        const frameId = window.requestAnimationFrame(() => {
+            setCaseType(prefilledCaseType)
+        })
+
+        return () => window.cancelAnimationFrame(frameId)
     }, [])
 
+    const chooseContactMethod = (method: PreferredContactMethod) => {
+        setPreferredContactMethod(method)
+        setFieldErrors((current) => {
+            const next = { ...current }
+            delete next.phone
+            delete next.email
+            delete next.preferred_contact_method
+            return next
+        })
+    }
+
     const focusFirstError = (form: HTMLFormElement, errors: FieldErrors) => {
-        const firstName = Object.keys(errors)[0]
-        if (!firstName) return
+        const errorNames = new Set(Object.keys(errors))
+        const firstField = Array.from(form.elements).find((field) => (
+            field instanceof HTMLElement
+            && 'name' in field
+            && typeof field.name === 'string'
+            && errorNames.has(field.name)
+        ))
+        if (!(firstField instanceof HTMLElement)) return
 
         window.requestAnimationFrame(() => {
-            const field = form.elements.namedItem(firstName)
-            if (field instanceof HTMLElement) field.focus()
+            firstField.focus()
         })
     }
 
@@ -113,16 +162,14 @@ export function ContactForm() {
         const name = String(formData.get('name') || '').trim()
         const phone = String(formData.get('phone') || '').trim()
         const email = String(formData.get('email') || '').trim()
-        const caseType = String(formData.get('case_type') || '')
-        const urgency = String(formData.get('urgency') || '')
+        const submittedCaseType = String(formData.get('case_type') || '')
         const contactMethod = String(formData.get('preferred_contact_method') || '')
         const message = String(formData.get('message') || '').trim()
         const consent = String(formData.get('consent') || '')
         const errors: FieldErrors = {}
 
         if (name.length < 2) errors.name = 'Please enter your full name.'
-        if (!caseType) errors.case_type = 'Please choose a case type.'
-        if (!urgency) errors.urgency = 'Please choose an urgency level.'
+        if (!submittedCaseType) errors.case_type = 'Please choose a case type.'
         if (!contactMethod) errors.preferred_contact_method = 'Please choose how you want us to respond.'
         if (phone && (digits(phone).length < 10 || digits(phone).length > 15)) {
             errors.phone = 'Please enter a valid phone number.'
@@ -180,8 +227,7 @@ export function ContactForm() {
             form_name: 'contact',
             page_path: pagePath,
             page_type: pageType,
-            case_type: caseType,
-            urgency,
+            case_type: submittedCaseType,
             preferred_contact_method: contactMethod,
             lead_source: mergedLead.lead_source,
             cta_variant: mergedLead.cta_variant,
@@ -230,8 +276,7 @@ export function ContactForm() {
                 form_name: 'contact',
                 page_path: pagePath,
                 page_type: pageType,
-                case_type: caseType,
-                urgency,
+                case_type: submittedCaseType,
                 preferred_contact_method: contactMethod,
                 lead_source: mergedLead.lead_source,
                 cta_variant: mergedLead.cta_variant,
@@ -245,7 +290,7 @@ export function ContactForm() {
 
     return (
         <div className="bg-iron-900 p-6 md:p-10 border border-silver-500/10">
-            <h2 className="font-serif text-3xl text-white mb-2">Request a Consultation</h2>
+            <h2 className="font-serif text-3xl text-white mb-2">Request a Free Consultation</h2>
             <p className="text-silver-400 text-sm mb-7">
                 Share the basics and the safest way to reach you. For an urgent arrest, warrant, or deadline, call instead.
             </p>
@@ -288,56 +333,40 @@ export function ContactForm() {
                     </label>
                 </p>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label htmlFor="case_type" className="block text-silver-400 text-xs uppercase tracking-widest mb-2">Case Type</label>
-                        <select
-                            name="case_type"
-                            id="case_type"
-                            required
-                            defaultValue=""
-                            aria-invalid={Boolean(fieldErrors.case_type)}
-                            aria-describedby={fieldErrors.case_type ? 'case_type_error' : undefined}
-                            className={`w-full bg-iron-950 border p-4 text-white focus:border-accent-gold focus:outline-none ${errorClass(Boolean(fieldErrors.case_type))}`}
-                        >
-                            <option value="" disabled>Select one</option>
-                            <option value="criminal-defense">Criminal Defense</option>
-                            <option value="personal-injury">Personal Injury</option>
-                            <option value="other">Other / Not Sure</option>
-                        </select>
-                        {fieldErrors.case_type ? <p id="case_type_error" className="text-red-300 text-xs mt-2">{fieldErrors.case_type}</p> : null}
-                    </div>
-                    <div>
-                        <label htmlFor="urgency" className="block text-silver-400 text-xs uppercase tracking-widest mb-2">Urgency</label>
-                        <select
-                            name="urgency"
-                            id="urgency"
-                            required
-                            defaultValue=""
-                            aria-invalid={Boolean(fieldErrors.urgency)}
-                            aria-describedby={fieldErrors.urgency ? 'urgency_error' : undefined}
-                            className={`w-full bg-iron-950 border p-4 text-white focus:border-accent-gold focus:outline-none ${errorClass(Boolean(fieldErrors.urgency))}`}
-                        >
-                            <option value="" disabled>Select one</option>
-                            <option value="immediate">Immediate (today)</option>
-                            <option value="soon">This week</option>
-                            <option value="planning">Planning ahead</option>
-                        </select>
-                        {fieldErrors.urgency ? <p id="urgency_error" className="text-red-300 text-xs mt-2">{fieldErrors.urgency}</p> : null}
-                    </div>
+                <div>
+                    <label htmlFor="case_type" className="block text-silver-400 text-xs uppercase tracking-widest mb-2">What Do You Need Help With?</label>
+                    <select
+                        name="case_type"
+                        id="case_type"
+                        required
+                        value={caseType}
+                        onChange={(event) => {
+                            setCaseType(normalizeContactCaseType(event.target.value))
+                            setFieldErrors((current) => ({ ...current, case_type: undefined }))
+                        }}
+                        aria-invalid={Boolean(fieldErrors.case_type)}
+                        aria-describedby={fieldErrors.case_type ? 'case_type_error' : undefined}
+                        className={`w-full bg-iron-950 border p-4 text-white focus:border-accent-gold ${errorClass(Boolean(fieldErrors.case_type))}`}
+                    >
+                        <option value="" disabled>Select one</option>
+                        <option value="criminal-defense">Criminal charge or investigation</option>
+                        <option value="personal-injury">Serious injury</option>
+                        <option value="other">Other / Not Sure</option>
+                    </select>
+                    {fieldErrors.case_type ? <p id="case_type_error" className="text-red-300 text-xs mt-2">{fieldErrors.case_type}</p> : null}
                 </div>
 
                 <fieldset aria-describedby={fieldErrors.preferred_contact_method ? 'preferred_contact_method_error' : undefined}>
-                    <legend className="block text-silver-400 text-xs uppercase tracking-widest mb-3">Preferred Response</legend>
+                    <legend className="block text-silver-400 text-xs uppercase tracking-widest mb-3">How Should We Contact You?</legend>
                     <div className="grid grid-cols-3 gap-3">
-                        {['call', 'text', 'email'].map((method) => (
+                        {CONTACT_METHODS.map((method) => (
                             <label key={method} className="bg-iron-950 border border-silver-500/20 p-3 text-silver-300 text-sm flex items-center gap-2">
                                 <input
                                     type="radio"
                                     name="preferred_contact_method"
                                     value={method}
                                     checked={preferredContactMethod === method}
-                                    onChange={() => setPreferredContactMethod(method)}
+                                    onChange={() => chooseContactMethod(method)}
                                     className="accent-accent-gold"
                                 />
                                 {method.charAt(0).toUpperCase() + method.slice(1)}
@@ -360,72 +389,78 @@ export function ContactForm() {
                         placeholder="Your full name"
                         aria-invalid={Boolean(fieldErrors.name)}
                         aria-describedby={fieldErrors.name ? 'name_error' : undefined}
-                        className={`w-full bg-iron-950 border p-4 text-white focus:border-accent-gold focus:outline-none ${errorClass(Boolean(fieldErrors.name))}`}
+                        className={`w-full bg-iron-950 border p-4 text-white focus:border-accent-gold ${errorClass(Boolean(fieldErrors.name))}`}
                     />
                     {fieldErrors.name ? <p id="name_error" className="text-red-300 text-xs mt-2">{fieldErrors.name}</p> : null}
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label htmlFor="phone" className="block text-silver-400 text-xs uppercase tracking-widest mb-2">Phone Number</label>
-                        <input
-                            type="tel"
-                            name="phone"
-                            id="phone"
-                            autoComplete="tel"
-                            inputMode="tel"
-                            aria-required={preferredContactMethod === 'call' || preferredContactMethod === 'text'}
-                            pattern="[0-9()+\-.\s]{10,20}"
-                            placeholder="(405) 364-0601"
-                            aria-invalid={Boolean(fieldErrors.phone)}
-                            aria-describedby={fieldErrors.phone ? 'phone_help phone_error' : 'phone_help'}
-                            className={`w-full bg-iron-950 border p-4 text-white focus:border-accent-gold focus:outline-none ${errorClass(Boolean(fieldErrors.phone))}`}
-                        />
-                        <p id="phone_help" className="text-silver-500 text-xs mt-2">Required if you prefer a call or text.</p>
-                        {fieldErrors.phone ? <p id="phone_error" className="text-red-300 text-xs mt-2">{fieldErrors.phone}</p> : null}
-                    </div>
+                {preferredContactMethod === 'email' ? (
                     <div>
                         <label htmlFor="email" className="block text-silver-400 text-xs uppercase tracking-widest mb-2">Email Address</label>
                         <input
                             type="email"
                             name="email"
                             id="email"
+                            required
                             autoComplete="email"
                             maxLength={254}
-                            aria-required={preferredContactMethod === 'email'}
                             placeholder="you@example.com"
                             aria-invalid={Boolean(fieldErrors.email)}
-                            aria-describedby={fieldErrors.email ? 'email_help email_error' : 'email_help'}
-                            className={`w-full bg-iron-950 border p-4 text-white focus:border-accent-gold focus:outline-none ${errorClass(Boolean(fieldErrors.email))}`}
+                            aria-describedby={fieldErrors.email ? 'email_error' : undefined}
+                            className={`w-full bg-iron-950 border p-4 text-white focus:border-accent-gold ${errorClass(Boolean(fieldErrors.email))}`}
                         />
-                        <p id="email_help" className="text-silver-500 text-xs mt-2">Required if you prefer email.</p>
                         {fieldErrors.email ? <p id="email_error" className="text-red-300 text-xs mt-2">{fieldErrors.email}</p> : null}
                     </div>
-                </div>
+                ) : (
+                    <div>
+                        <label htmlFor="phone" className="block text-silver-400 text-xs uppercase tracking-widest mb-2">Phone Number</label>
+                        <input
+                            type="tel"
+                            name="phone"
+                            id="phone"
+                            required
+                            autoComplete="tel"
+                            inputMode="tel"
+                            pattern="[0-9()+\-.\s]{10,20}"
+                            placeholder={PRIMARY_PHONE_DISPLAY}
+                            aria-invalid={Boolean(fieldErrors.phone)}
+                            aria-describedby={fieldErrors.phone ? 'phone_error' : undefined}
+                            className={`w-full bg-iron-950 border p-4 text-white focus:border-accent-gold ${errorClass(Boolean(fieldErrors.phone))}`}
+                        />
+                        {fieldErrors.phone ? <p id="phone_error" className="text-red-300 text-xs mt-2">{fieldErrors.phone}</p> : null}
+                    </div>
+                )}
 
-                <div className="border border-accent-gold/25 bg-accent-gold/5 p-4 text-sm text-silver-300" role="note">
-                    <p className="font-semibold text-white mb-1">Before you write</p>
-                    <p>
-                        This form does not create an attorney-client relationship. Give only a general overview, key dates,
-                        and any immediate deadline. Do not include confidential, privileged, medical, or highly sensitive details.
-                    </p>
-                </div>
-
-                <div>
-                    <label htmlFor="message" className="block text-silver-400 text-xs uppercase tracking-widest mb-2">Brief Overview (Optional)</label>
-                    <textarea
-                        name="message"
-                        id="message"
-                        rows={3}
-                        maxLength={1500}
-                        placeholder="General matter type, key date, and your immediate concern."
-                        aria-invalid={Boolean(fieldErrors.message)}
-                        aria-describedby={fieldErrors.message ? 'message_help message_error' : 'message_help'}
-                        className={`w-full bg-iron-950 border p-4 text-white focus:border-accent-gold focus:outline-none ${errorClass(Boolean(fieldErrors.message))}`}
-                    />
-                    <p id="message_help" className="text-silver-500 text-xs mt-2">Please do not send documents or detailed evidence through this form.</p>
-                    {fieldErrors.message ? <p id="message_error" className="text-red-300 text-xs mt-2">{fieldErrors.message}</p> : null}
-                </div>
+                <details className="group border border-silver-500/20 bg-iron-950">
+                    <summary className="cursor-pointer list-none p-4 text-sm text-silver-200 flex items-center justify-between gap-4">
+                        <span>Add a short note <span className="text-silver-500">(optional)</span></span>
+                        <span aria-hidden="true" className="text-accent-gold text-lg transition-transform group-open:rotate-45">+</span>
+                    </summary>
+                    <div className="border-t border-silver-500/15 p-4 space-y-4">
+                        <div className="border border-accent-gold/25 bg-accent-gold/5 p-4 text-sm text-silver-300" role="note">
+                            <p className="font-semibold text-white mb-1">Please keep this general</p>
+                            <p>
+                                Do not send confidential details, medical records, or documents. Sending this form does
+                                not create an attorney-client relationship.
+                            </p>
+                        </div>
+                        <div>
+                            <label htmlFor="message" className="sr-only">Brief Overview (Optional)</label>
+                            <textarea
+                                name="message"
+                                id="message"
+                                rows={3}
+                                maxLength={1500}
+                                placeholder="General matter type, key date, and your immediate concern."
+                                aria-invalid={Boolean(fieldErrors.message)}
+                                aria-describedby={fieldErrors.message ? 'message_help message_error' : 'message_help'}
+                                className={`w-full bg-iron-900 border p-4 text-white focus:border-accent-gold ${errorClass(Boolean(fieldErrors.message))}`}
+                            />
+                            <p id="message_help" className="text-silver-500 text-xs mt-2">Please do not send documents or detailed evidence through this form.</p>
+                            {fieldErrors.message ? <p id="message_error" className="text-red-300 text-xs mt-2">{fieldErrors.message}</p> : null}
+                        </div>
+                    </div>
+                </details>
 
                 <div className="flex items-start gap-3">
                     <input
@@ -478,7 +513,7 @@ export function ContactForm() {
                 </button>
 
                 <p className="text-xs text-silver-400 text-center">
-                    Need immediate help? Call <a href="tel:4053640601" className="text-white underline underline-offset-2">(405) 364-0601</a>.
+                    Need immediate help? Call <a href={PRIMARY_PHONE_TEL_HREF} className="text-white underline underline-offset-2">{PRIMARY_PHONE_DISPLAY}</a>.
                 </p>
             </form>
         </div>

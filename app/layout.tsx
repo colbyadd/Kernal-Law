@@ -41,11 +41,11 @@ if (bingSiteVerification) {
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "Kernal & Associates | Oklahoma Criminal Defense Lawyer & Personal Injury Attorney",
+    default: "Kernal & Associates | Oklahoma Criminal Defense Lawyer",
     template: "%s | Kernal & Associates"
   },
   description:
-    "Kernal & Associates represents Oklahoma clients in criminal defense and personal injury matters, including DUI, drug charges, warrants, car accidents, truck accidents, and wrongful death claims.",
+    "Kernal & Associates provides Oklahoma criminal defense for DUI, drug charges, warrants, and other serious cases, with selected personal injury representation.",
   authors: [{ name: "Todd Kernal" }],
   creator: "Kernal & Associates",
   publisher: "Kernal & Associates",
@@ -57,9 +57,9 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "Kernal & Associates | Oklahoma Criminal Defense & Personal Injury",
+    title: "Kernal & Associates | Oklahoma Criminal Defense",
     description:
-      "Oklahoma criminal defense and personal injury representation for DUI, felony, warrant, car accident, truck accident, and wrongful death cases.",
+      "Oklahoma criminal defense for DUI, felony, drug, warrant, and probation matters, with selected serious-injury representation.",
     url: baseUrl,
     siteName: "Kernal & Associates",
     locale: "en_US",
@@ -67,9 +67,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Kernal & Associates | Oklahoma Criminal Defense & Personal Injury',
+    title: 'Kernal & Associates | Oklahoma Criminal Defense',
     description:
-      'Oklahoma criminal defense and personal injury representation for DUI, felony, warrant, car accident, truck accident, and wrongful death matters.',
+      'Oklahoma criminal defense for DUI, felony, drug, warrant, and probation matters, with selected serious-injury representation.',
   },
 };
 
@@ -91,12 +91,12 @@ export default function RootLayout({
         <meta property="og:image:height" content="630" />
         <meta
           property="og:image:alt"
-          content="Kernal & Associates — Oklahoma criminal defense and personal injury"
+          content="Kernal & Associates — Oklahoma criminal defense and selected personal injury matters"
         />
         <meta name="twitter:image" content={`${baseUrl}/social-card`} />
         <meta
           name="twitter:image:alt"
-          content="Kernal & Associates — Oklahoma criminal defense and personal injury"
+          content="Kernal & Associates — Oklahoma criminal defense and selected personal injury matters"
         />
       </head>
       <body
@@ -109,9 +109,9 @@ export default function RootLayout({
           Skip to main content
         </a>
         <CinematicNav />
+        <ContactFab />
         <div id="main-content" tabIndex={-1}>{children}</div>
         <Footer />
-        <ContactFab />
         <BaseJsonLd />
         <JsonLd />
         {gaMeasurementId ? (
@@ -138,7 +138,7 @@ export default function RootLayout({
             </Script>
           </>
         ) : null}
-        <AnalyticsEvents />
+        {gaMeasurementId ? <AnalyticsEvents /> : null}
         <LeadAttributionClient />
       </body>
     </html>

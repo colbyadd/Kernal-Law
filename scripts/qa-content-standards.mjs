@@ -287,11 +287,47 @@ function validateAudienceFacingCopy() {
   }
 }
 
+function validateTopPageVoice() {
+  const files = [
+    'app/page.tsx',
+    'app/components/CinematicHero.tsx',
+    'app/components/TestimonialsSection.tsx',
+    'app/criminal-defense/page.tsx',
+    'app/personal-injury/page.tsx',
+    'app/attorney/page.tsx',
+    'app/contact/page.tsx',
+  ]
+  const staleMarketingPatterns = [
+    /criminal defense when your future is on the line/i,
+    /experienced representation for Oklahoma misdemeanors and felonies/i,
+    /choose the option closest to your situation/i,
+    /start with the right information/i,
+    /schedule your free consultation/i,
+    /what our clients say/i,
+  ]
+
+  for (const file of files) {
+    const source = readFile(file)
+    for (const pattern of staleMarketingPatterns) {
+      const match = source.match(pattern)
+      if (!match || typeof match.index !== 'number') {
+        continue
+      }
+      errors.push(`Generic marketing copy returned in ${file}:${toLineNumber(source, match.index)} (${match[0]}).`)
+    }
+  }
+}
+
 function validateTopPageStructure() {
   const pageRequirements = [
     {
       file: 'app/page.tsx',
-      snippets: ['QuickPathSection', 'TrustProofSection', 'CinematicHero'],
+      snippets: [
+        'CinematicHero',
+        'home_path_criminal_overview',
+        'home_path_injury_overview',
+        'TrustProofSection',
+      ],
     },
     {
       file: 'app/criminal-defense/page.tsx',
@@ -303,7 +339,7 @@ function validateTopPageStructure() {
     },
     {
       file: 'app/contact/page.tsx',
-      snippets: ['ContactForm', 'What Happens Next'],
+      snippets: ['ContactForm', 'After You Reach Out'],
     },
   ]
 
@@ -322,6 +358,7 @@ validateMarketCopyQuality()
 validateServiceTemplateContract()
 validateLegalSafetyCopy()
 validateAudienceFacingCopy()
+validateTopPageVoice()
 validateTopPageStructure()
 
 if (warnings.length > 0) {

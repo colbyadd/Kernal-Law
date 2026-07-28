@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_TEL_HREF } from '@/lib/contact'
 import { BreadcrumbTrail } from '../components/BreadcrumbTrail'
 import { FaqSection } from '../components/FaqSection'
 import { LinkGridSection } from '../components/LinkGridSection'
@@ -148,11 +149,11 @@ export default function ResourcesPage() {
               </p>
             </div>
             <a
-              href="tel:+14053640601"
+              href={PRIMARY_PHONE_TEL_HREF}
               data-cta="resources_call_now"
               className="inline-flex mt-8 items-center justify-center px-8 py-4 border border-silver-500/30 text-white font-bold uppercase tracking-widest hover:border-accent-gold transition-colors"
             >
-              Call (405) 364-0601
+              Call {PRIMARY_PHONE_DISPLAY}
             </a>
           </div>
         </div>

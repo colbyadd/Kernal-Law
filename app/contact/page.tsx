@@ -1,10 +1,14 @@
 import { BreadcrumbTrail } from '../components/BreadcrumbTrail'
 import { ContactForm } from '../components/ContactForm'
 import { FaqSection } from '../components/FaqSection'
-import { MobileConversionBar } from '../components/MobileConversionBar'
 import { OfficeMap } from '../components/OfficeMap'
 import { PageHero } from '../components/PageHero'
-import { CONTACT_EMAIL } from '@/lib/contact'
+import {
+  CONTACT_EMAIL,
+  PRIMARY_PHONE_DISPLAY,
+  PRIMARY_PHONE_SMS_HREF,
+  PRIMARY_PHONE_TEL_HREF,
+} from '@/lib/contact'
 
 export const metadata = {
   title: 'Contact an Oklahoma Attorney',
@@ -31,8 +35,7 @@ const contactFaqs = [
   },
   {
     question: 'What if my matter is urgent?',
-    answer:
-      'Call the office at (405) 364-0601. A phone call is the fastest option for a recent arrest, active warrant, upcoming court date, or other immediate deadline.',
+    answer: `Call the office at ${PRIMARY_PHONE_DISPLAY}. A phone call is the fastest option for a recent arrest, active warrant, upcoming court date, or other immediate deadline.`,
   },
   {
     question: 'Where is the office?',
@@ -43,16 +46,16 @@ const contactFaqs = [
 
 const nextSteps = [
   {
-    title: 'Initial Review',
-    description: 'The firm reviews the general matter, timing, and possible conflicts before discussing confidential details.',
+    title: 'Conflict and Deadline Check',
+    description: 'The firm checks the basic facts, any immediate deadline, and possible conflicts before asking for confidential details.',
   },
   {
-    title: 'Attorney Conversation',
-    description: 'If the firm can speak with you, the next conversation focuses on the facts, deadlines, and practical options.',
+    title: 'Conversation With Todd',
+    description: 'If the firm can speak with you, Todd will discuss what happened and what comes next.',
   },
   {
-    title: 'Clear Decision',
-    description: 'You will know whether the firm can take the matter and what should happen next. Contact alone does not create an attorney-client relationship.',
+    title: 'Representation Decision',
+    description: 'If the firm can take the matter, Todd will explain the scope and fee. Contacting the firm alone does not create an attorney-client relationship.',
   },
 ]
 
@@ -61,12 +64,8 @@ export default function ContactPage() {
     <main className="bg-iron-950 min-h-screen">
       <PageHero
         title="Contact Kernal & Associates"
-        subtitle="Call for an urgent matter or send a short consultation request."
-      />
-      <MobileConversionBar
-        context="contact_page"
-        primaryHref="#contact-form"
-        primaryLabel="Open Intake Form"
+        subtitle="If a court date, warrant, or deadline is close, call. Otherwise, send a short consultation request."
+        compact
       />
       <BreadcrumbTrail
         items={[
@@ -75,7 +74,7 @@ export default function ContactPage() {
         ]}
       />
 
-      <section className="py-12 md:py-20 border-b border-silver-500/10">
+      <section className="py-8 md:py-16 border-b border-silver-500/10">
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
             <div id="contact-form" className="scroll-mt-28">
@@ -85,16 +84,16 @@ export default function ContactPage() {
             <div className="space-y-8">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <a
-                  href="tel:4053640601"
+                  href={PRIMARY_PHONE_TEL_HREF}
                   data-cta="contact_page_call"
                   className="bg-iron-900 border border-silver-500/15 p-5 hover:border-accent-gold"
                 >
                   <p className="text-accent-gold text-xs uppercase tracking-widest mb-2">Call</p>
-                  <p className="font-serif text-2xl text-white">(405) 364-0601</p>
+                  <p className="font-serif text-2xl text-white">{PRIMARY_PHONE_DISPLAY}</p>
                   <p className="text-silver-400 text-sm mt-2">Best for urgent matters.</p>
                 </a>
                 <a
-                  href="sms:+14053640601"
+                  href={PRIMARY_PHONE_SMS_HREF}
                   data-cta="contact_page_text"
                   className="bg-iron-900 border border-silver-500/15 p-5 hover:border-accent-gold"
                 >
@@ -125,7 +124,7 @@ export default function ContactPage() {
       <section className="py-12 md:py-16 border-b border-silver-500/10 bg-iron-900/30">
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl text-white mb-8">What Happens Next</h2>
+            <h2 className="font-serif text-3xl md:text-4xl text-white mb-8">After You Reach Out</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               {nextSteps.map((step, index) => (
                 <article key={step.title} className="bg-iron-900 border border-silver-500/15 p-6">

@@ -2,7 +2,6 @@ import type { Config } from '@netlify/functions'
 import { CONTACT_CONSENT_VERSION } from '../../lib/contact'
 
 const CASE_TYPES = new Set(['criminal-defense', 'personal-injury', 'other'])
-const URGENCY_LEVELS = new Set(['immediate', 'soon', 'planning'])
 const CONTACT_METHODS = new Set(['call', 'text', 'email'])
 
 const TRACKING_FIELDS = [
@@ -54,7 +53,6 @@ export function validateContactSubmission(
   const phone = value(params, 'phone', 30)
   const email = value(params, 'email', 255)
   const caseType = value(params, 'case_type', 40)
-  const urgency = value(params, 'urgency', 40)
   const contactMethod = value(params, 'preferred_contact_method', 20)
   const message = value(params, 'message', 1501)
   const consent = value(params, 'consent', 20)
@@ -63,7 +61,6 @@ export function validateContactSubmission(
 
   if (name.length < 2 || name.length > 120) errors.push('name')
   if (!CASE_TYPES.has(caseType)) errors.push('case_type')
-  if (!URGENCY_LEVELS.has(urgency)) errors.push('urgency')
   if (!CONTACT_METHODS.has(contactMethod)) errors.push('preferred_contact_method')
   if (phone && (phoneDigits(phone).length < 10 || phoneDigits(phone).length > 15)) errors.push('phone')
   if (email && (email.length > 254 || !validEmail(email))) errors.push('email')
@@ -92,7 +89,6 @@ function buildNetlifyPayload(params: URLSearchParams) {
   payload.set('phone', value(params, 'phone', 30))
   payload.set('email', value(params, 'email', 254))
   payload.set('case_type', value(params, 'case_type', 40))
-  payload.set('urgency', value(params, 'urgency', 40))
   payload.set('preferred_contact_method', value(params, 'preferred_contact_method', 20))
   payload.set('message', value(params, 'message', 1500))
   payload.set('consent', 'yes')

@@ -1,4 +1,9 @@
 import { PageHero } from "../components/PageHero"
+import {
+    CONTACT_EMAIL,
+    PRIMARY_PHONE_DOT,
+    PRIMARY_PHONE_TEL_HREF,
+} from "@/lib/contact"
 
 export const metadata = {
     title: "Privacy Policy",
@@ -78,7 +83,7 @@ export default function PrivacyPage() {
                 <p>
                     <strong className="text-white">Help:</strong> For assistance, reply{" "}
                     <strong className="text-white">HELP</strong> to any text message or call us at{" "}
-                    <a href="tel:4053640601" className="text-accent-gold hover:underline">405.364.0601</a>.
+                    <a href={PRIMARY_PHONE_TEL_HREF} className="text-accent-gold hover:underline">{PRIMARY_PHONE_DOT}</a>.
                 </p>
                 <p>
                     Consent to a response is not a condition of hiring the firm. You may call or email the office
@@ -155,11 +160,11 @@ export default function PrivacyPage() {
                     <p>1332 SW 89th Street, Oklahoma City, OK 73159</p>
                     <p>
                         Phone:{" "}
-                        <a href="tel:4053640601" className="text-accent-gold hover:underline">405.364.0601</a>
+                        <a href={PRIMARY_PHONE_TEL_HREF} className="text-accent-gold hover:underline">{PRIMARY_PHONE_DOT}</a>
                     </p>
                     <p>
                         Email:{" "}
-                        <a href="mailto:todd@kernallaw.com" className="text-accent-gold hover:underline">todd@kernallaw.com</a>
+                        <a href={`mailto:${CONTACT_EMAIL}`} className="text-accent-gold hover:underline">{CONTACT_EMAIL}</a>
                     </p>
                 </address>
             </div>

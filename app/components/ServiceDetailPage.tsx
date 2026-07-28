@@ -1,4 +1,9 @@
 import Link from 'next/link'
+import {
+  getContactHref,
+  PRIMARY_PHONE_DISPLAY,
+  PRIMARY_PHONE_TEL_HREF,
+} from '@/lib/contact'
 import { BreadcrumbTrail } from './BreadcrumbTrail'
 import { PageHero } from './PageHero'
 import { FaqSection } from './FaqSection'
@@ -87,7 +92,7 @@ const relatedLinkFallbacks: Record<ServiceDetailPageProps['heroVariant'], LinkGr
       ctaName: 'related_fallback_case_results',
     },
     {
-      href: '/contact',
+      href: getContactHref('criminal-defense'),
       title: 'Request Consultation',
       description: 'Talk with an attorney about the facts, documents, and next deadline.',
       ctaName: 'related_fallback_contact',
@@ -125,7 +130,7 @@ const relatedLinkFallbacks: Record<ServiceDetailPageProps['heroVariant'], LinkGr
       ctaName: 'related_fallback_case_results',
     },
     {
-      href: '/contact',
+      href: getContactHref('personal-injury'),
       title: 'Request Consultation',
       description: 'Talk with an attorney before signing a release or missing a deadline.',
       ctaName: 'related_fallback_contact',
@@ -180,7 +185,7 @@ export function ServiceDetailPage({
   ctaTitle,
   ctaDescription,
   ctaLabel,
-  ctaHref = '/contact',
+  ctaHref,
   ctaName,
   actionChecklist,
   localContextTitle,
@@ -219,6 +224,9 @@ export function ServiceDetailPage({
 
   const checklistItems = actionChecklist ?? defaultChecklist
   const relatedItems = withRelatedFallbacks(relatedLinks, heroVariant)
+  const resolvedCtaHref = ctaHref ?? getContactHref(
+    heroVariant === 'criminal' ? 'criminal-defense' : 'personal-injury',
+  )
 
   return (
     <main className="bg-iron-950 min-h-screen">
@@ -226,7 +234,7 @@ export function ServiceDetailPage({
       <PageHero title={heroTitle} subtitle={heroSubtitle} variant={heroVariant} />
       <MobileConversionBar
         context={practiceArea}
-        primaryHref={ctaHref}
+        primaryHref={resolvedCtaHref}
         primaryLabel={ctaLabel}
       />
       <BreadcrumbTrail
@@ -274,18 +282,18 @@ export function ServiceDetailPage({
                 </div>
                 <div className="pt-8 flex flex-col sm:flex-row gap-4">
                   <Link
-                    href={ctaHref}
+                    href={resolvedCtaHref}
                     data-cta={`${practiceArea}_intro_contact`}
                     className="inline-flex items-center justify-center px-8 py-4 bg-white text-iron-950 font-bold uppercase tracking-widest hover:bg-silver-100 transition-colors"
                   >
                     Free Consultation
                   </Link>
                   <a
-                    href="tel:+14053640601"
+                    href={PRIMARY_PHONE_TEL_HREF}
                     data-cta={`${practiceArea}_intro_call`}
                     className="inline-flex items-center justify-center px-8 py-4 border border-silver-500/30 text-white font-bold uppercase tracking-widest hover:border-accent-gold transition-colors"
                   >
-                    Call (405) 364-0601
+                    Call {PRIMARY_PHONE_DISPLAY}
                   </a>
                 </div>
               </section>
@@ -428,7 +436,7 @@ export function ServiceDetailPage({
             <h2 className="font-serif text-3xl text-accent-gold mb-4">{ctaTitle}</h2>
             <p className="text-silver-400 mb-8 max-w-2xl mx-auto">{ctaDescription}</p>
             <Link
-              href={ctaHref}
+              href={resolvedCtaHref}
               data-cta={ctaName}
               className="inline-block px-12 py-4 bg-white text-iron-950 font-bold uppercase tracking-widest hover:bg-silver-100 transition-colors"
             >

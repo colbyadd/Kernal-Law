@@ -3,20 +3,18 @@ import Link from 'next/link'
 import { CinematicHero } from './components/CinematicHero'
 import { FaqSection } from './components/FaqSection'
 import { LinkGridSection } from './components/LinkGridSection'
-import { MobileConversionBar } from './components/MobileConversionBar'
-import { QuickPathSection } from './components/QuickPathSection'
 import { TestimonialsSection } from './components/TestimonialsSection'
 import { TrustProofSection } from './components/TrustProofSection'
 
 export const metadata: Metadata = {
-  title: 'Oklahoma Criminal Defense Lawyer & Personal Injury Attorney',
+  title: 'Oklahoma Criminal Defense Lawyer',
   description:
-    'Oklahoma criminal defense and personal injury representation for DUI, felony charges, car crashes, truck crashes, and wrongful death claims.',
+    'Oklahoma criminal defense representation for DUI, felony charges, drug offenses, warrants, and probation matters, with selected serious-injury representation.',
   alternates: { canonical: '/' },
   openGraph: {
-    title: 'Oklahoma Criminal Defense Lawyer & Personal Injury Attorney | Kernal & Associates',
+    title: 'Oklahoma Criminal Defense Lawyer | Kernal & Associates',
     description:
-      'Oklahoma representation for criminal charges and serious injury claims, including DUI, felonies, car accidents, truck accidents, and wrongful death.',
+      'Criminal defense for DUI, felony charges, drug offenses, warrants, and probation matters, with selected serious-injury representation.',
     url: 'https://kernallaw.com',
   },
 }
@@ -51,22 +49,22 @@ const homeFaqs = [
 
 const relatedLinks = [
   {
-    href: '/criminal-defense',
-    title: 'Criminal Defense',
-    description: 'Information about DUI, drug charges, warrants, probation issues, and other Oklahoma criminal cases.',
-    ctaName: 'home_related_criminal_hub',
+    href: '/resources/what-to-do-after-arrest-oklahoma',
+    title: 'What to Do After an Arrest',
+    description: 'The first calls, papers, release terms, and deadlines to deal with after an Oklahoma arrest.',
+    ctaName: 'home_related_arrest_guide',
   },
   {
-    href: '/personal-injury',
-    title: 'Personal Injury',
-    description: 'Information about car crashes, commercial truck collisions, serious injuries, and wrongful death.',
-    ctaName: 'home_related_injury_hub',
+    href: '/resources/oklahoma-dui-process',
+    title: 'The Oklahoma DUI Process',
+    description: 'What may happen in the criminal case and the separate driver-license matter.',
+    ctaName: 'home_related_dui_guide',
   },
   {
-    href: '/resources',
-    title: 'Legal Guides',
-    description: 'Practical checklists for the first days after an arrest, DUI, or vehicle crash.',
-    ctaName: 'home_related_resources',
+    href: '/resources/what-to-do-after-car-accident-oklahoma',
+    title: 'What to Do After a Serious Crash',
+    description: 'A checklist for medical care, photographs, reports, expenses, and insurance calls.',
+    ctaName: 'home_related_crash_guide',
   },
 ]
 
@@ -74,35 +72,82 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-iron-950">
       <CinematicHero />
-      <MobileConversionBar context="home" primaryHref="/contact" primaryLabel="Request Consultation" />
 
-      <QuickPathSection
-        title="How Can We Help?"
-        subtitle="Choose the option closest to your situation."
-        items={[
-          {
-            badge: 'Criminal Defense',
-            title: 'Arrested or Under Investigation',
-            description: 'Learn what to do now and how Oklahoma criminal cases move forward.',
-            href: '/criminal-defense',
-            ctaName: 'home_quick_path_criminal',
-          },
-          {
-            badge: 'Personal Injury',
-            title: 'Injured in a Crash',
-            description: 'Preserve medical, scene, and insurance records before signing a release.',
-            href: '/personal-injury',
-            ctaName: 'home_quick_path_injury',
-          },
-          {
-            badge: 'Contact',
-            title: 'Speak With an Attorney',
-            description: 'Request a confidential consultation about your matter.',
-            href: '/contact',
-            ctaName: 'home_quick_path_contact',
-          },
-        ]}
-      />
+      <section className="border-b border-silver-500/10 bg-iron-950/70 py-10 md:py-14 lg:hidden">
+        <div className="container mx-auto px-6">
+          <div className="mx-auto max-w-6xl">
+            <div className="mb-7 md:mb-9">
+              <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-accent-gold">
+                What Brought You Here?
+              </p>
+              <h2 className="max-w-3xl font-serif text-3xl text-white md:text-4xl">
+                Start with the page that fits your situation.
+              </h2>
+            </div>
+
+            <div className="grid gap-4 lg:grid-cols-[1.35fr_0.65fr]">
+              <article className="border border-accent-gold/35 bg-iron-900 p-6 md:p-8">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent-gold">
+                  Primary Practice
+                </p>
+                <h3 className="mt-3 font-serif text-2xl text-white md:text-3xl">
+                  Arrested, investigated, or facing a court date?
+                </h3>
+                <p className="mt-4 max-w-2xl leading-relaxed text-silver-400">
+                  If you were arrested, learned you are under investigation, or have a court date, start here.
+                </p>
+                <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+                  <Link
+                    href="/criminal-defense"
+                    data-cta="home_path_criminal_overview"
+                    className="inline-flex min-h-11 items-center justify-center bg-white px-6 py-3 text-xs font-bold uppercase tracking-[0.16em] text-iron-950 transition-colors hover:bg-accent-gold"
+                  >
+                    Criminal Defense Overview
+                  </Link>
+                  <Link
+                    href="/criminal-defense/dui-dwi"
+                    data-cta="home_path_dui"
+                    className="text-link px-1 py-2 text-sm text-silver-300 transition-colors hover:text-white"
+                  >
+                    DUI / DWI
+                  </Link>
+                  <Link
+                    href="/criminal-defense/warrants"
+                    data-cta="home_path_warrants"
+                    className="text-link px-1 py-2 text-sm text-silver-300 transition-colors hover:text-white"
+                  >
+                    Warrants
+                  </Link>
+                  <Link
+                    href="/criminal-defense/drug-charges"
+                    data-cta="home_path_drug_charges"
+                    className="text-link px-1 py-2 text-sm text-silver-300 transition-colors hover:text-white"
+                  >
+                    Drug Charges
+                  </Link>
+                </div>
+              </article>
+
+              <article className="border border-silver-500/15 bg-iron-900/70 p-6 md:p-8">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-silver-500">
+                  Selected Matters
+                </p>
+                <h3 className="mt-3 font-serif text-2xl text-white">Seriously injured?</h3>
+                <p className="mt-4 leading-relaxed text-silver-400">
+                  The firm also handles selected car, truck, motorcycle, and other serious-injury claims.
+                </p>
+                <Link
+                  href="/personal-injury"
+                  data-cta="home_path_injury_overview"
+                  className="mt-6 inline-flex min-h-11 items-center justify-center border border-silver-500/35 px-5 py-3 text-center text-xs font-semibold uppercase tracking-[0.16em] text-white transition-colors hover:border-white/60 hover:bg-white/5"
+                >
+                  Personal Injury Overview
+                </Link>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="py-16 md:py-24 border-y border-silver-500/10">
         <div className="container mx-auto px-6">
@@ -112,9 +157,9 @@ export default function Home() {
               <h2 className="font-serif text-3xl md:text-5xl text-white mb-6">Nearly 26 years in criminal defense</h2>
               <div className="space-y-5 text-silver-400 leading-relaxed">
                 <p>
-                  Todd Kernal has spent nearly 26 years defending people charged with DUI, drug offenses,
-                  sex offenses, and other felonies. He is at home in the courtroom and believes every person
-                  accused of a crime deserves the full protection of the United States and Oklahoma Constitutions.
+                  Todd Kernal defends people charged with DUI, drug offenses, sex offenses, and other
+                  felonies. His practice is centered on the courtroom, and he believes
+                  every person accused of a crime deserves the full protection of the United States and Oklahoma Constitutions.
                 </p>
                 <p>
                   Todd also represents people with serious injury claims. An oil field accident gave him a
@@ -139,8 +184,8 @@ export default function Home() {
 
       <TrustProofSection
         ctaPrefix="home"
-        title="Learn More About the Firm"
-        subtitle="Read Todd's background, representative results, and verified Google reviews."
+        title="Check the Firm Before You Call"
+        subtitle="Read Todd's background, representative results, and Google reviews."
       />
 
       <section className="py-16 md:py-24 bg-iron-900 border-y border-silver-500/10">
@@ -158,10 +203,10 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-silver-500/20 border border-silver-500/20">
               {[
-                { title: 'Personal Injury', desc: 'Claims arising from negligence, crashes, and oil field injuries.', href: '/personal-injury' },
+                { title: 'Criminal Defense', desc: 'Defense for felony, misdemeanor, warrant, and probation matters.', href: '/criminal-defense' },
                 { title: 'DUI & Traffic', desc: 'Criminal charges and related driver-license concerns.', href: '/criminal-defense/dui-dwi' },
                 { title: 'Drug Charges', desc: 'Possession, distribution, and search-and-seizure issues.', href: '/criminal-defense/drug-charges' },
-                { title: 'Violent Crimes', desc: 'Defense against assault, battery, and other serious charges.', href: '/criminal-defense' },
+                { title: 'Selected Personal Injury', desc: 'Serious crash, motorcycle, truck, and other injury claims.', href: '/personal-injury' },
               ].map((practice, index) => (
                 <Link
                   key={practice.title}
@@ -179,15 +224,15 @@ export default function Home() {
       </section>
 
       <LinkGridSection
-        title="Start With the Right Information"
-        subtitle="Practice pages and legal guides for common Oklahoma matters."
+        title="Not Ready to Call? Read This First."
+        subtitle="Short guides for the first days after an arrest, DUI, or serious crash."
         items={relatedLinks}
         columns="three"
       />
 
       <FaqSection
         title="Frequently Asked Questions"
-        subtitle="A few things to know before you call."
+        subtitle="Common questions about timing, documents, and the first conversation."
         faqs={homeFaqs}
         practiceArea="home"
       />

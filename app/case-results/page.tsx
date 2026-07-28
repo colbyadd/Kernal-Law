@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_TEL_HREF } from '@/lib/contact'
 import { BreadcrumbTrail } from '../components/BreadcrumbTrail'
 import { FaqSection } from '../components/FaqSection'
 import { LinkGridSection } from '../components/LinkGridSection'
@@ -263,11 +264,11 @@ export default function CaseResultsPage() {
                 Request Consultation
               </Link>
               <a
-                href="tel:+14053640601"
+                href={PRIMARY_PHONE_TEL_HREF}
                 data-cta="case_results_call"
                 className="inline-flex items-center justify-center px-10 py-4 border border-white text-white font-bold uppercase tracking-widest hover:bg-white/10 transition-colors"
               >
-                Call (405) 364-0601
+                Call {PRIMARY_PHONE_DISPLAY}
               </a>
             </div>
           </div>

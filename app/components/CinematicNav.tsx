@@ -3,6 +3,11 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import {
+    PRIMARY_PHONE_DISPLAY,
+    PRIMARY_PHONE_SMS_HREF,
+    PRIMARY_PHONE_TEL_HREF,
+} from '@/lib/contact'
 
 interface NavLinkItem {
     kind: 'link'
@@ -161,10 +166,34 @@ function CinematicNavContent({ pathname }: { pathname: string }) {
         }
 
         const previousOverflow = document.body.style.overflow
+        const backgroundElements = Array.from(
+            document.querySelectorAll<HTMLElement>(
+                'a[href="#main-content"], #main-content, footer, .mobile-contact-fab',
+            ),
+        )
+        const previousBackgroundStates = backgroundElements.map((element) => ({
+            element,
+            inert: element.inert,
+            ariaHidden: element.getAttribute('aria-hidden'),
+        }))
+
         document.body.style.overflow = 'hidden'
+        for (const element of backgroundElements) {
+            element.inert = true
+            element.setAttribute('aria-hidden', 'true')
+        }
+
         return () => {
             document.body.style.overflow = previousOverflow
             document.documentElement.dataset.mobileMenu = 'closed'
+            for (const state of previousBackgroundStates) {
+                state.element.inert = state.inert
+                if (state.ariaHidden === null) {
+                    state.element.removeAttribute('aria-hidden')
+                } else {
+                    state.element.setAttribute('aria-hidden', state.ariaHidden)
+                }
+            }
         }
     }, [mobileMenuOpen])
 
@@ -333,7 +362,6 @@ function CinematicNavContent({ pathname }: { pathname: string }) {
                                     onFocus={() => openDropdown(item.name)}
                                     className={`inline-flex items-center gap-2 px-3 py-2 text-xs uppercase tracking-wider font-medium rounded-md transition-colors ${active ? 'text-white bg-white/10' : 'text-silver-400 hover:text-silver-100 hover:bg-white/5'}`}
                                     aria-expanded={open}
-                                    aria-haspopup="true"
                                     aria-controls={`desktop-nav-panel-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
                                 >
                                     {item.name}
@@ -399,7 +427,7 @@ function CinematicNavContent({ pathname }: { pathname: string }) {
                     ref={mobileMenuOpenButtonRef}
                     type="button"
                     onClick={openMobileMenu}
-                    className={`lg:hidden z-50 p-2 space-y-1.5 group ${mobileMenuOpen ? 'invisible pointer-events-none' : ''}`}
+                    className={`z-50 flex h-11 w-11 flex-col items-end justify-center gap-1.5 lg:hidden ${mobileMenuOpen ? 'invisible pointer-events-none' : ''}`}
                     aria-label="Open menu"
                     aria-expanded={mobileMenuOpen}
                     aria-controls="mobile-menu"
@@ -417,22 +445,47 @@ function CinematicNavContent({ pathname }: { pathname: string }) {
                     aria-modal="true"
                     aria-label="Navigation menu"
                     aria-hidden={!mobileMenuOpen}
-                    className={`fixed top-0 left-0 w-full h-[100dvh] z-40 bg-iron-950 transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] lg:hidden overflow-y-auto ${mobileMenuOpen ? 'translate-y-0 opacity-100 visible' : '-translate-y-full opacity-0 invisible'}`}
+                    className={`fixed top-0 left-0 w-full h-[100dvh] z-40 bg-iron-950 transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] lg:hidden overflow-y-auto overscroll-contain ${mobileMenuOpen ? 'translate-y-0 opacity-100 visible' : '-translate-y-full opacity-0 invisible'}`}
                 >
-                    {mobileMenuOpen ? (
-                        <button
-                            ref={mobileMenuCloseButtonRef}
-                            type="button"
-                            autoFocus
-                            onClick={() => setMobileMenuOpen(false)}
-                            className="absolute top-7 right-6 z-50 p-3"
-                            aria-label="Close menu"
-                        >
-                            <span className="block w-8 h-0.5 bg-white rotate-45 translate-y-px"></span>
-                            <span className="block w-8 h-0.5 bg-white -rotate-45"></span>
-                        </button>
-                    ) : null}
-                    <div className="container mx-auto px-6 py-28 space-y-10">
+                    <div className="sticky top-0 z-50 flex justify-end bg-iron-950 px-4 pb-2 pt-[calc(0.75rem+env(safe-area-inset-top))]">
+                        {mobileMenuOpen ? (
+                            <button
+                                ref={mobileMenuCloseButtonRef}
+                                type="button"
+                                autoFocus
+                                onClick={() => setMobileMenuOpen(false)}
+                                className="flex h-11 w-11 items-center justify-center border border-accent-gold/70"
+                                aria-label="Close menu"
+                            >
+                                <span className="absolute block h-0.5 w-7 rotate-45 bg-white"></span>
+                                <span className="absolute block h-0.5 w-7 -rotate-45 bg-white"></span>
+                            </button>
+                        ) : null}
+                    </div>
+                    <div className="container mx-auto space-y-8 px-6 pb-[calc(4rem+env(safe-area-inset-bottom))] pt-2">
+                        <div>
+                            <p className="text-silver-500 text-xs uppercase tracking-[0.22em] mb-4">Contact the Office</p>
+                            <div className="grid grid-cols-2 gap-3">
+                                <a
+                                    href={PRIMARY_PHONE_TEL_HREF}
+                                    data-cta="nav_mobile_call"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="flex h-12 items-center justify-center rounded-full bg-accent-gold text-xs font-bold uppercase tracking-[0.16em] text-iron-950"
+                                    aria-label={`Call the office at ${PRIMARY_PHONE_DISPLAY}`}
+                                >
+                                    Call
+                                </a>
+                                <a
+                                    href={PRIMARY_PHONE_SMS_HREF}
+                                    data-cta="nav_mobile_text"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="flex h-12 items-center justify-center rounded-full border border-silver-500/35 text-xs font-semibold uppercase tracking-[0.16em] text-silver-100"
+                                    aria-label={`Text the office at ${PRIMARY_PHONE_DISPLAY}`}
+                                >
+                                    Text
+                                </a>
+                            </div>
+                        </div>
                         {mobileSections.map((section) => (
                             <div key={section.heading}>
                                 <p className="text-silver-500 text-xs uppercase tracking-[0.22em] mb-4">{section.heading}</p>

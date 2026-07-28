@@ -17,44 +17,44 @@ interface TrustItem {
 const trustItemsByContext: Record<TrustContext, [TrustItem, TrustItem, TrustItem]> = {
   general: [
     {
-      title: 'Nearly 26 Years of Experience',
-      description: 'Oklahoma courtroom experience in criminal defense and serious injury matters.',
+      title: 'Criminal Defense Is the Main Practice',
+      description: 'The firm handles DUI, warrants, drug charges, sex-offense allegations, and other serious criminal cases.',
     },
     {
-      title: 'Direct Answers From Todd',
-      description: 'You receive a plain explanation of the immediate risks, options, and next steps.',
+      title: 'Talk Directly With Todd',
+      description: 'Todd explains the immediate risks, available choices, and what he believes should happen next.',
     },
     {
-      title: 'Proof You Can Review',
+      title: 'Check the Record',
       description: 'Case outcomes, client reviews, and attorney background are available before you decide.',
     },
   ],
   criminal: [
     {
-      title: 'Constitutional Issues Reviewed',
-      description: 'Stops, searches, questioning, and evidence handling are examined for legal problems.',
+      title: 'Was the Stop, Search, or Questioning Lawful?',
+      description: 'Todd reviews how police obtained statements and evidence.',
     },
     {
-      title: 'Prepared for Court',
-      description: 'The evidence and legal issues are developed for motions, hearings, negotiations, and trial.',
+      title: 'Prepare for the Next Court Date',
+      description: 'The reports, recordings, and legal issues are worked up for the hearing, negotiation, or trial ahead.',
     },
     {
-      title: 'Early Deadline Review',
-      description: 'Bond terms, statements, court dates, and other immediate obligations are addressed first.',
+      title: 'Handle Immediate Problems First',
+      description: 'Court dates, bond terms, warrants, and other immediate restrictions come first.',
     },
   ],
   injury: [
     {
-      title: 'Evidence and Records',
-      description: 'Fault, medical treatment, expenses, lost income, and future needs are documented carefully.',
+      title: 'Save Evidence Before It Disappears',
+      description: 'Photos, video, witness information, vehicle data, and reports may be difficult to recover later.',
     },
     {
-      title: 'Complete Loss Review',
-      description: 'A claim should account for supported medical, financial, and long-term losses.',
+      title: 'Document What the Injury Changed',
+      description: 'Treatment, missed work, expenses, and daily limitations should be recorded as they develop.',
     },
     {
-      title: 'Ready to File Suit',
-      description: 'When a fair resolution is not available, the matter can be prepared for litigation.',
+      title: 'Read Every Release Before You Sign',
+      description: 'A release may end the claim even if treatment or wage loss later proves worse than expected.',
     },
   ],
 }

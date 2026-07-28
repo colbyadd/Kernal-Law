@@ -17,7 +17,9 @@
     "qa:conversion": "node scripts/qa-conversion-ux.mjs",
     "qa:seo": "node scripts/qa-seo-standards.mjs",
     "qa:rendered": "node scripts/qa-rendered-integrity.mjs",
-    "verify": "npm run lint && npm run typecheck && npm run test:contact && npm run qa:content && npm run qa:conversion && npm run qa:seo && npm run build && npm run qa:rendered"
+    "browser:install": "playwright install chromium",
+    "qa:browser": "node scripts/qa-browser-quality.mjs",
+    "verify": "npm run lint && npm run typecheck && npm run test:contact && npm run qa:content && npm run qa:conversion && npm run qa:seo && npm run build && npm run qa:rendered && npm run qa:browser"
   },
   "dependencies": {
     "next": "^16.2.9",
@@ -26,12 +28,14 @@
   },
   "devDependencies": {
     "@netlify/functions": "^5.3.0",
+    "@playwright/test": "1.62.0",
     "@tailwindcss/postcss": "^4.3.1",
     "@types/node": "^20.19.43",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "eslint": "^9.39.4",
     "eslint-config-next": "^16.2.9",
+    "lighthouse": "13.4.1",
     "tailwindcss": "^4.3.1",
     "tsx": "^4.23.0",
     "typescript": "^5"

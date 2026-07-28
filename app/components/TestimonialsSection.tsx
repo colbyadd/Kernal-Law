@@ -1,5 +1,3 @@
-'use client'
-
 import Link from 'next/link'
 
 interface Testimonial {
@@ -51,13 +49,13 @@ function StarRating({ rating }: { rating: number }) {
 
 export function TestimonialsSection() {
     return (
-        <section className="py-24 md:py-32 bg-iron-950 border-t border-silver-500/10">
+        <section className="py-16 md:py-24 bg-iron-950 border-t border-silver-500/10">
             <div className="container mx-auto px-6">
                 {/* Header */}
                 <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-16 gap-6">
                     <div>
                         <h2 className="font-serif text-3xl md:text-4xl text-white mb-2">
-                            What Our Clients Say
+                            What Clients Said About Working With Todd
                         </h2>
                         <p className="text-silver-500">
                             <span className="text-accent-gold font-semibold">4.9</span> rating from{' '}
@@ -100,7 +98,7 @@ export function TestimonialsSection() {
                         data-cta="reviews_schedule_consultation"
                         className="inline-block px-8 py-4 bg-white text-iron-950 font-bold uppercase tracking-widest hover:bg-silver-100 transition-colors"
                     >
-                        Schedule Your Free Consultation
+                        Request a Free Consultation
                     </Link>
                 </div>
             </div>

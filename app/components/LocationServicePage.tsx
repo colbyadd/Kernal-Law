@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { BASE_URL } from '@/lib/constants'
+import { PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_TEL_HREF } from '@/lib/contact'
 import { buildContactPointSchema } from '@/lib/schema/builders'
 import { BreadcrumbTrail } from './BreadcrumbTrail'
 import { PageHero } from './PageHero'
@@ -182,11 +183,11 @@ export function LocationServicePage({
                     Free Consultation
                   </Link>
                   <a
-                    href="tel:+14053640601"
+                    href={PRIMARY_PHONE_TEL_HREF}
                     data-cta={`${ctaName}_intro_call`}
                     className="inline-flex items-center justify-center px-8 py-4 border border-silver-500/30 text-white font-bold uppercase tracking-widest hover:border-accent-gold transition-colors"
                   >
-                    Call (405) 364-0601
+                    Call {PRIMARY_PHONE_DISPLAY}
                   </a>
                 </div>
               </section>

@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { BASE_URL } from '@/lib/constants'
+import { getContactHref, inferContactCaseType } from '@/lib/contact'
 import { BreadcrumbTrail } from './BreadcrumbTrail'
 import { FaqSection } from './FaqSection'
 import { MobileConversionBar } from './MobileConversionBar'
@@ -95,7 +96,7 @@ export function ResourceGuidePage({
   ctaTitle,
   ctaDescription,
   ctaLabel,
-  ctaHref = '/contact',
+  ctaHref,
   ctaName,
 }: ResourceGuidePageProps) {
   const sectionAnchors = sections.map((section, index) => ({
@@ -112,6 +113,10 @@ export function ResourceGuidePage({
     { href: '#guide-related', label: 'Related Links' },
     { href: '#guide-contact', label: 'Case Review' },
   ]
+  const inferredCaseType = inferContactCaseType(canonicalPath)
+  const resolvedCtaHref = ctaHref ?? (
+    inferredCaseType ? getContactHref(inferredCaseType) : getContactHref()
+  )
 
   const articleSchema = {
     '@context': 'https://schema.org',
@@ -148,7 +153,7 @@ export function ResourceGuidePage({
       <PageHero title={title} subtitle={subtitle} />
       <MobileConversionBar
         context={ctaName}
-        primaryHref={ctaHref}
+        primaryHref={resolvedCtaHref}
         primaryLabel={ctaLabel}
       />
       <BreadcrumbTrail
@@ -344,7 +349,7 @@ export function ResourceGuidePage({
             <h2 className="font-serif text-3xl text-accent-gold mb-4">{ctaTitle}</h2>
             <p className="text-silver-400 mb-8">{ctaDescription}</p>
             <Link
-              href={ctaHref}
+              href={resolvedCtaHref}
               data-cta={ctaName}
               className="inline-block px-12 py-4 bg-white text-iron-950 font-bold uppercase tracking-widest hover:bg-silver-100 transition-colors"
             >

@@ -2,6 +2,12 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { PageHero } from '../components/PageHero'
+import {
+  CONTACT_EMAIL,
+  PRIMARY_PHONE_DISPLAY,
+  PRIMARY_PHONE_E164,
+  PRIMARY_PHONE_TEL_HREF,
+} from '@/lib/contact'
 
 export const metadata: Metadata = {
   title: 'Todd Kernal | Attorney Profile',
@@ -26,10 +32,10 @@ const attorneySchema = {
   jobTitle: 'Criminal Defense & Personal Injury Attorney',
   description:
     'Todd Kernal has nearly 26 years of Oklahoma criminal defense experience and also represents people with serious injury claims.',
-  image: 'https://kernallaw.com/images/todd-kernal-lhl.jpg',
+  image: 'https://kernallaw.com/images/todd-kernal-motorcycle.webp',
   url: 'https://kernallaw.com/attorney',
-  telephone: '+1-405-364-0601',
-  email: 'todd@kernallaw.com',
+  telephone: PRIMARY_PHONE_E164,
+  email: CONTACT_EMAIL,
   alumniOf: {
     '@type': 'CollegeOrUniversity',
     name: 'University of Oklahoma College of Law',
@@ -102,19 +108,19 @@ const credentialItems = [
 
 const representationStandards = [
   {
-    title: 'Straight Answers',
+    title: 'No Sugarcoating',
     description:
-      'Clients need an honest assessment of the risks, deadlines, and available options.',
+      'Todd tells clients what is strong, what is risky, and what he believes should happen next.',
   },
   {
-    title: 'Careful Preparation',
+    title: 'Preparation That Shows',
     description:
-      'Todd researches the law, reviews the evidence, and prepares each matter for the next hearing or trial.',
+      'He reads the reports, watches the recordings, researches the law, and gets ready for court.',
   },
   {
-    title: 'Clear Communication',
+    title: 'Conversations You Can Follow',
     description:
-      'Options and tradeoffs are explained in plain language so clients can make informed decisions.',
+      'Clients should leave a conversation knowing what happened, what comes next, and why.',
   },
 ]
 
@@ -139,45 +145,24 @@ export default function AttorneyPage() {
 
       <PageHero
         title="Todd Kernal"
-        subtitle="Oklahoma criminal defense and personal injury attorney"
+        subtitle="Oklahoma criminal defense lawyer handling selected serious-injury cases."
         variant="bio"
       />
 
       <section className="py-12 md:py-16 border-y border-silver-500/10 bg-iron-900/25">
         <div className="container mx-auto px-6">
-          <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-10">
+          <div className="max-w-7xl mx-auto xl:grid xl:grid-cols-[minmax(0,1fr)_320px] xl:gap-10">
             <div className="min-w-0 space-y-6 md:space-y-8">
-              <div className="lg:hidden border border-silver-500/20 bg-iron-900/75 p-4">
-                <p className="text-[11px] uppercase tracking-[0.2em] text-silver-500">On This Page</p>
-                <nav aria-label="On this page" className="mt-3">
-                  <ol className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    {jumpLinks.map((item, index) => (
-                      <li key={item.href}>
-                        <a
-                          href={item.href}
-                          className="flex items-start gap-3 border border-silver-500/20 bg-iron-950/70 px-3 py-3 text-silver-300 hover:text-white hover:border-accent-gold/45 transition-colors"
-                        >
-                          <span className="text-[10px] uppercase tracking-[0.16em] text-silver-500 pt-0.5">
-                            {toStepNumber(index + 1)}
-                          </span>
-                          <span className="text-sm leading-snug">{item.label}</span>
-                        </a>
-                      </li>
-                    ))}
-                  </ol>
-                </nav>
-              </div>
-
               <section id="profile-overview" className="scroll-mt-28 bg-iron-900 border border-silver-500/10 p-6 md:p-8">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10">
-                  <div className="lg:col-span-4 space-y-10">
-                    <div className="relative aspect-[3/4] w-full overflow-hidden grayscale contrast-[1.08] brightness-[0.92] hover:grayscale-0 transition-all duration-700">
+                <div className="grid grid-cols-1 gap-10 md:grid-cols-[minmax(220px,0.75fr)_minmax(0,1.25fr)] md:gap-8 lg:grid-cols-12 lg:gap-10">
+                  <div className="space-y-8 lg:col-span-4 lg:space-y-10">
+                    <div className="relative mx-auto aspect-square w-full max-w-sm overflow-hidden border border-silver-500/15 bg-iron-950 md:max-w-none">
                       <Image
-                        src="/images/todd-kernal-lhl.jpg"
+                        src="/images/todd-kernal-motorcycle.webp"
                         alt="Todd Kernal"
                         fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-cover object-top"
+                        sizes="(max-width: 767px) 342px, (max-width: 1023px) 36vw, 300px"
                       />
                     </div>
 
@@ -194,11 +179,11 @@ export default function AttorneyPage() {
                     </div>
                   </div>
 
-                  <div className="lg:col-span-8 space-y-8 text-lg text-silver-400 leading-relaxed">
+                  <div className="space-y-8 text-lg leading-relaxed text-silver-400 lg:col-span-8">
                     <p>
-                      Todd Kernal has worked as a criminal defense lawyer for nearly 26 years. He has extensive
-                      experience helping clients through the civil and criminal issues surrounding a DUI arrest,
-                      along with drug charges, sex offenses, and other felony cases.
+                      Todd Kernal&apos;s practice is centered on Oklahoma criminal defense, including DUI, drug charges,
+                      sex offenses, and other felonies and misdemeanors. In DUI cases, he also handles related
+                      driver&apos;s-license issues.
                     </p>
                     <p>
                       His interest in law began in college, after a landlord unfairly refused to return his damage
@@ -219,8 +204,8 @@ export default function AttorneyPage() {
 
                     <h3 className="text-2xl font-serif text-white">Personal Injury Work</h3>
                     <p>
-                      Todd also represents people with serious injury claims. An oil field accident gave him a personal
-                      view of how an injury can affect work, family, and daily life.
+                      Todd accepts selected serious-injury matters. After an oil field accident, he saw firsthand how
+                      an injury can disrupt work, family, and ordinary life.
                     </p>
                   </div>
                 </div>
@@ -242,7 +227,7 @@ export default function AttorneyPage() {
               </section>
 
               <section id="profile-proof" className="scroll-mt-28 bg-iron-900 border border-silver-500/10 p-6 md:p-8">
-                <h2 className="font-serif text-3xl md:text-4xl text-white mb-8">Learn More</h2>
+                <h2 className="font-serif text-3xl md:text-4xl text-white mb-8">Check the Record</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                   <Link
                     href="/case-results"
@@ -272,7 +257,7 @@ export default function AttorneyPage() {
               </section>
             </div>
 
-            <aside className="hidden lg:block">
+            <aside className="hidden xl:block">
               <nav
                 aria-label="On this page"
                 className="sticky top-28 border border-silver-500/20 bg-iron-900/95 backdrop-blur-md p-4"
@@ -304,7 +289,7 @@ export default function AttorneyPage() {
           <div className="max-w-4xl mx-auto bg-accent-gold/10 border border-accent-gold/20 p-10 md:p-12 text-center">
             <h2 className="font-serif text-3xl text-accent-gold mb-4">Contact Todd Kernal</h2>
             <p className="text-silver-400 mb-8">
-              For urgent legal matters, request a confidential consultation now.
+              Have a court date, warrant, or other urgent deadline? Call the office. Otherwise, send a short consultation request.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -312,14 +297,14 @@ export default function AttorneyPage() {
                 data-cta="attorney_contact_todd"
                 className="inline-flex items-center justify-center px-10 py-4 bg-white text-iron-950 font-bold uppercase tracking-widest hover:bg-silver-100 transition-colors"
               >
-                Request Consultation
+                Request a Free Consultation
               </Link>
               <a
-                href="tel:+14053640601"
+                href={PRIMARY_PHONE_TEL_HREF}
                 data-cta="attorney_call_todd"
                 className="inline-flex items-center justify-center px-10 py-4 border border-white text-white font-bold uppercase tracking-widest hover:bg-white/10 transition-colors"
               >
-                (405) 364-0601
+                {PRIMARY_PHONE_DISPLAY}
               </a>
             </div>
           </div>

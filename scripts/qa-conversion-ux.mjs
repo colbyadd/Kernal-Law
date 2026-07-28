@@ -12,7 +12,6 @@ function validateContactFormFrictionControls() {
   const source = readFile('app/components/ContactForm.tsx')
   const requiredSnippets = [
     "name=\"case_type\"",
-    "name=\"urgency\"",
     "name=\"preferred_contact_method\"",
     "name=\"cta_variant\"",
     'netlify-honeypot="bot-field"',
@@ -22,20 +21,28 @@ function validateContactFormFrictionControls() {
     'action="/api/contact"',
     'noValidate',
     "fetch('/api/contact'",
-    'This form does not create an attorney-client relationship.',
-    'Do not include confidential, privileged, medical, or highly sensitive details.',
+    'not create an attorney-client relationship.',
+    'Do not send confidential details, medical records, or documents.',
     'id="form-error"',
     'target:block',
     'contact_form_submit',
     'case_type:',
-    'urgency,',
     'preferred_contact_method:',
+    "preferredContactMethod === 'email'",
+    'normalizeContactCaseType',
+    'inferContactCaseType',
+    '<details',
+    '<summary',
   ]
 
   for (const snippet of requiredSnippets) {
     if (!source.includes(snippet)) {
       errors.push(`Contact form missing conversion-control snippet: ${snippet}`)
     }
+  }
+
+  if (source.includes('name="urgency"')) {
+    errors.push('Contact form should not require a client-facing urgency field.')
   }
 }
 
@@ -58,6 +65,10 @@ function validateServerSideContactControls() {
     if (!source.includes(snippet)) {
       errors.push(`Contact function missing server-side control: ${snippet}`)
     }
+  }
+
+  if (source.includes('URGENCY_LEVELS') || source.includes("value(params, 'urgency'")) {
+    errors.push('Contact function should not require or forward the removed urgency field.')
   }
 
   const deployableFunctionFiles = fs
@@ -150,10 +161,12 @@ function validateMobileQuickActions() {
     'mobile_text_fab',
     'mobile_call_fab',
     'mobile-contact-fab',
-    'homeScrolled',
-    'sms:+14053640601',
-    'tel:4053640601',
-    "pathname === '/contact'",
+    'pageScrolled',
+    'revealPoint',
+    'PRIMARY_PHONE_SMS_HREF',
+    'PRIMARY_PHONE_TEL_HREF',
+    "'#contact-form, footer'",
+    'safe-area-inset-bottom',
   ]
 
   for (const snippet of requiredFabSnippets) {
@@ -163,7 +176,7 @@ function validateMobileQuickActions() {
   }
 
   const mobileBarSource = readFile('app/components/MobileConversionBar.tsx')
-  const requiredBarSnippets = ['Call Now', 'Request Review', 'md:hidden']
+  const requiredBarSnippets = ['Request Review', 'md:hidden', 'getContactHref', 'withCasePrefill']
   for (const snippet of requiredBarSnippets) {
     if (!mobileBarSource.includes(snippet)) {
       errors.push(`Mobile conversion bar missing snippet: ${snippet}`)
@@ -177,6 +190,10 @@ function validateMobileQuickActions() {
     'aria-label="Close menu"',
     'role="dialog"',
     'aria-modal="true"',
+    'PRIMARY_PHONE_SMS_HREF',
+    'PRIMARY_PHONE_TEL_HREF',
+    'nav_mobile_call',
+    'nav_mobile_text',
   ]
 
   for (const snippet of requiredNavSnippets) {
@@ -188,8 +205,6 @@ function validateMobileQuickActions() {
 
 function validateMobileBarIntegration() {
   const files = [
-    'app/page.tsx',
-    'app/contact/page.tsx',
     'app/criminal-defense/page.tsx',
     'app/personal-injury/page.tsx',
     'app/components/ServiceDetailPage.tsx',
@@ -202,6 +217,11 @@ function validateMobileBarIntegration() {
     if (!source.includes('MobileConversionBar')) {
       errors.push(`${file} missing MobileConversionBar integration.`)
     }
+  }
+
+  const homeSource = readFile('app/page.tsx')
+  if (homeSource.includes('MobileConversionBar')) {
+    errors.push('Homepage should not repeat its hero consultation action in a second mobile conversion bar.')
   }
 }
 

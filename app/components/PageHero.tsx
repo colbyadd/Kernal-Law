@@ -1,15 +1,13 @@
-'use client'
-
-import React from 'react'
 import Image from 'next/image'
 
 interface PageHeroProps {
     title: string
     subtitle?: string
     variant?: 'default' | 'criminal' | 'injury' | 'bio'
+    compact?: boolean
 }
 
-export function PageHero({ title, subtitle, variant = 'default' }: PageHeroProps) {
+export function PageHero({ title, subtitle, variant = 'default', compact = false }: PageHeroProps) {
     const getBackground = () => {
         switch (variant) {
             case 'criminal':
@@ -65,12 +63,12 @@ export function PageHero({ title, subtitle, variant = 'default' }: PageHeroProps
     }
 
     return (
-        <section className="relative pt-32 pb-16 md:pt-48 md:pb-24 px-6 bg-iron-950 border-b border-silver-500/10 overflow-hidden">
+        <section className={`relative px-6 bg-iron-950 border-b border-silver-500/10 overflow-hidden ${compact ? 'pt-28 pb-10 md:pt-36 md:pb-14' : 'pt-32 pb-16 md:pt-48 md:pb-24'}`}>
             {getBackground()}
             <div className="container mx-auto relative z-10">
-                <h1 className="font-serif text-5xl md:text-7xl text-white tracking-tight mb-6 animate-fade-in">{title}</h1>
+                <h1 className={`font-serif text-white tracking-tight animate-fade-in ${compact ? 'text-4xl md:text-6xl mb-4' : 'text-5xl md:text-7xl mb-6'}`}>{title}</h1>
                 {subtitle && (
-                    <p className="max-w-2xl text-lg md:text-xl text-silver-400 font-light border-l border-accent-gold pl-6 animate-slide-up">
+                    <p className={`max-w-2xl border-l border-accent-gold pl-6 text-silver-100/80 animate-slide-up ${compact ? 'text-base md:text-lg' : 'text-lg md:text-xl'}`}>
                         {subtitle}
                     </p>
                 )}

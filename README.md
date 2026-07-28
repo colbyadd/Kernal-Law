@@ -43,11 +43,12 @@ Treat Netlify form entries as intake records containing personal information. Pe
 Run the same release gate used by continuous integration:
 
 ```bash
+npm run browser:install
 npm run verify
 npm audit --omit=dev --audit-level=high
 ```
 
-The verification command runs linting, TypeScript checks, contact-Function tests, content and search-engine optimization checks, a production build, and rendered-route checks covering sitemap, canonical, metadata, social image, and location-page integrity.
+The browser install is a one-time local setup. The verification command runs linting, TypeScript checks, contact-Function tests, content and search-engine optimization checks, a production build, rendered-route checks, keyboard and accessibility-tree coverage for the frequently asked questions accordion, and Lighthouse budgets for representative pages.
 
 ## Deployment
 

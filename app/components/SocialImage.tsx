@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og'
 
 export const SOCIAL_IMAGE_ALT =
-  'Kernal & Associates — Oklahoma criminal defense and personal injury'
+  'Kernal & Associates — Oklahoma criminal defense and selected personal injury matters'
 
 export const SOCIAL_IMAGE_SIZE = {
   width: 1200,
@@ -53,7 +53,7 @@ export function createSocialImage() {
               lineHeight: 1.3,
             }}
           >
-            Oklahoma Criminal Defense &amp; Personal Injury
+            Oklahoma Criminal Defense · Selected Personal Injury Matters
           </div>
         </div>
 

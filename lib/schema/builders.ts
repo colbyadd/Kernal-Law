@@ -1,4 +1,4 @@
-import { CONTACT_EMAIL } from '@/lib/contact'
+import { CONTACT_EMAIL, PRIMARY_PHONE_E164 } from '@/lib/contact'
 import {
   ALL_STANDARD_SUBPILLAR_MARKETS,
   getMarketDisplayName,
@@ -19,7 +19,7 @@ interface ServicePageSchemaInput {
 }
 
 const PAGE_NAMES: Record<string, string> = {
-  '/': 'Kernal & Associates | Oklahoma Criminal Defense & Personal Injury',
+  '/': 'Kernal & Associates | Oklahoma Criminal Defense Lawyer',
   '/attorney': 'About Todd Kernal | Attorney Profile',
   '/criminal-defense': 'Oklahoma Criminal Defense Attorney | Kernal & Associates',
   '/criminal-defense/dui-dwi': 'Oklahoma DUI / DWI Defense Lawyer',
@@ -196,12 +196,12 @@ export function buildToddKernalPersonSchema(baseUrl: string) {
     name: 'Todd Kernal',
     givenName: 'Todd',
     familyName: 'Kernal',
-    jobTitle: 'Criminal Defense and Personal Injury Attorney',
+    jobTitle: 'Criminal Defense Attorney',
     description:
-      'Oklahoma criminal defense and personal injury attorney with nearly 26 years of experience.',
-    image: `${baseUrl}/images/todd-kernal-lhl.jpg`,
+      'Oklahoma criminal defense attorney who also handles selected personal injury matters.',
+    image: `${baseUrl}/images/todd-kernal-motorcycle.webp`,
     url: `${baseUrl}/attorney`,
-    telephone: '+1-405-364-0601',
+    telephone: PRIMARY_PHONE_E164,
     email: CONTACT_EMAIL,
     alumniOf: {
       '@type': 'CollegeOrUniversity',
@@ -267,7 +267,7 @@ const SERVICE_CATALOG_BY_VARIANT = {
 export function buildContactPointSchema() {
   return {
     '@type': 'ContactPoint',
-    telephone: '+1-405-364-0601',
+    telephone: PRIMARY_PHONE_E164,
     email: CONTACT_EMAIL,
     contactType: 'customer service',
     areaServed: OKLAHOMA_AREA,
@@ -365,10 +365,10 @@ export function buildOrganizationSchema(baseUrl: string) {
     name: 'Kernal & Associates',
     legalName: 'Kernal & Associates',
     description:
-      'Oklahoma criminal defense and personal injury law firm handling DUI, drug charges, warrants, car accidents, truck accidents, oil field injuries, and wrongful death claims.',
-    image: `${baseUrl}/images/todd-kernal-lhl.jpg`,
+      'Oklahoma criminal defense law firm handling DUI, drug charges, warrants, and other serious cases, with selected personal injury representation.',
+    image: `${baseUrl}/images/todd-kernal-motorcycle.webp`,
     url: baseUrl,
-    telephone: '+1-405-364-0601',
+    telephone: PRIMARY_PHONE_E164,
     email: CONTACT_EMAIL,
     contactPoint: buildContactPointSchema(),
     address: {
@@ -461,7 +461,7 @@ export function buildWebsiteSchema(baseUrl: string) {
     name: 'Kernal & Associates',
     alternateName: 'Kernal Law',
     url: baseUrl,
-    description: 'Oklahoma criminal defense and personal injury law firm',
+    description: 'Oklahoma criminal defense law firm with selected personal injury representation',
     publisher: { '@id': `${baseUrl}/#organization` },
     inLanguage: 'en-US',
   }

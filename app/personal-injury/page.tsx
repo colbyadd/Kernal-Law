@@ -1,4 +1,9 @@
 import type { Metadata } from 'next'
+import {
+  getContactHref,
+  PRIMARY_PHONE_DISPLAY,
+  PRIMARY_PHONE_TEL_HREF,
+} from '@/lib/contact'
 import { BreadcrumbTrail } from '../components/BreadcrumbTrail'
 import { FaqSection } from '../components/FaqSection'
 import { LinkGridSection } from '../components/LinkGridSection'
@@ -136,15 +141,19 @@ export default function PersonalInjuryHubPage() {
       />
       <PageHero
         title="Personal Injury"
-        subtitle="Oklahoma representation after serious accidents and injuries."
+        subtitle="Selected Oklahoma cases involving serious crashes, life-changing injuries, and wrongful death."
         variant="injury"
       />
-      <MobileConversionBar context="injury_hub" primaryHref="/contact" primaryLabel="Request Consultation" />
+      <MobileConversionBar
+        context="injury_hub"
+        primaryHref={getContactHref('personal-injury')}
+        primaryLabel="Request a Free Consultation"
+      />
       <BreadcrumbTrail items={[{ label: 'Home', href: '/' }, { label: 'Personal Injury' }]} />
 
       <QuickPathSection
-        title="Start Here"
-        subtitle="Choose the option closest to your situation."
+        title="What Happened?"
+        subtitle="Start with the step that best fits the crash or injury."
         items={[
           {
             badge: 'Recent Crash',
@@ -152,6 +161,7 @@ export default function PersonalInjuryHubPage() {
             description: 'Get medical care, preserve scene evidence, and keep insurance communications accurate.',
             href: '/resources/what-to-do-after-car-accident-oklahoma',
             ctaName: 'injury_hub_quick_path_recent_crash',
+            ctaLabel: 'Read the Crash Guide',
           },
           {
             badge: 'Commercial Vehicle',
@@ -159,13 +169,15 @@ export default function PersonalInjuryHubPage() {
             description: 'Identify the carrier, vehicles, witnesses, and records that may not be kept indefinitely.',
             href: '/personal-injury/truck-accidents',
             ctaName: 'injury_hub_quick_path_truck',
+            ctaLabel: 'View Truck Cases',
           },
           {
             badge: 'Contact',
             title: 'Request a Case Review',
             description: 'Discuss the crash, injuries, insurance, and any proposed release with an attorney.',
-            href: '/contact',
+            href: getContactHref('personal-injury'),
             ctaName: 'injury_hub_quick_path_contact',
+            ctaLabel: 'Contact Todd',
           },
         ]}
       />
@@ -173,16 +185,18 @@ export default function PersonalInjuryHubPage() {
       <section className="py-14 md:py-20 border-b border-silver-500/10">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl text-white mb-6">Build the claim from the records</h2>
+            <h2 className="font-serif text-3xl md:text-4xl text-white mb-6">
+              A serious injury is bigger than the first hospital bill.
+            </h2>
             <div className="space-y-5 text-silver-400 text-lg leading-relaxed">
               <p>
-                A serious injury affects more than the first hospital bill. The claim may involve ongoing care,
-                missed work, lasting physical limits, and insurance questions that are not clear during the first week.
+                Treatment may continue for months. Work may be interrupted. The available insurance may not be
+                clear at first.
               </p>
               <p>
-                Todd Kernal knows that experience personally. An oil field accident gave him a direct view of how an
-                injury can change work and daily life. The legal work starts by preserving the evidence, identifying
-                the responsible parties and policies, and documenting losses as they develop.
+                After an oil field accident, Todd saw firsthand how an injury can disrupt work and daily life. He
+                starts by saving the evidence and identifying the available insurance, then builds the medical and
+                wage-loss record over time.
               </p>
             </div>
             <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
@@ -200,16 +214,16 @@ export default function PersonalInjuryHubPage() {
             <div className="pt-8 flex flex-col sm:flex-row gap-4">
               <PrimaryConsultationCta
                 context="injury_hub"
-                controlLabel="Request Case Evaluation"
-                challengerLabel="Discuss Your Injury Claim"
+                label="Discuss Your Injury Claim"
+                href={getContactHref('personal-injury')}
                 className="inline-flex items-center justify-center px-8 py-4 bg-white text-iron-950 font-bold uppercase tracking-widest hover:bg-silver-100 transition-colors"
               />
               <a
-                href="tel:+14053640601"
+                href={PRIMARY_PHONE_TEL_HREF}
                 data-cta="injury_hub_call_now"
                 className="inline-flex items-center justify-center px-8 py-4 border border-silver-500/30 text-white font-bold uppercase tracking-widest hover:border-accent-gold transition-colors"
               >
-                Call (405) 364-0601
+                Call {PRIMARY_PHONE_DISPLAY}
               </a>
             </div>
           </div>
@@ -221,7 +235,7 @@ export default function PersonalInjuryHubPage() {
       <LinkGridSection
         title="Personal Injury Services"
         subtitle="Choose the accident or injury category closest to your matter."
-        columns="three"
+        columns="four"
         items={services}
       />
 

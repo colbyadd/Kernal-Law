@@ -9,7 +9,6 @@ function validParams(overrides: Record<string, string> = {}) {
     phone: '(405) 555-0100',
     email: '',
     case_type: 'criminal-defense',
-    urgency: 'soon',
     preferred_contact_method: 'call',
     message: 'A short general overview.',
     consent: 'yes',
@@ -50,6 +49,12 @@ test('server validation accepts each valid contact preference', () => {
     })).ok,
     true,
   )
+})
+
+test('server validation accepts the simplified intake without urgency', () => {
+  const params = validParams()
+  assert.equal(params.has('urgency'), false)
+  assert.equal(validateContactSubmission(params).ok, true)
 })
 
 test('server validation enforces reply details and the consent version', () => {
@@ -136,6 +141,7 @@ test('handler forwards a sanitized valid submission to the Netlify form blueprin
     assert.equal(forwarded.get('name'), 'Test Visitor')
     assert.equal(forwarded.get('consent_version'), CONTACT_CONSENT_VERSION)
     assert.equal(forwarded.get('utm_source'), 'test-source')
+    assert.equal(forwarded.has('urgency'), false)
   } finally {
     globalThis.fetch = originalFetch
   }
